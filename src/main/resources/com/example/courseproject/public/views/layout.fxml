@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.courseproject.controllers.MainController">
+    <left>
+        <Pane prefHeight="756.0" prefWidth="220.0" styleClass="left-navbar" BorderPane.alignment="CENTER">
+            <children>
+                <VBox layoutX="1.0" layoutY="22.0" prefHeight="430.0" prefWidth="216.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#payment" prefHeight="25.0" prefWidth="312.0" styleClass="btn" text="Payment" />
+                        <Button mnemonicParsing="false" onAction="#bill" prefHeight="25.0" prefWidth="343.0" styleClass="btn" text="Bill" />
+                        <Button mnemonicParsing="false" onAction="#warehouse" prefHeight="14.0" prefWidth="216.0" styleClass="btn" text="Warehouse" />
+                        <Button mnemonicParsing="false" onAction="#dashboard" prefHeight="25.0" prefWidth="231.0" styleClass="btn" text="Dashboard" />
+                    </children>
+                </VBox>
+            </children>
+        </Pane>
+    </left>
+   <top>
+      <Pane prefHeight="75.0" prefWidth="1440.0" styleClass="top-navbar" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="navigation" alignment="TOP_RIGHT" layoutX="1207.0" layoutY="4.0" prefHeight="43.0" prefWidth="223.0">
+               <children>
+                  <Button fx:id="hideButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" styleClass="top-navbar-button" text="Button" />
+                  <ToggleButton fx:id="toggleButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="42.0" styleClass="top-navbar-button" text="ToggleButton" />
+                  <Button fx:id="exitButton" mnemonicParsing="false" styleClass="top-navbar-button" text="Button" />
+               </children>
+            </HBox>
+            <ImageView fitHeight="60.0" fitWidth="95.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="title" layoutX="25.0" layoutY="25.0" prefHeight="26.0" prefWidth="166.0" text="Course Project" />
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <AnchorPane fx:id="root" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <StackPane fx:id="contentArea" layoutX="7.0" layoutY="7.0" prefHeight="721.0" prefWidth="1210.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

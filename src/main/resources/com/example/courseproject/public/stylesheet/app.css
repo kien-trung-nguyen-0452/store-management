@@ -1,0 +1,66 @@
+#root{
+	-fx-background-color: #E5E5E5;
+}
+#contentArea {
+	-fx-background-color: #FAFAFA;
+	-fx-background-radius: 15px;
+	-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 0);
+}
+#title{
+	-fx-text-fill: white;
+	-fx-font-family: "Lato";
+	-fx-font-size: 20px;
+}
+.top-navbar{
+	-fx-background-color: #353C43;
+}
+#navigation{
+	-fx-alignment: CENTER_RIGHT;
+	-fx-padding: 10;
+	-fx-spacing: 10;
+	-fx-margin: 0 10 0 0
+}
+
+.top-navbar-button{
+	-fx-min-width: 15;
+	-fx-min-height: 15;
+	-fx-pref-width: 10;
+	-fx-pref-height: 10 ;
+	-fx-background-radius: 15;
+	-fx-padding: 0 20;
+}
+#exitButton{
+	-fx-background-color: #BF616A ;
+}
+#toggleButton{
+	-fx-background-color: #A3BE8C;
+}
+#hideButton {
+	-fx-background-color: #D08770;
+}
+.left-navbar{
+	-fx-background-color:#353C43;
+	-fx-pref-height: 200px;
+	-fx-pref-width: 200px;
+}
+
+.btn {
+	-fx-pref-height: 50px;
+	-fx-pref-width: 195px;
+	-fx-background-color: none;
+	-fx-text-fill: white;
+	-fx-font-family: "Lato";
+	-fx-font-size: 14px;
+	-fx-alignment: CENTER_LEFT;
+	-fx-padding: 0 0 0 30 ;
+	-fx-margin: 0 5px 0 0
+
+
+}
+.btn:hover {
+	-fx-background-color: #425457; /* Màu nền khi hover */
+}
+
+.btn:focused {
+	-fx-background-color: #425457; /* Màu nền khi hover */
+}
