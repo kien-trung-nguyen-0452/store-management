@@ -1,27 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.courseproject.controllers.MainController">
+<BorderPane fx:id="app" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.courseproject.controllers.MainController">
     <left>
-        <Pane prefHeight="756.0" prefWidth="220.0" styleClass="left-navbar" BorderPane.alignment="CENTER">
+        <Pane prefHeight="735.0" prefWidth="312.0" styleClass="left-navbar" BorderPane.alignment="CENTER">
             <children>
-                <VBox layoutX="1.0" layoutY="22.0" prefHeight="430.0" prefWidth="216.0">
+                <VBox layoutX="1.0" layoutY="22.0" prefHeight="430.0" prefWidth="312.0">
                     <children>
-                        <Button mnemonicParsing="false" onAction="#payment" prefHeight="25.0" prefWidth="312.0" styleClass="btn" text="Payment" />
-                        <Button mnemonicParsing="false" onAction="#bill" prefHeight="25.0" prefWidth="343.0" styleClass="btn" text="Bill" />
-                        <Button mnemonicParsing="false" onAction="#warehouse" prefHeight="14.0" prefWidth="216.0" styleClass="btn" text="Warehouse" />
-                        <Button mnemonicParsing="false" onAction="#dashboard" prefHeight="25.0" prefWidth="231.0" styleClass="btn" text="Dashboard" />
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="332.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icon/btn-icon/inventory-management.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="app-infor" text="Store Management">
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding></Label>
+                     </children>
+                  </VBox>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#payment" prefHeight="50.0" prefWidth="312.0" styleClass="btn" text="Payment">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="btn-icon">
+                           <image>
+                              <Image url="@../icon/btn-icon/online-payment.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin></Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#bill" prefHeight="50.0" prefWidth="343.0" styleClass="btn" text="Bill">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="btn-icon">
+                           <image>
+                              <Image url="@../icon/btn-icon/responsive.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin></Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#warehouse" prefHeight="50.0" prefWidth="325.0" styleClass="btn" text="Warehouse">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="btn-icon">
+                           <image>
+                              <Image url="@../icon/btn-icon/house.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin></Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#dashboard" prefHeight="50.0" prefWidth="321.0" styleClass="btn" text="Dashboard">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="btn-icon">
+                           <image>
+                              <Image url="@../icon/btn-icon/layout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin></Button>
                     </children>
                 </VBox>
             </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
         </Pane>
     </left>
    <top>
-      <Pane prefHeight="75.0" prefWidth="1440.0" styleClass="top-navbar" BorderPane.alignment="CENTER">
+      <Pane prefHeight="41.0" prefWidth="1440.0" styleClass="top-navbar" BorderPane.alignment="CENTER">
          <children>
             <HBox fx:id="navigation" alignment="TOP_RIGHT" layoutX="1207.0" layoutY="4.0" prefHeight="43.0" prefWidth="223.0">
                <children>
@@ -31,14 +88,14 @@
                </children>
             </HBox>
             <ImageView fitHeight="60.0" fitWidth="95.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="title" layoutX="25.0" layoutY="25.0" prefHeight="26.0" prefWidth="166.0" text="Course Project" />
+            <Label fx:id="title" layoutX="25.0" layoutY="6.0" prefHeight="29.0" prefWidth="166.0" text="Course Project" />
          </children>
       </Pane>
    </top>
    <center>
-      <AnchorPane fx:id="root" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="root" prefHeight="715.0" prefWidth="1102.0" BorderPane.alignment="CENTER">
          <children>
-            <StackPane fx:id="contentArea" layoutX="7.0" layoutY="7.0" prefHeight="721.0" prefWidth="1210.0" />
+            <StackPane fx:id="contentArea" layoutX="7.0" layoutY="7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="735.0" prefWidth="1102.0" />
          </children>
       </AnchorPane>
    </center>
