@@ -6,7 +6,7 @@ module com.example.courseproject {
     requires com.dlsc.formsfx;
     requires net.synedra.validatorfx;
     requires org.kordamp.bootstrapfx.core;
-    requires java.logging;
+    requires java.sql;
 
     opens com.example.courseproject to javafx.fxml;
     exports com.example.courseproject.controllers;
