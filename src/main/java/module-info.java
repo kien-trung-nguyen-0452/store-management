@@ -1,4 +1,4 @@
-module com.example.courseproject {
+module com.javaProject.shopManagement {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -9,9 +9,9 @@ module com.example.courseproject {
     requires java.sql;
     requires jdk.jdi;
 
-    opens com.example.courseproject to javafx.fxml;
-    exports com.example.courseproject.controllers;
-    exports com.example.courseproject;
-    opens com.example.courseproject.controllers to javafx.fxml;
+    opens com.javaProject.shopManagement to javafx.fxml;
+    exports com.javaProject.shopManagement.controllers;
+    exports com.javaProject.shopManagement;
+    opens com.javaProject.shopManagement.controllers to javafx.fxml;
 
 }

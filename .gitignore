@@ -13,7 +13,7 @@ target/
 *.ipr
 
 #ignore test
-/src/main/java/com/example/courseproject/test/dbTest.java
+/src/main/java/com/javaProject/shopManagement/test/dbTest.java
 
 ### Eclipse ###
 .apt_generated
