@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="d1819dd8-586a-4227-972e-d8c58b4d4b9c" name="shop_management@localhost Mapping">
+      <data-sources db="7921a281-0f05-4f57-a0a0-1b9623e9f683" ddl="52ba0e2d-21d9-4a88-b1b8-2cc809ba35f1" />
+    </mapping>
+    <mapping uuid="753af22a-4b61-436a-8f5f-9c1319ddeb24" name="@localhost Mapping">
+      <data-sources db="8939c010-3a0a-4f99-b1c1-ae25c4fa3e10" />
+    </mapping>
+  </component>
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="52ba0e2d-21d9-4a88-b1b8-2cc809ba35f1" />
+          <option name="name" value="shop_management@localhost (DDL)" />
+          <option name="dbmsName" value="MYSQL" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$/target/classes/com/example/courseproject/public/database.sql" />
+            </array>
+          </option>
+          <option name="outLayout" value="File per object by schema.groovy" />
+        </State>
+      </list>
+    </option>
+  </component>
+</project>

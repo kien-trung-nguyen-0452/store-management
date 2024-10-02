@@ -1,40 +1,34 @@
 package com.example.courseproject.models;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 
 public class Batch {
-    private int id;
-    private String batchName;
+    private int batchId;
     private int productId;
     private String productName;
     private int quantity;
-    private Date expirationDate;
-    private Date createDate;
+    private double purchasePrice;
+    private Timestamp createDate;
+    private String supplierName;
 
-    public Batch(int id, String batchName, int productId, String productName, int quantity, Date expirationDate, Date createDate) {
-        this.id = id;
-        this.batchName = batchName;
-        this.productId = productId;
-        this.productName = productName;
-        this.quantity = quantity;
-        this.expirationDate = expirationDate;
+    public Batch(int batchId, String supplierName, Timestamp createDate, int quantity, double purchasePrice,  String productName, int productId) {
+        this.batchId = batchId;
+        this.supplierName = supplierName;
         this.createDate = createDate;
+        this.quantity = quantity;
+        this.purchasePrice = purchasePrice;
+        this.productName = productName;
+        this.productId = productId;
     }
 
-    public int getId() {
-        return id;
+    public int getBatchId() {
+        return batchId;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getBatchName() {
-        return batchName;
-    }
-
-    public void setBatchName(String batchName) {
-        this.batchName = batchName;
+    public void setBatchId(int batchId) {
+        this.batchId = batchId;
     }
 
     public int getProductId() {
@@ -61,19 +55,40 @@ public class Batch {
         this.quantity = quantity;
     }
 
-    public Date getExpirationDate() {
-        return expirationDate;
+    public double getPurchasePrice() {
+        return purchasePrice;
     }
 
-    public void setExpirationDate(Date expirationDate) {
-        this.expirationDate = expirationDate;
+    public void setPurchasePrice(double purchasePrice) {
+        this.purchasePrice = purchasePrice;
     }
 
-    public Date getCreateDate() {
+    public Timestamp getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(Timestamp createDate) {
         this.createDate = createDate;
+    }
+
+    public String getSupplierName() {
+        return supplierName;
+    }
+
+    public void setSupplierName(String supplierName) {
+        this.supplierName = supplierName;
+    }
+
+    @Override
+    public String toString() {
+        return "Batch{" +
+                "batchId=" + batchId +
+                ", productId=" + productId +
+                ", productName='" + productName + '\'' +
+                ", quantity=" + quantity +
+                ", purchasePrice=" + purchasePrice +
+                ", createDate=" + createDate +
+                ", supplierName='" + supplierName + '\'' +
+                '}';
     }
 }
