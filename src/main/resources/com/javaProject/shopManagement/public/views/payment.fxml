@@ -1,19 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.PaymentController">
-    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="288.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../icon/btn-icon/inventory-management.png" />
-         </image>
-      </ImageView>
-        <Label layoutX="167.0" layoutY="212.0" text="payment">
 
-        </Label>
-    </children>
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="750.0" prefWidth="1110.0"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.javaProject.shopManagement.controllers.PaymentController">
+   <children>
+      <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="750.0" prefWidth="1110.0">
+         <children>
+              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="750.0" prefWidth="752.0" styleClass="primary-background" stylesheets="@../stylesheet/app.css">
+                  <children>
+                  <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="750.0">
+                     <children>
+                        <Label text="Shopping Cart" textFill="#2b49b3">
+                           <font>
+                              <Font name="Cambria Bold" size="50.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                      <ScrollPane hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="750.0">
+                          <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="517.0" prefWidth="750.0" />
+                          </content>
+                      </ScrollPane>
+                  <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                            <HBox alignment="CENTER_LEFT" prefHeight="114.0" prefWidth="750.0">
+                                <children>
+                                    <Label alignment="CENTER" prefHeight="66.0" prefWidth="362.0" text="Product Quantity:" textFill="#2b49b3">
+                                 <font>
+                                    <Font name="Georgia" size="20.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="70.0" />
+                                 </HBox.margin>
+                              </Label>
+                                    <Label alignment="CENTER" prefHeight="74.0" prefWidth="127.0" text="100" textFill="#2b49b3">
+                                        <font>
+                                            <Font name="Georgia" size="20.0" />
+                                        </font>
+                                    </Label>
+                                </children>
+                            </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="119.0" prefWidth="750.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="66.0" prefWidth="362.0" text="Cost:" textFill="#2b49b3">
+                                 <font>
+                                    <Font name="Georgia" size="20.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="70.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets left="115.0" />
+                                 </padding>
+                              </Label>
+                              <Label alignment="CENTER" prefHeight="74.0" prefWidth="127.0" text="\$1B" textFill="#2b49b3">
+                                 <font>
+                                    <Font name="Georgia" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  </children>
+              </VBox>
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="750.0" prefWidth="358.0" stylesheets="@../stylesheet/app.css">
+                      <opaqueInsets>
+                          <Insets />
+                      </opaqueInsets>
+                      <styleClass>
+                          <String fx:value="rec-round" />
+                          <String fx:value="white-border" />
+                          <String fx:value="right-bar" />
+                      </styleClass>
+                      <children>
+                          <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="470.0" stylesheets="@../stylesheet/app.css">
+                              <children>
+                                  <TextField prefHeight="40.0" prefWidth="238.0" promptText="Find the product" styleClass="transparent" stylesheets="@../stylesheet/app.css">
+                                      <HBox.margin>
+                                          <Insets left="20.0" />
+                                      </HBox.margin>
+                                      <font>
+                                          <Font name="Cambria" size="18.0" />
+                                      </font>
+                                  </TextField>
+                                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="76.0" styleClass="button1" stylesheets="@../stylesheet/app.css" text="Search" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets bottom="5.0" right="10.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                              </children>
+                              <styleClass>
+                                  <String fx:value="search-box" />
+                                  <String fx:value="shadow" />
+                              </styleClass>
+                     <VBox.margin>
+                        <Insets bottom="30.0" left="10.0" right="10.0" top="20.0" />
+                     </VBox.margin>
+                          </HBox>
+                          <ScrollPane hbarPolicy="NEVER" prefHeight="518.0" prefWidth="527.0">
+                              <content>
+                                  <AnchorPane prefHeight="518.0" prefWidth="536.0" />
+                              </content>
+                          </ScrollPane>
+                      </children>
+                  </VBox>
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>

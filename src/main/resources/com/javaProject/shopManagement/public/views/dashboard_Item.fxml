@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="1120.0"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.javaProject.shopManagement.controllers.DasboardController">
+<children>
+    <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="1120.0" spacing="140.0">
+        <children>
+            <Label fx:id = "producRank" text="1">
+                <HBox.margin>
+                    <Insets left="100.0" />
+                </HBox.margin>
+            </Label>
+            <Label fx:id="productCode" text="TKDA123" />
+            <Label fx:id="productName" text="dm bon dom dom" />
+            <Label fx:id="productPrice" text="\$1909" />
+            <Label fx:id="productQuantity" text="100" />
+        </children>
+    </HBox>
+</children>
+</HBox>

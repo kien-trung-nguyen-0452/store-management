@@ -56,7 +56,7 @@
 }
 
 .btn:focused {
-	-fx-background-color: #2F8EF0; /* Màu nền khi hover */
+	-fx-background-color: #6699FF; /* Màu nền khi hover */
 }
 .app-infor{
 
@@ -64,5 +64,148 @@
 	-fx-font-family: "Lato";
 	-fx-font-size: 16px;
 
+}
+.primary-background{
+	-fx-background-color: #FFFFFF;
+	-fx-border-color: #FFFFFF;
+}
+
+/*warehouse.css*/
+
+
+.bars{
+	-fx-border-color: #C1C1C1;
+	-fx-border-radius: 5px;
+	-fx-background-color: #FFFFFF;
+}
+.plus{
+	-fx-border-style: dashed;
+	-fx-border-color: #605f5f;
+	-fx-border-radius: 10px;
+	-fx-background-radius: 10px;
+	-fx-background-color: #FFFFFF;
+}
+.transparent{
+	-fx-background-color: rgba(0,0,0,0);
+}
+
+.search-button{
+	-fx-background-color: #828282;
+	-fx-background-radius: 30;
+}
+.search-button:hover{
+	-fx-background-color: #515050;
+}
+.right-bar{
+	-fx-background-color: #D3D3D3;
+}
+
+.shadow{
+	-fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
+}
+
+.chosen-fruit-card{
+	-fx-background-color: #F16C31;
+	-fx-background-radius: 30;
+}
+
+.comboBox{
+	-fx-background-color: rgba(255,255,255,0.3);
+	-fx-background-radius: 30;
+}
+
+.add-btn{
+	-fx-background-color: #FFFFFF;
+	-fx-background-radius: 100;
+}
+
+.free-delivery-card{
+	-fx-background-color: #D3D3D3;
+	-fx-background-radius: 30;
+}
+
+.shopping-online-card{
+	-fx-background-color: #BAEAC3;
+	-fx-background-radius: 30;
+}
+
+.fruit-item{
+	-fx-background-color: #FFFFFF;
+	-fx-background-radius: 30;
+}
+
+/*payment.css*/
+
+.payment-background{
+	-fx-background-color: #E4E7EC;
+}
+.secondary-background{
+	-fx-background-color: #A0B2C0;
+}
+.card{
+	-fx-background-color: #fff;
+	-fx-background-radius: 20;
+	-fx-effect: dropShadow(three-pass-box, rgba(0, 0, 0, 0.1),10.0, 0, 0, 10.0);
+}
+.add-remove-layout{
+	-fx-border-radius: 50;
+	-fx-border-width: 1;
+	-fx-border-color: #303030;
+}
+.rec-round{
+	-fx-background-radius: 20;
+}
+.white-border{
+	-fx-border-color: #fff;
+}
+.botton{
+	-fx-background-radius: 20;
+	-fx-background-color: #303030;
+}
+
+/*Dashboard.css*/
+
+.vbox_hbox{
+	-fx-background-color: #FFFFFF;
+	-fx-border-color: #FFFFFF;
+	-fx-border-radius: 100px;
+}
+.date_picker{
+	-fx-background-color: rgba(0,0,0,0);;
+	-fx-border-color: transparent;
+	-fx-border-width: 0 0px 0 0px;
+}
+.date-picker .arrow-button {
+	-fx-background-color: #FFFFFF; /* Màu nền của nút calendar */
+	-fx-border-color: #C1C1C1;      /* Màu viền của nút */
+	-fx-border-width: 0 0px 0 0px;
+}
+/* Thay đổi màu của biểu tượng calendar */
+.date-picker .arrow-button .arrow {
+	-fx-background-color: gray;
+}
+.time_border{
+	-fx-border-radius: 20;
+	-fx-border-color: #C1C1C1;
+}
+.button1{
+	-fx-background-color: #FFFFFF;
+	-fx-background-radius: 100px;
+	-fx-text-fill: #4a4a4a;
+}
+.button1:hover{
+	-fx-background-color: #C1C1C1;
+	-fx-background-radius: 100px;
+	-fx-text-fill: #FFFFFF;
+}
+.transparent{
+	-fx-background-color: rgba(0,0,0,0);
+}
+/*bill.css*/
+.filter_button{
+	-fx-background-color: #FFFFFF;
+	-fx-background-radius: 10px;
+	-fx-border-radius: 10px;
+	-fx-border-color: #C1C1C1;
 }
 

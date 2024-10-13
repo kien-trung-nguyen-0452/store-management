@@ -1,19 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.javaProject.shopManagement.controllers.WarehouseController"
-            prefHeight="400.0" prefWidth="600.0">
-
-    <children>
-        <Label layoutX="229.8" layoutY="218.8" text="warehouse">
-
-        </Label>
-    </children>
+<AnchorPane fx:id="rootPane" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="1135.0" styleClass="wrapper" stylesheets="@/com/javaProject/shopManagement/public/stylesheet/warehouse.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.WarehouseController">
+   <children>
+      <HBox layoutX="4.0" layoutY="4.0" prefHeight="657.0" prefWidth="1128.0">
+         <children>
+            <Pane prefHeight="651.0" prefWidth="890.0">
+               <children>
+                  <HBox layoutX="25.0" layoutY="14.0" prefHeight="47.0" prefWidth="887.0" styleClass="top-bar">
+                     <children>
+                        <Label prefHeight="15.0" prefWidth="91.0" styleClass="title" text="Label" />
+                        <TextField prefHeight="31.0" prefWidth="583.0" styleClass="search-box" />
+                        <Button mnemonicParsing="false" styleClass="search-button" text="Button" />
+                        <Button mnemonicParsing="false" styleClass="filter_button" text="Button">
+                           <contextMenu>
+                              <ContextMenu>
+                                <items>
+                                    <MenuItem mnemonicParsing="false" styleClass="" text="Unspecified Action" />
+                                  <MenuItem mnemonicParsing="false" text="search by name" />
+                                </items>
+                              </ContextMenu>
+                           </contextMenu>
+                        </Button>
+                     </children>
+                  </HBox>
+                   <ScrollPane layoutX="14.0" layoutY="61.0" prefHeight="589.0" prefWidth="909.0" styleClass="product-list">
+                        <GridPane prefHeight="740.0" prefWidth="903.0" styleClass="product-list-grid">
+                        <columnConstraints>
+                           <ColumnConstraints />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints />
+                        </rowConstraints>
+                        </GridPane>
+                   </ScrollPane>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="657.0" prefWidth="226.0" styleClass="product-infor">
+                     <children>
+                        <ImageView fx:id="productImage" fitHeight="148.0" fitWidth="145.0" pickOnBounds="true" smooth="false">
+                              <Image url="@../icon/btn-icon/online-payment.png"/>
+                        </ImageView>
+                        <VBox prefHeight="431.0" prefWidth="232.0" styleClass="product-infor-list">
+                           <children>
+                              <Label fx:id="productName"  text="Product name" />
+                              <TextField fx:id="productSellingPrice" promptText="Selling price" />
+                              <Label fx:id="productPurchasePrice" text="purchase price" />
+                              <Label fx:id="productId" text="product ID" />
+                              <Label fx:id="productBatchId" text="batch ID" />
+                              <Label fx:id="productExpirationDate" text="expiration date" />
+                              <Label fx:id="productPurchaseDate" text="purchase date" />
+                              <Label fx:id="productManufacturer" text="manufacture" />
+                              <Label fx:id="productSupplier" text="supplier" />
+                              <Label fx:id="productQuantity" text="quantity" />
+                              <HBox prefHeight="100.0" prefWidth="200.0" styleClass="product-function-button">
+                                 <children>
+                                    <Button fx:id="productDeleteButton" mnemonicParsing="false" text="Delete" />
+                                    <Button fx:id="productUpdateButton" mnemonicParsing="false" text="Update" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>
