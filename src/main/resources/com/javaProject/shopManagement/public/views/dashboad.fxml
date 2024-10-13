@@ -18,7 +18,7 @@
 <AnchorPane fx:id="rootPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="735.0" prefWidth="1102.0" styleClass="primary-background"
             xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.javaProject.shopManagement.controllers.DasboardController">
+            fx:controller="com.javaProject.shopManagement.controllers.layout.DasboardController">
     <children>
         <VBox prefHeight="90.0" prefWidth="1120.0" styleClass="vbox_hbox" AnchorPane.bottomAnchor="645.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.Image?>
 
-<AnchorPane fx:id="rootPane" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="1135.0" styleClass="wrapper" stylesheets="@/com/javaProject/shopManagement/public/stylesheet/warehouse.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.WarehouseController">
+<AnchorPane fx:id="rootPane" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="1135.0" styleClass="wrapper" stylesheets="@/com/javaProject/shopManagement/public/stylesheet/warehouse.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.layout.WarehouseController">
    <children>
       <HBox layoutX="4.0" layoutY="4.0" prefHeight="657.0" prefWidth="1128.0">
          <children>

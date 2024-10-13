@@ -16,7 +16,7 @@
 <BorderPane fx:id="app" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1440.0"
             xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.javaProject.shopManagement.controllers.MainController">
+            fx:controller="com.javaProject.shopManagement.controllers.layout.MainController">
    <left>
       <Pane prefHeight="735.0" prefWidth="312.0" styleClass="left-navbar" BorderPane.alignment="CENTER">
          <BorderPane.margin>
