@@ -1,4 +1,4 @@
-package com.javaProject.shopManagement.services.implement;
+package com.javaProject.shopManagement.services.implementation;
 
 import com.javaProject.shopManagement.exception.GlobalExeptionHandler;
 import com.javaProject.shopManagement.services.interfaces.FileService;

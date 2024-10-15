@@ -28,7 +28,7 @@ public class HelloApplication extends Application {
             primaryStage.setY(event.getScreenY() - y);
         });
 
-        root.getStylesheets().add("com/example/courseproject/public/stylesheet/app.css");
+        root.getStylesheets().add("com/javaProject/shopManagement/public/stylesheet/app.css");
         primaryStage.setTitle("Hello!");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

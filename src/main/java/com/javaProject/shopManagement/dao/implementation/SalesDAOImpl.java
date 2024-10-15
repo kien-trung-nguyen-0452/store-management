@@ -1,6 +1,8 @@
-package com.javaProject.shopManagement.dao;
+package com.javaProject.shopManagement.dao.implementation;
 
 import com.javaProject.shopManagement.config.DbUtils;
+import com.javaProject.shopManagement.dao.interfaces.SalesDAO;
+import com.javaProject.shopManagement.exception.GlobalExeptionHandler;
 import com.javaProject.shopManagement.models.Sales;
 
 import java.sql.Connection;
@@ -10,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SalesDAOImpl implements DAO<Sales> {
+public class SalesDAOImpl implements SalesDAO {
 
     public static SalesDAOImpl getInstance() {
         return new SalesDAOImpl();
@@ -26,20 +28,13 @@ public class SalesDAOImpl implements DAO<Sales> {
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
-                Sales sale = new Sales(
-                        rs.getInt("invoice_code"),
-                        rs.getInt("batch_id"),
-                        rs.getInt("product_id"),
-                        "", // Product name can be fetched from the Products table if needed
-                        rs.getInt("quantity"),
-                        rs.getDouble("unit_price"),
-                        rs.getDouble("total_amount")
-                );
-                salesList.add(sale);
+                Sales sales = new Sales();
+                readAllFromResulSet(rs, sales);
+                salesList.add(sales);
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());  // Handle SQL exception
+            GlobalExeptionHandler.handleException(e);
         }
         return salesList;
     }
@@ -54,21 +49,14 @@ public class SalesDAOImpl implements DAO<Sales> {
             stmt.setInt(1, invoice_code);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    Sales sales = new Sales(
-                            rs.getInt("invoice_code"),
-                            rs.getInt("batch_id"),
-                            rs.getInt("product_id"),
-                            "", // Product name can be fetched from Products table if needed
-                            rs.getInt("quantity"),
-                            rs.getDouble("unit_price"),
-                            rs.getDouble("total_amount")
-                    );
+                    Sales sales = new Sales();
+                    readAllFromResulSet(rs, sales);
                     salesList.add(sales);
                 }
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());  // Handle SQL exception
+            GlobalExeptionHandler.handleException(e);
         }
         return salesList;
     }
@@ -84,25 +72,15 @@ public class SalesDAOImpl implements DAO<Sales> {
 
             try (Connection conn = DbUtils.getConnection();
                  PreparedStatement stmt = conn.prepareStatement(query)){
-
                 try (ResultSet rs = stmt.executeQuery()) {
-
                     while (rs.next()) {
-                        Sales sale = new Sales(
-                                rs.getInt("invoice_code"),
-                                rs.getInt("batch_id"),
-                                rs.getInt("product_id"),
-                                "", // Product name can be fetched from Products table if needed
-                                rs.getInt("quantity"),
-                                rs.getDouble("unit_price"),
-                                rs.getDouble("total_amount")
-                        );
-                        salesList.add(sale);
+                        Sales sales = new Sales();
+                        readAllFromResulSet(rs, sales);
+                        salesList.add(sales);
                     }
-
                 }
             }catch (SQLException e) {
-                System.out.println(e.getMessage());  // Handle SQL exception
+                GlobalExeptionHandler.handleException(e);
             }
 
             return salesList;
@@ -125,7 +103,7 @@ public class SalesDAOImpl implements DAO<Sales> {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage()); // Handle SQL exception
+            GlobalExeptionHandler.handleException(e);
         }
     }
 
@@ -151,7 +129,7 @@ public class SalesDAOImpl implements DAO<Sales> {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());  // Handle SQL exception
+            GlobalExeptionHandler.handleException(e);
         }
     }
 
@@ -172,7 +150,17 @@ public class SalesDAOImpl implements DAO<Sales> {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage()); // Handle SQL exception
+            GlobalExeptionHandler.handleException(e);
         }
+    }
+
+    private void readAllFromResulSet (ResultSet rs, Sales sales) throws SQLException {
+        sales.setInvoiceId(rs.getInt("invoice_code"));
+        sales.setBatchId(rs.getInt("batch_id"));
+        sales.setProductId(rs.getInt("product_id"));
+        sales.setProductName(rs.getString("product_name"));
+        sales.setQuantity(rs.getInt("quantity"));
+        sales.setPrice(rs.getDouble("unit_price"));
+        sales.setTotalAmount(rs.getDouble("total_amount"));
     }
 }

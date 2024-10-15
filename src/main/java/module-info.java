@@ -9,9 +9,8 @@ module com.javaProject.shopManagement {
     requires java.sql;
     requires jdk.jdi;
 
-    opens com.javaProject.shopManagement to javafx.fxml;
-    exports com.javaProject.shopManagement.controllers;
+    opens com.javaProject.shopManagement.controllers.layout to javafx.fxml;
+    exports com.javaProject.shopManagement.controllers.layout;
     exports com.javaProject.shopManagement;
-    opens com.javaProject.shopManagement.controllers to javafx.fxml;
 
 }

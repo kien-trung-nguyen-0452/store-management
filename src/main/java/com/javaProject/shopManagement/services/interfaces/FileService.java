@@ -1,4 +1,4 @@
-package com.javaProject.shopManagement.services;
+package com.javaProject.shopManagement.services.interfaces;
 
 import javafx.stage.Stage;
 

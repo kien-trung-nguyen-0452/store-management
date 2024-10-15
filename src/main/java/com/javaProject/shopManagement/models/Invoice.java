@@ -7,6 +7,9 @@ public class Invoice {
     private Timestamp date;
     private double totalAmount;
 
+    public Invoice() {
+    }
+
     public Invoice(int invoiceId, Timestamp date, double totalAmount) {
         this.invoiceId = invoiceId;
         this.date = date;

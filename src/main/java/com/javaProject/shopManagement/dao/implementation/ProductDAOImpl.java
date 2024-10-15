@@ -1,4 +1,4 @@
-package com.javaProject.shopManagement.dao;
+package com.javaProject.shopManagement.dao.implementation;
 import com.javaProject.shopManagement.config.DbUtils;
 import com.javaProject.shopManagement.dao.interfaces.ProductDAO;
 import com.javaProject.shopManagement.exception.GlobalExeptionHandler;
@@ -24,19 +24,9 @@ public class ProductDAOImpl implements ProductDAO {
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
-
             while (rs.next()) {
-
-                Product product = new Product(
-                        rs.getInt("product_id"),
-                        rs.getInt("batch_id"),
-                        rs.getString("product_name"),
-                        rs.getDouble("selling_price"),
-                        rs.getInt("quantity"),
-                        rs.getString("image_url")
-
-                );
-
+                Product product = new Product();
+                readInformationFromResultSet(rs, product);
                 products.add(product);
             }
 
@@ -63,12 +53,7 @@ public class ProductDAOImpl implements ProductDAO {
         try( ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     Product product = new Product();
-                            product.setProductId(rs.getInt("product_id"));
-                            product.setBatchId(rs.getInt("batch_id"));
-                            product.setProductName(rs.getString("product_name"));
-                            product.setSellingPrice(rs.getDouble("selling_price"));
-                            product.setImageUrl(rs.getString("image_url"));
-                            product.setQuantity(rs.getInt("quantity"));
+                    readInformationFromResultSet(rs, product);
                     products.add(product);
                 }
             }
@@ -100,16 +85,8 @@ public class ProductDAOImpl implements ProductDAO {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    Product product = new Product(
-                            rs.getInt("product_id"),
-                            rs.getInt("batch_id"),
-                            rs.getString("product_name"),
-                            rs.getDouble("selling_price"),
-                            rs.getString("image_url"),
-                            rs.getInt("quantity"),
-                            rs.getTimestamp("expiration_date"),
-                            rs.getString("manufacturer")
-                    );
+                    Product product = new Product();
+                    readInformationFromResultSet(rs, product);
                     products.add(product);
                 }
             }
@@ -118,9 +95,9 @@ public class ProductDAOImpl implements ProductDAO {
            GlobalExeptionHandler.handleException(e);
         }
 
-        long endTime = System.currentTimeMillis(); // End timing
+        long endTime = System.currentTimeMillis();
 
-        long duration = endTime - startTime; // Calculate duration
+        long duration = endTime - startTime;
 
         System.out.println("Query executed in: " + duration + "= ?");
         return products;
@@ -136,19 +113,11 @@ public class ProductDAOImpl implements ProductDAO {
                 stmt.setInt(1, entity.getProductId());
                 stmt.setInt(2, entity.getBatchId());
                 stmt.setString(3, entity.getProductName());
-
-                // Use BigDecimal for selling_price to avoid precision issues
                 stmt.setDouble(4, entity.getSellingPrice());
-
                 stmt.setString(5, entity.getImageUrl());
                 stmt.setInt(6, entity.getQuantity());
-
-                // Ensure expiration_date is correctly converted to java.sql.Timestamp
                 stmt.setTimestamp(7, entity.getExpirationDate());
-
                 stmt.setString(8, entity.getManufacturer());
-
-                // Execute the query
                 stmt.executeUpdate();
 
             } catch (SQLException e) {
@@ -164,7 +133,6 @@ public class ProductDAOImpl implements ProductDAO {
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            // Set parameters for the prepared statement
             stmt.setInt(1, entity.getBatchId());
             stmt.setString(2, entity.getProductName());
             stmt.setDouble(3, entity.getSellingPrice());
@@ -174,14 +142,6 @@ public class ProductDAOImpl implements ProductDAO {
             stmt.setString(7, entity.getManufacturer());
             stmt.setInt(8, entity.getProductId());
             stmt.setInt(9, entity.getBatchId());
-
-            // Execute the update
-            int rowsUpdated = stmt.executeUpdate();
-            if (rowsUpdated > 0) {
-                System.out.println("Product updated successfully!");
-            } else {
-                System.out.println("No product found with the given identifiers.");
-            }
 
         } catch (SQLException e) {
             GlobalExeptionHandler.handleException(e);
@@ -204,16 +164,7 @@ public class ProductDAOImpl implements ProductDAO {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    product = new Product(
-                            rs.getInt("product_id"),
-                            rs.getInt("batch_id"),
-                            rs.getString("product_name"),
-                            rs.getDouble("selling_price"),
-                            rs.getString("image_url"),
-                            rs.getInt("quantity"),
-                            rs.getTimestamp("expiration_date"),
-                            rs.getString("manufacturer")
-                    );
+                    readAllFromResultSet(rs, product);
                 }
             }
 
@@ -236,12 +187,8 @@ public class ProductDAOImpl implements ProductDAO {
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
-
-            // Set the product_id parameter
             stmt.setInt(1, product_id);
             stmt.setInt(2, batch_id);
-
-            // Execute the delete query
             int rowsDeleted = stmt.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("Product deleted successfully!");
@@ -253,6 +200,23 @@ public class ProductDAOImpl implements ProductDAO {
             GlobalExeptionHandler.handleException(e);
         }
     }
+
+    private void readInformationFromResultSet(ResultSet rs, Product product) throws SQLException {
+        product.setProductId(rs.getInt("product_id"));
+        product.setBatchId(rs.getInt("batch_id"));
+        product.setProductName(rs.getString("product_name"));
+        product.setSellingPrice(rs.getDouble("selling_price"));
+        product.setImageUrl(rs.getString("image_url"));
+        product.setQuantity(rs.getInt("quantity"));
+    }
+
+    private void readAllFromResultSet (ResultSet rs, Product product) throws SQLException{
+        readInformationFromResultSet(rs, product);
+        product.setExpirationDate(rs.getTimestamp("expiration_date"));
+        product.setManufacturer(rs.getString("manufacturer"));
+    }
+
+
 
 
 

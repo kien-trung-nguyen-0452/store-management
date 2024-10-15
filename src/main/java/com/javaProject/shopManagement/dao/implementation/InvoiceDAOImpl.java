@@ -1,6 +1,7 @@
-package com.javaProject.shopManagement.dao;
+package com.javaProject.shopManagement.dao.implementation;
 
 import com.javaProject.shopManagement.config.DbUtils;
+import com.javaProject.shopManagement.dao.interfaces.InvoiceDAO;
 import com.javaProject.shopManagement.exception.GlobalExeptionHandler;
 import com.javaProject.shopManagement.models.Invoice;
 
@@ -8,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InvoiceDAOImpl implements DAO<Invoice> {
+public class InvoiceDAOImpl implements InvoiceDAO {
 
     public static InvoiceDAOImpl getInstance() {
         return new InvoiceDAOImpl();
@@ -21,13 +22,9 @@ public class InvoiceDAOImpl implements DAO<Invoice> {
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             try (ResultSet rs = stmt.executeQuery()) {
-
                 while (rs.next()) {
-                    Invoice invoice = new Invoice(
-                            rs.getInt("invoice_code"),
-                            rs.getTimestamp("invoice_date"),
-                            rs.getDouble("total_revenue")
-                    );
+                   Invoice invoice = new Invoice();
+                   readAllFromResultSet(rs, invoice);
                     invoices.add(invoice);
                 }
 
@@ -40,21 +37,17 @@ public class InvoiceDAOImpl implements DAO<Invoice> {
     }
 
     @Override
-    public List<Invoice> getById(int invoice_code) {
+    public Invoice getById(int invoice_code) {
         String query = "SELECT invoice_code, total_revenue, invoice_date FROM invoice WHERE invoice_code = ?";
-        List<Invoice> invoices = new ArrayList<>();
 
+        Invoice invoice = new Invoice();
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setInt(1, invoice_code);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    Invoice invoice = new Invoice(
-                            rs.getInt("invoice_code"),
-                            rs.getTimestamp("invoice_date"),
-                            rs.getDouble("total_revenue")
-                    );
+                    readAllFromResultSet(rs, invoice);
                 }
             }
 
@@ -62,7 +55,7 @@ public class InvoiceDAOImpl implements DAO<Invoice> {
            GlobalExeptionHandler.handleException(e);
         }
 
-        return invoices;
+        return invoice;
     }
 
     @Override
@@ -75,17 +68,13 @@ public class InvoiceDAOImpl implements DAO<Invoice> {
         }
 
         String query = "SELECT invoice_code, total_revenue, invoice_date FROM invoice WHERE " + condition;
-
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    Invoice invoice = new Invoice(
-                            rs.getInt("invoice_code"),
-                            rs.getTimestamp("invoice_date"),
-                            rs.getDouble("total_revenue")
-                    );
+                    Invoice invoice = new Invoice();
+                    readAllFromResultSet(rs, invoice);
                     invoices.add(invoice);
                 }
             }
@@ -111,15 +100,6 @@ public class InvoiceDAOImpl implements DAO<Invoice> {
             stmt.setDouble(2, invoice.getTotalAmount());
             stmt.setTimestamp(3, invoice.getDate());
 
-            int affectedRows = stmt.executeUpdate();
-            if (affectedRows > 0) {
-                try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-                    if (generatedKeys.next()) {
-                        invoice.setInvoiceId(generatedKeys.getInt(1));
-                    }
-                }
-            }
-
         } catch (SQLException e) {
             GlobalExeptionHandler.handleException(e);
         }
@@ -131,11 +111,9 @@ public class InvoiceDAOImpl implements DAO<Invoice> {
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
-
             stmt.setDouble(1, invoice.getTotalAmount());
             stmt.setTimestamp(2, invoice.getDate());
             stmt.setInt(3, invoice.getInvoiceId());
-
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -156,5 +134,11 @@ public class InvoiceDAOImpl implements DAO<Invoice> {
         } catch (SQLException e) {
             GlobalExeptionHandler.handleException(e);
         }
+    }
+
+    private void readAllFromResultSet(ResultSet rs, Invoice invoice) throws SQLException {
+        invoice.setInvoiceId(rs.getInt("invoice_code"));
+        invoice.setDate(rs.getTimestamp("invoice_date"));
+        invoice.setTotalAmount(rs.getDouble("total_revenue"));
     }
 }

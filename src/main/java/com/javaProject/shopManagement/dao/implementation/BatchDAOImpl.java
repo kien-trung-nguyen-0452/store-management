@@ -1,6 +1,7 @@
-package com.javaProject.shopManagement.dao;
+package com.javaProject.shopManagement.dao.implementation;
 
 import com.javaProject.shopManagement.config.DbUtils;
+import com.javaProject.shopManagement.dao.interfaces.BatchDAO;
 import com.javaProject.shopManagement.exception.GlobalExeptionHandler;
 import com.javaProject.shopManagement.models.Batch;
 
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BatchDAOImpl implements DAO<Batch> {
+public class BatchDAOImpl implements BatchDAO {
 
     public static BatchDAOImpl getInstance() {
         return new BatchDAOImpl();
@@ -26,21 +27,10 @@ public class BatchDAOImpl implements DAO<Batch> {
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
-
-
             try (ResultSet rs = stmt.executeQuery()) {
-
                 while (rs.next()) {
-                    Batch batch = new Batch(
-                            rs.getInt("batch_id"),
-                            rs.getString("supplier"),
-                            rs.getTimestamp("arrival_date"),
-                            rs.getInt("quantity"),
-                            rs.getDouble("purchase_price"),
-                            rs.getString("product_name"),
-                            rs.getInt("product_id")
-                    );
-
+                    Batch batch = new Batch();
+                    readAllFromResultSet(rs, batch);
                     batches.add(batch);
                 }
 
@@ -69,15 +59,8 @@ public class BatchDAOImpl implements DAO<Batch> {
             stmt.setInt(1, batchId);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    Batch batch = new Batch(
-                            rs.getInt("batch_id"),
-                            rs.getString("supplier"),
-                            rs.getTimestamp("arrival_date"),
-                            rs.getInt("quantity"),
-                            rs.getDouble("purchase_price"),
-                            rs.getString("product_name"),
-                            rs.getInt("product_id")
-                    );
+                    Batch batch = new Batch();
+                    readAllFromResultSet(rs, batch);
                     batches.add(batch);
                 }
             }
@@ -99,29 +82,19 @@ public class BatchDAOImpl implements DAO<Batch> {
             long startTime = System.currentTimeMillis();
             List<Batch> batches = new ArrayList<>();
             if (condition == null || condition.isEmpty()) {
-                return null; // or throw IllegalArgumentException
+                return null;
             }
             String query = "SELECT batch_id, product_id, product_name, arrival_date, quantity, purchase_price, supplier " +
                     "FROM bacth WHERE " + condition;
 
             try (Connection conn = DbUtils.getConnection();
                  PreparedStatement stmt = conn.prepareStatement(query)) {
-
                 try (ResultSet rs = stmt.executeQuery()) {
-
                     while (rs.next()) {
-                        Batch batch = new Batch(
-                                rs.getInt("batch_id"),
-                                rs.getString("supplier"),
-                                rs.getTimestamp("arrival_date"),
-                                rs.getInt("quantity"),
-                                rs.getDouble("purchase_price"),
-                                rs.getString("product_name"),
-                                rs.getInt("product_id")
-                        );
+                        Batch batch = new Batch();
+                        readAllFromResultSet(rs, batch);
                         batches.add(batch);
                     }
-
                 }
             }catch (SQLException e) {
                 GlobalExeptionHandler.handleException(e);
@@ -189,11 +162,6 @@ public class BatchDAOImpl implements DAO<Batch> {
         }
     }
 
-    @Override
-    public void delete(int id) {
-
-    }
-
     public void delete(int batchId, int productId) {
         String query = "DELETE FROM bacth WHERE batch_id = ? AND product_id = ?";
 
@@ -213,5 +181,15 @@ public class BatchDAOImpl implements DAO<Batch> {
         } catch (SQLException e) {
            GlobalExeptionHandler.handleException(e);
         }
+    }
+
+    private void readAllFromResultSet(ResultSet rs, Batch batch) throws SQLException {
+        batch.setBatchId(rs.getInt("batch_id"));
+        batch.setProductId(rs.getInt("product_id"));
+        batch.setProductName(rs.getString("product_name"));
+        batch.setCreateDate(rs.getTimestamp("arrival_date"));
+        batch.setQuantity(rs.getInt("quantity"));
+        batch.setPurchasePrice(rs.getDouble("purchase_price"));
+        batch.setSupplierName(rs.getString("supplier"));
     }
 }

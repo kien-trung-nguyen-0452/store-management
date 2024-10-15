@@ -1,11 +1,5 @@
-package com.javaProject.shopManagement.services;
+package com.javaProject.shopManagement.services.interfaces;
 
-import java.sql.Date;
-
-public class AnalysisService {
-
-    public void revenueAnalysis(Date beginDate, Date endDate, double revenue) {
-
-    }
+public interface AnalysisService {
 
 }

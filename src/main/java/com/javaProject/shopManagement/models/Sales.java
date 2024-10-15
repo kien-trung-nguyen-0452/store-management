@@ -9,6 +9,9 @@ public class Sales {
     private double price;
     private double totalAmount;
 
+    public Sales(){
+
+    }
     public Sales(int invoiceId, int batchId, int productId, String productName, int quantity, double price, double totalAmount) {
         this.invoiceId = invoiceId;
         this.batchId = batchId;

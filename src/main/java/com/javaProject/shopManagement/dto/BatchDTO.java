@@ -1,8 +1,8 @@
-package com.javaProject.shopManagement.models;
+package com.javaProject.shopManagement.dto;
 
 import java.sql.Timestamp;
 
-public class Batch {
+public class BatchDTO {
     private int batchId;
     private int productId;
     private String productName;
@@ -11,17 +11,7 @@ public class Batch {
     private Timestamp createDate;
     private String supplierName;
 
-    public Batch() {
-
-    }
-    public Batch(int batchId, String supplierName, Timestamp createDate, int quantity, double purchasePrice,  String productName, int productId) {
-        this.batchId = batchId;
-        this.supplierName = supplierName;
-        this.createDate = createDate;
-        this.quantity = quantity;
-        this.purchasePrice = purchasePrice;
-        this.productName = productName;
-        this.productId = productId;
+    public BatchDTO() {
     }
 
     public int getBatchId() {
@@ -78,18 +68,5 @@ public class Batch {
 
     public void setSupplierName(String supplierName) {
         this.supplierName = supplierName;
-    }
-
-    @Override
-    public String toString() {
-        return "Batch{" +
-                "batchId=" + batchId +
-                ", productId=" + productId +
-                ", productName='" + productName + '\'' +
-                ", quantity=" + quantity +
-                ", purchasePrice=" + purchasePrice +
-                ", createDate=" + createDate +
-                ", supplierName='" + supplierName + '\'' +
-                '}';
     }
 }

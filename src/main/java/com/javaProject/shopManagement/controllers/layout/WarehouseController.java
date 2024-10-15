@@ -1,4 +1,4 @@
-package com.javaProject.shopManagement.controllers;
+package com.javaProject.shopManagement.controllers.layout;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -48,18 +48,15 @@ public class WarehouseController {
     @FXML
     private Button productUpdateButton;
 
-    // Các phương thức khởi tạo
     @FXML
     public void initialize() {
         productDeleteButton.setOnAction(event -> handleDeleteProduct());
         productUpdateButton.setOnAction(event -> handleUpdateProduct());
     }
 
-    // Phương thức xử lý sự kiện nút Xóa
     private void handleDeleteProduct() {
-        // Logic để xóa sản phẩm
         System.out.println("Deleting product: " + productName.getText());
-        // Xử lý xóa sản phẩm ở đây
+
     }
     private void handleUpdateProduct() {
 

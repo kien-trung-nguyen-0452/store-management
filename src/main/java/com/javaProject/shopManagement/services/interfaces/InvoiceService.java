@@ -1,6 +1,6 @@
-package com.javaProject.shopManagement.services;
+package com.javaProject.shopManagement.services.interfaces;
 
-public class InvoiceService{
+public interface InvoiceService{
 
 
 

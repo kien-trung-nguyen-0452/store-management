@@ -1,4 +1,4 @@
-package com.javaProject.shopManagement.controllers;
+package com.javaProject.shopManagement.controllers.layout;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -86,6 +86,7 @@ public class MainController implements Initializable {
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
   }
+
 
 
 
