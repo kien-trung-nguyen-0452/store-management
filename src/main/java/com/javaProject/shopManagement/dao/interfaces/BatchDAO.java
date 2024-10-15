@@ -1,8 +1,6 @@
 package com.javaProject.shopManagement.dao.interfaces;
 
 import com.javaProject.shopManagement.models.Batch;
-import com.javaProject.shopManagement.models.Batch;
-
 import java.util.List;
 
 public interface BatchDAO {

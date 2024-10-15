@@ -112,7 +112,7 @@ public class BatchDAOImpl implements BatchDAO {
 
     @Override
     public void add(Batch entity) {
-        String query = "INSERT INTO Batch (batch_id, product_id, product_name, arrival_date, quantity, purchase_price, supplier) " +
+        String query = "INSERT INTO batch (batch_id, product_id, product_name, arrival_date, quantity, purchase_price, supplier) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -135,7 +135,7 @@ public class BatchDAOImpl implements BatchDAO {
 
     @Override
     public void update(Batch entity) {
-        String query = "UPDATE Batch SET product_id = ?, product_name = ?, arrival_date = ?, quantity = ?, purchase_price = ?, supplier = ? " +
+        String query = "UPDATE batch SET product_id = ?, product_name = ?, arrival_date = ?, quantity = ?, purchase_price = ?, supplier = ? " +
                 "WHERE batch_id = ? AND product_id = ?";
 
         try (Connection conn = DbUtils.getConnection();

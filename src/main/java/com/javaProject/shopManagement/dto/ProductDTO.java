@@ -79,4 +79,18 @@ public class ProductDTO {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+    @Override
+    public String toString() {
+        return "ProductDTO{" +
+                "productId=" + productId +
+                ", batchId=" + batchId +
+                ", productName='" + productName + '\'' +
+                ", sellingPrice=" + sellingPrice +
+                ", quantity=" + quantity +
+                ", expirationDate=" + expirationDate +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
+    }
 }

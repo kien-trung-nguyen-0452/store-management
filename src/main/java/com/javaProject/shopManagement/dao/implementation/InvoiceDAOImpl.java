@@ -7,6 +7,7 @@ import com.javaProject.shopManagement.models.Invoice;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class InvoiceDAOImpl implements InvoiceDAO {
@@ -86,6 +87,31 @@ public class InvoiceDAOImpl implements InvoiceDAO {
         long duration = endTime - startTime;
 
         System.out.println("Query executed in: " + duration + " ms");
+        return invoices;
+    }
+
+    @Override
+    public List<Invoice> getByDateRange(Timestamp startDate, Timestamp endDate) {
+        List<Invoice> invoices = new ArrayList<>();
+        String query = "SELECT invoice_code, total_revenue, invoice_date FROM invoice WHERE invoice_date BETWEEN ? AND ? ORDER BY invoice_date ASC";
+
+        try (Connection conn = DbUtils.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setTimestamp(1, startDate);
+            stmt.setTimestamp(2, endDate);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Invoice invoice = new Invoice();
+                    readAllFromResultSet(rs, invoice);
+                    invoices.add(invoice);
+                }
+            }
+        } catch (SQLException e) {
+            GlobalExeptionHandler.handleException(e);
+        }
+
         return invoices;
     }
 

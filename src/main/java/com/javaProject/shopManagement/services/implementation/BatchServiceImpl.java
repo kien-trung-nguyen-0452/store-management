@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BatchServiceImpl implements BatchService {
+
+    public static BatchServiceImpl getInstance(){
+        return new BatchServiceImpl();
+    }
+
     @Override
     public List<BatchDTO> getAllBatches() {
         List<Batch> batches = BatchDAOImpl.getInstance().getAll();
@@ -24,7 +29,7 @@ public class BatchServiceImpl implements BatchService {
     @Override
     public void addBatch(BatchDTO batchDTO) {
         Batch batch = new Batch();
-        batchToBatchDTO(batch, batchDTO);
+        batchDTOToBatch(batchDTO, batch);
         BatchDAOImpl.getInstance().add( batch );
     }
 
@@ -53,5 +58,15 @@ public class BatchServiceImpl implements BatchService {
         batchDTO.setPurchasePrice( batch.getPurchasePrice() );
         batchDTO.setSupplierName( batch.getSupplierName() );
         batchDTO.setProductId( batch.getProductId() );
+    }
+
+    private void batchDTOToBatch (BatchDTO batchDTO, Batch batch) {
+        batch.setBatchId( batchDTO.getBatchId() );
+        batch.setCreateDate( batchDTO.getCreateDate() );
+        batch.setQuantity( batchDTO.getQuantity() );
+        batch.setProductName( batchDTO.getProductName() );
+        batch.setPurchasePrice( batchDTO.getPurchasePrice() );
+        batch.setSupplierName( batchDTO.getSupplierName() );
+        batch.setProductId( batchDTO.getProductId() );
     }
 }

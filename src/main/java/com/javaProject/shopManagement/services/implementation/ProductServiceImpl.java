@@ -10,21 +10,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
+
+    public static ProductServiceImpl getInstance(){
+        return new ProductServiceImpl();
+    }
     @Override
     public void add(ProductDTO productDTO) {
         Product product = new Product();
-        productToProductDTO(product, productDTO);
+        productDTOToProduct(productDTO, product);
         ProductDAOImpl.getInstance().add(product);
     }
 
     @Override
     public void update(ProductDTO productDTO) {
-
+        Product product = new Product();
+        productDTOToProduct(productDTO, product);
+        ProductDAOImpl.getInstance().update(product);
     }
 
     @Override
-    public void delete(ProductDTO productDTO) {
-
+    public void delete(int productId, int batchId) {
+        ProductDAOImpl.getInstance().delete(productId, batchId);
     }
 
     @Override
@@ -53,12 +59,22 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductDTO> getProductById(int id) {
-        return List.of();
+        List<Product> products = ProductDAOImpl.getInstance().getById(id);
+        List<ProductDTO> productDTOS = new ArrayList<>();
+        for (Product product : products) {
+            ProductDTO productDTO = new ProductDTO();
+            productToProductDTO(product, productDTO);
+            productDTOS.add(productDTO);
+        }
+        return productDTOS;
     }
 
     @Override
-    public ProductDTO getProductByIdAndBatch(int id, int batch) {
-        return null;
+    public ProductDTO getProductByIdAndBatch(int productId, int batchId) {
+        ProductDTO productDTO = new ProductDTO();
+        Product product = ProductDAOImpl.getInstance().getByIdAndBatchId(productId, batchId);
+        productToProductDTO(product, productDTO);
+        return productDTO;
     }
 
     private void productToProductDTO(Product product, ProductDTO productDTO) {
@@ -70,5 +86,17 @@ public class ProductServiceImpl implements ProductService {
         productDTO.setImageUrl(product.getImageUrl());
         productDTO.setSellingPrice(product.getSellingPrice());
         productDTO.setManufacturer(product.getManufacturer());
+    }
+
+    private void productDTOToProduct (ProductDTO productDTO, Product product) {
+        product.setProductName(productDTO.getProductName());
+        product.setProductId(productDTO.getProductId());
+        product.setBatchId(productDTO.getBatchId());
+        product.setExpirationDate(productDTO.getExpirationDate());
+        product.setQuantity(productDTO.getQuantity());
+        product.setImageUrl(productDTO.getImageUrl());
+        product.setSellingPrice(productDTO.getSellingPrice());
+        product.setManufacturer(productDTO.getManufacturer());
+
     }
 }

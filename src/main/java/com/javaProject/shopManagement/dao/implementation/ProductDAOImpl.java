@@ -105,7 +105,7 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public void add(Product entity) {
-            String query = "INSERT INTO Products (product_id, batch_id, product_name, selling_price, image_url, quantity, expiration_date, manufacturer) " +
+            String query = "INSERT INTO product (product_id, batch_id, product_name, selling_price, image_url, quantity, expiration_date, manufacturer) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             try (Connection conn = DbUtils.getConnection();
                  PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -127,7 +127,7 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public void update(Product entity) {
-        String query = "UPDATE Product SET batch_id = ?, product_name = ?, selling_price = ?, image_url = ?, quantity = ?, expiration_date = ?, manufacturer = ? " +
+        String query = "UPDATE product SET batch_id = ?, product_name = ?, selling_price = ?, image_url = ?, quantity = ?, expiration_date = ?, manufacturer = ? " +
                 "WHERE product_id = ? AND batch_id = ?";
 
         try (Connection conn = DbUtils.getConnection();
