@@ -1,25 +1,23 @@
 package com.javaProject.shopManagement.dao;
 
 import com.javaProject.shopManagement.config.DbUtils;
+import com.javaProject.shopManagement.exception.GlobalExeptionHandler;
 import com.javaProject.shopManagement.models.Invoice;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InvoiceDAO implements DAO<Invoice> {
+public class InvoiceDAOImpl implements DAO<Invoice> {
 
-    // Singleton instance
-
-    public static InvoiceDAO getInstance() {
-        return new InvoiceDAO();
+    public static InvoiceDAOImpl getInstance() {
+        return new InvoiceDAOImpl();
     }
 
     @Override
     public List<Invoice> getAll() {
         List<Invoice> invoices = new ArrayList<>();
-        String query = "SELECT invoice_code, total_revenue, invoice_date FROM Invoices";
-
+        String query = "SELECT invoice_code, total_revenue, invoice_date FROM invoice";
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             try (ResultSet rs = stmt.executeQuery()) {
@@ -35,7 +33,7 @@ public class InvoiceDAO implements DAO<Invoice> {
 
             }
         }catch (SQLException e) {
-            System.out.println(e.getMessage());
+            GlobalExeptionHandler.handleException(e);
         }
 
         return invoices;
@@ -43,7 +41,7 @@ public class InvoiceDAO implements DAO<Invoice> {
 
     @Override
     public List<Invoice> getById(int invoice_code) {
-        String query = "SELECT invoice_code, total_revenue, invoice_date FROM Invoices WHERE invoice_code = ?";
+        String query = "SELECT invoice_code, total_revenue, invoice_date FROM invoice WHERE invoice_code = ?";
         List<Invoice> invoices = new ArrayList<>();
 
         try (Connection conn = DbUtils.getConnection();
@@ -61,7 +59,7 @@ public class InvoiceDAO implements DAO<Invoice> {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+           GlobalExeptionHandler.handleException(e);
         }
 
         return invoices;
@@ -76,7 +74,7 @@ public class InvoiceDAO implements DAO<Invoice> {
             return null;
         }
 
-        String query = "SELECT invoice_code, total_revenue, invoice_date FROM Invoices WHERE " + condition;
+        String query = "SELECT invoice_code, total_revenue, invoice_date FROM invoice WHERE " + condition;
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -92,7 +90,7 @@ public class InvoiceDAO implements DAO<Invoice> {
                 }
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+           GlobalExeptionHandler.handleException(e);
         }
 
         long endTime = System.currentTimeMillis();
@@ -104,7 +102,7 @@ public class InvoiceDAO implements DAO<Invoice> {
 
     @Override
     public void add(Invoice invoice) {
-        String query = "INSERT INTO Invoices (invoice_code, total_revenue, invoice_date) VALUES (?, ?, ?)";
+        String query = "INSERT INTO invoice (invoice_code, total_revenue, invoice_date) VALUES (?, ?, ?)";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)){
@@ -123,13 +121,13 @@ public class InvoiceDAO implements DAO<Invoice> {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            GlobalExeptionHandler.handleException(e);
         }
     }
 
     @Override
     public void update(Invoice invoice) {
-        String query = "UPDATE Invoices SET total_revenue = ?, invoice_date = ? WHERE invoice_code = ?";
+        String query = "UPDATE invoice SET total_revenue = ?, invoice_date = ? WHERE invoice_code = ?";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -141,13 +139,13 @@ public class InvoiceDAO implements DAO<Invoice> {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            GlobalExeptionHandler.handleException(e);
         }
     }
 
     @Override
     public void delete(int invoice_code) {
-        String query = "DELETE FROM Invoices WHERE invoice_code = ?";
+        String query = "DELETE FROM invoice WHERE invoice_code = ?";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -156,7 +154,7 @@ public class InvoiceDAO implements DAO<Invoice> {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            GlobalExeptionHandler.handleException(e);
         }
     }
 }

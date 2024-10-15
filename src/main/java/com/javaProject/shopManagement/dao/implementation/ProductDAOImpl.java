@@ -1,22 +1,25 @@
 package com.javaProject.shopManagement.dao;
 import com.javaProject.shopManagement.config.DbUtils;
+import com.javaProject.shopManagement.dao.interfaces.ProductDAO;
+import com.javaProject.shopManagement.exception.GlobalExeptionHandler;
 import com.javaProject.shopManagement.models.Product;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDAO implements DAO<Product> {
+public class ProductDAOImpl implements ProductDAO {
 
 
-    public static ProductDAO getInstance() {
-        return new ProductDAO();
+    public static ProductDAOImpl getInstance() {
+        return new ProductDAOImpl();
     }
+
     @Override
     public List<Product> getAll() {
         long startTime = System.currentTimeMillis();
         List<Product> products = new ArrayList<>();
-        String query = "SELECT product_id, batch_id, product_name, selling_price, image_url, quantity FROM Products";
+        String query = "SELECT product_id, batch_id, product_name, selling_price, image_url, quantity FROM product";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
@@ -38,7 +41,7 @@ public class ProductDAO implements DAO<Product> {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            GlobalExeptionHandler.handleException(e);
         }
 
         long endTime = System.currentTimeMillis();
@@ -52,7 +55,7 @@ public class ProductDAO implements DAO<Product> {
     public List<Product> getById(int id) {
         long startTime = System.currentTimeMillis();
         List<Product> products = new ArrayList<>();
-        String query = "SELECT product_id, batch_id, product_name, selling_price, image_url, quantity FROM Products WHERE product_id = ?";
+        String query = "SELECT product_id, batch_id, product_name, selling_price, image_url, quantity FROM product WHERE product_id = ?";
 
         try(Connection conn = DbUtils.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query)){
@@ -71,11 +74,11 @@ public class ProductDAO implements DAO<Product> {
             }
 
         }catch (SQLException e){
-            System.out.println(e.getMessage());
+            GlobalExeptionHandler.handleException(e);
         }
-        long endTime = System.currentTimeMillis(); // End timing
+        long endTime = System.currentTimeMillis();
 
-        long duration = endTime - startTime; // Calculate duration
+        long duration = endTime - startTime;
 
         System.out.println("Query executed in: " + duration + "= ?");
         return products;
@@ -90,7 +93,7 @@ public class ProductDAO implements DAO<Product> {
         if(condition == null || condition.isEmpty()) {
             return null;
         }
-        String query = "SELECT * FROM Products WHERE " + condition;
+        String query = "SELECT * FROM product WHERE " + condition;
 
         try(Connection conn = DbUtils.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query)){
@@ -112,7 +115,7 @@ public class ProductDAO implements DAO<Product> {
             }
 
         }catch (SQLException e){
-            System.out.println(e.getMessage());
+           GlobalExeptionHandler.handleException(e);
         }
 
         long endTime = System.currentTimeMillis(); // End timing
@@ -149,7 +152,7 @@ public class ProductDAO implements DAO<Product> {
                 stmt.executeUpdate();
 
             } catch (SQLException e) {
-                System.out.println(e.getMessage()); // Handle the SQL exception
+                GlobalExeptionHandler.handleException(e);
             }
     }
 
@@ -181,21 +184,18 @@ public class ProductDAO implements DAO<Product> {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());  // Handle SQL exception
+            GlobalExeptionHandler.handleException(e);
         }
 
     }
 
     @Override
-    public void delete(int id) {
-    }
-
-    public Product getByIdAndBatch(int productId, int batchId) {
+    public Product getByIdAndBatchId(int productId, int batchId) {
 
         long startTime = System.currentTimeMillis();
         Product product = new Product();
         String query = "SELECT product_id, batch_id, product_name, selling_price, image_url, quantity, expiration_date, manufacturer " +
-                "FROM Products WHERE product_id = ? AND batch_id = ?";
+                "FROM product WHERE product_id = ? AND batch_id = ?";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -218,11 +218,11 @@ public class ProductDAO implements DAO<Product> {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            GlobalExeptionHandler.handleException(e);
         }
-        long endTime = System.currentTimeMillis(); // End timing
+        long endTime = System.currentTimeMillis();
 
-        long duration = endTime - startTime; // Calculate duration
+        long duration = endTime - startTime;
 
         System.out.println("Query executed in: " + duration + "= ?");
 
@@ -230,8 +230,9 @@ public class ProductDAO implements DAO<Product> {
     }
 
 
+    @Override
     public void delete(int product_id, int batch_id) {
-        String query = "DELETE FROM Products WHERE product_id = ? AND batch_id = ?";
+        String query = "DELETE FROM product WHERE product_id = ? AND batch_id = ?";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -249,7 +250,7 @@ public class ProductDAO implements DAO<Product> {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage()); // Handle SQL exception
+            GlobalExeptionHandler.handleException(e);
         }
     }
 

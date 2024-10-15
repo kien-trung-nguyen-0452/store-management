@@ -1,6 +1,7 @@
 package com.javaProject.shopManagement.dao;
 
 import com.javaProject.shopManagement.config.DbUtils;
+import com.javaProject.shopManagement.exception.GlobalExeptionHandler;
 import com.javaProject.shopManagement.models.Batch;
 
 import java.sql.Connection;
@@ -10,10 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BatchDAO implements DAO<Batch> {
+public class BatchDAOImpl implements DAO<Batch> {
 
-    public static BatchDAO getInstance() {
-        return new BatchDAO();
+    public static BatchDAOImpl getInstance() {
+        return new BatchDAOImpl();
     }
 
     @Override
@@ -21,7 +22,7 @@ public class BatchDAO implements DAO<Batch> {
         long startTime = System.currentTimeMillis();
         List<Batch> batches = new ArrayList<>();
         String query = "SELECT batch_id, product_id, product_name, arrival_date, quantity, purchase_price, supplier " +
-                "FROM Batch";
+                "FROM bacth";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -45,7 +46,7 @@ public class BatchDAO implements DAO<Batch> {
 
             }
         }catch (SQLException e) {
-            System.out.println(e.getMessage());
+            GlobalExeptionHandler.handleException(e);
         }
 
         long endTime = System.currentTimeMillis();
@@ -61,7 +62,7 @@ public class BatchDAO implements DAO<Batch> {
 
         List<Batch> batches = new ArrayList<>();
         String query = "SELECT batch_id, product_id, product_name, arrival_date, quantity, purchase_price, supplier " +
-                "FROM Batch WHERE batch_id = ?";
+                "FROM bacth WHERE batch_id = ?";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -82,7 +83,7 @@ public class BatchDAO implements DAO<Batch> {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+           GlobalExeptionHandler.handleException(e);
         }
 
         long endTime = System.currentTimeMillis();
@@ -100,11 +101,8 @@ public class BatchDAO implements DAO<Batch> {
             if (condition == null || condition.isEmpty()) {
                 return null; // or throw IllegalArgumentException
             }
-
-            // Note: Be cautious with directly concatenating user inputs into SQL queries to avoid SQL injection.
-            // Ensure that `condition` is sanitized or use parameterized queries if possible.
             String query = "SELECT batch_id, product_id, product_name, arrival_date, quantity, purchase_price, supplier " +
-                    "FROM Batch WHERE " + condition;
+                    "FROM bacth WHERE " + condition;
 
             try (Connection conn = DbUtils.getConnection();
                  PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -126,7 +124,7 @@ public class BatchDAO implements DAO<Batch> {
 
                 }
             }catch (SQLException e) {
-                System.out.println(e.getMessage());
+                GlobalExeptionHandler.handleException(e);
             }
 
             long endTime = System.currentTimeMillis();
@@ -157,7 +155,8 @@ public class BatchDAO implements DAO<Batch> {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+
+            GlobalExeptionHandler.handleException(e);
         }
     }
 
@@ -186,7 +185,7 @@ public class BatchDAO implements DAO<Batch> {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+           GlobalExeptionHandler.handleException(e);
         }
     }
 
@@ -196,7 +195,7 @@ public class BatchDAO implements DAO<Batch> {
     }
 
     public void delete(int batchId, int productId) {
-        String query = "DELETE FROM Batch WHERE batch_id = ? AND product_id = ?";
+        String query = "DELETE FROM bacth WHERE batch_id = ? AND product_id = ?";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -212,7 +211,7 @@ public class BatchDAO implements DAO<Batch> {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+           GlobalExeptionHandler.handleException(e);
         }
     }
 }

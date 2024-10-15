@@ -3,15 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.image.Image?>
 
-<AnchorPane fx:id="rootPane" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="1135.0" styleClass="wrapper" stylesheets="@/com/javaProject/shopManagement/public/stylesheet/warehouse.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.layout.WarehouseController">
+<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="1120.0" stylesheets="@/com/javaProject/shopManagement/public/stylesheet/warehouse.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.layout.WarehouseController">
    <children>
-      <HBox layoutX="4.0" layoutY="4.0" prefHeight="657.0" prefWidth="1128.0">
+      <HBox minHeight="-Infinity" minWidth="-Infinity" styleClass="container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Pane prefHeight="651.0" prefWidth="890.0">
+            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="890.0" styleClass="container">
                <children>
-                  <HBox layoutX="25.0" layoutY="14.0" prefHeight="47.0" prefWidth="887.0" styleClass="top-bar">
+                  <HBox layoutX="25.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="47.0" prefWidth="887.0" styleClass="top-bar">
                      <children>
                         <Label prefHeight="15.0" prefWidth="91.0" styleClass="title" text="Label" />
                         <TextField prefHeight="31.0" prefWidth="583.0" styleClass="search-box" />
@@ -19,58 +18,58 @@
                         <Button mnemonicParsing="false" styleClass="filter_button" text="Button">
                            <contextMenu>
                               <ContextMenu>
-                                <items>
-                                    <MenuItem mnemonicParsing="false" styleClass="" text="Unspecified Action" />
-                                  <MenuItem mnemonicParsing="false" text="search by name" />
-                                </items>
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                    <MenuItem mnemonicParsing="false" text="search by name" />
+                                 </items>
                               </ContextMenu>
                            </contextMenu>
                         </Button>
                      </children>
                   </HBox>
-                   <ScrollPane layoutX="14.0" layoutY="61.0" prefHeight="589.0" prefWidth="909.0" styleClass="product-list">
+                  <ScrollPane styleClass="product-list" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="61.0">
+                     <content>
                         <GridPane prefHeight="740.0" prefWidth="903.0" styleClass="product-list-grid">
-                        <columnConstraints>
-                           <ColumnConstraints />
-                        </columnConstraints>
-                        <rowConstraints>
-                           <RowConstraints />
-                        </rowConstraints>
+                           <columnConstraints>
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints />
+                           </rowConstraints>
                         </GridPane>
-                   </ScrollPane>
+                     </content>
+                  </ScrollPane>
                </children>
-            </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            </AnchorPane>
+            <VBox alignment="TOP_CENTER" prefHeight="657.0" prefWidth="226.0" styleClass="product-infor"   minHeight="-Infinity" minWidth="-Infinity" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="657.0" prefWidth="226.0" styleClass="product-infor">
+                  <ImageView fx:id="productImage" fitHeight="148.0" fitWidth="145.0" pickOnBounds="true" smooth="false">
+                     <image>
+                        <Image url="@../icon/btn-icon/online-payment.png" />
+                     </image>
+                  </ImageView>
+                  <VBox prefHeight="431.0" prefWidth="232.0" styleClass="product-infor-list">
                      <children>
-                        <ImageView fx:id="productImage" fitHeight="148.0" fitWidth="145.0" pickOnBounds="true" smooth="false">
-                              <Image url="@../icon/btn-icon/online-payment.png"/>
-                        </ImageView>
-                        <VBox prefHeight="431.0" prefWidth="232.0" styleClass="product-infor-list">
+                        <Label fx:id="productName" text="Product name" />
+                        <TextField fx:id="productSellingPrice" promptText="Selling price" />
+                        <Label fx:id="productPurchasePrice" text="purchase price" />
+                        <Label fx:id="productId" text="product ID" />
+                        <Label fx:id="productBatchId" text="batch ID" />
+                        <Label fx:id="productExpirationDate" text="expiration date" />
+                        <Label fx:id="productPurchaseDate" text="purchase date" />
+                        <Label fx:id="productManufacturer" text="manufacture" />
+                        <Label fx:id="productSupplier" text="supplier" />
+                        <Label fx:id="productQuantity" text="quantity" />
+                        <HBox prefHeight="100.0" prefWidth="200.0" styleClass="product-function-button">
                            <children>
-                              <Label fx:id="productName"  text="Product name" />
-                              <TextField fx:id="productSellingPrice" promptText="Selling price" />
-                              <Label fx:id="productPurchasePrice" text="purchase price" />
-                              <Label fx:id="productId" text="product ID" />
-                              <Label fx:id="productBatchId" text="batch ID" />
-                              <Label fx:id="productExpirationDate" text="expiration date" />
-                              <Label fx:id="productPurchaseDate" text="purchase date" />
-                              <Label fx:id="productManufacturer" text="manufacture" />
-                              <Label fx:id="productSupplier" text="supplier" />
-                              <Label fx:id="productQuantity" text="quantity" />
-                              <HBox prefHeight="100.0" prefWidth="200.0" styleClass="product-function-button">
-                                 <children>
-                                    <Button fx:id="productDeleteButton" mnemonicParsing="false" text="Delete" />
-                                    <Button fx:id="productUpdateButton" mnemonicParsing="false" text="Update" />
-                                 </children>
-                              </HBox>
+                              <Button fx:id="productDeleteButton" mnemonicParsing="false" text="Delete" />
+                              <Button fx:id="productUpdateButton" mnemonicParsing="false" text="Update" />
                            </children>
-                        </VBox>
+                        </HBox>
                      </children>
                   </VBox>
                </children>
-            </Pane>
+            </VBox>
          </children>
       </HBox>
    </children>

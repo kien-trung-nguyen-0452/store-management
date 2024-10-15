@@ -10,16 +10,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SalesDAO implements DAO<Sales> {
+public class SalesDAOImpl implements DAO<Sales> {
 
-    public static SalesDAO getInstance() {
-        return new SalesDAO();
+    public static SalesDAOImpl getInstance() {
+        return new SalesDAOImpl();
     }
 
     @Override
     public List<Sales> getAll() {
         List<Sales> salesList = new ArrayList<>();
-        String query = "SELECT invoice_code, product_id, batch_id, quantity, unit_price, total_amount FROM Sales";
+        String query = "SELECT invoice_code, product_id, batch_id, quantity, unit_price, total_amount FROM sales";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
@@ -47,7 +47,7 @@ public class SalesDAO implements DAO<Sales> {
     @Override
     public List<Sales> getById(int invoice_code) {
         List<Sales> salesList = new ArrayList<>();
-        String query = "SELECT invoice_code, product_id, batch_id, quantity, unit_price, total_amount FROM Sales WHERE invoice_code = ?";
+        String query = "SELECT invoice_code, product_id, batch_id, quantity, unit_price, total_amount FROM sales WHERE invoice_code = ?";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -76,15 +76,11 @@ public class SalesDAO implements DAO<Sales> {
     @Override
     public List<Sales> getByCondition(String condition) {
             List<Sales> salesList = new ArrayList<>();
-
-            // Ensure the condition is valid
             if (condition == null || condition.isEmpty()) {
                 System.out.println("Condition cannot be null or empty");
                 return null;
             }
-
-            // Build the query with the condition
-            String query = "SELECT invoice_code, product_id, batch_id, quantity, unit_price, total_amount FROM Sales WHERE " + condition;
+            String query = "SELECT invoice_code, product_id, batch_id, quantity, unit_price, total_amount FROM sales WHERE " + condition;
 
             try (Connection conn = DbUtils.getConnection();
                  PreparedStatement stmt = conn.prepareStatement(query)){
@@ -161,7 +157,7 @@ public class SalesDAO implements DAO<Sales> {
 
     @Override
     public void delete(int invoice_code) {
-        String query = "DELETE FROM Sales WHERE invoice_code = ?";
+        String query = "DELETE FROM sales WHERE invoice_code = ?";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {

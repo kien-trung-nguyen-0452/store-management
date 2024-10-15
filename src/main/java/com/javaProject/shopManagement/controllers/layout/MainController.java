@@ -1,5 +1,4 @@
 package com.javaProject.shopManagement.controllers;
-import com.javaProject.shopManagement.exception.GlobalExeptionHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
