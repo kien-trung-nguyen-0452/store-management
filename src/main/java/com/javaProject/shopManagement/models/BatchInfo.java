@@ -2,7 +2,7 @@ package com.javaProject.shopManagement.models;
 
 import java.sql.Timestamp;
 
-public class BatchInfor {
+public class BatchInfo {
     private int batchId;
     private String batchName;
     private String description;
@@ -10,9 +10,9 @@ public class BatchInfor {
     private double totalPrice;
     private Timestamp createDate;
 
-    public BatchInfor() {
+    public BatchInfo() {
     }
-    public BatchInfor(int batchId, String batchName, String description, String supplier, double totalPrice) {
+    public BatchInfo(int batchId, String batchName, String description, String supplier, double totalPrice) {
         this.batchId = batchId;
         this.batchName = batchName;
         this.description = description;
