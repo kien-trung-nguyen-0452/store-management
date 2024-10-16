@@ -88,7 +88,7 @@ public class SalesDAOImpl implements SalesDAO {
 
     @Override
     public void add(Sales entity) {
-        String query = "INSERT INTO Sales (invoice_code, product_id, batch_id, quantity, unit_price, total_amount) " +
+        String query = "INSERT INTO sales (invoice_code, product_id, batch_id, quantity, unit_price, total_amount) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -107,9 +107,9 @@ public class SalesDAOImpl implements SalesDAO {
         }
     }
 
-    @Override
+    /*@Override
     public void update(Sales entity) {
-        String query = "UPDATE Sales SET quantity = ?, unit_price = ?, total_amount = ? WHERE invoice_code = ? AND product_id = ? AND batch_id = ?";
+        String query = "UPDATE sales SET quantity = ?, unit_price = ?, total_amount = ? WHERE invoice_code = ? AND product_id = ? AND batch_id = ?";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -131,7 +131,7 @@ public class SalesDAOImpl implements SalesDAO {
         } catch (SQLException e) {
             GlobalExeptionHandler.handleException(e);
         }
-    }
+    }*/
 
     @Override
     public void delete(int invoice_code) {

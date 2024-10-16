@@ -3,7 +3,6 @@ package com.javaProject.shopManagement.dao.interfaces;
 import com.javaProject.shopManagement.models.Invoice;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 public interface InvoiceDAO {

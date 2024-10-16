@@ -9,7 +9,6 @@ public interface SalesDAO {
     List<Sales> getById(int id);
     List<Sales> getByCondition(String condition);
     void add(Sales entity);
-    void update(Sales entity);
     void delete(int id);
 
 }

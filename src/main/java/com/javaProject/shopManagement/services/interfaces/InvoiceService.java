@@ -3,7 +3,6 @@ package com.javaProject.shopManagement.services.interfaces;
 import com.javaProject.shopManagement.dto.InvoiceDTO;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 public interface InvoiceService{

@@ -23,7 +23,7 @@
 	-fx-pref-width: 10;
 	-fx-pref-height: 10 ;
 	-fx-background-radius: 15;
-	-fx-padding: 0 20;
+	-fx-padding: 0 20px
 }
 #exitButton{
 	-fx-background-color: #BF616A ;
@@ -36,6 +36,7 @@
 }
 .left-navbar{
 	-fx-background-color:#FFF;
+
 }
 
 .btn {
