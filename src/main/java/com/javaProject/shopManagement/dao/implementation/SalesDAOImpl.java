@@ -2,8 +2,8 @@ package com.javaProject.shopManagement.dao.implementation;
 
 import com.javaProject.shopManagement.config.DbUtils;
 import com.javaProject.shopManagement.dao.interfaces.SalesDAO;
-import com.javaProject.shopManagement.exception.GlobalExeptionHandler;
-import com.javaProject.shopManagement.models.Sales;
+import com.javaProject.shopManagement.exception.GlobalExceptionHandler;
+import com.javaProject.shopManagement.entity.Sales;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,7 +34,7 @@ public class SalesDAOImpl implements SalesDAO {
             }
 
         } catch (SQLException e) {
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
         return salesList;
     }
@@ -56,7 +56,7 @@ public class SalesDAOImpl implements SalesDAO {
             }
 
         } catch (SQLException e) {
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
         return salesList;
     }
@@ -80,7 +80,7 @@ public class SalesDAOImpl implements SalesDAO {
                     }
                 }
             }catch (SQLException e) {
-                GlobalExeptionHandler.handleException(e);
+                GlobalExceptionHandler.handleException(e);
             }
 
             return salesList;
@@ -103,7 +103,7 @@ public class SalesDAOImpl implements SalesDAO {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
     }
 
@@ -150,7 +150,7 @@ public class SalesDAOImpl implements SalesDAO {
             }
 
         } catch (SQLException e) {
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
     }
 

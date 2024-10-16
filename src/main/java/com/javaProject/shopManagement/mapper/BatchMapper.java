@@ -1,7 +1,7 @@
 package com.javaProject.shopManagement.mapper;
 
 import com.javaProject.shopManagement.dto.BatchDTO;
-import com.javaProject.shopManagement.models.Batch;
+import com.javaProject.shopManagement.entity.Batch;
 
 public class BatchMapper {
     public static BatchDTO toDto(Batch entity){

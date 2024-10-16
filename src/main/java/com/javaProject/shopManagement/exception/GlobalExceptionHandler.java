@@ -2,7 +2,7 @@ package com.javaProject.shopManagement.exception;
 
 import javafx.scene.control.Alert;
 
-public class GlobalExeptionHandler {
+public class GlobalExceptionHandler {
 
     public static void handleException(Exception e) {
         System.err.println("error " + e.getMessage());

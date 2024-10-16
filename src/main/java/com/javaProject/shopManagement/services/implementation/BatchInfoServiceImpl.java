@@ -3,7 +3,7 @@ package com.javaProject.shopManagement.services.implementation;
 import com.javaProject.shopManagement.dao.implementation.BatchInfoDAOImpl;
 import com.javaProject.shopManagement.dto.BatchInfoDTO;
 import com.javaProject.shopManagement.mapper.BatchInfoMapper;
-import com.javaProject.shopManagement.models.BatchInfo;
+import com.javaProject.shopManagement.entity.BatchInfo;
 import com.javaProject.shopManagement.services.interfaces.BatchInfoService;
 
 import java.util.ArrayList;

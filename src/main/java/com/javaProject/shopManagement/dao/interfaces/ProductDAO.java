@@ -1,6 +1,6 @@
 package com.javaProject.shopManagement.dao.interfaces;
 
-import com.javaProject.shopManagement.models.Product;
+import com.javaProject.shopManagement.entity.Product;
 
 import java.util.List;
 
@@ -12,4 +12,5 @@ public interface ProductDAO {
     void add(Product entity);
     void update(Product entity);
     void delete(int id, int batchId);
+
 }

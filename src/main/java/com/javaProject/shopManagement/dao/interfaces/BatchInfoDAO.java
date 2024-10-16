@@ -1,6 +1,6 @@
 package com.javaProject.shopManagement.dao.interfaces;
 
-import com.javaProject.shopManagement.models.BatchInfo;
+import com.javaProject.shopManagement.entity.BatchInfo;
 
 import java.util.List;
 

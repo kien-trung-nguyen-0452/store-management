@@ -1,7 +1,7 @@
 package com.javaProject.shopManagement.mapper;
 
 import com.javaProject.shopManagement.dto.InvoiceDTO;
-import com.javaProject.shopManagement.models.Invoice;
+import com.javaProject.shopManagement.entity.Invoice;
 
 public class InvoiceMapper {
 

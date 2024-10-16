@@ -1,6 +1,6 @@
 package com.javaProject.shopManagement.services.implementation;
 
-import com.javaProject.shopManagement.exception.GlobalExeptionHandler;
+import com.javaProject.shopManagement.exception.GlobalExceptionHandler;
 import com.javaProject.shopManagement.services.interfaces.FileService;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -27,7 +27,7 @@ public class FileServiceImpl implements FileService {
             try {
                 Files.createDirectories(path);
             } catch (IOException e) {
-                GlobalExeptionHandler.handleException(e);
+                GlobalExceptionHandler.handleException(e);
             }
         }
     }

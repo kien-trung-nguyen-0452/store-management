@@ -1,7 +1,6 @@
 package com.javaProject.shopManagement.services.interfaces;
 
 import com.javaProject.shopManagement.dto.BatchInfoDTO;
-import com.javaProject.shopManagement.models.BatchInfo;
 
 import java.util.List;
 

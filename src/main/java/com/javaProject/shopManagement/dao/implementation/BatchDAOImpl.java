@@ -2,8 +2,8 @@ package com.javaProject.shopManagement.dao.implementation;
 
 import com.javaProject.shopManagement.config.DbUtils;
 import com.javaProject.shopManagement.dao.interfaces.BatchDAO;
-import com.javaProject.shopManagement.exception.GlobalExeptionHandler;
-import com.javaProject.shopManagement.models.Batch;
+import com.javaProject.shopManagement.exception.GlobalExceptionHandler;
+import com.javaProject.shopManagement.entity.Batch;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,7 +36,7 @@ public class BatchDAOImpl implements BatchDAO {
 
             }
         }catch (SQLException e) {
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
 
         long endTime = System.currentTimeMillis();
@@ -66,7 +66,7 @@ public class BatchDAOImpl implements BatchDAO {
             }
 
         } catch (SQLException e) {
-           GlobalExeptionHandler.handleException(e);
+           GlobalExceptionHandler.handleException(e);
         }
 
         long endTime = System.currentTimeMillis();
@@ -97,7 +97,7 @@ public class BatchDAOImpl implements BatchDAO {
                     }
                 }
             }catch (SQLException e) {
-                GlobalExeptionHandler.handleException(e);
+                GlobalExceptionHandler.handleException(e);
             }
 
             long endTime = System.currentTimeMillis();
@@ -129,7 +129,7 @@ public class BatchDAOImpl implements BatchDAO {
 
         } catch (SQLException e) {
 
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
     }
 
@@ -158,7 +158,7 @@ public class BatchDAOImpl implements BatchDAO {
             }
 
         } catch (SQLException e) {
-           GlobalExeptionHandler.handleException(e);
+           GlobalExceptionHandler.handleException(e);
         }
     }
 
@@ -179,7 +179,7 @@ public class BatchDAOImpl implements BatchDAO {
             }
 
         } catch (SQLException e) {
-           GlobalExeptionHandler.handleException(e);
+           GlobalExceptionHandler.handleException(e);
         }
     }
 

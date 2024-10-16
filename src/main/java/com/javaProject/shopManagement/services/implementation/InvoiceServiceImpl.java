@@ -3,7 +3,7 @@ package com.javaProject.shopManagement.services.implementation;
 import com.javaProject.shopManagement.dao.implementation.InvoiceDAOImpl;
 import com.javaProject.shopManagement.dto.InvoiceDTO;
 import com.javaProject.shopManagement.mapper.InvoiceMapper;
-import com.javaProject.shopManagement.models.Invoice;
+import com.javaProject.shopManagement.entity.Invoice;
 import com.javaProject.shopManagement.services.interfaces.InvoiceService;
 
 import java.sql.Timestamp;

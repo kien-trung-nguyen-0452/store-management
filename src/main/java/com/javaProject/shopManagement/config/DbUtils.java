@@ -1,7 +1,7 @@
 package com.javaProject.shopManagement.config;
 
 
-import com.javaProject.shopManagement.exception.GlobalExeptionHandler;
+import com.javaProject.shopManagement.exception.GlobalExceptionHandler;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,7 +21,7 @@ public class DbUtils {
             }
         }
         catch (SQLException e){
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
             System.out.println("Fail to connecting" + e.getMessage());
         }
         return connection;

@@ -1,6 +1,6 @@
 package com.javaProject.shopManagement.dao.interfaces;
 
-import com.javaProject.shopManagement.models.Sales;
+import com.javaProject.shopManagement.entity.Sales;
 
 import java.util.List;
 

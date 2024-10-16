@@ -1,7 +1,7 @@
 package com.javaProject.shopManagement.mapper;
 
 import com.javaProject.shopManagement.dto.ProductDTO;
-import com.javaProject.shopManagement.models.Product;
+import com.javaProject.shopManagement.entity.Product;
 
 public class ProductMapper{
 

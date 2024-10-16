@@ -1,4 +1,4 @@
-package com.javaProject.shopManagement.models;
+package com.javaProject.shopManagement.entity;
 
 public class Sales {
     private int invoiceId;

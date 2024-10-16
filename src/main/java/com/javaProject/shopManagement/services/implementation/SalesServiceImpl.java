@@ -1,10 +1,9 @@
 package com.javaProject.shopManagement.services.implementation;
 
 import com.javaProject.shopManagement.dao.implementation.SalesDAOImpl;
-import com.javaProject.shopManagement.dao.interfaces.SalesDAO;
 import com.javaProject.shopManagement.dto.SalesDTO;
 import com.javaProject.shopManagement.mapper.SalesMapper;
-import com.javaProject.shopManagement.models.Sales;
+import com.javaProject.shopManagement.entity.Sales;
 import com.javaProject.shopManagement.services.interfaces.SalesService;
 
 import java.util.ArrayList;

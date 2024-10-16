@@ -3,7 +3,7 @@ package com.javaProject.shopManagement.services.implementation;
 import com.javaProject.shopManagement.dao.implementation.ProductDAOImpl;
 import com.javaProject.shopManagement.dto.ProductDTO;
 import com.javaProject.shopManagement.mapper.ProductMapper;
-import com.javaProject.shopManagement.models.Product;
+import com.javaProject.shopManagement.entity.Product;
 import com.javaProject.shopManagement.services.interfaces.ProductService;
 
 import java.util.ArrayList;

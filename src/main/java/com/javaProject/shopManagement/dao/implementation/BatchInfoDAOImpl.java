@@ -2,8 +2,8 @@ package com.javaProject.shopManagement.dao.implementation;
 
 import com.javaProject.shopManagement.config.DbUtils;
 import com.javaProject.shopManagement.dao.interfaces.BatchInfoDAO;
-import com.javaProject.shopManagement.exception.GlobalExeptionHandler;
-import com.javaProject.shopManagement.models.BatchInfo;
+import com.javaProject.shopManagement.exception.GlobalExceptionHandler;
+import com.javaProject.shopManagement.entity.BatchInfo;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
             }
 
         } catch (SQLException e) {
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
 
         return batchInfoList;
@@ -50,7 +50,7 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
                 readAllFromResultSet(resultSet, batchInfo);
             }
         } catch (SQLException e) {
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
        return batchInfo;
     }
@@ -73,7 +73,7 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
             }
 
         }catch (SQLException e){
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
         return batchInfoList;
     }
@@ -93,7 +93,7 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
              preparedStatement.executeUpdate();
 
          }catch (SQLException e){
-             GlobalExeptionHandler.handleException(e);
+             GlobalExceptionHandler.handleException(e);
          }
 
     }
@@ -108,7 +108,7 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         }catch (SQLException e){
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
 
     }

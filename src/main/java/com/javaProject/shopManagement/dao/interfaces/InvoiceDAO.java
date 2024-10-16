@@ -1,6 +1,6 @@
 package com.javaProject.shopManagement.dao.interfaces;
 
-import com.javaProject.shopManagement.models.Invoice;
+import com.javaProject.shopManagement.entity.Invoice;
 
 import java.sql.Timestamp;
 import java.util.List;

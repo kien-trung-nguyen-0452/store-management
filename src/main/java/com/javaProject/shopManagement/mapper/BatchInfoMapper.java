@@ -1,7 +1,7 @@
 package com.javaProject.shopManagement.mapper;
 
 import com.javaProject.shopManagement.dto.BatchInfoDTO;
-import com.javaProject.shopManagement.models.BatchInfo;
+import com.javaProject.shopManagement.entity.BatchInfo;
 
 public class BatchInfoMapper {
     public static BatchInfoDTO toDto(BatchInfo entity){

@@ -2,8 +2,8 @@ package com.javaProject.shopManagement.dao.implementation;
 
 import com.javaProject.shopManagement.config.DbUtils;
 import com.javaProject.shopManagement.dao.interfaces.InvoiceDAO;
-import com.javaProject.shopManagement.exception.GlobalExeptionHandler;
-import com.javaProject.shopManagement.models.Invoice;
+import com.javaProject.shopManagement.exception.GlobalExceptionHandler;
+import com.javaProject.shopManagement.entity.Invoice;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
 
             }
         }catch (SQLException e) {
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
 
         return invoices;
@@ -53,7 +53,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
             }
 
         } catch (SQLException e) {
-           GlobalExeptionHandler.handleException(e);
+           GlobalExceptionHandler.handleException(e);
         }
 
         return invoice;
@@ -80,7 +80,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
                 }
             }
         } catch (SQLException e) {
-           GlobalExeptionHandler.handleException(e);
+           GlobalExceptionHandler.handleException(e);
         }
 
         long endTime = System.currentTimeMillis();
@@ -109,7 +109,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
                 }
             }
         } catch (SQLException e) {
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
 
         return invoices;
@@ -127,7 +127,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
             stmt.setTimestamp(3, invoice.getDate());
 
         } catch (SQLException e) {
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
     }
 
@@ -143,7 +143,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
     }
 
@@ -158,7 +158,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
     }
 

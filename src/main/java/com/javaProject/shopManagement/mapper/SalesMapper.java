@@ -1,7 +1,7 @@
 package com.javaProject.shopManagement.mapper;
 
 import com.javaProject.shopManagement.dto.SalesDTO;
-import com.javaProject.shopManagement.models.Sales;
+import com.javaProject.shopManagement.entity.Sales;
 
 public class SalesMapper {
     public static Sales toEntity(SalesDTO dto){

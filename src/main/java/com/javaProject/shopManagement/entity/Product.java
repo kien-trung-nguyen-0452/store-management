@@ -1,4 +1,4 @@
-package com.javaProject.shopManagement.models;
+package com.javaProject.shopManagement.entity;
 
 import java.sql.Timestamp;
 
@@ -8,6 +8,7 @@ public class Product {
     private String productName;
     private double sellingPrice;
     private int quantity;
+    private int sales;
     private Timestamp expirationDate;
     private String manufacturer;
     private String imageUrl;
@@ -99,6 +100,10 @@ public class Product {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public int getSales() {
+        return sales;
     }
 
     @Override

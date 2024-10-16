@@ -1,8 +1,8 @@
 package com.javaProject.shopManagement.dao.implementation;
 import com.javaProject.shopManagement.config.DbUtils;
 import com.javaProject.shopManagement.dao.interfaces.ProductDAO;
-import com.javaProject.shopManagement.exception.GlobalExeptionHandler;
-import com.javaProject.shopManagement.models.Product;
+import com.javaProject.shopManagement.exception.GlobalExceptionHandler;
+import com.javaProject.shopManagement.entity.Product;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class ProductDAOImpl implements ProductDAO {
             }
 
         } catch (SQLException e) {
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
 
         long endTime = System.currentTimeMillis();
@@ -59,7 +59,7 @@ public class ProductDAOImpl implements ProductDAO {
             }
 
         }catch (SQLException e){
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
         long endTime = System.currentTimeMillis();
 
@@ -92,7 +92,7 @@ public class ProductDAOImpl implements ProductDAO {
             }
 
         }catch (SQLException e){
-           GlobalExeptionHandler.handleException(e);
+           GlobalExceptionHandler.handleException(e);
         }
 
         long endTime = System.currentTimeMillis();
@@ -121,7 +121,7 @@ public class ProductDAOImpl implements ProductDAO {
                 stmt.executeUpdate();
 
             } catch (SQLException e) {
-                GlobalExeptionHandler.handleException(e);
+                GlobalExceptionHandler.handleException(e);
             }
     }
 
@@ -144,7 +144,7 @@ public class ProductDAOImpl implements ProductDAO {
             stmt.setInt(9, entity.getBatchId());
 
         } catch (SQLException e) {
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
 
     }
@@ -169,7 +169,7 @@ public class ProductDAOImpl implements ProductDAO {
             }
 
         } catch (SQLException e) {
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
         long endTime = System.currentTimeMillis();
 
@@ -197,7 +197,7 @@ public class ProductDAOImpl implements ProductDAO {
             }
 
         } catch (SQLException e) {
-            GlobalExeptionHandler.handleException(e);
+            GlobalExceptionHandler.handleException(e);
         }
     }
 
