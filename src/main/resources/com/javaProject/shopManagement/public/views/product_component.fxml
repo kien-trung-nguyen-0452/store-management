@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox alignment="CENTER_LEFT" mouseTransparent="true" prefHeight="66.0" prefWidth="1090.0" spacing="10.0"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1">
+    <opaqueInsets>
+        <Insets/>
+    </opaqueInsets>
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+    </padding>
+    <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+        <HBox.margin>
+            <Insets left="50.0"/>
+        </HBox.margin>
+    </ImageView>
+    <TextField prefWidth="100.0"/>
+    <TextField prefWidth="150.0"/>
+    <TextField prefWidth="150.0"/>
+    <TextField prefWidth="110.0"/>
+    <TextField prefWidth="100.0"/>
+    <TextField prefWidth="100.0"/>
+    <TextField prefWidth="150.0"/>
+    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" text="Button"/>
+</HBox>

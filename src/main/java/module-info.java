@@ -8,6 +8,7 @@ module com.javaProject.shopManagement {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
     requires jdk.jdi;
+    requires java.desktop;
 
     opens com.javaProject.shopManagement.controllers.layout to javafx.fxml;
     exports com.javaProject.shopManagement.controllers.layout;

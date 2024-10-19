@@ -1,87 +1,17 @@
-/* Kiểu mặc định cho layout */
-.top-bar {
-    -fx-spacing: 10;
-}
-
-.product-list {
-    -fx-border-radius: 30px;
-}
-
-.product-list-grid {
-    -fx-background-color: #ffff;
-    -fx-padding: 10px;
-}
-
-.scroll-bar:horizontal, .scroll-bar:vertical {
-    -fx-background-color: transparent;
-    -fx-background-radius: 10;
-}
-
-.scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb {
-    -fx-background-color: rgba(0, 0, 0, 0.1);
-    -fx-background-radius: 10;
-}
-
-.scroll-bar:horizontal .track, .scroll-bar:vertical .track {
-    -fx-background-color: rgba(0, 0, 0, 0.0);
-    -fx-background-radius: 15;
-}
-
-.product-infor {
-    -fx-background-color: #ffff;
-    -fx-margin : 5;
-    -fx-padding: 10;
-    -fx-background-radius: 10px;
-    -fx-spacing: 10;
-    -fx-effect: dropShadow(three-pass-box, rgba(0, 0, 0, 0.1), 10.0, 0.0, 0.0, 10.0);
-}
-
-.search-box {
+.product-card{
     -fx-background-color: #fff;
-    -fx-background-radius: 30;
-    -fx-effect: dropShadow(three-pass-box, rgba(0, 0, 0, 0.1), 10.0, 0.0, 0.0, 10.0);
+    -fx-background-radius: 15px;
 }
 
-.product-infor-list {
-    -fx-spacing: 15;
-    -fx-font-size: 13;
-    -fx-font-family: "Roboto Light";
+.product-info{
+    -fx-spacing: 20px;
 }
 
-#productName {
-    -fx-text-alignment: center;
-    -fx-font-size: 15;
+.product-info-field{
+    -fx-pref-width: 130;
 }
 
-#productSellingPrice {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-focus-color: transparent;
-    -fx-faint-focus-color: transparent;
-    -fx-font-size: 20;
+.product-list-card {
+    -fx-background-color: #fff;
+    -fx-background-radius: 15px;
 }
-
-.product-function-button {
-    -fx-spacing: 30;
-    -fx-alignment: center;
-}
-
-#productDeleteButton, #productUpdateButton {
-    -fx-text-fill: #fff;
-    -fx-font-size: 15;
-    -fx-pref-width: 80;
-    -fx-pref-height: 25;
-    -fx-background-radius: 8;
-}
-
-#productUpdateButton {
-    -fx-background-color: #A3BE8C;
-}
-
-#productDeleteButton {
-    -fx-background-color: #BF616A;
-}
-
-
-
-

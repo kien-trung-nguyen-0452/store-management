@@ -1,0 +1,23 @@
+
+
+.upper {
+    -fx-background-color: #fff;
+    -fx-background-radius: 15px;
+}
+
+.lower {
+    -fx-background-color: #fff;
+    -fx-background-radius: 15px;
+}
+.wrapper {
+    -fx-background-color: transparent;
+    -fx-border-radius: 0px;
+}
+
+.content-container {
+    -fx-background-color: #333;
+    -fx-border-radius: 0px;
+    -fx-background-radius: 15px;
+
+
+}

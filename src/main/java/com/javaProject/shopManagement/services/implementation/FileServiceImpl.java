@@ -13,6 +13,9 @@ import java.nio.file.Paths;
 
 public class FileServiceImpl implements FileService {
 
+    public static FileServiceImpl getInstance() {
+        return new FileServiceImpl();
+    }
 
     private final String uploadDir;
 

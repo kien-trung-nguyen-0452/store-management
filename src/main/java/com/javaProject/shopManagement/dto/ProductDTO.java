@@ -16,6 +16,17 @@ public class ProductDTO {
 
     }
 
+    public ProductDTO(int productId, int batchId, String productName, double sellingPrice, int quantity, Timestamp expirationDate, String manufacturer, String imageUrl) {
+        this.productId = productId;
+        this.batchId = batchId;
+        this.productName = productName;
+        this.sellingPrice = sellingPrice;
+        this.quantity = quantity;
+        this.expirationDate = expirationDate;
+        this.manufacturer = manufacturer;
+        this.imageUrl = imageUrl;
+    }
+
     public int getProductId() {
         return productId;
     }

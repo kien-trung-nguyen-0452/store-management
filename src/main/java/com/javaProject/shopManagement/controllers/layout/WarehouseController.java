@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 public class WarehouseController {
-    // Các thành phần UI từ FXML
+   /* // Các thành phần UI từ FXML
     @FXML
     private TextField productSellingPrice;
 
@@ -63,6 +63,6 @@ public class WarehouseController {
         System.out.println("Updating product: " + productName.getText());
 
     }
-
+*/
 
 }
