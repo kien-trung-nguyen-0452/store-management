@@ -1,3 +1,4 @@
+/*
 package com.javaProject.shopManagement.controllers.layout;
 
 import com.javaProject.shopManagement.dto.ProductDTO;
@@ -36,4 +37,4 @@ public class StockInController {
 
         tableView.setItems((ObservableList<ProductDTO>) new ProductDTO());
     }
-}
+}*/

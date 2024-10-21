@@ -1,3 +1,4 @@
+/*
 package com.javaProject.shopManagement.controllers.layout;
 
 import com.javaProject.shopManagement.dto.ProductDTO;
@@ -79,3 +80,4 @@ public class TableCellOfImportController extends TableCell<ProductDTO, ProductDT
 
     }
 }
+*/
