@@ -1,5 +1,4 @@
 package com.javaProject.shopManagement.controllers.layout;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -90,7 +89,7 @@ public class MainController implements Initializable {
   }
 
   public void stockIn(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/import_product.fxml")));
+        Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/stockIn.fxml")));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
     }

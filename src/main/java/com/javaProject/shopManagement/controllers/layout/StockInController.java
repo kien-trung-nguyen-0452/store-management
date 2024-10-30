@@ -1,25 +1,30 @@
-/*
+
 package com.javaProject.shopManagement.controllers.layout;
 
-import com.javaProject.shopManagement.dto.ProductDTO;
+import com.javaProject.shopManagement.dto.StockInRequest;
 import com.javaProject.shopManagement.services.implementation.FileServiceImpl;
+import com.jfoenix.controls.JFXListView;
+import io.github.palexdev.materialfx.controls.MFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.util.Callback;
 
 public class StockInController {
 
     @FXML
-    private TableView<ProductDTO> tableView;
-
-    @FXML
-    private TableColumn<ProductDTO, ProductDTO> illustrationColumn;
+    public
+    JFXListView<StockInRequest> importProductListViews;
 
     private FileServiceImpl fileServiceImpl;
+    @FXML
+    private Button addRow;
+
+    @FXML
+    private Button clearAll;
+
+    private ObservableList<StockInRequest> data;
 
     public StockInController() {
 
@@ -27,14 +32,25 @@ public class StockInController {
 
     @FXML
     public void initialize() {
-
-        illustrationColumn.setCellFactory(new Callback<TableColumn<ProductDTO, ProductDTO>, TableCell<ProductDTO, ProductDTO>>() {
-            @Override
-            public TableCell<ProductDTO, ProductDTO> call(TableColumn<ProductDTO, ProductDTO> param) {
-                return new TableCellOfImportController();
-            }
+        data = FXCollections.observableArrayList();
+        importProductListViews.setItems(data);
+        importProductListViews.setCellFactory( listView ->
+            new StockInListCellController()
+        );
+        addRow.setOnAction(event -> {
+            StockInRequest stockInRequest = new StockInRequest();
+            data.add(stockInRequest);
         });
 
-        tableView.setItems((ObservableList<ProductDTO>) new ProductDTO());
+        clearAll.setOnAction(event -> {
+            ObservableList<StockInRequest> current = importProductListViews.getItems();
+            current.clear();
+        });
+
+
+
     }
-}*/
+
+
+}
+

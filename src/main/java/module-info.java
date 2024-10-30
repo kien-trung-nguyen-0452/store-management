@@ -1,6 +1,4 @@
 module com.javaProject.shopManagement {
-    requires javafx.controls;
-    requires javafx.fxml;
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
@@ -8,10 +6,14 @@ module com.javaProject.shopManagement {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
     requires jdk.jdi;
-    requires java.desktop;
+    requires de.jensd.fx.glyphs.fontawesome;
+    requires com.jfoenix;
+    requires MaterialFX;
 
     opens com.javaProject.shopManagement.controllers.layout to javafx.fxml;
     exports com.javaProject.shopManagement.controllers.layout;
     exports com.javaProject.shopManagement;
+    exports com.javaProject.shopManagement.entity;
+    exports com.javaProject.shopManagement.dto;
 
 }

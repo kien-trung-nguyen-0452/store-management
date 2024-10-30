@@ -116,3 +116,7 @@
     -fx-border-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0.3, 0, 5);
 }
+.stock_in-list-views{
+    -fx-background-radius: 20px;
+    -fx-border-radius: 0px;
+}
