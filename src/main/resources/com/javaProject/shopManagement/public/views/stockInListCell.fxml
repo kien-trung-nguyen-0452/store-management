@@ -9,12 +9,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox fx:id="cellRoot" alignment="BOTTOM_CENTER" prefHeight="60.0" prefWidth="1080.0" spacing="10.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="cellRoot" alignment="BOTTOM_CENTER" prefHeight="60.0" prefWidth="1080.0" spacing="10.0" stylesheets="@../stylesheet/stockin.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="80.0" prefWidth="76.0">
          <children>
             <ImageView fx:id="productImage" fitHeight="50.0" fitWidth="62.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="5.0" />
-            <Button fx:id="uploadImageBtn" alignment="CENTER" layoutX="51.0" layoutY="23.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="29.0" styleClass="addImage_button" stylesheets="@../stylesheet/stockin.css">
+            <Button fx:id="uploadImageBtn" alignment="CENTER" layoutX="51.0" layoutY="23.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="29.0" styleClass="addImage_button">
                <graphic>
                   <FontAwesomeIconView fill="#c1c1c1f2" glyphName="EDIT" selectionFill="#f2f2f2" text="" wrappingWidth="12.0" />
                </graphic>
@@ -51,7 +51,7 @@
             <Insets bottom="10.0" top="10.0" />
          </HBox.margin>
       </MFXTextField>
-      <MFXDatePicker fx:id="productExpirationDate" prefHeight="22.0">
+      <MFXDatePicker fx:id="productExpirationDate" accessibleRole="DATE_PICKER" editable="false" prefHeight="22.0" promptText="Expiration date">
          <HBox.margin>
             <Insets bottom="10.0" top="10.0" />
          </HBox.margin>

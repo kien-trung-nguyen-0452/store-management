@@ -49,7 +49,29 @@ public class FileServiceImpl implements FileService {
     public String uploadImage(File file) throws IOException {
         if (file != null) {
             String fileName = file.getName();
+
+
+            fileName = fileName.replaceAll("\\s+", "_");
+
+            if (fileName.isEmpty()) {
+                throw new IllegalArgumentException("File name cannot be empty after trimming whitespace.");
+            }
+
             Path destPath = Paths.get(uploadDir, fileName);
+
+
+            if (Files.exists(destPath)) {
+                String nameWithoutExt = fileName.substring(0, fileName.lastIndexOf('.'));
+                String extension = fileName.substring(fileName.lastIndexOf('.'));
+                int count = 1;
+
+                while (Files.exists(destPath)) {
+                    String newFileName = nameWithoutExt + "_" + count + extension;
+                    destPath = Paths.get(uploadDir, newFileName);
+                    count++;
+                }
+            }
+
             Files.copy(file.toPath(), destPath);
             return destPath.toString();
         }

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1102.0" stylesheets="@/com/javaProject/shopManagement/public/stylesheet/stockin.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.layout.StockInController">
+<AnchorPane fx:id="root" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1102.0" stylesheets="@/com/javaProject/shopManagement/public/stylesheet/stockin.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.javaProject.shopManagement.controllers.layout.StockInController">
    <children>
     <AnchorPane layoutX="5.0" layoutY="5.0" maxHeight="300.0" minHeight="250.0" minWidth="0.0" prefHeight="300.0" prefWidth="1102.0" styleClass="upper" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>

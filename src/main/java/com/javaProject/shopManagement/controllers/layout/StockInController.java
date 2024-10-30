@@ -43,8 +43,7 @@ public class StockInController {
         });
 
         clearAll.setOnAction(event -> {
-            ObservableList<StockInRequest> current = importProductListViews.getItems();
-            current.clear();
+           importProductListViews.getItems().clear();
         });
 
 

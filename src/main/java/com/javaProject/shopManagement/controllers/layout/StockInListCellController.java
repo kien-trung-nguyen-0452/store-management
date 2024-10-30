@@ -1,6 +1,7 @@
 package com.javaProject.shopManagement.controllers.layout;
 
 import com.javaProject.shopManagement.dto.StockInRequest;
+import com.javaProject.shopManagement.services.implementation.FileServiceImpl;
 import com.jfoenix.controls.JFXListCell;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXListView;
@@ -10,8 +11,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Objects;
 
 public class StockInListCellController extends JFXListCell<StockInRequest> {
 
@@ -39,6 +46,8 @@ public class StockInListCellController extends JFXListCell<StockInRequest> {
     @FXML
     private HBox cellRoot;
 
+    private String productImgUrl = "image/product_default.png";
+
     public StockInListCellController() {
        FXMLLoader loader = new FXMLLoader();
        loader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/stockInListCell.fxml"));
@@ -53,12 +62,25 @@ public class StockInListCellController extends JFXListCell<StockInRequest> {
     @FXML
     public void initialize() {
 
+        productImage.setImage(new Image("file:" + productImgUrl));
+
         deleteRowBtn.setOnAction(e ->{
             getListView().getItems().remove(getItem());
         });
-        resetFields();
 
+        uploadImageBtn.setOnAction(e ->{
+           File imgFile =  FileServiceImpl.getInstance().chooseImageFile((Stage) uploadImageBtn.getScene().getWindow());
+            try {
+                String path = FileServiceImpl.getInstance().uploadImage(imgFile);
+                if(path != null) {
+                    productImgUrl = path;
+                    productImage.setImage(new Image("file:" + productImgUrl));
+                }
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
 
+        });
     }
 
     private void resetFields() {
