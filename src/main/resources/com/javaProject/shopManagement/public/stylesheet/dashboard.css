@@ -1,0 +1,65 @@
+.dashboard_background{
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #FFFFFF;
+}
+.vbox_hbox{
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #FFFFFF;
+    -fx-border-radius: 100px;
+}
+.date_picker{
+    -fx-background-color: rgba(0,0,0,0);;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0px 0 0px;
+}
+.date-picker .arrow-button {
+    -fx-background-color: #FFFFFF; /* Màu nền của nút calendar */
+    -fx-border-color: #C1C1C1;      /* Màu viền của nút */
+    -fx-border-width: 0 0px 0 0px;
+}
+/* Thay đổi màu của biểu tượng calendar */
+.date-picker .arrow-button .arrow {
+    -fx-background-color: gray;
+}
+.time_border{
+    -fx-border-radius: 20;
+    -fx-border-color: #C1C1C1;
+}
+.search_button{
+    -fx-background-color: transparent;
+    -fx-background-radius: 100px;
+    -fx-transition: transform 0.3s ease;
+    -fx-cursor: hand;
+}
+.search_button:hover{
+    -fx-background-color: transparent;
+    -fx-background-radius: 100px;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+.totalRevenue_analysis{
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(gaussian, #2a73ff, 20, 0.3, 0, 5);
+}
+.order_analysis{
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(gaussian, #26bfbc, 20, 0.3, 0, 5);
+}
+.average_analysis{
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(gaussian, #fa5f7e, 20, 0.3, 0, 5);
+}

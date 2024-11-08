@@ -1,0 +1,70 @@
+.payment_background{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+.table-view {
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+}
+.search_bar{
+    -fx-background-radius: 20px;
+    -fx-background-color: transparent;
+    -fx-border-radius: 20px;
+    -fx-border-color: #C1C1C1;
+    -fx-cursor: text;
+}
+.search_button{
+    -fx-background-color: transparent;
+    -fx-background-radius: 100px;
+    -fx-transition: transform 0.3s ease;
+    -fx-cursor: hand;
+}
+.search_button:hover{
+    -fx-background-color: transparent;
+    -fx-background-radius: 100px;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+.cancel_button{
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: rgba(255, 255, 255, 0.68);
+    -fx-border-color: #0063EC;
+    -fx-text-fill: #0063EC;
+    -fx-transition: all 0.3s ease;
+    -fx-cursor: hand;
+}
+.cancel_button:hover{
+    -fx-background-color: #0063EC;
+    -fx-text-fill: #FFFFFF;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+.pay_button{
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-color: rgba(255, 255, 255, 0.68);
+    -fx-border-color: #04bd1b;
+    -fx-text-fill: #04bd1b;
+    -fx-transition: all 0.3s ease;
+    -fx-cursor: hand;
+}
+.pay_button:hover{
+    -fx-background-color: #04bd1b;
+    -fx-text-fill: #FFFFFF;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+.total_amount{
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0.3, 0, 5);
+}
