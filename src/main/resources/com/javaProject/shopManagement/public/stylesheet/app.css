@@ -1,7 +1,6 @@
 #app{
 	-fx-background-color: #E5E5E5;
 }
-
 #title{
 	-fx-text-fill: white;
 	-fx-font-family: "Lato";
@@ -34,13 +33,17 @@
 #hideButton {
 	-fx-background-color: #D08770;
 }
+.storeManagement_box{
+	-fx-border-color: #b5b5b5;
+	-fx-background-radius: 10px;
+	-fx-border-radius: 10px;
+	-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.3, 0, 0);
+}
 .left-navbar{
 	-fx-background-color:#FFF;
-
 }
 
 .btn {
-
 	-fx-background-color: none;
 	-fx-text-fill: black;
 	-fx-font-family: "Lato";
@@ -49,22 +52,19 @@
 	-fx-padding: 0 0 0 30 ;
 	-fx-margin: 0 5px 0 0;
 	-fx-graphic-text-gap: 20px;
-
-
+	-fx-background-radius: 10px;
+	-fx-border-radius: 10px;
 }
 .btn:hover {
 	-fx-background-color: #2F8EF0; /* Màu nền khi hover */
+	-fx-effect: dropshadow(gaussian,#0066cc, 10, 0.5, 0, 0);
 }
-
 .btn:focused {
 	-fx-background-color: #6699FF; /* Màu nền khi hover */
 }
 .app-infor{
-
 	-fx-text-fill: black;
 	-fx-font-family: "Lato";
-	-fx-font-size: 16px;
-
 }
 .primary-background{
 	-fx-background-color: #FFFFFF;
@@ -209,4 +209,3 @@
 	-fx-border-radius: 10px;
 	-fx-border-color: #C1C1C1;
 }
-
