@@ -3,250 +3,195 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="735.0" prefWidth="1102.0" styleClass="primary-background"
-            xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.javaProject.shopManagement.controllers.layout.BillController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-      <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="388.0" prefWidth="1102.0" spacing="10.0" AnchorPane.bottomAnchor="347.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-              <VBox prefHeight="388.0" prefWidth="551.0">
-                  <children>
-                      <HBox alignment="CENTER" prefHeight="57.0" prefWidth="551.0" spacing="20.0">
-                          <children>
-                                <Label text="Stock in">
-                                    <font>
-                                        <Font name="System Bold" size="22.0" />
-                                    </font>
-                                </Label>
-                        <HBox alignment="CENTER_LEFT" prefHeight="29.0" prefWidth="300.0" styleClass="time_border">
-                           <children>
-                              <TextField prefHeight="26.0" prefWidth="230.0" promptText="Search by invoice code" styleClass="transparent">
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </TextField>
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="54.0" styleClass="button1" text="Search" />
-                           </children>
-                           <HBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </HBox.margin>
-                        </HBox>
-                                <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="30.0" styleClass="filter_button">
-                                    <contextMenu>
-                                        <ContextMenu>
-                                            <items>
-                                                <MenuItem mnemonicParsing="false" text="Search by transaction date" />
-                                                <MenuItem mnemonicParsing="false" text="search by invoice code" />
-                                            </items>
-                                        </ContextMenu>
-                                    </contextMenu>
-                           <graphic>
-                              <FontAwesomeIconView fill="#898585" glyphName="FILTER" size="0.5cm" />
-                           </graphic>
+        <TabPane prefHeight="725.0" prefWidth="1102.0" stylesheets="@../stylesheet/bill.css" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="exports/imports">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@../stylesheet/bill.css">
+                            <children>
+                                <HBox alignment="CENTER" prefHeight="49.0" prefWidth="1102.0">
+                                    <children>
+                                        <FontAwesomeIconView glyphName="HISTORY" size="19.0" wrappingWidth="21.48572587966919" />
+                                        <Label styleClass="lower" stylesheets="@../stylesheet/bill.css" text="History of Import and Export Warehouse">
+                                            <font>
+                                                <Font name="System Bold" size="20.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <AnchorPane layoutX="2.0" layoutY="48.0" prefHeight="648.0" prefWidth="1102.0">
+                                    <children>
+                                        <Separator layoutX="1.0" layoutY="60.0" prefHeight="0.0" prefWidth="1102.0" />
+                                        <HBox alignment="CENTER_RIGHT" prefHeight="62.0" prefWidth="1102.0" spacing="10.0">
+                                            <children>
+                                                <HBox alignment="CENTER" prefHeight="52.0" prefWidth="445.0" spacing="6.0">
+                                                    <children>
+                                                        <TextField prefHeight="30.0" prefWidth="421.0" promptText="search by batch code " styleClass="function_button" stylesheets="@../stylesheet/bill.css" />
+                                                        <Button mnemonicParsing="false" prefHeight="18.0" prefWidth="30.0" styleClass="function_button" stylesheets="@../stylesheet/bill.css">
+                                                            <graphic>
+                                                                <FontAwesomeIconView glyphName="SEARCH" />
+                                                            </graphic>
+                                                        </Button>
+                                                    </children>
+                                                </HBox>
+                                                <Label styleClass="lower" stylesheets="@../stylesheet/bill.css" text="Filter by date:" />
+                                                <DatePicker promptText="datePickerFrom" styleClass="lower" stylesheets="@../stylesheet/bill.css" />
+                                                <DatePicker promptText="datePickerTo" styleClass="lower" stylesheets="@../stylesheet/bill.css" />
+                                            </children>
+                                            <padding>
+                                                <Insets top="10.0" />
+                                            </padding>
+                                        </HBox>
+                                        <AnchorPane layoutY="63.0" prefHeight="586.0" prefWidth="1102.0">
+                                            <children>
+                                                <TableView prefHeight="498.0" prefWidth="1100.0" styleClass="total_price" stylesheets="@../stylesheet/bill.css">
+                                                    <columns>
+                                                        <TableColumn prefWidth="30.0" text="No." />
+                                                        <TableColumn fx:id="colTransactionDate" prefWidth="150.0" text="Date">
+                                                            <graphic>
+                                                                <FontAwesomeIconView glyphName="CALENDAR" />
+                                                            </graphic></TableColumn>
+                                                        <TableColumn fx:id="colProductCode" prefWidth="100.0" text="batch code " />
+                                                        <TableColumn fx:id="colTransactionType" prefWidth="100.0" text="exports/imports" />
+                                                        <TableColumn fx:id="colProductName" prefWidth="150.0" text="batch name " />
+                                                        <TableColumn prefWidth="150.0" text="shipment creator" />
+                                                        <TableColumn fx:id="colQuantity" text="Quantity" />
+                                                        <TableColumn prefWidth="120.0" text="Total value" />
+                                                        <TableColumn fx:id="colNotes" prefWidth="200.0" text="Note">
+                                                            <graphic>
+                                                                <FontAwesomeIconView glyphName="EDIT" />
+                                                            </graphic>
+                                                        </TableColumn>
+                                                    </columns>
+                                                </TableView>
+                                                <Button layoutX="30.0" layoutY="514.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="total_price" stylesheets="@../stylesheet/bill.css" textFill="WHITE">
+                                                    <graphic>
+                                                        <FontAwesomeIconView fill="#848080" glyphName="REFRESH" size="17.0" />
+                                                    </graphic>
+                                                </Button>
+                                                <Button layoutX="68.0" layoutY="514.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="29.0" styleClass="total_price" stylesheets="@../stylesheet/bill.css" textFill="WHITE">
+                                                    <graphic>
+                                                        <FontAwesomeIconView fill="#767676" glyphName="TRASH" size="15.0" />
+                                                    </graphic>
+                                                </Button>
+                                                <Button layoutX="918.0" layoutY="516.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" styleClass="total_price" stylesheets="@../stylesheet/bill.css" text="Detail">
+                                                    <font>
+                                                        <Font size="15.0" />
+                                                    </font>
+                                                    <graphic>
+                                                        <FontAwesomeIconView glyphName="EYE" />
+                                                    </graphic>
+                                                </Button>
+                                                <Button layoutX="107.0" layoutY="514.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="total_price" stylesheets="@../stylesheet/bill.css">
+                                                    <graphic>
+                                                        <FontAwesomeIconView fill="#898989" glyphName="PENCIL" size="15" />
+                                                    </graphic>
+                                                </Button>
+                                            </children></AnchorPane>
+                                        <HBox alignment="CENTER_LEFT" layoutY="12.0" prefHeight="41.0" prefWidth="189.0" spacing="2.0">
+                                            <children>
+                                                <Button mnemonicParsing="false" styleClass="lower" stylesheets="@../stylesheet/bill.css" text="ALL" />
+                                                <Button mnemonicParsing="false" styleClass="lower" stylesheets="@../stylesheet/bill.css" text=" imports" />
+                                                <Button mnemonicParsing="false" styleClass="lower" stylesheets="@../stylesheet/bill.css" text="exports" />
+                                            </children>
+                                            <padding>
+                                                <Insets top="10.0" />
+                                            </padding>
+                                        </HBox>
+                                    </children>
+                                </AnchorPane>
+                            </children></AnchorPane>
+
+                    </content>
+                </Tab>
+                <Tab text="Detail Batch">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <AnchorPane layoutX="6.0" layoutY="14.0" prefHeight="245.0" prefWidth="700.0" styleClass="total_price" stylesheets="@../stylesheet/bill.css" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="202.4000000000001" AnchorPane.topAnchor="50.0">
+                                    <children>
+                                        <TextField layoutX="62.0" layoutY="36.0" prefHeight="26.0" prefWidth="256.0" promptText="batch code" styleClass="arrow-button" stylesheets="@../stylesheet/bill.css" />
+                                        <TextField layoutX="64.0" layoutY="129.0" prefHeight="26.0" prefWidth="256.0" promptText="Customers" styleClass="arrow-button" stylesheets="@../stylesheet/bill.css" />
+                                        <TextField layoutX="384.0" layoutY="36.0" prefHeight="26.0" prefWidth="264.0" promptText="batch name " styleClass="arrow-button" stylesheets="@../stylesheet/bill.css" />
+                                        <TextField layoutX="384.0" layoutY="129.0" prefHeight="26.0" prefWidth="262.0" promptText="Address" styleClass="arrow-button" stylesheets="@../stylesheet/bill.css" />
+                                        <DatePicker layoutX="64.0" layoutY="81.0" prefHeight="26.0" prefWidth="253.0" promptText="datePickerFrom" styleClass="date_picker" stylesheets="@../stylesheet/bill.css" />
+                                        <DatePicker layoutX="384.0" layoutY="81.0" prefHeight="26.0" prefWidth="262.0" promptText="datePickerTo" styleClass="date_picker" stylesheets="@../stylesheet/bill.css" />
+                                    </children>
+                                </AnchorPane>
+                                <Button layoutX="41.0" layoutY="77.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="121.0" styleClass="total_price" stylesheets="@../stylesheet/bill.css" AnchorPane.topAnchor="100.0">
+                                    <graphic>
+                                        <FontAwesomeIconView glyphName="APPLE" size="60" />
+                                    </graphic>
                                 </Button>
-                          </children>
-                      </HBox>
-                      <HBox alignment="CENTER" prefHeight="53.0" prefWidth="551.0" spacing="50.0">
-                          <children>
-                              <Label text="Shipment code">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                              <Label text="Transaction time">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                              <Label text="Supplier">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                              <Label text="Total value">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                          </children>
-                      </HBox>
-                      <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="281.0" prefWidth="551.0">
-                          <content>
-                              <AnchorPane prefHeight="281.0" prefWidth="551.0" />
-                          </content>
-                      </ScrollPane>
-                  </children>
-              </VBox>
-              <VBox prefHeight="388.0" prefWidth="551.0">
-                  <children>
-                  <HBox alignment="CENTER" prefHeight="57.0" prefWidth="551.0" spacing="20.0">
-                     <children>
-                        <Label text="Stock out">
-                           <font>
-                              <Font name="System Bold" size="22.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER_LEFT" prefHeight="29.0" prefWidth="300.0" styleClass="time_border">
-                           <children>
-                              <TextField prefHeight="26.0" prefWidth="230.0" promptText="Search by invoice code" styleClass="transparent">
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </TextField>
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="54.0" styleClass="button1" text="Search" />
-                           </children>
-                           <HBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </HBox.margin>
-                        </HBox>
-                        <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="30.0" styleClass="filter_button">
-                           <contextMenu>
-                              <ContextMenu>
-                                 <items>
-                                    <MenuItem mnemonicParsing="false" text="Search by transaction date" />
-                                    <MenuItem mnemonicParsing="false" text="search by invoice code" />
-                                 </items>
-                              </ContextMenu>
-                           </contextMenu>
-                           <graphic>
-                              <FontAwesomeIconView fill="#898585" glyphName="FILTER" size="0.5cm" />
-                           </graphic>
-                        </Button>
-                     </children>
-                  </HBox>
-                      <HBox alignment="CENTER" prefHeight="53.0" prefWidth="551.0" spacing="50.0" style="-fx-border-radius: 20px;">
-                          <children>
-                              <Label text="Shipment code ">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                              <Label text="Transaction time" textFill="#050505">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                              <Label text="Quantity">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                              <Label text="Total value">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                          </children>
-                      </HBox>
-                      <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="281.0" prefWidth="551.0">
-                          <content>
-                              <AnchorPane prefHeight="272.0" prefWidth="551.0" />
-                          </content>
-                      </ScrollPane>
-                  </children>
-              </VBox>
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="347.0" prefWidth="1102.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="408.0">
-         <children>
-              <VBox prefHeight="347.0" prefWidth="551.0">
-                  <children>
-                      <HBox alignment="CENTER" prefHeight="49.0" prefWidth="551.0" spacing="45.0">
-                          <children>
-                              <Label text="No.">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                              <Label text="Description">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                              <Label text="Unit">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                              <Label text="Quantity">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                              <Label text="Unit price ">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                              <Label text="Amount">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                          </children>
-                      </HBox>
-                      <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="300.0" prefWidth="551.0">
-                          <content>
-                              <AnchorPane prefHeight="300.0" prefWidth="551.0" />
-                          </content>
-                      </ScrollPane>
-                  </children>
-              </VBox>
-              <VBox prefHeight="347.0" prefWidth="551.0">
-                  <children>
-                      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="551.0" spacing="45.0">
-                          <children>
-                              <Label text="No.">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                              <Label text="Description">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                              <Label text="Unit ">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                              <Label text="Quantity">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                              <Label text="Unit price ">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                              <Label text="Amount">
-                                  <font>
-                                      <Font name="System Bold" size="12.0" />
-                                  </font>
-                              </Label>
-                          </children>
-                      </HBox>
-                      <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="300.0" prefWidth="551.0">
-                          <content>
-                              <AnchorPane prefHeight="300.0" prefWidth="551.0" />
-                          </content>
-                      </ScrollPane>
-                  </children>
-              </VBox>
-         </children>
-      </HBox>
+                                <TableView layoutY="312.0" prefHeight="331.0" prefWidth="1102.0" styleClass="total_price" stylesheets="@../stylesheet/bill.css">
+                                    <columns>
+                                        <TableColumn prefWidth="30.0" text="NO." />
+                                        <TableColumn prefWidth="100.0" text="Product code" />
+                                        <TableColumn prefWidth="150.0" text="Product Name" />
+                                        <TableColumn prefWidth="120.0" text="Date ">
+                                            <graphic>
+                                                <FontAwesomeIconView glyphName="CALENDAR" />
+                                            </graphic></TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Unit" />
+                                        <TableColumn prefWidth="75.0" text="Quantity" />
+                                        <TableColumn prefWidth="100.0" text="Price" />
+                                        <TableColumn prefWidth="120.0" text="Total Price" />
+                                        <TableColumn prefWidth="326.4000244140625" text="Note">
+                                            <graphic>
+                                                <FontAwesomeIconView glyphName="EDIT" />
+                                            </graphic></TableColumn>
+                                    </columns>
+                                </TableView>
+                                <HBox alignment="CENTER_LEFT" layoutY="643.0" prefHeight="50.0" prefWidth="500.0" spacing="5.0" AnchorPane.leftAnchor="60.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="28.0" styleClass="function_button" stylesheets="@../stylesheet/bill.css">
+                                            <graphic>
+                                                <FontAwesomeIconView glyphName="PLUS" />
+                                            </graphic>
+                                        </Button>
+                                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="29.0" styleClass="function_button" stylesheets="@../stylesheet/bill.css">
+                                            <graphic>
+                                                <FontAwesomeIconView glyphName="PENCIL" />
+                                            </graphic>
+                                        </Button>
+                                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="28.0" styleClass="function_button" stylesheets="@../stylesheet/bill.css">
+                                            <graphic>
+                                                <FontAwesomeIconView glyphName="TRASH" />
+                                            </graphic>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER" layoutX="587.0" layoutY="644.0" prefHeight="50.0" prefWidth="514.0" spacing="50.0" AnchorPane.leftAnchor="600.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" styleClass="total_price" stylesheets="@../stylesheet/bill.css" text="CANCEL" />
+                                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" styleClass="total_price" stylesheets="@../stylesheet/bill.css" text="DONE" />
+                                    </children>
+                                </HBox>
+                                <AnchorPane layoutX="917.0" layoutY="71.0" prefHeight="170.0" prefWidth="170.0" styleClass="total_price" stylesheets="@../stylesheet/bill.css">
+                                    <children>
+                                        <FontAwesomeIconView glyphName="MONEY" layoutX="31.0" layoutY="120.0" selectionEnd="1" size="100" />
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </AnchorPane>
+
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
     </children>
 </AnchorPane>
