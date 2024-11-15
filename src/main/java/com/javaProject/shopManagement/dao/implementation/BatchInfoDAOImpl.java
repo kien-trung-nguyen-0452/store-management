@@ -38,21 +38,23 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 
     @Override
     public BatchInfo getById(int id) {
-        String query = "SELECT * FROM batch_infor WHERE id = ?";
-        BatchInfo batchInfo = new BatchInfo();
+        String query = "SELECT * FROM batch_infor WHERE batch_id = ?";
+        BatchInfo batchInfo = null;
 
-        try(Connection conn = DbUtils.getConnection();
-            PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+        try (Connection conn = DbUtils.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(query)) {
 
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
+            if (resultSet.next()) {
+                batchInfo = new BatchInfo();
                 readAllFromResultSet(resultSet, batchInfo);
             }
         } catch (SQLException e) {
             GlobalExceptionHandler.handleException(e);
         }
-       return batchInfo;
+
+        return batchInfo;
     }
 
     @Override
@@ -80,7 +82,7 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
 
     @Override
     public void add(BatchInfo entity) {
-        String query = "INSERT INTO batch_infor(batch_id, batch_name, created_date, description, supplier, total_price) VALUES (?,?,?,?,?,?)";
+        String query = "INSERT INTO batch_infor(batch_id, batch_name, create_date, description, supplier, total_price) VALUES (?,?,?,?,?,?)";
          try(Connection conn = DbUtils.getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(query)
          ){

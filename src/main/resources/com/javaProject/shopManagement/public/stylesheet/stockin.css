@@ -119,8 +119,18 @@
 .stock_in-list-views{
     -fx-background-radius: 20px;
     -fx-border-radius: 0px;
+    -fx-background-color: #FFF;
+
 }
 
+/* List cell css start*/
+#cellRoot{
+    -fx-background-radius: 20px;
+    -fx-padding: 15 15 15 15;
+    -fx-background-color: #FFFF;
+    -fx-effect: dropshadow(gaussian, dimgray, 10, 0.2, 0, 0);
+
+}
 .mfx-date-picker .date-picker-popup{
     -fx-pref-width: 300px;
     -fx-pref-height: 300px;
@@ -154,4 +164,51 @@
 .mfx-date-picker .date-picker-popup .mfx-date-cell:selected {
     -fx-background-color: #ff6666;
     -fx-text-fill: #fff;
+}
+
+.mfx-text-field {
+    -fx-border-color: #ABABAB;
+    -fx-border-width: 0 0 2px 0;
+
+}
+
+.mfx-text-field .text-field{
+    -fx-border-width: 0px;
+}
+
+.mfx-text-field .floating-text {
+    -fx-text-fill: #ABABAB;
+}
+
+.invalid-input{
+    -fx-border-color: red;
+    -fx-text-fill: red;
+    -fx-border-width: 0 0 2px 0;
+
+}
+
+
+
+.valid-input{
+    -fx-border-color: green;
+    -fx-border-width: 0 0 2px 0;
+
+}
+
+.error-label{
+    -fx-text-fill: red;
+    -fx-font-size: 10;
+    -fx-wrap-text: true;
+    -fx-max-width: 200px;
+}
+
+.error {
+    -fx-border-color: red;
+    -fx-text-fill: red;
+    -fx-border-width: 2px;
+}
+.warning{
+    -fx-border-color: #FFA508;
+    -fx-text-fill: red;
+    -fx-border-width: 2px;
 }

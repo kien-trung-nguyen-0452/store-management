@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXListView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1102.0" stylesheets="@/com/javaProject/shopManagement/public/stylesheet/stockin.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.javaProject.shopManagement.controllers.layout.StockInController">
+<AnchorPane fx:id="root" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1102.0" stylesheets="@/com/javaProject/shopManagement/public/stylesheet/stockin.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.layout.StockInController">
    <children>
     <AnchorPane layoutX="5.0" layoutY="5.0" maxHeight="300.0" minHeight="250.0" minWidth="0.0" prefHeight="300.0" prefWidth="1102.0" styleClass="upper" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane layoutX="238.0" layoutY="28.0" maxHeight="400.0" maxWidth="700.0" prefHeight="257.0" prefWidth="600.0" styleClass="total_price" stylesheets="@../stylesheet/stockin.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="28.0">
+            <AnchorPane fx:id="upperPane" layoutX="238.0" layoutY="28.0" maxHeight="400.0" maxWidth="700.0" prefHeight="257.0" prefWidth="600.0" styleClass="total_price" stylesheets="@../stylesheet/stockin.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="28.0">
                <children>
-                  <TextField layoutY="30.0" maxWidth="265.0" prefHeight="30.0" prefWidth="255.0" promptText="Batch code" styleClass="text-field" stylesheets="@../stylesheet/stockin.css" AnchorPane.leftAnchor="10.0" />
-                  <TextField layoutX="281.0" layoutY="85.0" prefHeight="35.0" prefWidth="325.0" promptText="Supplier" styleClass="text-field" stylesheets="@../stylesheet/stockin.css" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="10.0" />
-                  <TextField layoutX="281.0" layoutY="30.0" maxHeight="30.0" maxWidth="325.0" prefHeight="30.0" prefWidth="325.0" promptText="Batch name" styleClass="text-field" stylesheets="@../stylesheet/stockin.css" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="10.0" />
-                  <DatePicker layoutX="5.0" layoutY="85.0" maxWidth="265.0" prefHeight="35.0" prefWidth="255.0" promptText="Date" styleClass="date_picker" stylesheets="@../stylesheet/stockin.css" AnchorPane.leftAnchor="10.0" />
-                  <TextArea layoutX="7.0" layoutY="144.0" maxHeight="200.0" maxWidth="700.0" prefHeight="98.0" prefWidth="596.0" promptText="Description" styleClass="text-area" stylesheets="@../stylesheet/stockin.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0" />
+                  <MFXTextField fx:id="batchCodeTextField" layoutY="30.0" maxWidth="265.0" prefHeight="30.0" prefWidth="255.0" promptText="Batch code" styleClass="text-field" stylesheets="@../stylesheet/stockin.css" AnchorPane.leftAnchor="10.0" />
+                  <MFXTextField fx:id="supplierTextField" layoutX="281.0" layoutY="85.0" prefHeight="35.0" prefWidth="325.0" promptText="Supplier" styleClass="text-field" stylesheets="@../stylesheet/stockin.css" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="10.0" />
+                  <MFXTextField fx:id="batchNameTextField" layoutX="281.0" layoutY="30.0" maxHeight="30.0" maxWidth="325.0" prefHeight="30.0" prefWidth="325.0" promptText="Batch name" styleClass="text-field" stylesheets="@../stylesheet/stockin.css" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="10.0" />
+                  <MFXDatePicker fx:id="batchCreateDate" layoutX="5.0" layoutY="85.0" maxWidth="265.0" prefHeight="35.0" prefWidth="255.0" promptText="Date" styleClass="date_picker" stylesheets="@../stylesheet/stockin.css" AnchorPane.leftAnchor="10.0" />
+                  <TextArea fx:id="descriptionTextArea" layoutX="7.0" layoutY="144.0" maxHeight="200.0" maxWidth="700.0" prefHeight="98.0" prefWidth="596.0" promptText="Description" styleClass="text-area" stylesheets="@../stylesheet/stockin.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0" />
+                  <Label fx:id="batchCodeMessage" disable="true" layoutX="14.0" layoutY="60.0" prefHeight="16.0" prefWidth="246.0" text="Label" visible="false" wrapText="true" />
+                  <Label fx:id="batchNameMessage" layoutX="283.0" layoutY="60.0" prefHeight="16.0" prefWidth="303.0" text="Label" visible="false" wrapText="true" />
                </children>
             </AnchorPane>
-            <Button fx:id="addImage" layoutX="40.0" layoutY="53.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="addImage_button" stylesheets="@../stylesheet/stockin.css">
+            <Button fx:id="addNewRequest" layoutX="40.0" layoutY="53.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="addImage_button" stylesheets="@../stylesheet/stockin.css">
                <graphic>
                   <FontAwesomeIconView fx:id="fontawesomeIcon" fill="#c1c1c1c1" glyphName="PLUS" size="50" styleClass="fontawesome_icon" />
                </graphic></Button>
@@ -37,7 +40,7 @@
                         <Font name="System Bold" size="22.0" />
                      </font>
                   </Label>
-                  <Label layoutX="13.0" layoutY="47.0" prefHeight="89.0" prefWidth="183.0" text="0.0$" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                  <Label fx:id="totalPriceLabel" layoutX="13.0" layoutY="47.0" prefHeight="89.0" prefWidth="183.0" text="0.0$" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                      <font>
                         <Font name="System Bold" size="23.0" />
                      </font>
@@ -45,18 +48,19 @@
                   <Separator layoutX="9.0" layoutY="54.0" prefHeight="9.0" prefWidth="200.0" />
                </children>
             </AnchorPane>
+            <Button fx:id="getTotalPriceBtn" layoutX="839.0" layoutY="28.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="151.0" text="Get total price" />
          </children>
       </AnchorPane>
-    <AnchorPane layoutX="5.0" layoutY="285.0" minHeight="0.0" minWidth="0.0" prefHeight="404.0" prefWidth="1102.0" styleClass="lower" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="310.0">
+    <AnchorPane fx:id="lowerPane" layoutX="5.0" layoutY="285.0" minHeight="0.0" minWidth="0.0" prefHeight="404.0" prefWidth="1102.0" styleClass="lower" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="310.0">
          <children>
             <HBox layoutX="858.0" layoutY="399.0" spacing="30.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="50.0">
                <children>
-                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" styleClass="cancel_button" stylesheets="@../stylesheet/stockin.css" text="CANCEL">
+                  <Button fx:id="cancelBtn" alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" styleClass="cancel_button" stylesheets="@../stylesheet/stockin.css" text="CANCEL">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" styleClass="import_button" stylesheets="@../stylesheet/stockin.css" text="IMPORT">
+                  <Button fx:id="importBtn" alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" styleClass="import_button" stylesheets="@../stylesheet/stockin.css" text="IMPORT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -65,11 +69,6 @@
             </HBox>
             <HBox layoutX="16.0" layoutY="380.0" spacing="10.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="20.0">
                <children>
-                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="31.0" styleClass="function_button" stylesheets="@../stylesheet/stockin.css">
-                     <graphic>
-                        <FontAwesomeIconView fill="#c1c1c1" glyphName="REFRESH" size="17" />
-                     </graphic>
-                  </Button>
                   <Button fx:id="addRow" alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="31.0" styleClass="function_button" stylesheets="@../stylesheet/stockin.css">
                      <graphic>
                         <FontAwesomeIconView fill="#c1c1c1" glyphName="PLUS" size="17" text="" />
@@ -82,22 +81,14 @@
                   </Button>
                </children>
             </HBox>
-            <HBox layoutX="142.0" layoutY="82.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <HBox prefHeight="375.0" prefWidth="1167.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <JFXListView fx:id="importProductListViews" depth="3" styleClass="stock_in-list-views" verticalGap="10.0" HBox.hgrow="ALWAYS">
-                           <HBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </HBox.margin>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </JFXListView>
-                     </children>
-                  </HBox>
-               </children>
-            </HBox>
+            <MFXScrollPane fitToHeight="true" fitToWidth="true" styleClass="stock_in-list-views" thumbColor="#eeecec" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+               <content>
+                  <VBox fx:id="productList" prefHeight="375.0" prefWidth="1093.0" spacing="20.0">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></VBox>
+               </content>
+            </MFXScrollPane>
          </children>
       </AnchorPane>
    </children>

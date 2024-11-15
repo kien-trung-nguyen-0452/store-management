@@ -69,4 +69,17 @@ public class BatchDTO {
     public void setSupplierName(String supplierName) {
         this.supplierName = supplierName;
     }
+
+    @Override
+    public String toString() {
+        return "BatchDTO{" +
+                "batchId=" + batchId +
+                ", productId=" + productId +
+                ", productName='" + productName + '\'' +
+                ", quantity=" + quantity +
+                ", purchasePrice=" + purchasePrice +
+                ", createDate=" + createDate +
+                ", supplierName='" + supplierName + '\'' +
+                '}';
+    }
 }

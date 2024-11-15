@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BatchInfoServiceImpl implements BatchInfoService {
-    public static BatchServiceImpl getInstance(){
-        return new BatchServiceImpl();
+    public static BatchInfoServiceImpl getInstance(){
+        return new BatchInfoServiceImpl();
     }
 
 

@@ -60,4 +60,16 @@ public class BatchInfoDTO {
     public void setCreateDate(Timestamp createDate) {
         this.createDate = createDate;
     }
+
+    @Override
+    public String toString() {
+        return "BatchInfoDTO{" +
+                "batchId=" + batchId +
+                ", batchName='" + batchName + '\'' +
+                ", description='" + description + '\'' +
+                ", supplier='" + supplier + '\'' +
+                ", totalPrice=" + totalPrice +
+                ", createDate=" + createDate +
+                '}';
+    }
 }

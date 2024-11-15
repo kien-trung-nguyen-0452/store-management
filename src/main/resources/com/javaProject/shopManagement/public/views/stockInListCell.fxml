@@ -5,64 +5,104 @@
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<HBox fx:id="cellRoot" alignment="BOTTOM_CENTER" prefHeight="60.0" prefWidth="1080.0" spacing="10.0" stylesheets="@../stylesheet/stockin.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <AnchorPane prefHeight="80.0" prefWidth="76.0">
-         <children>
-            <ImageView fx:id="productImage" fitHeight="50.0" fitWidth="62.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="5.0" />
-            <Button fx:id="uploadImageBtn" alignment="CENTER" layoutX="51.0" layoutY="23.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="29.0" styleClass="addImage_button">
-               <graphic>
-                  <FontAwesomeIconView fill="#c1c1c1f2" glyphName="EDIT" selectionFill="#f2f2f2" text="" wrappingWidth="12.0" />
-               </graphic>
-            </Button>
-         </children>
-      </AnchorPane>
-      <MFXTextField fx:id="productIdTextField" floatMode="DISABLED" floatingText="Product Id" prefHeight="30.0" prefWidth="84.0" promptText="Product Id" HBox.hgrow="ALWAYS">
-         <HBox.margin>
-            <Insets bottom="10.0" top="10.0" />
-         </HBox.margin>
-      </MFXTextField>
-      <MFXTextField fx:id="productNameTextField" borderGap="0.0" floatMode="ABOVE" prefHeight="30.0" prefWidth="100.0" promptText="Product name" HBox.hgrow="ALWAYS">
-         <HBox.margin>
-            <Insets bottom="10.0" top="10.0" />
-         </HBox.margin>
-      </MFXTextField>
-      <MFXTextField fx:id="productPurchasePriceTextField" floatMode="ABOVE" prefHeight="30.0" prefWidth="100.0" promptText="Purchase price" HBox.hgrow="ALWAYS">
-         <HBox.margin>
-            <Insets bottom="10.0" top="10.0" />
-         </HBox.margin>
-      </MFXTextField>
-      <MFXTextField fx:id="productSellingPriceTextField" floatMode="ABOVE" prefHeight="30.0" prefWidth="100.0" promptText="Selling price" HBox.hgrow="ALWAYS">
-         <HBox.margin>
-            <Insets bottom="10.0" top="10.0" />
-         </HBox.margin>
-      </MFXTextField>
-      <MFXTextField fx:id="productQuantityTextField" floatMode="ABOVE" prefHeight="30.0" prefWidth="100.0" promptText="Quantity" HBox.hgrow="ALWAYS">
-         <HBox.margin>
-            <Insets bottom="10.0" top="10.0" />
-         </HBox.margin>
-      </MFXTextField>
-      <MFXTextField fx:id="productManufacturerTextField" floatMode="ABOVE" prefHeight="30.0" prefWidth="122.0" promptText="Maunufacturer">
-         <HBox.margin>
-            <Insets bottom="10.0" top="10.0" />
-         </HBox.margin>
-      </MFXTextField>
-      <MFXDatePicker fx:id="productExpirationDate" accessibleRole="DATE_PICKER" editable="false" prefHeight="22.0" promptText="Expiration date">
-         <HBox.margin>
-            <Insets bottom="10.0" top="10.0" />
-         </HBox.margin>
-      </MFXDatePicker>
-      <Button fx:id="deleteRowBtn" alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="36.0" styleClass="function_button">
+<HBox fx:id="cellRoot" cacheShape="false" fillHeight="false" pickOnBounds="false" prefHeight="76.0" prefWidth="1071.0" spacing="10.0" stylesheets="@../stylesheet/stockin.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <AnchorPane prefHeight="76.0" prefWidth="60.0" HBox.hgrow="ALWAYS">
+      <ImageView fx:id="productImage" fitHeight="68.0" fitWidth="74.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="5.0" />
+      <Button fx:id="uploadImageBtn" alignment="CENTER" layoutX="51.0" layoutY="23.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="0.0" styleClass="addImage_button">
          <graphic>
-            <FontAwesomeIconView fill="#c1c1c1c1" glyphName="TRASH" size="17" />
+            <FontAwesomeIconView fill="#c1c1c1f2" glyphName="EDIT" selectionFill="#f2f2f2" text="" wrappingWidth="12.0" />
          </graphic>
-         <HBox.margin>
-            <Insets bottom="10.0" right="5.0" />
-         </HBox.margin>
       </Button>
-   </children>
+   </AnchorPane>
+   <VBox HBox.hgrow="ALWAYS">
+      <HBox.margin>
+         <Insets bottom="10.0" top="10.0" />
+      </HBox.margin>
+      <MFXTextField fx:id="productIdTextField" alignment="BOTTOM_LEFT" animated="false" borderGap="0.0" floatingText="Product Id" prefHeight="130.0" prefWidth="88.0">
+         <padding>
+            <Insets left="5.0" top="5.0" />
+         </padding>
+      </MFXTextField>
+      <Label fx:id="productIdInputMessage" prefHeight="41.0" prefWidth="36.0" text="Label" visible="false" VBox.vgrow="ALWAYS" />
+   </VBox>
+   <VBox HBox.hgrow="ALWAYS">
+      <HBox.margin>
+         <Insets bottom="10.0" top="10.0" />
+      </HBox.margin>
+      <MFXTextField fx:id="productNameTextField" animated="false" floatingText="Product name" floatingTextGap="10.0" graphicTextGap="5.0" prefHeight="40.0" prefWidth="150.0">
+         <padding>
+            <Insets left="5.0" top="5.0" />
+         </padding>
+      </MFXTextField>
+      <Label fx:id="productNameInputMessage" text="Label" visible="false" />
+   </VBox>
+   <VBox HBox.hgrow="ALWAYS">
+      <HBox.margin>
+         <Insets bottom="10.0" top="10.0" />
+      </HBox.margin>
+      <MFXTextField fx:id="productPurchasePriceTextField" animated="false" floatingText="Purchase price" floatingTextGap="10.0" prefHeight="40.0" prefWidth="150.0">
+         <padding>
+            <Insets left="5.0" top="5.0" />
+         </padding>
+      </MFXTextField>
+      <Label fx:id="purchasePriceInputMessage" text="Label" visible="false" />
+   </VBox>
+   <VBox HBox.hgrow="ALWAYS">
+      <HBox.margin>
+         <Insets bottom="10.0" top="10.0" />
+      </HBox.margin>
+      <MFXTextField fx:id="productSellingPriceTextField" animated="false" floatingText="Selling price" floatingTextGap="10.0" prefHeight="40.0" prefWidth="150.0">
+         <padding>
+            <Insets left="5.0" top="5.0" />
+         </padding>
+      </MFXTextField>
+      <Label fx:id="sellingPriceInputMessage" text="Label" visible="false" />
+   </VBox>
+   <VBox HBox.hgrow="ALWAYS">
+      <HBox.margin>
+         <Insets bottom="10.0" top="10.0" />
+      </HBox.margin>
+      <MFXTextField fx:id="productQuantityTextField" animated="false" floatingText="Quantity" floatingTextGap="10.0" prefHeight="40.0" prefWidth="100.0">
+         <padding>
+            <Insets left="5.0" top="5.0" />
+         </padding>
+      </MFXTextField>
+      <Label fx:id="quantityInputMessage" text="Label" visible="false" />
+   </VBox>
+   <VBox>
+      <HBox.margin>
+         <Insets bottom="10.0" top="10.0" />
+      </HBox.margin>
+      <MFXTextField fx:id="productManufacturerTextField" animated="false" floatingText="Maunufacturer" floatingTextGap="10.0" prefHeight="40.0" prefWidth="150.0">
+         <padding>
+            <Insets left="5.0" top="5.0" />
+         </padding>
+      </MFXTextField>
+      <Label text="Label" visible="false" />
+   </VBox>
+   <VBox>
+      <HBox.margin>
+         <Insets bottom="10.0" top="10.0" />
+      </HBox.margin>
+      <MFXDatePicker fx:id="productExpirationDate" accessibleRole="DATE_PICKER" animated="false" caretVisible="false" editable="false" floatMode="INLINE" floatingText="Expiration date:" floatingTextGap="10.0" prefHeight="59.0" prefWidth="146.0">
+         <padding>
+            <Insets left="5.0" top="5.0" />
+         </padding>
+      </MFXDatePicker>
+      <Label fx:id="expirationDateMessage" text="Label" visible="false" />
+   </VBox>
+   <Button fx:id="deleteRowBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="55.0" prefWidth="37.0" styleClass="function_button">
+      <graphic>
+         <FontAwesomeIconView fill="#c1c1c1c1" glyphName="TRASH" size="17" wrappingWidth="14.357142448425293" />
+      </graphic>
+      <HBox.margin>
+         <Insets bottom="10.0" right="5.0" top="10.0" />
+      </HBox.margin>
+   </Button>
 </HBox>

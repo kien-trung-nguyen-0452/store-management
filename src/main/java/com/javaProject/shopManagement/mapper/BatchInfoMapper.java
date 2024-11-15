@@ -1,10 +1,15 @@
 package com.javaProject.shopManagement.mapper;
 
+import com.javaProject.shopManagement.dto.BatchDTO;
 import com.javaProject.shopManagement.dto.BatchInfoDTO;
+import com.javaProject.shopManagement.dto.ProductDTO;
 import com.javaProject.shopManagement.entity.BatchInfo;
 
 public class BatchInfoMapper {
     public static BatchInfoDTO toDto(BatchInfo entity){
+        if(entity == null){
+            return null;
+        }
         BatchInfoDTO dto = new BatchInfoDTO();
         dto.setBatchId(entity.getBatchId());
         dto.setBatchName(entity.getBatchName());
@@ -23,5 +28,18 @@ public class BatchInfoMapper {
         entity.setSupplier(dto.getSupplier());
         entity.setTotalPrice(dto.getTotalPrice());
         return entity;
+    }
+
+    public static void mapToBatchDTO(BatchInfoDTO batchInfoDTO, BatchDTO batchDTO){
+        batchInfoDTO.setBatchId(batchInfoDTO.getBatchId());
+        batchInfoDTO.setBatchName(batchInfoDTO.getBatchName());
+        batchInfoDTO.setCreateDate(batchInfoDTO.getCreateDate());
+        batchInfoDTO.setDescription(batchInfoDTO.getDescription());
+        batchInfoDTO.setSupplier(batchInfoDTO.getSupplier());
+        batchInfoDTO.setTotalPrice(batchInfoDTO.getTotalPrice());
+    }
+
+    public static void mapToProductDTO(BatchInfoDTO batchInfoDTO, ProductDTO productDTO){
+        productDTO.setBatchId(batchInfoDTO.getBatchId());
     }
 }
