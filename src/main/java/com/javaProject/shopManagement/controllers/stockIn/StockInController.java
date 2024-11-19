@@ -1,15 +1,12 @@
 
-package com.javaProject.shopManagement.controllers.layout;
+package com.javaProject.shopManagement.controllers.stockIn;
 
-import com.javaProject.shopManagement.dto.BatchDTO;
 import com.javaProject.shopManagement.dto.BatchInfoDTO;
-import com.javaProject.shopManagement.dto.ProductDTO;
 import com.javaProject.shopManagement.dto.StockInRequest;
 import com.javaProject.shopManagement.mapper.StockInRequestMapper;
 import com.javaProject.shopManagement.services.implementation.BatchInfoServiceImpl;
 import com.javaProject.shopManagement.services.implementation.BatchServiceImpl;
 import com.javaProject.shopManagement.services.implementation.ProductServiceImpl;
-import com.javaProject.shopManagement.services.interfaces.BatchInfoService;
 import com.javaProject.shopManagement.util.validator.InputValidator;
 import com.javaProject.shopManagement.util.validator.logger.ErrorLogger;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
@@ -22,9 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 
 
 public class StockInController{
@@ -187,8 +182,8 @@ public class StockInController{
     }
     
     private void setListener(){
-        batchCodeTextField.textProperty().addListener((observable, oldValue, newValue) -> validateBatchCode());
-        batchNameTextField.textProperty().addListener((observable, oldValue, newValue) -> validateBatchName());
+        batchCodeTextField.textProperty().addListener(_-> validateBatchCode());
+        batchNameTextField.textProperty().addListener(_-> validateBatchName());
     }
 
     private BatchInfoDTO getBatchInfo(){

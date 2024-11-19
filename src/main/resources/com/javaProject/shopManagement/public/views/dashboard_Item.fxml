@@ -8,7 +8,7 @@
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="1120.0"
       xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.javaProject.shopManagement.controllers.layout.DasboardController">
+      fx:controller="com.javaProject.shopManagement.controllers.dashboard.DasboardController">
 <children>
     <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="1120.0" spacing="140.0">
         <children>

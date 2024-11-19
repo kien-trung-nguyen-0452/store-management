@@ -1,7 +1,4 @@
-.product-card{
-    -fx-background-color: #fff;
-    -fx-background-radius: 15px;
-}
+
 .product-info{
     -fx-spacing: 20px;
 }
@@ -154,7 +151,20 @@
     -fx-background-radius: 30;
 }
 
-.fruit-item{
+.product-item{
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 30;
+}
+
+.mfx-text-field {
+
+
+
+}
+
+.mfx-text-field .text-field{
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+
 }

@@ -19,7 +19,7 @@ public class ProductDAOImpl implements ProductDAO {
     public List<Product> getAll() {
         long startTime = System.currentTimeMillis();
         List<Product> products = new ArrayList<>();
-        String query = "SELECT product_id, batch_id, product_name, selling_price, image_url, quantity FROM product";
+        String query = "SELECT product_id, batch_id, product_name, selling_price, image_url, quantity, expiration_date FROM product";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
@@ -208,11 +208,12 @@ public class ProductDAOImpl implements ProductDAO {
         product.setSellingPrice(rs.getDouble("selling_price"));
         product.setImageUrl(rs.getString("image_url"));
         product.setQuantity(rs.getInt("quantity"));
+        product.setExpirationDate(rs.getTimestamp("expiration_date"));
+
     }
 
     private void readAllFromResultSet (ResultSet rs, Product product) throws SQLException{
         readInformationFromResultSet(rs, product);
-        product.setExpirationDate(rs.getTimestamp("expiration_date"));
         product.setManufacturer(rs.getString("manufacturer"));
     }
 
