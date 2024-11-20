@@ -1,17 +1,21 @@
 package com.javaProject.shopManagement.controllers.warehouse;
 
 import com.javaProject.shopManagement.dto.ProductDTO;
-import com.javaProject.shopManagement.entity.Product;
 import com.javaProject.shopManagement.services.implementation.ProductServiceImpl;
-import com.javaProject.shopManagement.services.interfaces.ProductService;
+import com.javaProject.shopManagement.util.validator.effectHandler.EffectHandler;
+import com.javaProject.shopManagement.util.validator.effectHandler.EffectType;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class WarehouseController {
     private List<ProductDTO> productDTOList;
@@ -24,28 +28,32 @@ public class WarehouseController {
     @FXML
     private GridPane warehouseList;
 
-
     private Node node;
     @FXML
     protected void initialize() {
-
-
-        productDTOList = new ArrayList<>();
-        productDTOList = ProductServiceImpl.getInstance().getAllProducts();
-        productCardControllerList = setProductCardControllerList(productDTOList);
         scrollPane.setContent(warehouseList);
         scrollPane.widthProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("new value: " + newValue);
-            System.out.println("old value: " + oldValue);
-            warehouseList.setPrefWidth(newValue.doubleValue());
+                    warehouseList.setPrefWidth(newValue.doubleValue());
+                    setGridPaneConstrains();
+                }
+        );
+        CompletableFuture.runAsync(() -> {
+            productDTOList = ProductServiceImpl.getInstance().getAllProducts();
+            productCardControllerList = setProductCardControllerList(productDTOList);
+
+
+        }).thenAcceptAsync(productList -> {
+            Platform.runLater(() -> {
+                setGridPane(productCardControllerList);
+                warehouseList.widthProperty().addListener((observable, oldValue, newValue) ->
+                            setGridPane(productCardControllerList)
+                );
+            });
         });
-        warehouseList.widthProperty().addListener((observable, oldValue, newValue) ->
-                setGridPane(productCardControllerList));
+        }
 
 
-    }
-
-    private List<WarehouseProductCardController> setProductCardControllerList(List<ProductDTO> productDTOList) {
+        private List<WarehouseProductCardController> setProductCardControllerList(List<ProductDTO> productDTOList) {
         if(productDTOList == null){
             return null;
         }
@@ -62,34 +70,13 @@ public class WarehouseController {
     }
 
     public void setGridPane(List<WarehouseProductCardController> productCardControllerList) {
-        warehouseList.getChildren().clear();
-        warehouseList.getColumnConstraints().clear();
-        warehouseList.getRowConstraints().clear();
-        int productCount = productDTOList.size();
-        System.out.println(productCount);
         int row = 0;
-        int maxCol;
         int col =0;
-        int gridWidth = (int) warehouseList.getWidth();
-
-
-        System.out.println("width: "+ gridWidth);
-        if (gridWidth < 1072) {
-            maxCol = 3;
-
-        } else {
-            maxCol = 5;
-        }
-        System.out.println("Max col"+maxCol);
-        for (int i = 0; i < maxCol; i++) {
-            ColumnConstraints columnConstraints = new ColumnConstraints();
-            warehouseList.getColumnConstraints().add(columnConstraints);
-
-        }
+        setGridPaneConstrains();
         for(WarehouseProductCardController productCardController : productCardControllerList){
             warehouseList.add(productCardController.getNode(), col, row);
             col++;
-            if(col == maxCol){
+            if(col == warehouseList.getColumnConstraints().size()){
                 col = 0;
                 row++;
                 RowConstraints rowConstraints = new RowConstraints();
@@ -99,15 +86,49 @@ public class WarehouseController {
         }
     }
 
+    private void setGridPaneConstrains(){
+        warehouseList.getChildren().clear();
+        warehouseList.getColumnConstraints().clear();
+        warehouseList.getRowConstraints().clear();
+        double gridWidth = warehouseList.getPrefWidth();
+        int maxCol =0;
+
+        if (gridWidth >= 1072.0 && gridWidth <1500) {
+            maxCol = 5;
+
+        }
+        else if(gridWidth > 1500){
+            maxCol = 6;
+        }
+        else {
+            maxCol = 3;
+        }
+        for (int i = 0; i < maxCol; i++) {
+            ColumnConstraints columnConstraints = new ColumnConstraints();
+            warehouseList.getColumnConstraints().add(columnConstraints);
+
+        }
+    }
+
     private void getProductDetails(ProductDTO productDTO) {
         wrapper.getChildren().remove(node);
         node = new ProductDetailsCardController(this, productDTO).getNode();
+        EffectHandler.getEffect(EffectType.SLIDE_IN, node);
         wrapper.getChildren().add(node);
+
 
     }
 
     public void closeDetailsCard() {
-        wrapper.getChildren().remove(node);
+        EffectHandler.getEffect(EffectType.SLIDE_OUT, node);
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(500), event -> {
+            wrapper.getChildren().remove(node);
+        }));
+        timeline.setCycleCount(1);
+        timeline.play();
+
+
     }
+
 }
 

@@ -1,6 +1,7 @@
 package com.javaProject.shopManagement.controllers.warehouse;
 
 import com.javaProject.shopManagement.dto.ProductDTO;
+import com.javaProject.shopManagement.services.implementation.FileServiceImpl;
 import com.javaProject.shopManagement.services.implementation.ProductServiceImpl;
 import com.javaProject.shopManagement.util.validator.InputValidator;
 import com.javaProject.shopManagement.util.validator.logger.ErrorLogger;
@@ -16,6 +17,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
 
 public class ProductDetailsCardController {
     @FXML
@@ -85,7 +90,11 @@ public class ProductDetailsCardController {
                expirationDateTextField.setText(String.valueOf(productDTO.getExpirationDate()).substring(0, 9));
                closeBtn.setOnAction(event -> closeBtnClick());
                deleteProductBtn.setOnAction(event -> deleteProduct());
+               changeImgBtn.setOnAction(event -> uploadImage());
+               changePriceBtn.setOnAction(event -> setChangePriceBtn());
+               changeProductNameBtn.setOnAction(event -> setChangeProductNameBtn());
                updateButton.setOnAction(event -> updateProduct());
+
 
     }
 
@@ -112,9 +121,31 @@ public class ProductDetailsCardController {
             ErrorLogger.showAlert("Invalid Input", Alert.AlertType.ERROR);
         }
         else {
+            System.out.println(productDTO.toString());
             ProductServiceImpl.getInstance().update(productDTO);
             ErrorLogger.showAlert("Product Updated", Alert.AlertType.INFORMATION);
         }
+    }
+    private void setChangePriceBtn(){
+        productPriceTextField.setDisable(false);
+    }
+    private void setChangeProductNameBtn(){
+        productNameTextField.setDisable(false);
+    }
+    private void uploadImage() {
+
+        File imgFile =  FileServiceImpl.getInstance().chooseImageFile((Stage) changeImgBtn.getScene().getWindow());
+        try {
+            String path = FileServiceImpl.getInstance().uploadImage(imgFile);
+            if(path != null) {
+                productDTO.setImageUrl(path);
+                productImg.setImage(new Image("file:" + productDTO.getImageUrl()));
+
+            }
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+
     }
 
 

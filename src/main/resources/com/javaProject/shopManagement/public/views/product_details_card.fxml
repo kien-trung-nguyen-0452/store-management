@@ -47,7 +47,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="64.0" prefWidth="234.0">
                <children>
-                  <MFXTextField fx:id="productPriceTextField" allowEdit="false" borderGap="0.0" caretVisible="false" disable="true" prefHeight="51.0" prefWidth="224.0" promptText="\$00.00">
+                  <MFXTextField fx:id="productPriceTextField" borderGap="0.0" caretVisible="false" disable="true" prefHeight="51.0" prefWidth="224.0" promptText="\$00.00">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -78,7 +78,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="72.0" prefWidth="234.0">
                <children>
-                  <MFXTextField fx:id="productNameTextField" allowEdit="false" borderGap="0.0" caretVisible="false" disable="true" editable="false" layoutX="-5.0" layoutY="1.0" prefHeight="40.0" prefWidth="234.0" promptText="Product name">
+                  <MFXTextField fx:id="productNameTextField" borderGap="0.0" caretVisible="false" disable="true" layoutX="-5.0" layoutY="1.0" prefHeight="40.0" prefWidth="234.0" promptText="Product name">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>

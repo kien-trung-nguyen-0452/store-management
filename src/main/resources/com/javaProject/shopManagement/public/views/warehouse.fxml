@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1102.0" styleClass="product-item , shadow" stylesheets="@/com/javaProject/shopManagement/public/stylesheet/warehouse.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.warehouse.WarehouseController">
+<AnchorPane fx:id="rootPane" centerShape="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1102.0" styleClass="product-item , shadow" stylesheets="@/com/javaProject/shopManagement/public/stylesheet/warehouse.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.warehouse.WarehouseController">
    <children>
       <HBox fx:id="wrapper" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -57,14 +57,14 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="550.0" prefWidth="820.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+                  <AnchorPane fx:id="parentAnchorPane" prefHeight="550.0" prefWidth="820.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
                      <children>
-                        <MFXScrollPane fx:id="scrollPane" layoutX="8.0" prefHeight="615.0" prefWidth="815.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                        <MFXScrollPane fx:id="scrollPane" layoutX="8.0" prefHeight="590.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
                            </padding>
                            <content>
-                              <GridPane fx:id="warehouseList" hgap="10.0" prefHeight="585.0" prefWidth="802.0" vgap="10.0">
+                              <GridPane fx:id="warehouseList" cacheShape="false" centerShape="false" hgap="10.0" prefHeight="562.0" prefWidth="1072.0" vgap="10.0">
                                 <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

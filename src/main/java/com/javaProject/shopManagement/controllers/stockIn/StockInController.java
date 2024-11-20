@@ -8,15 +8,20 @@ import com.javaProject.shopManagement.services.implementation.BatchInfoServiceIm
 import com.javaProject.shopManagement.services.implementation.BatchServiceImpl;
 import com.javaProject.shopManagement.services.implementation.ProductServiceImpl;
 import com.javaProject.shopManagement.util.validator.InputValidator;
+import com.javaProject.shopManagement.util.validator.effectHandler.EffectHandler;
+import com.javaProject.shopManagement.util.validator.effectHandler.EffectType;
 import com.javaProject.shopManagement.util.validator.logger.ErrorLogger;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.sql.Timestamp;
 import java.util.HashSet;
@@ -97,11 +102,20 @@ public class StockInController{
         productList.getChildren().add(cell.getNode());
         cell.setParentList(this);
         cells.add(cell);
+        EffectHandler.getEffect(EffectType.FADE_IN, cell.getNode());
 
     }
     public void deleteRow(ProductCellController cell){
-        productList.getChildren().remove(cell.getNode());
-        cells.remove(cell);
+
+        EffectHandler.getEffect(EffectType.FADE_OUT, cell.getNode());
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(500), event -> {
+            productList.getChildren().remove(cell.getNode());
+            cells.remove(cell);
+        }));
+        timeline.setCycleCount(1);
+        timeline.play();
+
+
 
     }
     private void clearAll(){

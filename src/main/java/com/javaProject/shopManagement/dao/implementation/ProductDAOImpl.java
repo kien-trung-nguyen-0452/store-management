@@ -127,22 +127,28 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public void update(Product entity) {
-        String query = "UPDATE product SET batch_id = ?, product_name = ?, selling_price = ?, image_url = ?, quantity = ?, expiration_date = ?, manufacturer = ? " +
+        String query = "UPDATE product SET product_name = ?, selling_price = ?, image_url = ?, quantity = ?, expiration_date = ?, manufacturer = ? " +
                 "WHERE product_id = ? AND batch_id = ?";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            stmt.setInt(1, entity.getBatchId());
-            stmt.setString(2, entity.getProductName());
-            stmt.setDouble(3, entity.getSellingPrice());
-            stmt.setString(4, entity.getImageUrl());
-            stmt.setInt(5, entity.getQuantity());
-            stmt.setTimestamp(6, entity.getExpirationDate());
-            stmt.setString(7, entity.getManufacturer());
-            stmt.setInt(8, entity.getProductId());
-            stmt.setInt(9, entity.getBatchId());
-
+            stmt.setString(1, entity.getProductName());
+            stmt.setDouble(2, entity.getSellingPrice());
+            stmt.setString(3, entity.getImageUrl());
+            stmt.setInt(4, entity.getQuantity());
+            stmt.setTimestamp(5, entity.getExpirationDate());
+            stmt.setString(6, entity.getManufacturer());
+            stmt.setInt(7, entity.getProductId());
+            stmt.setInt(8, entity.getBatchId());
+            int rowsUpdated = stmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Update successful!");
+            }
+            else {
+                System.out.println("Update failed!");
+            }
+            System.out.println(entity.toString());
         } catch (SQLException e) {
             GlobalExceptionHandler.handleException(e);
         }
@@ -190,11 +196,6 @@ public class ProductDAOImpl implements ProductDAO {
             stmt.setInt(1, product_id);
             stmt.setInt(2, batch_id);
             int rowsDeleted = stmt.executeUpdate();
-            if (rowsDeleted > 0) {
-                System.out.println("Product deleted successfully!");
-            } else {
-                System.out.println("No product found with the given ID.");
-            }
 
         } catch (SQLException e) {
             GlobalExceptionHandler.handleException(e);
@@ -209,7 +210,6 @@ public class ProductDAOImpl implements ProductDAO {
         product.setImageUrl(rs.getString("image_url"));
         product.setQuantity(rs.getInt("quantity"));
         product.setExpirationDate(rs.getTimestamp("expiration_date"));
-
     }
 
     private void readAllFromResultSet (ResultSet rs, Product product) throws SQLException{
