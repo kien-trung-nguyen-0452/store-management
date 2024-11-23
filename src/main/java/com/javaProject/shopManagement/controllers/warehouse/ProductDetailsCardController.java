@@ -4,7 +4,7 @@ import com.javaProject.shopManagement.dto.ProductDTO;
 import com.javaProject.shopManagement.services.implementation.FileServiceImpl;
 import com.javaProject.shopManagement.services.implementation.ProductServiceImpl;
 import com.javaProject.shopManagement.util.validator.InputValidator;
-import com.javaProject.shopManagement.util.validator.logger.ErrorLogger;
+import com.javaProject.shopManagement.util.logger.ErrorLogger;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;

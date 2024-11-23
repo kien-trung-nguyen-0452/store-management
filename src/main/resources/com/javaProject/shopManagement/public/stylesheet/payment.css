@@ -68,3 +68,20 @@
     -fx-border-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0.3, 0, 5);
 }
+
+.bill-card{
+    -fx-background-radius: 20px;
+    -fx-background-color: #FFF;
+    -fx-border-width: 2px;
+
+}
+
+.mfx-text-field {
+    -fx-border-color: #ABABAB;
+    -fx-border-width: 0 0 2px 0;
+
+}
+
+.mfx-text-field .text-field{
+    -fx-border-width: 0px;
+}

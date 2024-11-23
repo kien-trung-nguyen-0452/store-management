@@ -1,4 +1,4 @@
-package com.javaProject.shopManagement.util.validator.effectHandler;
+package com.javaProject.shopManagement.util.effectHandler;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
@@ -18,8 +18,8 @@ public class EffectHandler {
 
     private static void applyFadeInEffect(Node node) {
         FadeTransition fadeTransition = new FadeTransition(Duration.millis(1000), node);
-        fadeTransition.setFromValue(-50); // Bắt đầu từ trong suốt
-        fadeTransition.setToValue(1);   // Hiển thị hoàn toàn
+        fadeTransition.setFromValue(-50);
+        fadeTransition.setToValue(1);
         fadeTransition.play();
 
     }
@@ -35,7 +35,7 @@ public class EffectHandler {
         slideIn.setFromX(0);
         slideIn.setToX(node.getLayoutBounds().getWidth());
 
-        // Tạo hiệu ứng làm mờ node
+
         FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), node);
         fadeOut.setFromValue(0.0);
         fadeOut.setToValue(1.0);
@@ -47,7 +47,7 @@ public class EffectHandler {
         slideOut.setFromX(1);
         slideOut.setToX(node.getLayoutBounds().getWidth());
 
-        // Tạo hiệu ứng làm mờ node
+
         FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), node);
         fadeOut.setFromValue(1.0);
         fadeOut.setToValue(0.0);

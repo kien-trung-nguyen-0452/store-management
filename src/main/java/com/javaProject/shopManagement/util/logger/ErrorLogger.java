@@ -1,4 +1,4 @@
-package com.javaProject.shopManagement.util.validator.logger;
+package com.javaProject.shopManagement.util.logger;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

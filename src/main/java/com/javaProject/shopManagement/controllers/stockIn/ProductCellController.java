@@ -121,6 +121,7 @@ public class ProductCellController implements Initializable {
 
     public StockInRequest getData() {
         if(!validateAll()){
+            System.out.println("get data failed");
             return null;
         }
         StockInRequest data = new StockInRequest();
@@ -162,13 +163,13 @@ public class ProductCellController implements Initializable {
         return isNotNull(productNameTextField, productNameInputMessage);
     }
     private boolean validatePurchasePrice(){
-        return isValidDoubleAndNotNull(productPurchasePriceTextField, purchasePriceInputMessage);
+        return isValidDoubleAndNotNull(productPurchasePriceTextField,purchasePriceInputMessage);
     }
     private boolean validateSellingPrice(){
-        return isValidDoubleAndNotNull(productSellingPriceTextField, sellingPriceInputMessage);
+       return isValidDoubleAndNotNull(productSellingPriceTextField, sellingPriceInputMessage);
     }
     private boolean validateQuantity(){
-        return isValidIntegerAndNotNull(productQuantityTextField, quantityInputMessage);
+       return isValidIntegerAndNotNull(productQuantityTextField, quantityInputMessage);
     }
     private boolean validateExpirationDate(){
         return isValidDateAndNotNull(productExpirationDate, expirationDateMessage, LocalDate.now());
@@ -178,7 +179,7 @@ public class ProductCellController implements Initializable {
         return InputValidator.isNotNull(textField, message) && InputValidator.isInteger(textField, message);
     }
     private boolean isValidDoubleAndNotNull(MFXTextField textField, Label message) {
-        return InputValidator.isNotNull(textField, message) && InputValidator.isDouble(textField, message);
+        return InputValidator.isNotNull(textField, message) || InputValidator.isDouble(textField, message);
     }
     private boolean isValidDateAndNotNull(MFXDatePicker datePicker, Label message, LocalDate validationDate) {
         return InputValidator.isNotNull(datePicker, message) && InputValidator.isNotBefore(datePicker, validationDate, message);

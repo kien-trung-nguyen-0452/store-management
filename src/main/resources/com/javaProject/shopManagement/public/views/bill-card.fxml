@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="root" alignment="CENTER" prefHeight="72.0" prefWidth="1082.0" spacing="10.0" styleClass="bill-card" stylesheets="@../stylesheet/payment.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MFXTextField alignment="CENTER" borderGap="0.0" floatingText="Product ID" prefHeight="51.0" prefWidth="60.0" promptText="110">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </MFXTextField>
+      <MFXTextField alignment="CENTER" borderGap="0.0" floatingText="Product Name" prefHeight="51.0" prefWidth="188.0" promptText="Fruit">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </MFXTextField>
+      <ImageView fitHeight="49.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../Pictures/Screenshot_20240912_213946.png" />
+         </image>
+      </ImageView>
+      <MFXButton buttonType="RAISED" prefHeight="32.0" prefWidth="32.0" text=" ">
+         <graphic>
+            <FontAwesomeIconView glyphName="ANGLE_UP" size="20" wrappingWidth="7.0" />
+         </graphic>
+      </MFXButton>
+      <MFXTextField alignment="CENTER" borderGap="0.0" floatingText="Quantity" prefHeight="51.0" prefWidth="45.0" promptText="10">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </MFXTextField>
+      <MFXButton buttonType="RAISED" prefHeight="32.0" prefWidth="32.0" text=" ">
+         <graphic>
+            <FontAwesomeIconView glyphName="ANGLE_DOWN" selectionStart="1" size="20" wrappingWidth="5.857142448425293" />
+         </graphic>
+      </MFXButton>
+      <MFXTextField alignment="CENTER" borderGap="0.0" floatingText="Price" promptText="9.6">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </MFXTextField>
+      <MFXTextField alignment="CENTER" floatingText="Total Price" prefHeight="51.0" prefWidth="197.0" promptText="96">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </MFXTextField>
+      <MFXButton buttonType="RAISED" text=" " textFill="RED">
+         <graphic>
+            <FontAwesomeIconView glyphName="TRASH" selectionFill="#e80808" size="20" textAlignment="CENTER" wrappingWidth="6.0" />
+         </graphic>
+      </MFXButton>
+   </children>
+</HBox>

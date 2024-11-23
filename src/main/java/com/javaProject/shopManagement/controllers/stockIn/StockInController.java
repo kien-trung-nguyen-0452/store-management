@@ -8,9 +8,9 @@ import com.javaProject.shopManagement.services.implementation.BatchInfoServiceIm
 import com.javaProject.shopManagement.services.implementation.BatchServiceImpl;
 import com.javaProject.shopManagement.services.implementation.ProductServiceImpl;
 import com.javaProject.shopManagement.util.validator.InputValidator;
-import com.javaProject.shopManagement.util.validator.effectHandler.EffectHandler;
-import com.javaProject.shopManagement.util.validator.effectHandler.EffectType;
-import com.javaProject.shopManagement.util.validator.logger.ErrorLogger;
+import com.javaProject.shopManagement.util.effectHandler.EffectHandler;
+import com.javaProject.shopManagement.util.effectHandler.EffectType;
+import com.javaProject.shopManagement.util.logger.ErrorLogger;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.animation.KeyFrame;
@@ -85,7 +85,9 @@ public class StockInController{
         cells = FXCollections.observableArrayList();
         stockInRequestList = new HashSet<>();
         importBtn.setOnAction(_ -> importStockIn());
-        getTotalPriceBtn.setOnAction(_-> getTotalPrice());
+        getTotalPriceBtn.setOnAction(_-> {
+            checkValidate();
+            getTotalPrice();});
         cancelBtn.setOnAction(_-> cancel());
         setListener();
 
@@ -124,10 +126,9 @@ public class StockInController{
     }
 
     public void getTotalPrice(){
-        checkValidate();
         totalPrice = 0.0;
         for(StockInRequest stockInRequest : stockInRequestList){
-            totalPrice+= stockInRequest.getQuantity()*stockInRequest.getPurchasePrice();
+            totalPrice += stockInRequest.getQuantity() * stockInRequest.getPurchasePrice();
         }
         String formattedTotalPrice = String.format("%.3f", totalPrice);
         totalPriceLabel.setText(formattedTotalPrice + "$");
@@ -135,21 +136,20 @@ public class StockInController{
 
 
     private void importStockIn(){
-        getTotalPrice();
         BatchInfoDTO batchInfoDTO = getBatchInfo();
-       if(batchInfoDTO == null){
+         if(batchInfoDTO == null){
            ErrorLogger.showAlert("Invalid batch information", Alert.AlertType.ERROR);
-       }
-       else {
-           batchInfoDTO.setTotalPrice(totalPrice);
-           BatchInfoServiceImpl.getInstance().add(batchInfoDTO);
-           BatchServiceImpl batchServiceImpl = new BatchServiceImpl();
-           ProductServiceImpl productService = new ProductServiceImpl();
-           for (StockInRequest stockInRequest : stockInRequestList) {
-               batchServiceImpl.addBatch(StockInRequestMapper.mapToBatchDTO(stockInRequest, batchInfoDTO));
-               productService.add(StockInRequestMapper.mapToProductDTO(stockInRequest, batchInfoDTO));
-           }
-           cancel();
+         }
+         else if (checkValidate()) {
+               getTotalPrice();
+               batchInfoDTO.setTotalPrice(totalPrice);
+               BatchInfoServiceImpl.getInstance().add(batchInfoDTO);
+               BatchServiceImpl batchServiceImpl = new BatchServiceImpl();
+               ProductServiceImpl productService = new ProductServiceImpl();
+               for (StockInRequest stockInRequest : stockInRequestList) {
+                   batchServiceImpl.addBatch(StockInRequestMapper.mapToBatchDTO(stockInRequest, batchInfoDTO));
+                   productService.add(StockInRequestMapper.mapToProductDTO(stockInRequest, batchInfoDTO));
+               }
        }
 
 
@@ -171,7 +171,7 @@ public class StockInController{
 
 
 
-    private void checkValidate() {
+    private boolean checkValidate() {
         stockInRequestList.clear();
         for (ProductCellController cell : cells) {
             resetCellStyleClass(cell);
@@ -179,20 +179,20 @@ public class StockInController{
                 ErrorLogger.showAlert("Invalid input", Alert.AlertType.ERROR);
                 cell.getNode().getStyleClass().add("error");
                 stockInRequestList.clear();
-                break;
+                return false;
             }
             if(stockInRequestList.contains(cell.getData())){
                 ErrorLogger.showAlert("Duplicate product Id", Alert.AlertType.WARNING);
                 cell.getNode().getStyleClass().add("warning");
                 stockInRequestList.clear();
-                break;
+               return false;
             }
             else {
                 stockInRequestList.add(cell.getData());
             }
 
         }
-
+        return true;
     }
     
     private void setListener(){

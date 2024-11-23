@@ -2,8 +2,8 @@ package com.javaProject.shopManagement.controllers.warehouse;
 
 import com.javaProject.shopManagement.dto.ProductDTO;
 import com.javaProject.shopManagement.services.implementation.ProductServiceImpl;
-import com.javaProject.shopManagement.util.validator.effectHandler.EffectHandler;
-import com.javaProject.shopManagement.util.validator.effectHandler.EffectType;
+import com.javaProject.shopManagement.util.effectHandler.EffectHandler;
+import com.javaProject.shopManagement.util.effectHandler.EffectType;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;

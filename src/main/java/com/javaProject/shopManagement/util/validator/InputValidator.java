@@ -12,7 +12,9 @@ public class InputValidator {
         boolean isValid = true;
         String message = "";
         try {
-            Integer.parseUnsignedInt(input);
+           if(Integer.parseInt(input) <= 0){
+               isValid = false;
+           }
         } catch (NumberFormatException e) {
             isValid = false;
             message = "Require number!";
@@ -40,7 +42,9 @@ public class InputValidator {
         boolean isValid = true;
         String message = "";
         try {
-            Double.parseDouble(input);
+           if (Double.parseDouble(input)<=0.0) {
+               isValid = false;
+           }
         } catch (NumberFormatException e) {
             isValid = false;
             message = "Invalid input!";
@@ -98,7 +102,6 @@ public class InputValidator {
         }
     }
 
-    // Phương thức áp dụng style cho đầu vào hợp lệ
     private static void setValidStyle(MFXTextField textField) {
         textField.getStyleClass().removeAll("invalid-input");
         if (!textField.getStyleClass().contains("valid-input")) {
@@ -113,7 +116,6 @@ public class InputValidator {
         }
     }
 
-    // Phương thức áp dụng style cho đầu vào không hợp lệ
     private static void setInvalidStyle(MFXTextField textField) {
         textField.getStyleClass().removeAll("valid-input");
         if (!textField.getStyleClass().contains("invalid-input")) {
