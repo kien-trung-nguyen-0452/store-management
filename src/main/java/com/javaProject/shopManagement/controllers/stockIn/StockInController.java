@@ -55,11 +55,8 @@ public class StockInController{
     private VBox productList;
     @FXML
     private Button addRow;
-
     @FXML
     private Button clearAll;
-
-
     @FXML
     private Button getTotalPriceBtn;
     @FXML
@@ -70,10 +67,6 @@ public class StockInController{
     private double totalPrice;
     private ObservableList<ProductCellController> cells;
     private HashSet<StockInRequest> stockInRequestList;
-
-    public StockInController() {
-
-    }
 
     @FXML
     private void initialize() {
@@ -110,7 +103,7 @@ public class StockInController{
     public void deleteRow(ProductCellController cell){
 
         EffectHandler.getEffect(EffectType.FADE_OUT, cell.getNode());
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(500), event -> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(500),  _-> {
             productList.getChildren().remove(cell.getNode());
             cells.remove(cell);
         }));
@@ -121,8 +114,16 @@ public class StockInController{
 
     }
     private void clearAll(){
-        productList.getChildren().clear();
-        cells.clear();
+        if (productList != null) {
+            productList.getChildren().clear();
+        }
+        if (cells != null) {
+            cells.clear();
+        }
+        if (stockInRequestList != null) {
+            stockInRequestList.clear();
+        }
+        totalPriceLabel.setText("0.0$");
     }
 
     public void getTotalPrice(){
@@ -150,23 +151,33 @@ public class StockInController{
                    batchServiceImpl.addBatch(StockInRequestMapper.mapToBatchDTO(stockInRequest, batchInfoDTO));
                    productService.add(StockInRequestMapper.mapToProductDTO(stockInRequest, batchInfoDTO));
                }
+               cancel();
        }
 
 
     }
 
     private void cancel (){
-       batchCodeTextField.clear();
-       supplierTextField.clear();
-       batchCreateDate.clear();
-       batchNameTextField.clear();
-       descriptionTextArea.clear();
-       clearAll();
-       upperPane.setDisable(true);
-       lowerPane.setDisable(true);
-       getTotalPriceBtn.setDisable(true);
-       totalPriceLabel.setText("0.0$");
-       addNewRequest.setDisable(false);
+
+        batchCodeTextField.clear();
+        supplierTextField.clear();
+        batchNameTextField.clear();
+        descriptionTextArea.clear();
+        batchCreateDate.clear();
+        clearAll();
+        upperPane.setDisable(true);
+        lowerPane.setDisable(true);
+        addNewRequest.setDisable(false);
+
+        if (batchCodeMessage != null) {
+            batchCodeMessage.setText("");
+        }
+        if (batchNameMessage != null) {
+            batchNameMessage.setText("");
+        }
+        batchCodeTextField.getStyleClass().remove("error");
+        batchNameTextField.getStyleClass().remove("error");
+
     }
 
 
@@ -222,6 +233,7 @@ public class StockInController{
         }
         return batchInfoDTO;
     }
+
 
     private boolean validateBatchCode(){
         return isValidIntegerAndNotNull(batchCodeTextField, batchCodeMessage);

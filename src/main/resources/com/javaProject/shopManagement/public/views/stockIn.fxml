@@ -16,9 +16,9 @@
 
 <AnchorPane fx:id="root" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1102.0" stylesheets="@/com/javaProject/shopManagement/public/stylesheet/stockin.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.stockIn.StockInController">
    <children>
-    <AnchorPane layoutX="5.0" layoutY="5.0" maxHeight="300.0" minHeight="250.0" minWidth="0.0" prefHeight="300.0" prefWidth="1102.0" styleClass="upper" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <AnchorPane fx:id="upperPane" layoutX="151.0" layoutY="5.0" maxHeight="300.0" minHeight="250.0" minWidth="0.0" prefHeight="300.0" prefWidth="951.0" styleClass="upper" AnchorPane.leftAnchor="151.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane fx:id="upperPane" layoutX="238.0" layoutY="28.0" maxHeight="400.0" maxWidth="700.0" prefHeight="257.0" prefWidth="600.0" styleClass="total_price" stylesheets="@../stylesheet/stockin.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="28.0">
+            <AnchorPane layoutX="238.0" layoutY="28.0" maxHeight="400.0" maxWidth="700.0" prefHeight="257.0" prefWidth="600.0" styleClass="total_price" stylesheets="@../stylesheet/stockin.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="28.0">
                <children>
                   <MFXTextField fx:id="batchCodeTextField" floatMode="BORDER" floatingText="Batch code" layoutY="30.0" maxWidth="265.0" prefHeight="30.0" prefWidth="255.0" styleClass="text-field" stylesheets="@../stylesheet/stockin.css" AnchorPane.leftAnchor="10.0" />
                   <MFXTextField fx:id="supplierTextField" floatMode="BORDER" floatingText="Supplier" layoutX="281.0" layoutY="85.0" prefHeight="35.0" prefWidth="325.0" styleClass="text-field" stylesheets="@../stylesheet/stockin.css" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="10.0" />
@@ -29,10 +29,6 @@
                   <Label fx:id="batchNameMessage" layoutX="283.0" layoutY="60.0" prefHeight="16.0" prefWidth="303.0" text="Label" visible="false" wrapText="true" />
                </children>
             </AnchorPane>
-            <Button fx:id="addNewRequest" layoutX="40.0" layoutY="53.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" styleClass="addImage_button" stylesheets="@../stylesheet/stockin.css">
-               <graphic>
-                  <FontAwesomeIconView fx:id="fontawesomeIcon" fill="#c1c1c1c1" glyphName="PLUS" size="50" styleClass="fontawesome_icon" />
-               </graphic></Button>
             <AnchorPane layoutX="873.0" layoutY="57.0" prefHeight="149.0" prefWidth="218.0" styleClass="total_price" stylesheets="@../stylesheet/stockin.css" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="60.0">
                <children>
                   <Label text="Total price" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
@@ -91,5 +87,10 @@
             </MFXScrollPane>
          </children>
       </AnchorPane>
+      <Button fx:id="addNewRequest" layoutX="14.0" layoutY="88.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="105.0" styleClass="addImage_button" stylesheets="@../stylesheet/stockin.css">
+         <graphic>
+            <FontAwesomeIconView fx:id="fontawesomeIcon" fill="#c1c1c1c1" glyphName="PLUS" size="50" styleClass="fontawesome_icon" />
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

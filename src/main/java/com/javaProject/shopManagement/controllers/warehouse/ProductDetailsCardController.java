@@ -114,7 +114,9 @@ public class ProductDetailsCardController {
     private void deleteProduct() {
        if(ErrorLogger.getChoiceBox("Message", "Are you sure you want to delete the product from the inventory? These changes cannot be undone")) {
            ProductServiceImpl.getInstance().delete(productDTO.getProductId(), productDTO.getBatchId());
+           parent.refresh();
        }
+
     }
     private void updateProduct() {
         if(!update()) {
@@ -124,6 +126,8 @@ public class ProductDetailsCardController {
             System.out.println(productDTO.toString());
             ProductServiceImpl.getInstance().update(productDTO);
             ErrorLogger.showAlert("Product Updated", Alert.AlertType.INFORMATION);
+            parent.refresh();
+
         }
     }
     private void setChangePriceBtn(){

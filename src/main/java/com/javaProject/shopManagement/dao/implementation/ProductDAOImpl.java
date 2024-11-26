@@ -19,7 +19,7 @@ public class ProductDAOImpl implements ProductDAO {
     public List<Product> getAll() {
         long startTime = System.currentTimeMillis();
         List<Product> products = new ArrayList<>();
-        String query = "SELECT product_id, batch_id, product_name, selling_price, image_url, quantity, expiration_date FROM product";
+        String query = "SELECT product_id, batch_id, product_name, selling_price, image_url, quantity, expiration_date FROM product WHERE quantity>0";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
@@ -45,7 +45,7 @@ public class ProductDAOImpl implements ProductDAO {
     public List<Product> getById(int id) {
         long startTime = System.currentTimeMillis();
         List<Product> products = new ArrayList<>();
-        String query = "SELECT product_id, batch_id, product_name, selling_price, image_url, quantity FROM product WHERE product_id = ?";
+        String query = "SELECT product_id, batch_id, product_name, selling_price, image_url, quantity, expiration_date FROM product WHERE product_id = ? AND quantity >0";
 
         try(Connection conn = DbUtils.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query)){
@@ -72,16 +72,21 @@ public class ProductDAOImpl implements ProductDAO {
 
 
     @Override
-    public List<Product> getByCondition(String condition) {
+    public List<Product> getByCondition(String keyword) {
         long startTime = System.currentTimeMillis();
         List<Product> products = new ArrayList<>();
-        if(condition == null || condition.isEmpty()) {
-            return null;
-        }
-        String query = "SELECT * FROM product WHERE " + condition;
 
-        try(Connection conn = DbUtils.getConnection();
-        PreparedStatement stmt = conn.prepareStatement(query)){
+        if (keyword == null || keyword.isEmpty()) {
+            return products;
+        }
+
+        String query = "SELECT * FROM product WHERE product_name LIKE ? AND quantity >0";
+
+        try (Connection conn = DbUtils.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            String searchKeyword = "%" + keyword + "%";
+            stmt.setString(1, searchKeyword);
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
@@ -91,15 +96,14 @@ public class ProductDAOImpl implements ProductDAO {
                 }
             }
 
-        }catch (SQLException e){
-           GlobalExceptionHandler.handleException(e);
+        } catch (SQLException e) {
+            GlobalExceptionHandler.handleException(e);
         }
 
         long endTime = System.currentTimeMillis();
-
         long duration = endTime - startTime;
 
-        System.out.println("Query executed in: " + duration + "= ?");
+        System.out.println("Query executed in: " + duration + " ms");
         return products;
     }
 
@@ -161,7 +165,7 @@ public class ProductDAOImpl implements ProductDAO {
         long startTime = System.currentTimeMillis();
         Product product = new Product();
         String query = "SELECT product_id, batch_id, product_name, selling_price, image_url, quantity, expiration_date, manufacturer " +
-                "FROM product WHERE product_id = ? AND batch_id = ?";
+                "FROM product WHERE product_id = ? AND batch_id = ? AND quantity >0";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {

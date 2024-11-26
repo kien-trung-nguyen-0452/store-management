@@ -32,8 +32,8 @@ public class WarehouseProductCardController {
         loader.setController(this);
         try {
             cardRoot = loader.load();
-            cardRoot.setScaleX(0.8);
-            cardRoot.setScaleY(0.8);
+            cardRoot.setScaleX(0.9);
+            cardRoot.setScaleY(0.9);
         } catch (Exception e) {
             e.printStackTrace();
         }
