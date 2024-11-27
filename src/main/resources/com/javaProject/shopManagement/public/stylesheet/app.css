@@ -13,7 +13,7 @@
 	-fx-alignment: CENTER_RIGHT;
 	-fx-padding: 10;
 	-fx-spacing: 10;
-	-fx-margin: 0 10 0 0
+	-fx-margin: 0 10 0 0;
 }
 
 .top-navbar-button{
@@ -34,20 +34,24 @@
 	-fx-background-color: #D08770;
 }
 .storeManagement_box{
+	-fx-background-color: #fff;
 	-fx-border-color: #b5b5b5;
 	-fx-background-radius: 10px;
 	-fx-border-radius: 10px;
-	-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.3, 0, 0);
+	-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.3, 0, 0),
+	innershadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0.5, -2, -2);
 }
 .left-navbar{
-	-fx-background-color:#FFF;
+	-fx-background-color:#CCCCCC;
 }
 
 .btn {
 	-fx-background-color: none;
-	-fx-text-fill: black;
-	-fx-font-family: "Lato";
+	-fx-effect: dropshadow(gaussian, rgba(50, 50, 50, 0.5), 5, 0.5, 3, 3);
+	-fx-text-fill: linear-gradient(to bottom, black, #3c3c3c);
+	-fx-font-family: "Arial";
 	-fx-font-size: 14px;
+	-fx-font-weight: Bold;
 	-fx-alignment: CENTER_LEFT;
 	-fx-padding: 0 0 0 30 ;
 	-fx-margin: 0 5px 0 0;
@@ -56,14 +60,14 @@
 	-fx-border-radius: 10px;
 }
 .btn:hover {
-	-fx-background-color: #2F8EF0; /* Màu nền khi hover */
-	-fx-effect: dropshadow(gaussian,#0066cc, 10, 0.5, 0, 0);
+	-fx-background-color: #eceaea; /* Màu nền khi hover */
+	-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 5, 0.5, 2, 2);
 }
 .btn:focused {
-	-fx-background-color: #6699FF; /* Màu nền khi hover */
+	-fx-background-color: #fff; /* Màu nền khi hover */
 }
 .app-infor{
-	-fx-text-fill: black;
+	-fx-text-fill: linear-gradient(to bottom, black, #3c3c3c);
 	-fx-font-family: "Lato";
 }
 .primary-background{
