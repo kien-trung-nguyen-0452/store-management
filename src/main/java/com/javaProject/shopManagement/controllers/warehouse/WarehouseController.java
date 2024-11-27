@@ -2,6 +2,7 @@ package com.javaProject.shopManagement.controllers.warehouse;
 
 import com.javaProject.shopManagement.dto.ProductDTO;
 import com.javaProject.shopManagement.services.implementation.ProductServiceImpl;
+import com.javaProject.shopManagement.services.implementation.SearchServiceImpl;
 import com.javaProject.shopManagement.util.effectHandler.EffectHandler;
 import com.javaProject.shopManagement.util.effectHandler.EffectType;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -54,7 +55,7 @@ public class WarehouseController {
                 }
         );
         refresh();
-        searchButton.setOnAction(event -> search());
+        searchButton.setOnAction(event -> search(searchBar.getText()));
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
            if(searchBar.getText().isEmpty()){
                refresh();
@@ -66,21 +67,8 @@ public class WarehouseController {
     }
 
     public void refresh(){
-        CompletableFuture.runAsync(() -> {
-            productDTOList = ProductServiceImpl.getInstance().getAllProducts();
-            productCardControllerList = setProductCardControllerList(productDTOList);
-            loadingProgressSpinner.setVisible(true);
-        }).thenAcceptAsync(productList -> {
-            Platform.runLater(() -> {
-                setGridPane(productCardControllerList);
-                warehouseList.widthProperty().addListener((observable, oldValue, newValue) ->
-                        setGridPane(productCardControllerList)
-                );
-                loadingProgressSpinner.setVisible(false);
-                productNotFoundLabel.setVisible(productCardControllerList.isEmpty());
-            });
-        });
-
+        List<ProductDTO> allProduct = ProductServiceImpl.getInstance().getAllProducts();
+        refresh(allProduct);
     }
     private List<WarehouseProductCardController> setProductCardControllerList(List<ProductDTO> productDTOList) {
         if(productDTOList == null){
@@ -177,15 +165,8 @@ public class WarehouseController {
 
     }
 
-    private void search(){
-        List<ProductDTO> searchResult = new ArrayList<>();
-        try {
-            int productId = Integer.parseInt(searchBar.getText());
-            searchResult = ProductServiceImpl.getInstance().getProductById(productId);
-            System.out.println("id oke");
-        }catch (NumberFormatException _){
-            searchResult = ProductServiceImpl.getInstance().searchProduct(searchBar.getText());
-        }
+    private void search(String keyword){
+        List<ProductDTO> searchResult = SearchServiceImpl.getInstance().searchProduct(keyword);
         refresh(searchResult);
     }
 

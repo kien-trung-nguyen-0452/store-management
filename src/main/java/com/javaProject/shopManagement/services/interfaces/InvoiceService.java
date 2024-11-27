@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface InvoiceService{
 
-    void addInvoice(InvoiceDTO invoiceDTO);
+    int addInvoiceAndGetInvoiceCode(InvoiceDTO invoiceDTO);
     List<InvoiceDTO> getAllInvoices();
     InvoiceDTO getInvoice(int id);
     void updateInvoice(InvoiceDTO invoiceDTO);

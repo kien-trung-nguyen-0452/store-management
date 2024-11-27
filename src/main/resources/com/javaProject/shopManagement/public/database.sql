@@ -30,7 +30,7 @@ CREATE TABLE if not exists product (
                           product_id INT NOT NULL,
                           batch_id INT NOT NULL,
                           product_name VARCHAR(100) NOT NULL,
-                          selling_price DECIMAL(10, 2) NOT NULL,
+                          selling_price DECIMAL(10, 2) NOT NUll,
                           image_url VARCHAR(255),
                           quantity INT NOT NULL,
                           expiration_date TIMESTAMP NOT NULL,

@@ -11,10 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InvoiceServiceImpl implements InvoiceService {
+    public static InvoiceServiceImpl getInstance() {
+        return new InvoiceServiceImpl();
+    }
     @Override
-    public void addInvoice(InvoiceDTO invoiceDTO) {
+    public int addInvoiceAndGetInvoiceCode(InvoiceDTO invoiceDTO) {
         Invoice invoice = InvoiceMapper.toEntity(invoiceDTO);
-        InvoiceDAOImpl.getInstance().add(invoice);
+        return InvoiceDAOImpl.getInstance().add(invoice);
     }
 
     @Override

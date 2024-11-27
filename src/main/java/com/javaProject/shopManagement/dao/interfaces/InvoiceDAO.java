@@ -10,7 +10,7 @@ public interface InvoiceDAO {
     Invoice getById(int id);
     List<Invoice> getByCondition(String condition);
     List<Invoice> getByDateRange(Timestamp startDate, Timestamp endDate);
-    void add(Invoice entity);
+    int add(Invoice entity);
     void update(Invoice entity);
     void delete(int id);
 }

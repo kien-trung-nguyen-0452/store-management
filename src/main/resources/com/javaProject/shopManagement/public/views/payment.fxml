@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="735.0" prefWidth="1102.0" stylesheets="@../stylesheet/payment.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.payment.PaymentController">
+<AnchorPane fx:id="root" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="735.0" prefWidth="1102.0" stylesheets="@../stylesheet/payment.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.payment.PaymentController">
    <children>
       <AnchorPane layoutX="39.0" layoutY="53.0" prefHeight="200.0" prefWidth="200.0" styleClass="payment_background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -20,16 +21,16 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER" layoutX="147.0" layoutY="54.0" styleClass="search_bar" stylesheets="@../stylesheet/payment.css" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="169.19999999999982" AnchorPane.topAnchor="54.0">
+            <HBox alignment="CENTER" layoutX="147.0" layoutY="54.0" styleClass="search_bar" stylesheets="@../stylesheet/payment.css" AnchorPane.leftAnchor="147.0" AnchorPane.topAnchor="54.0">
                <children>
-                  <TextField layoutX="147.0" layoutY="54.0" prefHeight="35.0" prefWidth="710.0" styleClass="transparent" stylesheets="@../stylesheet/payment.css" HBox.hgrow="ALWAYS" />
-                  <Button alignment="CENTER" layoutX="857.0" layoutY="59.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="50.0" styleClass="search_button" stylesheets="@../stylesheet/payment.css" HBox.hgrow="ALWAYS">
+                  <TextField fx:id="searchBar" layoutX="147.0" layoutY="54.0" prefHeight="35.0" prefWidth="710.0" styleClass="transparent" stylesheets="@../stylesheet/payment.css" HBox.hgrow="ALWAYS" />
+                  <MFXButton fx:id="searchButton" alignment="CENTER" layoutX="857.0" layoutY="59.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="50.0" styleClass="search_button" stylesheets="@../stylesheet/payment.css" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
                      <graphic>
                         <FontAwesomeIconView fill="#c7c4c4" glyphName="SEARCH" size="20" />
-                     </graphic></Button>
+                     </graphic></MFXButton>
                </children>
             </HBox>
             <VBox disable="true" layoutX="164.0" layoutY="91.0" prefHeight="200.0" prefWidth="750.0" visible="false" />
@@ -38,7 +39,6 @@
                   <VBox fx:id="billList" prefHeight="515.0" prefWidth="1082.0" spacing="10.0" />
                </content>
             </MFXScrollPane>
-            <Button fx:id="addNew" layoutX="14.0" layoutY="61.0" mnemonicParsing="false" text="add new" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="19.0" layoutY="733.0" prefHeight="65.0" prefWidth="1070.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
@@ -53,7 +53,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <Label layoutX="199.0" prefHeight="66.0" prefWidth="98.0" text="0.0$" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label fx:id="totalAmountLabel" layoutX="199.0" layoutY="2.0" prefHeight="63.0" prefWidth="466.0" text="0.0$" AnchorPane.bottomAnchor="1.0" AnchorPane.topAnchor="1.0">
                      <font>
                         <Font size="26.0" />
                      </font>
@@ -65,11 +65,11 @@
             </AnchorPane>
             <HBox alignment="CENTER" layoutX="856.0" layoutY="6.0" prefHeight="53.0" prefWidth="200.0" spacing="30.0" stylesheets="@../stylesheet/payment.css" AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="6.0">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="86.0" styleClass="cancel_button" stylesheets="@../stylesheet/payment.css" text="Cancel" HBox.hgrow="ALWAYS">
+                  <Button fx:id="cancelBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="86.0" styleClass="cancel_button" stylesheets="@../stylesheet/payment.css" text="Cancel" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font></Button>
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="89.0" styleClass="pay_button" stylesheets="@../stylesheet/payment.css" text="Pay" HBox.hgrow="ALWAYS">
+                  <Button fx:id="payBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="89.0" styleClass="pay_button" stylesheets="@../stylesheet/payment.css" text="Pay" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font></Button>
@@ -77,5 +77,15 @@
             </HBox>
          </children>
       </AnchorPane>
+      <MFXScrollPane fx:id="searchResultList" layoutX="146.0" layoutY="91.0" prefHeight="191.0" prefWidth="786.0" visible="false">
+         <content>
+            <VBox fx:id="searchResultListContent" fillWidth="false" prefHeight="176.0" prefWidth="785.0" />
+         </content>
+      </MFXScrollPane>
+      <Label fx:id="productNotFoundLabel" alignment="CENTER" layoutX="267.0" layoutY="117.0" prefHeight="36.0" prefWidth="520.0" text="Can not find product" textAlignment="CENTER" visible="false" AnchorPane.leftAnchor="267.0">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

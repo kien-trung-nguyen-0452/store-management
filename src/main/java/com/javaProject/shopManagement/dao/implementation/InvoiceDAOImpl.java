@@ -116,19 +116,29 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     }
 
     @Override
-    public void add(Invoice invoice) {
-        String query = "INSERT INTO invoice (invoice_code, total_revenue, invoice_date) VALUES (?, ?, ?)";
+    public int add(Invoice invoice) {
+        String query = "INSERT INTO invoice (total_revenue, invoice_date) VALUES (?, ?)";
 
+        int generatedInvoiceCode =0;
         try (Connection conn = DbUtils.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)){
+             PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+            stmt.setDouble(1, invoice.getTotalAmount());
+            stmt.setTimestamp(2, invoice.getDate());
+            stmt.executeUpdate();
 
-            stmt.setInt(1, invoice.getInvoiceId());
-            stmt.setDouble(2, invoice.getTotalAmount());
-            stmt.setTimestamp(3, invoice.getDate());
+
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    generatedInvoiceCode= rs.getInt(1);
+                    invoice.setInvoiceId(generatedInvoiceCode);
+                    System.out.println("Generated Invoice Code: " + generatedInvoiceCode);
+                }
+            }
 
         } catch (SQLException e) {
             GlobalExceptionHandler.handleException(e);
         }
+        return generatedInvoiceCode;
     }
 
     @Override

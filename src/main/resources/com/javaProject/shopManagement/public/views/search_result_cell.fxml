@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="root" maxHeight="67.0" prefHeight="67.0" prefWidth="785.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="productImage" fitHeight="83.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true" />
+      <VBox prefHeight="93.0" prefWidth="179.0" spacing="10.0">
+         <children>
+            <Label fx:id="productNameLabel" text="Product Name">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
+            <Label fx:id="productIdLabel" text="id:" textFill="#8a8585" />
+            <Label fx:id="productBatchIdLabel" text="batch:" textFill="#8a8585" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+      <VBox prefHeight="88.0" prefWidth="132.0" spacing="5.0">
+         <children>
+            <Label text="Price" textFill="#8a8585" />
+            <Label fx:id="productPriceLabel" text="0.0$">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
+            <Label text="remains: " textFill="#8a8585" />
+            <Label fx:id="productQuantityLabel" text="0" textFill="#8a8585" />
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets left="5.0" top="5.0" />
+   </padding>
+</HBox>
