@@ -1,15 +1,9 @@
-
 .product-info{
     -fx-spacing: 20px;
 }
 
 .product-info-field{
     -fx-pref-width: 130;
-}
-
-.product-list-card {
-    -fx-background-color: #fff;
-    -fx-background-radius: 15px;
 }
 .transparent{
     -fx-background-color: rgba(0,0,0,0);
