@@ -85,3 +85,26 @@
 .mfx-text-field .text-field{
     -fx-border-width: 0px;
 }
+
+.mfx-scroll-pane {
+    -fx-background-radius: 0 0 25px 25px;
+    -fx-border-radius:0 0 25px 25px;
+    -fx-padding: 10px;
+    -fx-border-width: 0 1px 1px 1px;
+    -fx-border-color: black;
+    -fx-effect: dropshadow(gaussian, white,10, 0.3, 0, 5);
+
+}
+
+.mfx-scroll-pane .scroll-bar:vertical{
+    -fx-background-color: transparent;
+    -fx-opacity: 0.5;
+}
+.mfx-scroll-pane .scroll-bar:horizontal{
+    -fx-opacity: 0;
+    -fx-max-height: 0;
+    -fx-background-color: transparent;
+}
+.mfx-scroll-pane .scroll-bar:vertical .track{
+    -fx-max-height: 30px
+}

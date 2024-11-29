@@ -12,7 +12,6 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -32,7 +31,7 @@ public class PaymentController{
     @FXML
     private AnchorPane root;
     @FXML
-    private ScrollPane searchResultList;
+    private MFXScrollPane searchResultList;
     @FXML
     private VBox searchResultListContent;
     @FXML
@@ -91,6 +90,7 @@ public class PaymentController{
         searchResultListContent.getChildren().clear();
         List<ProductDTO> searchResult = SearchServiceImpl.getInstance().searchProduct(keyword);
         searchResultList.setVisible(true);
+        EffectHandler.getEffect(EffectType.SCROLL_DOWN, searchResultList);
         searchResultListContent.setVisible(true);
         if(searchResult.isEmpty()){
             System.out.println("Empty search result");

@@ -3,10 +3,8 @@ package com.javaProject.shopManagement.controllers.stockIn;
 
 import com.javaProject.shopManagement.dto.BatchInfoDTO;
 import com.javaProject.shopManagement.dto.StockInRequest;
-import com.javaProject.shopManagement.mapper.StockInRequestMapper;
 import com.javaProject.shopManagement.services.implementation.BatchInfoServiceImpl;
-import com.javaProject.shopManagement.services.implementation.BatchServiceImpl;
-import com.javaProject.shopManagement.services.implementation.ProductServiceImpl;
+import com.javaProject.shopManagement.services.implementation.StockInServiceImpl;
 import com.javaProject.shopManagement.util.validator.InputValidator;
 import com.javaProject.shopManagement.util.effectHandler.EffectHandler;
 import com.javaProject.shopManagement.util.effectHandler.EffectType;
@@ -24,226 +22,213 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 
 
-public class StockInController{
+public class StockInController {
 
     @FXML
-    private MFXTextField batchCodeTextField;
-    @FXML
-    private MFXTextField supplierTextField;
-    @FXML
-    private Label batchCodeMessage;
+    private MFXTextField batchCodeTextField, supplierTextField, batchNameTextField;
     @FXML
     private MFXDatePicker batchCreateDate;
     @FXML
+    private Label batchCodeMessage, batchNameMessage, totalPriceLabel;
+    @FXML
     private TextArea descriptionTextArea;
-    @FXML
-    private Label batchNameMessage;
-    @FXML
-    private MFXTextField batchNameTextField;
-    @FXML
-    private Button addNewRequest;
-    @FXML
-    private AnchorPane lowerPane;
-    @FXML
-    private AnchorPane upperPane;
-    @FXML
-    private Label totalPriceLabel;
     @FXML
     private VBox productList;
     @FXML
-    private Button addRow;
+    private AnchorPane lowerPane, upperPane;
     @FXML
-    private Button clearAll;
-    @FXML
-    private Button getTotalPriceBtn;
-    @FXML
-    private Button cancelBtn;
-    @FXML
-    private Button importBtn;
+    private Button addNewRequest, addRow, clearAll, getTotalPriceBtn, cancelBtn, importBtn;
 
     private double totalPrice;
-    private ObservableList<ProductCellController> cells;
+    private List<ProductCellController> cells;
     private HashSet<StockInRequest> stockInRequestList;
 
+    private static StockInController instance;
+
+    public static StockInController getInstance() {
+        if (instance == null) {
+            instance = new StockInController();
+        }
+        return instance;
+    }
     @FXML
     private void initialize() {
         lowerPane.setDisable(true);
         upperPane.setDisable(true);
-        addNewRequest.setOnAction(_-> addNewRequest());
-        addRow.setOnAction(_ -> addRow());
-        clearAll.setOnAction(_-> clearAll());
         cells = FXCollections.observableArrayList();
         stockInRequestList = new HashSet<>();
-        importBtn.setOnAction(_ -> importStockIn());
-        getTotalPriceBtn.setOnAction(_-> {
-            checkValidate();
-            getTotalPrice();});
-        cancelBtn.setOnAction(_-> cancel());
+
+        setupEventHandlers();
         setListener();
-
-
     }
-    private void addNewRequest() {
+
+    private void setupEventHandlers() {
+        addNewRequest.setOnAction(event -> enableStockInUI());
+        addRow.setOnAction(event -> addRow());
+        clearAll.setOnAction(event -> clearAll());
+        getTotalPriceBtn.setOnAction(event -> {
+            if (checkValidate()) {
+                getTotalPrice();
+            }
+        });
+        cancelBtn.setOnAction(event -> cancel());
+        importBtn.setOnAction(event -> importStockIn());
+    }
+
+    // --- Xử lý giao diện ---
+    private void enableStockInUI() {
         lowerPane.setDisable(false);
         upperPane.setDisable(false);
         addNewRequest.setDisable(true);
     }
 
-    private void addRow(){
+    private void addRow() {
         ProductCellController cell = new ProductCellController();
         productList.getChildren().add(cell.getNode());
         cell.setParentList(this);
         cells.add(cell);
         EffectHandler.getEffect(EffectType.FADE_IN, cell.getNode());
-
     }
-    public void deleteRow(ProductCellController cell){
 
+    public void deleteRow(ProductCellController cell) {
         EffectHandler.getEffect(EffectType.FADE_OUT, cell.getNode());
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(500),  _-> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(500), event -> {
             productList.getChildren().remove(cell.getNode());
             cells.remove(cell);
         }));
         timeline.setCycleCount(1);
         timeline.play();
-
-
-
     }
-    private void clearAll(){
-        if (productList != null) {
-            productList.getChildren().clear();
-        }
-        if (cells != null) {
-            cells.clear();
-        }
-        if (stockInRequestList != null) {
-            stockInRequestList.clear();
-        }
+
+    private void clearAll() {
+        productList.getChildren().clear();
+        cells.clear();
+        stockInRequestList.clear();
         totalPriceLabel.setText("0.0$");
     }
 
-    public void getTotalPrice(){
+    private void cancel() {
+        batchCodeTextField.clear();
+        supplierTextField.clear();
+        batchNameTextField.clear();
+        descriptionTextArea.clear();
+        batchCreateDate.clear();
+
+        clearAll();
+        upperPane.setDisable(true);
+        lowerPane.setDisable(true);
+        addNewRequest.setDisable(false);
+
+        resetValidationMessages();
+    }
+
+    private void resetValidationMessages() {
+        if (batchCodeMessage != null) {
+            batchCodeMessage.setText("");
+        };
+        if (batchNameMessage != null){
+            batchNameMessage.setText("");
+        }
+        batchCodeTextField.getStyleClass().remove("error");
+        batchNameTextField.getStyleClass().remove("error");
+    }
+
+    // --- Logic for UI ---
+    public void getTotalPrice() {
         totalPrice = 0.0;
-        for(StockInRequest stockInRequest : stockInRequestList){
+        for (StockInRequest stockInRequest : stockInRequestList) {
             totalPrice += stockInRequest.getQuantity() * stockInRequest.getPurchasePrice();
         }
         String formattedTotalPrice = String.format("%.3f", totalPrice);
         totalPriceLabel.setText(formattedTotalPrice + "$");
     }
 
-
-    private void importStockIn(){
+    private void importStockIn() {
         BatchInfoDTO batchInfoDTO = getBatchInfo();
-         if(batchInfoDTO == null){
-           ErrorLogger.showAlert("Invalid batch information", Alert.AlertType.ERROR);
-         }
-         else if (checkValidate()) {
-               getTotalPrice();
-               batchInfoDTO.setTotalPrice(totalPrice);
-               BatchInfoServiceImpl.getInstance().add(batchInfoDTO);
-               BatchServiceImpl batchServiceImpl = new BatchServiceImpl();
-               ProductServiceImpl productService = new ProductServiceImpl();
-               for (StockInRequest stockInRequest : stockInRequestList) {
-                   batchServiceImpl.addBatch(StockInRequestMapper.mapToBatchDTO(stockInRequest, batchInfoDTO));
-                   productService.add(StockInRequestMapper.mapToProductDTO(stockInRequest, batchInfoDTO));
-               }
-               cancel();
-       }
-
-
-    }
-
-    private void cancel (){
-
-        batchCodeTextField.clear();
-        supplierTextField.clear();
-        batchNameTextField.clear();
-        descriptionTextArea.clear();
-        batchCreateDate.clear();
-        clearAll();
-        upperPane.setDisable(true);
-        lowerPane.setDisable(true);
-        addNewRequest.setDisable(false);
-
-        if (batchCodeMessage != null) {
-            batchCodeMessage.setText("");
+        if (batchInfoDTO == null) {
+            ErrorLogger.showAlert("Invalid batch information", Alert.AlertType.ERROR);
+            return;
         }
-        if (batchNameMessage != null) {
-            batchNameMessage.setText("");
+        if (checkValidate()) {
+            getTotalPrice();
+            batchInfoDTO.setTotalPrice(totalPrice);
+            BatchInfoServiceImpl.getInstance().add(batchInfoDTO);
+            StockInServiceImpl.getInstance().stockIn(batchInfoDTO, stockInRequestList);
+            cancel();
         }
-        batchCodeTextField.getStyleClass().remove("error");
-        batchNameTextField.getStyleClass().remove("error");
-
     }
-
-
 
     private boolean checkValidate() {
         stockInRequestList.clear();
+
         for (ProductCellController cell : cells) {
             resetCellStyleClass(cell);
-            if(cell.getData()==null){
+
+            if (cell.getData() == null) {
                 ErrorLogger.showAlert("Invalid input", Alert.AlertType.ERROR);
                 cell.getNode().getStyleClass().add("error");
                 stockInRequestList.clear();
                 return false;
             }
-            if(stockInRequestList.contains(cell.getData())){
-                ErrorLogger.showAlert("Duplicate product Id", Alert.AlertType.WARNING);
+
+            if (stockInRequestList.contains(cell.getData())) {
+                ErrorLogger.showAlert("Duplicate product ID", Alert.AlertType.WARNING);
                 cell.getNode().getStyleClass().add("warning");
                 stockInRequestList.clear();
-               return false;
-            }
-            else {
-                stockInRequestList.add(cell.getData());
+                return false;
             }
 
+            stockInRequestList.add(cell.getData());
         }
+
         return true;
     }
-    
-    private void setListener(){
-        batchCodeTextField.textProperty().addListener(_-> validateBatchCode());
-        batchNameTextField.textProperty().addListener(_-> validateBatchName());
-    }
 
-    private BatchInfoDTO getBatchInfo(){
-        if (!validateBatchCode()&&!validateBatchName()){
+    private BatchInfoDTO getBatchInfo() {
+        if (!validateBatchCode() || !validateBatchName()) {
             return null;
-        }
+        };
 
         if (BatchInfoServiceImpl.getInstance().getById(Integer.parseInt(batchCodeTextField.getText())) != null) {
-            ErrorLogger.showAlert("Batch already exist", Alert.AlertType.WARNING);
+            ErrorLogger.showAlert("Batch already exists", Alert.AlertType.WARNING);
             return null;
         }
+
         BatchInfoDTO batchInfoDTO = new BatchInfoDTO();
         batchInfoDTO.setBatchId(Integer.parseInt(batchCodeTextField.getText()));
         batchInfoDTO.setSupplier(supplierTextField.getText());
         batchInfoDTO.setBatchName(batchNameTextField.getText());
         batchInfoDTO.setDescription(descriptionTextArea.getText());
-        if (batchCreateDate.getValue() != null) {
-            batchInfoDTO.setCreateDate(Timestamp.valueOf(batchCreateDate.getValue().atStartOfDay()));
+        if (batchCreateDate.getValue() == null) {
+            batchInfoDTO.setCreateDate(new Timestamp(System.currentTimeMillis()));
         }
         else {
-            batchInfoDTO.setCreateDate(new Timestamp(System.currentTimeMillis()));
+            batchInfoDTO.setCreateDate(Timestamp.valueOf(batchCreateDate.getValue().atStartOfDay()));
         }
         return batchInfoDTO;
     }
 
+    // --- util methods ---
+    private void setListener() {
+        batchCodeTextField.textProperty().addListener(event -> validateBatchCode());
+        batchNameTextField.textProperty().addListener(event -> validateBatchName());
+    }
 
-    private boolean validateBatchCode(){
+    private boolean validateBatchCode() {
         return isValidIntegerAndNotNull(batchCodeTextField, batchCodeMessage);
     }
-    private boolean validateBatchName(){
+
+    private boolean validateBatchName() {
         return isNotNull(batchNameTextField, batchNameMessage);
     }
 
     private boolean isValidIntegerAndNotNull(MFXTextField textField, Label message) {
-        return InputValidator.isNotNull(textField, message) && InputValidator.isInteger(textField, message);
+        return InputValidator.isInteger(textField, message)&&InputValidator.isNotNull(textField,message);
     }
 
     private boolean isNotNull(MFXTextField textField, Label message) {
@@ -255,9 +240,32 @@ public class StockInController{
         cell.getNode().getStyleClass().remove("warning");
     }
 
+   /* //--cache--
+    private void saveState() {
+        CacheManager.getInstance().put("batchCode", batchCodeTextField.getText());
+        CacheManager.getInstance().put("supplier", supplierTextField.getText());
+        CacheManager.getInstance().put("batchName", batchNameTextField.getText());
+        CacheManager.getInstance().put("description", descriptionTextArea.getText());
+        CacheManager.getInstance().put("batchDate", batchCreateDate.getValue());
+        CacheManager.getInstance().put("productList", FXCollections.observableArrayList(cells));
+    }
+
+    private void restoreState() {
+        batchCodeTextField.setText((String) CacheManager.getInstance().get("batchCode"));
+        supplierTextField.setText((String) CacheManager.getInstance().get("supplier"));
+        batchNameTextField.setText((String) CacheManager.getInstance().get("batchName"));
+        descriptionTextArea.setText((String) CacheManager.getInstance().get("description"));
+        batchCreateDate.setValue((LocalDate) CacheManager.getInstance().get("batchDate"));
+       List<ProductCellController> cachedCells =
+                (List<ProductCellController>) CacheManager.getInstance().get("productList");
+
+        if (cachedCells != null) {
+            productList.getChildren().clear();
+            cells.clear();
+            for (ProductCellController cell : cachedCells) {
+                productList.getChildren().add(cell.getNode());
+                cells.add(cell);
+            }
+        }
+    }*/
 }
-
-
-
-
-

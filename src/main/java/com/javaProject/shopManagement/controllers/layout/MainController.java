@@ -10,6 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -29,8 +31,10 @@ public class MainController implements Initializable {
 
   @FXML
   private StackPane contentArea;
+  private final Map<String, Parent> cache = new HashMap<>();
 
-  @Override
+
+    @Override
   public void initialize(URL location, ResourceBundle resourceBundle){
 
       exitButton.setOnAction(event -> System.exit(0));
@@ -64,7 +68,14 @@ public class MainController implements Initializable {
   }
 
   public void payment(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/payment.fxml")));
+        String pageKey = "payment";
+        Parent fxml;
+      if(cache.containsKey(pageKey)){
+          fxml = cache.get(pageKey);
+      }else {
+         fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/payment.fxml")));
+         cache.put(pageKey, fxml);
+      }
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
   }
@@ -76,8 +87,15 @@ public class MainController implements Initializable {
   }
 
   public void warehouse(javafx.event.ActionEvent actionEvent) throws IOException {
+        String pageKey = "warehouse";
+        Parent fxml;
+        if(cache.containsKey(pageKey)){
+            fxml = cache.get(pageKey);
 
-          Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/warehouse.fxml")));
+        }else{
+            fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/warehouse.fxml")));
+            cache.put(pageKey, fxml);
+        }
           contentArea.getChildren().removeAll();
           contentArea.getChildren().setAll(fxml);
 
@@ -89,7 +107,15 @@ public class MainController implements Initializable {
   }
 
   public void stockIn(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/stockIn.fxml")));
+        String pageKey = "stockIn";
+        Parent fxml;
+        if (cache.containsKey(pageKey)){
+             fxml= cache.get(pageKey);
+        }
+        else {
+            fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/stockIn.fxml")));
+            cache.put(pageKey, fxml);
+        }
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
     }

@@ -1,117 +1,151 @@
-
-.invoice_framework{
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: transparent;
-    -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0.3, 0, 5);
-}
-.invoice_list_views{
-    -fx-border-color: transparent;
-    -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0.3, 0, 5);
- }
-.bill_views{
-    -fx-background-radius: 20px;
+.filter-card{
     -fx-background-color: #FFF;
-    -fx-border-width: 2px;
+    -fx-background-radius: 25px;
+    -fx-effect: dropshadow(gaussian, gray, 10, 0.5, 0.5, 0.5);
+}
 
+.transparent-button {
+    -fx-background-color: transparent;
 }
-.bill_background{
-    -fx-background-color: #FFFFFF;
-    -fx-background-radius: 20px;
-    -fx-border-radius: 20px;
+
+.filter-card-top{
+    -fx-background-color: #001C44;
 }
-.transparent{
-    -fx-background-color: rgba(0,0,0,0);
+.filter-card-filter-button{
+    -fx-background-color: #C957BC;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
 }
-.table-view {
-    -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
-    -fx-border-color: black;
+
+.mfx-date-picker .date-picker-popup{
+    -fx-pref-width: 300px;
+    -fx-pref-height: 300px;
+}
+
+.mfx-date-picker .date-picker-popup .content {
+    -fx-background-color: #FAF9F6;
+    -fx-opacity: 1;
+    -fx-pref-width: 300px;
+    -fx-pref-height: 300px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
+}
+
+.mfx-date-picker .date-picker-popup .mfx-date-cell{
+    -fx-pref-width: 30px;
+    -fx-pref-height: 30px;
+    -fx-border-radius: 3px;
+}
+
+.mfx-date-picker .date-picker-popup .mfx-date-cell:hover {
+    -fx-text-fill: #fff;
+    -fx-background-color: #ff9999;
+    -fx-border-color: white;
     -fx-border-width: 1px;
-}
-.search_invoice_code{
-    -fx-background-radius: 20px;
-    -fx-background-color: transparent;
-    -fx-border-radius: 20px;
-    -fx-border-color: #C1C1C1;
-    -fx-cursor: text;
-}
-.search_button{
-    -fx-background-color: transparent;
-    -fx-background-radius: 100px;
-    -fx-transition: transform 0.3s ease;
-    -fx-cursor: hand;
-}
-.search_button:hover{
-    -fx-background-color: transparent;
-    -fx-background-radius: 100px;
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
-}
-.cancel_button{
     -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
-    -fx-background-color: rgba(255, 255, 255, 0.68);
-    -fx-border-color: #0063EC;
-    -fx-text-fill: #0063EC;
-    -fx-transition: all 0.3s ease;
-    -fx-cursor: hand;
-}
-.cancel_button:hover{
-    -fx-background-color: #0063EC;
-    -fx-text-fill: #FFFFFF;
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
-}
-.bill_button{
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
-    -fx-background-color: rgba(255, 255, 255, 0.68);
-    -fx-border-color: #04bd1b;
-    -fx-text-fill: #04bd1b;
-    -fx-transition: all 0.3s ease;
-    -fx-cursor: hand;
-}
-.pay_button:hover{
-    -fx-background-color: #04bd1b;
-    -fx-text-fill: #FFFFFF;
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
 }
 
 
-
+.mfx-date-picker .date-picker-popup .mfx-date-cell:selected {
+    -fx-background-color: #ff6666;
+    -fx-text-fill: #fff;
+}
 
 .mfx-text-field {
-    -fx-border-color: #ABABAB;
-    -fx-border-width: 0 0 2px 0;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-padding: 5px;
 
 }
 
 .mfx-text-field .text-field{
-    -fx-border-width: 0px;
+   -fx-background-color: transparent;
 }
-.tab-header-background {
+
+/*table views css */
+
+.table-view {
+    -fx-background-radius: 25px;
     -fx-background-color: white;
-}
-.border-radius{
-    -border-bottom-right-radius: 50px;
-    -border-top-right-radius: 50px;
-    -border-bottom-left-radius: 50px;
-    -border-top-left-radius: 50px;
-}
-.tab-pane {
+    -fx-padding: 5px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 25px;
+    -fx-border-color: #964EC2;
+    -fx-effect: dropshadow(gaussian, lightblue, 10, 0.5, 0.5, 0.5);
+    -fx-fixed-cell-size: 50px;
+    -fx-font-family: "Lato";
+    -fx-font-size: 16px;
+    -fx-text-fill: #333333;
 
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    border-radius: 0px 0px 5px 5px;
-    padding: 10px;
+}
+.column-header-background {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: #964EC2;
+}
+.table-view .column-header{
+    -fx-background-color: transparent;
 }
 
-.nav-tabs {
-    margin-bottom: 0;
+.table-row-cell {
+    -fx-cell-size: 50px;
+    -fx-border-color: transparent transparent #dcdcdc transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-style: solid;
+}
+
+
+.table-view .table-row-cell:filled:selected{
+    -fx-background-color: lightblue;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: transparent; /* Xóa màu nền hàng lẻ */
+}
+
+.table-view .table-row-cell:even {
+    -fx-background-color: transparent; /* Xóa màu nền hàng chẵn */
+}
+
+.table-row-cell:empty {
+    -fx-border-color: transparent; /* Loại bỏ viền cho các hàng trống */
+}
+
+.table-view .scroll-bar:horizontal {
+    -fx-opacity: 0; /* Ẩn thanh cuộn ngang */
+    -fx-max-height: 0; /* Loại bỏ không gian chiếm chỗ */
+}
+.table-view .table-cell {
+    -fx-alignment: center;
+    -fx-padding: 5px;
+}
+
+.table-view .column-header {
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+}
+
+.root {
+    -fx-background-color: #fff;
+    -fx-background-radius: 0 0 25 25;
+    -fx-effect: dropshadow(gaussian, lightblue, 10, 0.5, 1, 1);
+}
+.search-bar{
+    -fx-border-radius: 0px;
+    -fx-text-alignment: Center;
+    -fx-background-color: transparent;
+
+}
+
+.search-bar-container {
+    -fx-border-width: 1px;
+    -fx-border-radius: 25px;
+    -fx-border-color: #964EC2;
+}
+.mfx-combo-box {
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-radius: 0;
 }
