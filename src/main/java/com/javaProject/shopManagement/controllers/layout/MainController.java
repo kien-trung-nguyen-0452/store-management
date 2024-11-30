@@ -1,4 +1,5 @@
 package com.javaProject.shopManagement.controllers.layout;
+import com.javaProject.shopManagement.services.implementation.FileServiceImpl;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -37,7 +38,8 @@ public class MainController implements Initializable {
     @Override
   public void initialize(URL location, ResourceBundle resourceBundle){
 
-      exitButton.setOnAction(event -> System.exit(0));
+      exitButton.setOnAction(event -> {System.exit(0);
+          FileServiceImpl.getInstance().cleanTemporaryFiles();});
 
       toggleButton.setOnAction(event -> {
           Stage stage = (Stage) toggleButton.getScene().getWindow();
@@ -87,15 +89,8 @@ public class MainController implements Initializable {
   }
 
   public void warehouse(javafx.event.ActionEvent actionEvent) throws IOException {
-        String pageKey = "warehouse";
-        Parent fxml;
-        if(cache.containsKey(pageKey)){
-            fxml = cache.get(pageKey);
 
-        }else{
-            fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/warehouse.fxml")));
-            cache.put(pageKey, fxml);
-        }
+          Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/warehouse.fxml")));
           contentArea.getChildren().removeAll();
           contentArea.getChildren().setAll(fxml);
 
@@ -107,15 +102,8 @@ public class MainController implements Initializable {
   }
 
   public void stockIn(javafx.event.ActionEvent actionEvent) throws IOException {
-        String pageKey = "stockIn";
-        Parent fxml;
-        if (cache.containsKey(pageKey)){
-             fxml= cache.get(pageKey);
-        }
-        else {
-            fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/stockIn.fxml")));
-            cache.put(pageKey, fxml);
-        }
+
+        Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/stockIn.fxml")));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
     }

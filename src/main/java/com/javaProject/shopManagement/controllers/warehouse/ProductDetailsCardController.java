@@ -123,7 +123,15 @@ public class ProductDetailsCardController {
             ErrorLogger.showAlert("Invalid Input", Alert.AlertType.ERROR);
         }
         else {
-            System.out.println(productDTO.toString());
+            String officialUrl ;
+            try {
+                officialUrl = FileServiceImpl.getInstance().uploadImage(productDTO.getImageUrl());
+
+            } catch (IOException e) {
+                officialUrl = productDTO.getImageUrl();
+
+            }
+            productDTO.setImageUrl(officialUrl);
             ProductServiceImpl.getInstance().update(productDTO);
             ErrorLogger.showAlert("Product Updated", Alert.AlertType.INFORMATION);
             parent.refresh();
@@ -140,7 +148,7 @@ public class ProductDetailsCardController {
 
         File imgFile =  FileServiceImpl.getInstance().chooseImageFile((Stage) changeImgBtn.getScene().getWindow());
         try {
-            String path = FileServiceImpl.getInstance().uploadImage(imgFile);
+            String path = FileServiceImpl.getInstance().uploadTemporaryImage(imgFile);
             if(path != null) {
                 productDTO.setImageUrl(path);
                 productImg.setImage(new Image("file:" + productDTO.getImageUrl()));

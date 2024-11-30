@@ -23,7 +23,7 @@ public class BatchDAOImpl implements BatchDAO {
         long startTime = System.currentTimeMillis();
         List<Batch> batches = new ArrayList<>();
         String query = "SELECT batch_id, product_id, product_name, arrival_date, quantity, purchase_price, supplier " +
-                "FROM bacth";
+                "FROM batch";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -52,7 +52,7 @@ public class BatchDAOImpl implements BatchDAO {
 
         List<Batch> batches = new ArrayList<>();
         String query = "SELECT batch_id, product_id, product_name, arrival_date, quantity, purchase_price, supplier " +
-                "FROM bacth WHERE batch_id = ?";
+                "FROM batch WHERE batch_id = ?";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -85,7 +85,7 @@ public class BatchDAOImpl implements BatchDAO {
                 return null;
             }
             String query = "SELECT batch_id, product_id, product_name, arrival_date, quantity, purchase_price, supplier " +
-                    "FROM bacth WHERE " + condition;
+                    "FROM batch WHERE " + condition;
 
             try (Connection conn = DbUtils.getConnection();
                  PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -163,7 +163,7 @@ public class BatchDAOImpl implements BatchDAO {
     }
 
     public void delete(int batchId, int productId) {
-        String query = "DELETE FROM bacth WHERE batch_id = ? AND product_id = ?";
+        String query = "DELETE FROM batch WHERE batch_id = ? AND product_id = ?";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {

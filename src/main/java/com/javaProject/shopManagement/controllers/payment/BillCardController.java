@@ -85,9 +85,12 @@ public class BillCardController {
 
             javafx.application.Platform.runLater(() -> {
                 productQuantity.setText(String.valueOf(currentQuantity));
-                parentController.updateTotalAmount();
                 decreaseQuantityBtn.setDisable(currentQuantity == 1);
                 increaseQuantityBtn.setDisable(currentQuantity == maxQuantity);
+                setTotalPrice();
+                updateTotalPrice();
+                parentController.updateTotalAmount();
+
             });
         });
     }
@@ -114,8 +117,8 @@ public class BillCardController {
     public void increaseQuantity() {
         if (currentQuantity < maxQuantity) {
             currentQuantity++;
-            productQuantity.setText(String.valueOf(currentQuantity));
             parentController.updateTotalAmount();
+            productQuantity.setText(String.valueOf(currentQuantity));
         }
     }
 
@@ -155,6 +158,8 @@ public class BillCardController {
 
     public int getProductId(){
         return productDTO.getProductId();
+    }
+    public int getBatchId(){return productDTO.getBatchId();
     }
 
     public double getTotalPrice(){

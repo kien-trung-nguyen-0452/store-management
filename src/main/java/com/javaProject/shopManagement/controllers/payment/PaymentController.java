@@ -108,7 +108,7 @@ public class PaymentController{
 
     private void addToCart(ProductDTO product){
         for (BillCardController controller : cart) {
-            if (controller.getProductId() == product.getProductId()) {
+            if (controller.getProductId() == product.getProductId() && controller.getBatchId() == product.getBatchId()) {
                 controller.increaseQuantity();
                 updateTotalAmount();
                 return;

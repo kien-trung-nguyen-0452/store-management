@@ -98,7 +98,7 @@ public class ProductCellController implements Initializable {
 
         File imgFile =  FileServiceImpl.getInstance().chooseImageFile((Stage) uploadImageBtn.getScene().getWindow());
         try {
-            String path = FileServiceImpl.getInstance().uploadImage(imgFile);
+            String path = FileServiceImpl.getInstance().uploadTemporaryImage(imgFile);
             if(path != null) {
                 productImgUrl = path;
                 productImage.setImage(new Image("file:" + productImgUrl));

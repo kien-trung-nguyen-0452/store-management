@@ -52,9 +52,9 @@
                      <children>
                         <TableView fx:id="tableView" prefHeight="518.0" prefWidth="1106.0" VBox.vgrow="ALWAYS">
                            <columns>
-                              <TableColumn fx:id="batchCodeCol" editable="false" prefWidth="139.0" text="Batch code" />
+                              <TableColumn fx:id="batchCodeCol" editable="false" prefWidth="139.0" sortType="DESCENDING" text="Batch code" />
                               <TableColumn fx:id="batchNameCol" editable="false" prefWidth="149.0" text="Batch name" />
-                              <TableColumn fx:id="batchDateCol" editable="false" prefWidth="244.0" text="Date" />
+                              <TableColumn fx:id="batchDateCol" prefWidth="244.0" sortType="DESCENDING" text="Date" />
                               <TableColumn fx:id="batchTotalAmountCol" prefWidth="183.0" text="Total Amount" />
                               <TableColumn fx:id="batchSupplierCol" prefWidth="118.0" text="Supplier" />
                               <TableColumn fx:id="batchDescriptionCol" prefWidth="232.0" text="Description" />
@@ -70,7 +70,7 @@
             </VBox>
          </children>
       </HBox>
-      <BorderPane fx:id="filterPane" layoutX="326.0" layoutY="151.0" prefHeight="343.0" prefWidth="478.0" styleClass="filter-card">
+      <BorderPane fx:id="filterPane" layoutX="326.0" layoutY="151.0" prefHeight="343.0" prefWidth="478.0" styleClass="filter-card" visible="false">
          <center>
             <AnchorPane prefHeight="289.0" prefWidth="694.0">
                <children>

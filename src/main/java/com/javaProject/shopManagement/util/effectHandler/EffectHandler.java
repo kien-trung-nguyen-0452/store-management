@@ -68,7 +68,7 @@ public class EffectHandler {
     }
 
     private static void applyScrollDownEffect(Node node) {
-        TranslateTransition scrollDown = new TranslateTransition(Duration.millis(300), node);
+        TranslateTransition scrollDown = new TranslateTransition(Duration.millis(200), node);
         scrollDown.setFromY(-50);
         scrollDown.setToY(0);
         FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), node);
@@ -100,7 +100,7 @@ public class EffectHandler {
     public static void setShowUP(Node node, boolean isVisible){
         if(isVisible){
             getEffect(EffectType.SCALE_DOWN, node);
-            Timeline timeline = new Timeline(new KeyFrame(Duration.millis(400), event -> {
+            Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), event -> {
                 node.setVisible(false);
             })
             );

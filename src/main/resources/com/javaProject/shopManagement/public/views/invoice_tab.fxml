@@ -50,7 +50,7 @@
                         <TableView fx:id="tableView" prefHeight="518.0" prefWidth="1106.0" VBox.vgrow="ALWAYS">
                            <columns>
                               <TableColumn fx:id="invoiceCodeCol" editable="false" prefWidth="196.0" text="Invoice code" />
-                              <TableColumn fx:id="invoiceDateCol" editable="false" prefWidth="313.0" text="Date" />
+                              <TableColumn fx:id="invoiceDateCol" editable="false" prefWidth="313.0" sortType="DESCENDING" text="Date" />
                               <TableColumn fx:id="invoiceTotalAmountCol" editable="false" prefWidth="246.0" text="Total amount" />
                               <TableColumn editable="false" prefWidth="350.0" />
                            </columns>

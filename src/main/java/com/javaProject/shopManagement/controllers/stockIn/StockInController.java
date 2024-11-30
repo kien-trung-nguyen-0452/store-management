@@ -4,6 +4,7 @@ package com.javaProject.shopManagement.controllers.stockIn;
 import com.javaProject.shopManagement.dto.BatchInfoDTO;
 import com.javaProject.shopManagement.dto.StockInRequest;
 import com.javaProject.shopManagement.services.implementation.BatchInfoServiceImpl;
+import com.javaProject.shopManagement.services.implementation.FileServiceImpl;
 import com.javaProject.shopManagement.services.implementation.StockInServiceImpl;
 import com.javaProject.shopManagement.util.validator.InputValidator;
 import com.javaProject.shopManagement.util.effectHandler.EffectHandler;
@@ -21,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -77,10 +79,16 @@ public class StockInController {
             }
         });
         cancelBtn.setOnAction(event -> cancel());
-        importBtn.setOnAction(event -> importStockIn());
+        importBtn.setOnAction(event -> {
+            try {
+                importStockIn();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
-    // --- Xử lý giao diện ---
+    // --- UI ---
     private void enableStockInUI() {
         lowerPane.setDisable(false);
         upperPane.setDisable(false);
@@ -118,12 +126,10 @@ public class StockInController {
         batchNameTextField.clear();
         descriptionTextArea.clear();
         batchCreateDate.clear();
-
-        clearAll();
         upperPane.setDisable(true);
         lowerPane.setDisable(true);
         addNewRequest.setDisable(false);
-
+        clearAll();
         resetValidationMessages();
     }
 
@@ -148,7 +154,7 @@ public class StockInController {
         totalPriceLabel.setText(formattedTotalPrice + "$");
     }
 
-    private void importStockIn() {
+    private void importStockIn() throws IOException {
         BatchInfoDTO batchInfoDTO = getBatchInfo();
         if (batchInfoDTO == null) {
             ErrorLogger.showAlert("Invalid batch information", Alert.AlertType.ERROR);
@@ -158,6 +164,10 @@ public class StockInController {
             getTotalPrice();
             batchInfoDTO.setTotalPrice(totalPrice);
             BatchInfoServiceImpl.getInstance().add(batchInfoDTO);
+            for(StockInRequest stockInRequest : stockInRequestList) {
+                String officialImgUrl = FileServiceImpl.getInstance().uploadImage(stockInRequest.getImageUrl());
+                stockInRequest.setImageUrl(officialImgUrl);
+            }
             StockInServiceImpl.getInstance().stockIn(batchInfoDTO, stockInRequestList);
             cancel();
         }

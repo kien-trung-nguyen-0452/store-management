@@ -9,6 +9,9 @@ public interface FileService {
 
     public File chooseImageFile(Stage stage);
 
-    public String uploadImage(File file) throws IOException;
+    public String uploadTemporaryImage(File file) throws IOException;
 
+    public String uploadImage(String tempFilePath) throws IOException;
+
+    public void cleanTemporaryFiles();
 }
