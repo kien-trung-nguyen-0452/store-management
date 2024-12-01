@@ -34,7 +34,7 @@ public class SalesDAOImpl implements SalesDAO {
             }
 
         } catch (SQLException e) {
-            GlobalExceptionHandler.handleException(e);
+           e.printStackTrace();
         }
         return salesList;
     }
@@ -158,7 +158,6 @@ public class SalesDAOImpl implements SalesDAO {
         sales.setInvoiceId(rs.getInt("invoice_code"));
         sales.setBatchId(rs.getInt("batch_id"));
         sales.setProductId(rs.getInt("product_id"));
-        sales.setProductName(rs.getString("product_name"));
         sales.setQuantity(rs.getInt("quantity"));
         sales.setPrice(rs.getDouble("unit_price"));
         sales.setTotalAmount(rs.getDouble("total_amount"));

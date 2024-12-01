@@ -14,6 +14,12 @@ public class ProductServiceImpl implements ProductService {
     public static ProductServiceImpl getInstance(){
         return new ProductServiceImpl();
     }
+
+    @Override
+    public String getProductNameById(int productId, int batchId) {
+        return ProductDAOImpl.getInstance().getProductNameById(productId, batchId);
+    }
+
     @Override
     public void add(ProductDTO productDTO) {
         Product product = ProductMapper.toEntity(productDTO);

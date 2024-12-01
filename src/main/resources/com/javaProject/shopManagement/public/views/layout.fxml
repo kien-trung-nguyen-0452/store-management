@@ -3,26 +3,20 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane layoutX="1.0" layoutY="2.0" snapToPixel="false" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.layout.MainController">
+<AnchorPane layoutX="1.0" layoutY="2.0" prefHeight="904.0" prefWidth="1440.0" snapToPixel="false" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.layout.MainController">
    <children>
       <BorderPane fx:id="app" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
-            <Pane prefHeight="735.0" prefWidth="312.0" styleClass="left-navbar" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" />
-               </BorderPane.margin>
+            <AnchorPane prefHeight="836.0" prefWidth="206.0" styleClass="left-navbar">
                <children>
-                  <VBox layoutX="1.0" layoutY="22.0" prefHeight="430.0" prefWidth="312.0">
+                  <VBox prefHeight="430.0" prefWidth="312.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
                      <children>
                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="332.0">
                            <children>
@@ -102,27 +96,8 @@
                      </children>
                   </VBox>
                </children>
-            </Pane>
-         </left>
-         <top>
-            <AnchorPane>
-               <children>
-                  <AnchorPane layoutX="1207.0" layoutY="4.0" AnchorPane.rightAnchor="10.0">
-                     <children>
-                        <HBox fx:id="navigation" alignment="TOP_RIGHT" prefHeight="43.0" prefWidth="223.0" AnchorPane.rightAnchor="0.0">
-                           <children>
-                              <Button fx:id="hideButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" styleClass="top-navbar-button" text="Button" />
-                              <ToggleButton fx:id="toggleButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="42.0" styleClass="top-navbar-button" text="ToggleButton" />
-                              <Button fx:id="exitButton" mnemonicParsing="false" styleClass="top-navbar-button" text="Button" />
-                           </children>
-                        </HBox>
-                     </children>
-                  </AnchorPane>
-                  <Label fx:id="title" layoutX="25.0" layoutY="6.0" prefHeight="29.0" prefWidth="166.0" text="Course Project" />
-                  <ImageView fitHeight="60.0" fitWidth="95.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
             </AnchorPane>
-         </top>
+         </left>
          <center>
             <AnchorPane fx:id="root" prefHeight="715.0" prefWidth="1102.0" BorderPane.alignment="CENTER">
                <children>

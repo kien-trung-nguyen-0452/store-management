@@ -19,7 +19,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     @Override
     public List<Invoice> getAll() {
         List<Invoice> invoices = new ArrayList<>();
-        String query = "SELECT invoice_code, total_revenue, invoice_date FROM invoice";
+        String query = "SELECT invoice_code, total_revenue, invoice_date FROM invoice ORDER BY invoice_date DESC";
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             try (ResultSet rs = stmt.executeQuery()) {
@@ -49,6 +49,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     readAllFromResultSet(rs, invoice);
+                    return invoice;
                 }
             }
 
@@ -56,7 +57,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
            GlobalExceptionHandler.handleException(e);
         }
 
-        return invoice;
+        return null;
     }
 
     @Override
@@ -93,7 +94,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     @Override
     public List<Invoice> getByDateRange(Timestamp startDate, Timestamp endDate) {
         List<Invoice> invoices = new ArrayList<>();
-        String query = "SELECT invoice_code, total_revenue, invoice_date FROM invoice WHERE invoice_date BETWEEN ? AND ? ORDER BY invoice_date ASC";
+        String query = "SELECT invoice_code, total_revenue, invoice_date FROM invoice WHERE invoice_date BETWEEN ? AND ? ORDER BY invoice_date DESC ";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {

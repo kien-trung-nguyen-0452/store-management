@@ -12,6 +12,7 @@ public class SalesMapper {
         salesEntity.setPrice(dto.getPrice());
         salesEntity.setBatchId(dto.getBatchId());
         salesEntity.setProductId(dto.getProductId());
+        salesEntity.setTotalAmount(dto.getTotalAmount());
         return salesEntity;
     }
     public static SalesDTO toDTO(Sales entity){
@@ -22,6 +23,7 @@ public class SalesMapper {
         salesDTO.setPrice(entity.getPrice());
         salesDTO.setBatchId(entity.getBatchId());
         salesDTO.setProductId(entity.getProductId());
+        salesDTO.setTotalAmount(entity.getTotalAmount());
         return salesDTO;
     }
 }

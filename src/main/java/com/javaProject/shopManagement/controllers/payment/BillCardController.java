@@ -147,7 +147,8 @@ public class BillCardController {
         salesDTO.setProductId(productDTO.getProductId());
         salesDTO.setProductName(productDTO.getProductName());
         salesDTO.setQuantity(currentQuantity);
-        salesDTO.setPrice(productTotalPrice);
+        salesDTO.setPrice(productDTO.getSellingPrice());
+        salesDTO.setTotalAmount(productTotalPrice);
         return salesDTO;
     }
 

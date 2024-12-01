@@ -19,115 +19,125 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="tabPane" minHeight="0.0" minWidth="0.0" prefHeight="761.0" prefWidth="1126.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="tabPane" minHeight="0.0" minWidth="0.0" prefHeight="762.0" prefWidth="1146.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox layoutX="20.0" layoutY="74.0" prefHeight="647.0" prefWidth="1066.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+      <HBox layoutX="20.0" layoutY="74.0" prefHeight="690.0" prefWidth="1086.0" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
          <children>
-            <VBox alignment="TOP_RIGHT" prefHeight="417.0" prefWidth="1066.0" spacing="10.0" HBox.hgrow="ALWAYS">
+            <AnchorPane HBox.hgrow="ALWAYS">
                <children>
-                  <AnchorPane prefHeight="96.0" prefWidth="1066.0">
+                  <VBox prefHeight="732.0" prefWidth="1066.0" spacing="10.0" AnchorPane.bottomAnchor="-27.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="42.0" prefWidth="366.0" styleClass="search-bar-container">
+                        <AnchorPane prefHeight="42.0" prefWidth="1135.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <TextField fx:id="searchBar" prefHeight="63.0" prefWidth="286.0" promptText="Search invoice by batch code" styleClass="search-bar" />
-                              <MFXButton fx:id="searchButton" alignment="CENTER" ellipsisString="" layoutX="857.0" layoutY="59.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" styleClass="transparent-button" text=" " HBox.hgrow="ALWAYS">
-                                 <HBox.margin>
-                                    <Insets right="5.0" />
-                                 </HBox.margin>
+                              <HBox alignment="CENTER" prefHeight="42.0" prefWidth="366.0" styleClass="search-bar-container">
+                                 <children>
+                                    <TextField fx:id="searchBar" prefHeight="63.0" prefWidth="286.0" promptText="Search invoice by batch code" styleClass="search-bar" />
+                                    <MFXButton fx:id="searchButton" alignment="CENTER" ellipsisString="" layoutX="857.0" layoutY="59.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" styleClass="transparent-button" text=" " HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                       <graphic>
+                                          <FontAwesomeIconView fill="#c7c4c4" glyphName="SEARCH" size="20" />
+                                       </graphic>
+                                    </MFXButton>
+                                 </children>
+                              </HBox>
+                              <Label layoutX="430.0" prefHeight="42.0" prefWidth="323.0" text="Stock In" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane maxWidth="1066.0" prefHeight="665.0" prefWidth="1066.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <TableView fx:id="tableView" maxWidth="1073.0" prefHeight="665.0" prefWidth="1056.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+                                 <columns>
+                                    <TableColumn fx:id="batchCodeCol" editable="false" prefWidth="139.0" sortType="DESCENDING" text="Batch code" />
+                                    <TableColumn fx:id="batchNameCol" editable="false" prefWidth="149.0" text="Batch name" />
+                                    <TableColumn fx:id="batchDateCol" prefWidth="244.0" sortType="DESCENDING" text="Date" />
+                                    <TableColumn fx:id="batchTotalAmountCol" prefWidth="173.0" text="Total Amount" />
+                                    <TableColumn fx:id="batchSupplierCol" minWidth="0.0" prefWidth="123.0" text="Supplier" />
+                                    <TableColumn fx:id="batchDescriptionCol" minWidth="179.0" prefWidth="237.0" text="Description" />
+                                 </columns>
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                              </TableView>
+                              <MFXPagination fx:id="pagination" layoutX="466.0" layoutY="596.0" prefHeight="32.0" prefWidth="135.0" AnchorPane.bottomAnchor="15.0" />
+                              <BorderPane fx:id="filterPane" layoutX="187.0" prefHeight="328.0" prefWidth="459.0" styleClass="filter-card" visible="false">
+                                 <center>
+                                    <AnchorPane prefHeight="289.0" prefWidth="694.0">
+                                       <children>
+                                          <StackPane fx:id="filterContent" alignment="TOP_LEFT" layoutX="10.0" layoutY="135.0" prefHeight="51.0" prefWidth="437.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                                             <children>
+                                                <HBox fx:id="dateRangeOption" prefHeight="55.0" prefWidth="437.0" spacing="20.0">
+                                                   <children>
+                                                      <MFXDatePicker fx:id="startDatePicker" accessibleRole="DATE_PICKER" allowEdit="false" animated="false" borderGap="0.0" caretVisible="false" editable="false" floatMode="ABOVE" floatingText="From" floatingTextGap="10.0" prefHeight="54.0" prefWidth="229.0" />
+                                                      <MFXDatePicker fx:id="endDatePicker" accessibleRole="DATE_PICKER" allowEdit="false" animated="false" borderGap="0.0" caretVisible="false" editable="false" floatMode="ABOVE" floatingText="to" floatingTextGap="10.0" prefHeight="52.0" prefWidth="217.0">
+                                                         <padding>
+                                                            <Insets left="5.0" top="5.0" />
+                                                         </padding>
+                                                      </MFXDatePicker>
+                                                   </children>
+                                                </HBox>
+                                                <MFXTextField fx:id="supplierField" floatMode="ABOVE" floatingText="Filter by supplier " prefHeight="51.0" prefWidth="315.0" promptText="Supplier" visible="false" />
+                                                <MFXTextField fx:id="batchNameField" floatMode="ABOVE" floatingText="Filter by batch name" prefHeight="51.0" prefWidth="274.0" promptText="Batch name" visible="false" />
+                                             </children>
+                                          </StackPane>
+                                          <MFXButton fx:id="filterBtn" buttonType="RAISED" layoutX="305.0" layoutY="235.0" prefHeight="39.0" prefWidth="138.0" styleClass="filter-card-filter-button" text="Filter">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </MFXButton>
+                                          <MFXComboBox fx:id="filterComboBox" borderGap="15.0" editable="false" floatMode="BORDER" floatingText="Option" layoutX="10.0" layoutY="30.0" prefHeight="42.0" prefWidth="209.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </center>
+                                 <top>
+                                    <AnchorPane prefHeight="54.0" prefWidth="457.0" styleClass="filter-card-top" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <HBox alignment="TOP_RIGHT" layoutX="6.0" layoutY="13.0" prefHeight="29.0" prefWidth="446.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+                                             <children>
+                                                <Label prefHeight="29.0" prefWidth="267.0">
+                                                   <graphic>
+                                                      <Label prefHeight="29.0" prefWidth="284.0" text="Filter Batch" textFill="WHITE">
+                                                         <font>
+                                                            <Font name="Lato Bold" size="23.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </graphic>
+                                                </Label>
+                                                <MFXButton fx:id="resetFilterPaneBtn" prefHeight="26.0" prefWidth="33.0" styleClass="transparent-button" text=" ">
+                                                   <graphic>
+                                                      <FontAwesomeIconView fill="WHITE" glyphName="REFRESH" />
+                                                   </graphic>
+                                                </MFXButton>
+                                                <MFXButton fx:id="closeFilterPaneBtn" prefHeight="26.0" prefWidth="21.0" styleClass="transparent-button" text=" ">
+                                                   <graphic>
+                                                      <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" />
+                                                   </graphic>
+                                                </MFXButton>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </top>
+                              </BorderPane>
+                              <MFXButton fx:id="openFilterBtn" buttonType="RAISED" ellipsisString="" prefHeight="9.0" prefWidth="42.0" styleClass="transparent-button" AnchorPane.topAnchor="15.0">
                                  <graphic>
-                                    <FontAwesomeIconView fill="#c7c4c4" glyphName="SEARCH" size="20" />
+                                    <FontAwesomeIconView caretBias="false" glyphName="FILTER" selectionEnd="0" selectionFill="#eeebeb" selectionStart="0" size="20" textAlignment="CENTER" wrappingWidth="19.785714149475098" />
+                                 </graphic>
+                              </MFXButton>
+                              <MFXButton fx:id="refreshDataBtn" buttonType="RAISED" ellipsisString="" layoutX="42.0" layoutY="15.0" prefHeight="28.0" prefWidth="42.0" styleClass="transparent-button" AnchorPane.topAnchor="15.0">
+                                 <graphic>
+                                    <FontAwesomeIconView caretBias="false" fill="#38d7389e" glyphName="REFRESH" selectionEnd="0" selectionFill="#eeebeb" selectionStart="0" size="20" textAlignment="CENTER" wrappingWidth="19.785714149475098" />
                                  </graphic>
                               </MFXButton>
                            </children>
-                        </HBox>
-                        <Label layoutX="430.0" prefHeight="42.0" prefWidth="382.0" text="Stock In" />
-                     </children>
-                  </AnchorPane>
-                  <MFXButton fx:id="openFilterBtn" buttonType="RAISED" ellipsisString="" prefHeight="28.0" prefWidth="24.0" styleClass="transparent-button">
-                     <graphic>
-                        <FontAwesomeIconView caretBias="false" glyphName="FILTER" selectionEnd="0" selectionFill="#eeebeb" selectionStart="0" size="20" textAlignment="CENTER" wrappingWidth="19.785714149475098" />
-                     </graphic>
-                  </MFXButton>
-                  <VBox alignment="CENTER" prefHeight="623.0" prefWidth="1106.0" spacing="5.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <TableView fx:id="tableView" prefHeight="518.0" prefWidth="1106.0" VBox.vgrow="ALWAYS">
-                           <columns>
-                              <TableColumn fx:id="batchCodeCol" editable="false" prefWidth="139.0" sortType="DESCENDING" text="Batch code" />
-                              <TableColumn fx:id="batchNameCol" editable="false" prefWidth="149.0" text="Batch name" />
-                              <TableColumn fx:id="batchDateCol" prefWidth="244.0" sortType="DESCENDING" text="Date" />
-                              <TableColumn fx:id="batchTotalAmountCol" prefWidth="183.0" text="Total Amount" />
-                              <TableColumn fx:id="batchSupplierCol" prefWidth="118.0" text="Supplier" />
-                              <TableColumn fx:id="batchDescriptionCol" prefWidth="232.0" text="Description" />
-                           </columns>
-                           <effect>
-                              <Blend />
-                           </effect>
-                        </TableView>
-                        <MFXPagination fx:id="pagination" prefHeight="32.0" prefWidth="135.0" />
+                        </AnchorPane>
                      </children>
                   </VBox>
                </children>
-            </VBox>
+            </AnchorPane>
          </children>
       </HBox>
-      <BorderPane fx:id="filterPane" layoutX="326.0" layoutY="151.0" prefHeight="343.0" prefWidth="478.0" styleClass="filter-card" visible="false">
-         <center>
-            <AnchorPane prefHeight="289.0" prefWidth="694.0">
-               <children>
-                  <StackPane fx:id="filterContent" alignment="TOP_LEFT" layoutX="10.0" layoutY="135.0" prefHeight="51.0" prefWidth="437.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                     <children>
-                        <HBox fx:id="dateRangeOption" prefHeight="55.0" prefWidth="437.0" spacing="20.0">
-                           <children>
-                              <MFXDatePicker fx:id="startDatePicker" accessibleRole="DATE_PICKER" allowEdit="false" animated="false" borderGap="0.0" caretVisible="false" editable="false" floatMode="ABOVE" floatingText="From" floatingTextGap="10.0" prefHeight="54.0" prefWidth="229.0" />
-                              <MFXDatePicker fx:id="endDatePicker" accessibleRole="DATE_PICKER" allowEdit="false" animated="false" borderGap="0.0" caretVisible="false" editable="false" floatMode="ABOVE" floatingText="to" floatingTextGap="10.0" prefHeight="52.0" prefWidth="217.0">
-                                 <padding>
-                                    <Insets left="5.0" top="5.0" />
-                                 </padding>
-                              </MFXDatePicker>
-                           </children>
-                        </HBox>
-                        <MFXTextField fx:id="supplierField" floatMode="ABOVE" floatingText="Filter by supplier " prefHeight="51.0" prefWidth="315.0" promptText="Supplier" visible="false" />
-                        <MFXTextField fx:id="batchNameField" floatMode="ABOVE" floatingText="Filter by batch name" prefHeight="51.0" prefWidth="274.0" promptText="Batch name" visible="false" />
-                     </children>
-                  </StackPane>
-                  <MFXButton fx:id="filterBtn" buttonType="RAISED" layoutX="305.0" layoutY="235.0" prefHeight="39.0" prefWidth="138.0" styleClass="filter-card-filter-button" text="Filter">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </MFXButton>
-                  <MFXComboBox fx:id="filterComboBox" borderGap="15.0" editable="false" floatMode="BORDER" floatingText="Option" layoutX="10.0" layoutY="30.0" prefHeight="42.0" prefWidth="209.0" />
-               </children>
-            </AnchorPane>
-         </center>
-         <top>
-            <AnchorPane prefHeight="54.0" prefWidth="457.0" styleClass="filter-card-top" BorderPane.alignment="CENTER">
-               <children>
-                  <HBox alignment="TOP_RIGHT" layoutX="6.0" layoutY="13.0" prefHeight="29.0" prefWidth="446.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
-                     <children>
-                        <Label prefHeight="29.0" prefWidth="267.0">
-                           <graphic>
-                              <Label prefHeight="29.0" prefWidth="284.0" text="Filter Batch" textFill="WHITE">
-                                 <font>
-                                    <Font name="Lato Bold" size="23.0" />
-                                 </font>
-                              </Label>
-                           </graphic>
-                        </Label>
-                        <MFXButton fx:id="resetFilterPaneBtn" prefHeight="26.0" prefWidth="33.0" styleClass="transparent-button" text=" ">
-                           <graphic>
-                              <FontAwesomeIconView fill="WHITE" glyphName="REFRESH" />
-                           </graphic>
-                        </MFXButton>
-                        <MFXButton fx:id="closeFilterPaneBtn" prefHeight="26.0" prefWidth="21.0" styleClass="transparent-button" text=" ">
-                           <graphic>
-                              <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" />
-                           </graphic>
-                        </MFXButton>
-                     </children>
-                  </HBox>
-               </children>
-            </AnchorPane>
-         </top>
-      </BorderPane>
+      <AnchorPane fx:id="batchDetailsCard" layoutX="789.0" prefHeight="762.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

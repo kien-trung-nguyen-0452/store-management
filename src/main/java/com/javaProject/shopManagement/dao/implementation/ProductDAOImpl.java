@@ -16,6 +16,25 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
+    public String getProductNameById(int productId, int batchId) {
+        String query = "SELECT product_name FROM product where product_id = ? AND batch_id = ?";
+        String productName ="";
+        try (Connection conn = DbUtils.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);){
+            stmt.setInt(1, productId);
+            stmt.setInt(2, batchId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                productName = rs.getString("product_name");
+            }
+        }
+        catch (SQLException e) {
+            GlobalExceptionHandler.handleException(e);
+        }
+        return productName;
+    }
+
+    @Override
     public List<Product> getAll() {
         long startTime = System.currentTimeMillis();
         List<Product> products = new ArrayList<>();

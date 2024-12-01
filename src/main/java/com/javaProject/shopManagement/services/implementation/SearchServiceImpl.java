@@ -1,9 +1,12 @@
 package com.javaProject.shopManagement.services.implementation;
 
+import com.javaProject.shopManagement.dto.BatchInfoDTO;
+import com.javaProject.shopManagement.dto.InvoiceDTO;
 import com.javaProject.shopManagement.dto.ProductDTO;
 import com.javaProject.shopManagement.entity.Product;
 import com.javaProject.shopManagement.services.interfaces.SearchService;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,4 +27,46 @@ public class SearchServiceImpl implements SearchService {
         }
         return searchResult;
     }
+
+    @Override
+    public BatchInfoDTO searchBatchInfoById(String keyword) {
+       try {
+           int batchId = Integer.parseInt(keyword);
+           return BatchInfoServiceImpl.getInstance().getById(batchId);
+       }catch (NumberFormatException _){
+           return null;
+       }
+
+    }
+
+    @Override
+    public InvoiceDTO searchInvoiceById(String keyword) {
+        try{
+            int invoiceId = Integer.parseInt(keyword);
+            return InvoiceServiceImpl.getInstance().getInvoice(invoiceId);
+        }catch (NumberFormatException _){
+            return null;
+        }
+    }
+
+    @Override
+    public List<InvoiceDTO> searchInvoiceByDateRange(Timestamp start, Timestamp end) {
+        return InvoiceServiceImpl.getInstance().getInvoicesByDateRange(start, end);
+    }
+
+    @Override
+    public List<BatchInfoDTO> searchBatchInfoByDateRange(Timestamp start, Timestamp end) {
+        return BatchInfoServiceImpl.getInstance().getBatchInfoByDateRange(start, end);
+    }
+
+    @Override
+    public List<BatchInfoDTO> searchBatchInfoBySupplier(String keyword) {
+        return BatchInfoServiceImpl.getInstance().getBatchInfoBySupplier(keyword);
+    }
+
+    @Override
+    public BatchInfoDTO searchBatchInfoByBatchName(String keyword) {
+        return BatchInfoServiceImpl.getInstance().getBatchInfoByBatchName(keyword);
+    }
+
 }

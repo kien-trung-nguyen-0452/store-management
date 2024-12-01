@@ -23,7 +23,7 @@ public class BatchDAOImpl implements BatchDAO {
         long startTime = System.currentTimeMillis();
         List<Batch> batches = new ArrayList<>();
         String query = "SELECT batch_id, product_id, product_name, arrival_date, quantity, purchase_price, supplier " +
-                "FROM batch";
+                "FROM batch  ";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -58,7 +58,7 @@ public class BatchDAOImpl implements BatchDAO {
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, batchId);
             try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
+                while (rs.next()) {
                     Batch batch = new Batch();
                     readAllFromResultSet(rs, batch);
                     batches.add(batch);
@@ -72,7 +72,7 @@ public class BatchDAOImpl implements BatchDAO {
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
 
-        System.out.println("Query executed in: " + duration + " ms");
+        System.out.println("Query executed in: " + duration + " ms" + "number of result: " + batches.size());
         return batches;
     }
 

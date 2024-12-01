@@ -17,7 +17,7 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
     @Override
     public List<BatchInfo> getAll() {
         List<BatchInfo> batchInfoList = new ArrayList<>();
-        String query = "SELECT * FROM batch_infor";
+        String query = "SELECT * FROM batch_infor ORDER BY create_date DESC ";
 
         try (Connection conn = DbUtils.getConnection()){
             PreparedStatement preparedStatement = conn.prepareStatement(query);
@@ -63,10 +63,11 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
         if(condition == null || condition.isEmpty()){
             return null;
         }
-        String query = "SELECT * FROM batch_infor WHERE "+ condition;
-
+        String query = "SELECT * FROM batch_infor WHERE supplier Like ?";
+        String keyword = "%" + condition + "%";
         try(Connection conn = DbUtils.getConnection();
             PreparedStatement preparedStatement = conn.prepareStatement(query)){
+            preparedStatement.setString(1, keyword);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 BatchInfo batchInfo = new BatchInfo();
@@ -113,6 +114,65 @@ public class BatchInfoDAOImpl implements BatchInfoDAO {
             GlobalExceptionHandler.handleException(e);
         }
 
+    }
+
+    @Override
+    public void update(BatchInfo entity) {
+
+        String query = "UPDATE batch_infor SET batch_name = ?, description = ? WHERE batch_id = ?";
+
+        try(Connection conn = DbUtils.getConnection();
+            PreparedStatement preparedStatement = conn.prepareStatement(query);)
+        {
+            preparedStatement.setString(1, entity.getBatchName());
+            preparedStatement.setString(2, entity.getDescription());
+            preparedStatement.setInt(3, entity.getBatchId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<BatchInfo> getByDateRange(Timestamp start, Timestamp end) {
+        String query = "SELECT * FROM batch_infor WHERE create_date BETWEEN ? AND ? ORDER BY create_date DESC ";
+        List<BatchInfo> batchInfoList = new ArrayList<>();
+        try(Connection conn = DbUtils.getConnection();
+        PreparedStatement preparedStatement = conn.prepareStatement(query)){
+            preparedStatement.setTimestamp(1, start);
+            preparedStatement.setTimestamp(2, end);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                BatchInfo batchInfo = new BatchInfo();
+                readAllFromResultSet(resultSet, batchInfo);
+                batchInfoList.add(batchInfo);
+            }
+        }
+        catch (SQLException e){
+            GlobalExceptionHandler.handleException(e);
+        }
+        return batchInfoList;
+    }
+
+    @Override
+    public BatchInfo getByBatchName(String batchName) {
+        String query = "SELECT * FROM batch_infor WHERE batch_name LIKE?";
+
+        String keyword = "%" + batchName + "%";
+        try(Connection conn = DbUtils.getConnection();
+        PreparedStatement preparedStatement = conn.prepareStatement(query);){
+            preparedStatement.setString(1, keyword);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                BatchInfo batchInfo = new BatchInfo();
+                readAllFromResultSet(resultSet, batchInfo);
+                return batchInfo;
+            }
+        }
+        catch (SQLException e){
+            GlobalExceptionHandler.handleException(e);
+        }
+        return null;
     }
 
     private void readAllFromResultSet(ResultSet resultSet, BatchInfo batchInfo) throws SQLException {

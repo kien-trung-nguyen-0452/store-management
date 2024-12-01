@@ -34,7 +34,11 @@ public class InvoiceServiceImpl implements InvoiceService {
     @Override
     public InvoiceDTO getInvoice(int id) {
         Invoice invoice = InvoiceDAOImpl.getInstance().getById(id);
-        return InvoiceMapper.toDto(invoice);
+        if(invoice != null){
+            return InvoiceMapper.toDto(invoice);
+        }
+        else return null;
+
     }
 
     @Override

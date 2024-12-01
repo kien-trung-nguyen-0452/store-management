@@ -2,10 +2,13 @@ package com.javaProject.shopManagement.controllers.history;
 
 import com.javaProject.shopManagement.dto.BatchInfoDTO;
 import com.javaProject.shopManagement.services.implementation.BatchInfoServiceImpl;
+import com.javaProject.shopManagement.services.implementation.SearchServiceImpl;
 import com.javaProject.shopManagement.util.effectHandler.EffectHandler;
 import com.javaProject.shopManagement.util.effectHandler.EffectType;
 import com.javaProject.shopManagement.util.motion.DraggableNode;
 import io.github.palexdev.materialfx.controls.*;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +22,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 
@@ -30,6 +35,7 @@ public class StockInTabController {
         @FXML private MFXButton searchButton;
         @FXML private AnchorPane tabPane;
         @FXML private MFXButton openFilterBtn;
+        @FXML private MFXButton refreshDataBtn;
         @FXML private TableView<BatchInfoDTO> tableView;
         @FXML private TableColumn<BatchInfoDTO, String> batchCodeCol;
         @FXML private TableColumn<BatchInfoDTO, String> batchNameCol;
@@ -52,6 +58,9 @@ public class StockInTabController {
         @FXML private MFXTextField supplierField;
         @FXML private MFXTextField batchNameField;
 
+        //--Details card
+       @FXML private AnchorPane batchDetailsCard;
+
         private enum FilterOption {
             DATE_RANGE, SUPPLIER, BATCH_NAME
         }
@@ -60,6 +69,7 @@ public class StockInTabController {
 
         //--Local state
         ObservableList<BatchInfoDTO> data;
+        private final int ROWS_PER_PAGE =10;
 
         public StockInTabController(){
             try{
@@ -78,19 +88,48 @@ public class StockInTabController {
             reFresh();
             setTableColumns();
             setTableItems();
-            openFilterBtn.setOnAction(event -> {
-                openFilterPane();
-            });
+            setDetailsCard();
+            setGeneralButtons();
             setFilterPane();
 
-        }
 
+        }
 
 
         private void reFresh(){
             List<BatchInfoDTO> batchInfoDTOList = BatchInfoServiceImpl.getInstance().getAll();
-            data.addAll(batchInfoDTOList);
+            reFresh(batchInfoDTOList);
         }
+        private void reFresh(List<BatchInfoDTO> newDataList){
+            closeDetailsCard();
+            data.clear();
+            data.addAll(newDataList);
+            configurePagination();
+
+        }
+        private void reFresh(BatchInfoDTO batchInfoDTO){
+            closeDetailsCard();
+            data.clear();
+            if(batchInfoDTO != null){
+                data.add(batchInfoDTO);
+            }
+            configurePagination();
+        }
+
+        private void setGeneralButtons(){
+            openFilterBtn.setOnAction(event -> {
+                openFilterPane();
+            });
+
+            refreshDataBtn.setOnAction(event -> reFresh());
+            searchButton.setOnAction(event -> searchByBatchCode());
+
+        }
+
+    private void searchByBatchCode(){
+        reFresh(SearchServiceImpl.getInstance().searchBatchInfoById(searchBar.getText()));
+
+    }
 
         private void setTableItems(){
             tableView.setItems(data);
@@ -112,7 +151,9 @@ public class StockInTabController {
              setComboBox();
              resetFilterPaneBtn.setOnAction(event -> resetFilterPane());
              closeFilterPaneBtn.setOnAction(event -> closeFilterPane());
-             DraggableNode.setDraggable(filterPane);
+             DraggableNode draggableNode = new DraggableNode();
+             draggableNode.makeNodeDraggable(filterPane);
+
     }
 
         private void setFilterOptions(){
@@ -142,6 +183,8 @@ public class StockInTabController {
                 }
             });
         }
+
+
         private void setOptionSelected(Node optionField){
             filterContent.getChildren().clear();
             filterContent.getChildren().addAll(optionField);
@@ -149,9 +192,17 @@ public class StockInTabController {
             EffectHandler.getEffect(EffectType.SCROLL_DOWN, filterContent.getChildren().getFirst());
         }
 
-        private void filterByDateRange(){}
-        private void filterBySupplier(){}
-        private void filterByBatchName(){}
+        private void filterByDateRange(){
+            Timestamp start = Timestamp.valueOf(startDatePicker.getValue().atStartOfDay());
+            Timestamp end = Timestamp.valueOf(endDatePicker.getValue().atTime(23,59,59));
+            reFresh(SearchServiceImpl.getInstance().searchBatchInfoByDateRange(start,end));
+        }
+        private void filterBySupplier(){
+            reFresh(SearchServiceImpl.getInstance().searchBatchInfoBySupplier(supplierField.getText()));
+        }
+        private void filterByBatchName(){
+            reFresh(SearchServiceImpl.getInstance().searchBatchInfoByBatchName(batchNameField.getText()));
+        }
         private void resetFilterPane(){
             if(filterContent.getChildren().getFirst().equals(dateRangeOption)){
                 startDatePicker.clear();
@@ -172,8 +223,59 @@ public class StockInTabController {
             EffectHandler.setShowUP(filterPane, filterPane.isVisible());
         }
 
+        //--handle details card
+    private void setDetailsCard(){
+            tableView.setOnMouseClicked(event -> {
+                batchDetailsCard.getChildren().clear();
+                batchDetailsCard.setVisible(true);
+                BatchInfoDTO batchInfoDTO = tableView.getSelectionModel().getSelectedItem();
+                if(batchInfoDTO != null){
+                    BatchDetailsCardController batchDetailsCardController = new BatchDetailsCardController(batchInfoDTO, this);
+                    batchDetailsCard.getChildren().add(batchDetailsCardController.getNode());
+                    System.out.println(batchDetailsCard.getChildren().isEmpty());
+                    EffectHandler.getEffect(EffectType.FADE_IN, batchDetailsCard);
+                }
 
-        public Node getNode() {
+
+
+
+            });
+    }
+    public void closeDetailsCard(){
+        EffectHandler.getEffect(EffectType.FADE_OUT, batchDetailsCard);
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(300), event -> {
+            batchDetailsCard.getChildren().clear();
+        }));
+        timeline.setCycleCount(1);
+        timeline.play();
+    }
+
+    //--config pagination
+    private void configurePagination() {
+        int totalPages = (int) Math.ceil((double) data.size() / ROWS_PER_PAGE);
+        pagination.setMaxPage(totalPages);
+        pagination.setCurrentPage(1); // Default to first page
+
+        // Add listener to handle page change
+        pagination.currentPageProperty().addListener((observable, oldValue, newValue) -> {
+            updateTableView(newValue.intValue());
+        });
+
+        // Load the first page
+        updateTableView(1);
+    }
+
+    private void updateTableView(int page){
+        int fromIndex = (page - 1) * ROWS_PER_PAGE;
+        int toIndex = Math.min(fromIndex + ROWS_PER_PAGE, data.size());
+        List<BatchInfoDTO> pageData = data.subList(fromIndex, toIndex);
+        tableView.setItems(FXCollections.observableArrayList(pageData));
+    }
+
+
+
+
+    public Node getNode() {
             return tabPane;
         }
 

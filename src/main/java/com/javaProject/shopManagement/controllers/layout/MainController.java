@@ -38,25 +38,6 @@ public class MainController implements Initializable {
     @Override
   public void initialize(URL location, ResourceBundle resourceBundle){
 
-      exitButton.setOnAction(event -> {System.exit(0);
-          FileServiceImpl.getInstance().cleanTemporaryFiles();});
-
-      toggleButton.setOnAction(event -> {
-          Stage stage = (Stage) toggleButton.getScene().getWindow();
-          if (toggleButton.isSelected()) {
-              stage.setMaximized(true);
-          } else {
-              stage.setMaximized(false);
-              stage.setIconified(false); //
-          }
-
-      });
-
-      hideButton.setOnAction(event -> {
-          Stage stage = (Stage) hideButton.getScene().getWindow();
-          stage.setIconified(true);
-      });
-
       try  {
           Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/payment.fxml")));
           contentArea.getChildren().removeAll();

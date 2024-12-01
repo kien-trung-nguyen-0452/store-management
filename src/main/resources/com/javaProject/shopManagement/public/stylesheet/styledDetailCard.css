@@ -1,0 +1,42 @@
+.wrapper{
+    -fx-background-color: transparent;
+}
+
+.content-container{
+    -fx-background-color: transparent;
+
+
+}
+.mfx-text-field .floating-text {
+    -fx-background-color: #fff;
+}
+.mfx-text-field {
+    -fx-border-color: #964EC2;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 10px;
+    -fx-padding: 5px;
+
+}
+
+.mfx-text-field .text-field{
+    -fx-background-color: transparent;
+}
+
+
+.details-card {
+    -fx-background-color: #fff;
+    -fx-background-radius: 15px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, black, 5 ,0.5,0.5,0.5);
+}
+.mfx-button{
+
+    -fx-background-color: #C957BC;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+
+}
+.update-btn{
+
+}

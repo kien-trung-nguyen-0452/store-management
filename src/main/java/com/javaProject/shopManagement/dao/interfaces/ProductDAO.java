@@ -5,6 +5,7 @@ import com.javaProject.shopManagement.entity.Product;
 import java.util.List;
 
 public interface ProductDAO {
+    String getProductNameById(int productId, int batchId);
     List<Product> getAll();
     List<Product> getById(int id);
     List<Product> getByCondition(String condition);

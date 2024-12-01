@@ -6,6 +6,7 @@ import com.javaProject.shopManagement.mapper.BatchInfoMapper;
 import com.javaProject.shopManagement.entity.BatchInfo;
 import com.javaProject.shopManagement.services.interfaces.BatchInfoService;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,5 +43,38 @@ public class BatchInfoServiceImpl implements BatchInfoService {
     @Override
     public void delete(int batchId) {
         BatchInfoDAOImpl.getInstance().delete(batchId);
+    }
+
+    @Override
+    public void update(BatchInfoDTO batchInfoDTO) {
+        BatchInfo batchInfo = BatchInfoMapper.toEntity(batchInfoDTO);
+        BatchInfoDAOImpl.getInstance().update(batchInfo);
+
+    }
+
+    @Override
+    public List<BatchInfoDTO> getBatchInfoByDateRange(Timestamp startDate, Timestamp endDate) {
+        List<BatchInfoDTO> batchInfoDTOList = new ArrayList<>();
+        for (BatchInfo batchInfo : BatchInfoDAOImpl.getInstance().getByDateRange(startDate, endDate)) {
+            BatchInfoDTO batchInfoDTO = BatchInfoMapper.toDto(batchInfo);
+            batchInfoDTOList.add(batchInfoDTO);
+        }
+        return batchInfoDTOList;
+    }
+
+    @Override
+    public List<BatchInfoDTO> getBatchInfoBySupplier(String supplier) {
+        List<BatchInfoDTO> batchInfoDTOList = new ArrayList<>();
+        for(BatchInfo batchInfo: BatchInfoDAOImpl.getInstance().getByCondition(supplier)){
+            BatchInfoDTO batchInfoDTO = BatchInfoMapper.toDto(batchInfo);
+            batchInfoDTOList.add(batchInfoDTO);
+
+        }
+        return batchInfoDTOList;
+    }
+
+    @Override
+    public BatchInfoDTO getBatchInfoByBatchName(String batchName) {
+        return BatchInfoMapper.toDto(BatchInfoDAOImpl.getInstance().getByBatchName(batchName));
     }
 }

@@ -5,6 +5,7 @@ import com.javaProject.shopManagement.dto.ProductDTO;
 import java.util.List;
 
 public interface ProductService {
+    String getProductNameById(int productId, int batchId);
     void add(ProductDTO product);
     void update(ProductDTO product);
     void delete(int productId, int batchId);

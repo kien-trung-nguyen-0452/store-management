@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="781.0" prefWidth="559.0" styleClass="wrapper" stylesheets="@../stylesheet/styledDetailCard.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="761.0" prefWidth="437.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <top>
+            <AnchorPane prefHeight="53.0" prefWidth="437.0" BorderPane.alignment="CENTER">
+               <children>
+                  <MFXButton fx:id="cancelBtn" buttonType="RAISED" depthLevel="LEVEL4" ellipsisString="" layoutX="487.0" layoutY="16.0" prefHeight="8.0" prefWidth="9.0" text=" ">
+                     <graphic>
+                        <FontAwesomeIconView fill="#f5f5f5" glyphName="CLOSE" size="20" />
+                     </graphic>
+                  </MFXButton>
+                  <Label layoutX="96.0" layoutY="14.0">
+                     <graphic>
+                        <Label alignment="CENTER" prefHeight="31.0" prefWidth="245.0" text="Batch details" textAlignment="JUSTIFY" textFill="WHITE">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Label>
+                     </graphic>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="680.0" prefWidth="437.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </BorderPane.margin>
+               <children>
+                  <VBox alignment="TOP_RIGHT" prefHeight="672.0" prefWidth="527.0" spacing="10.0" styleClass="content-container">
+                     <children>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="149.0" prefWidth="427.0" styleClass="details-card">
+                           <children>
+                              <MFXTextField fx:id="invoiceCodeTextField" allowEdit="false" floatMode="BORDER" floatingText="Invoice code" layoutX="14.0" layoutY="14.0" prefHeight="51.0" prefWidth="221.0" />
+                              <MFXTextField fx:id="invoiceDateTextField" allowEdit="false" floatMode="BORDER" floatingText="Date" layoutX="14.0" layoutY="76.0" prefHeight="51.0" prefWidth="221.0" />
+                              <MFXTextField fx:id="invoiceTotalPriceTextField" allowEdit="false" floatMode="BORDER" floatingText="Total price" graphicTextGap="0.0" layoutX="265.0" layoutY="18.0" prefHeight="109.0" prefWidth="226.0" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </padding>
+                        </AnchorPane>
+                        <TableView fx:id="tableView" prefHeight="473.0" prefWidth="427.0">
+                           <columns>
+                              <TableColumn fx:id="productIdCol" prefWidth="65.0" text="ID" />
+                              <TableColumn fx:id="batchIdCol" prefWidth="71.0" text="Batch" />
+                              <TableColumn fx:id="productNameCol" minWidth="0.0" prefWidth="104.0" text="Name" />
+                              <TableColumn fx:id="quantityCol" prefWidth="74.0" text="Quantity" />
+                              <TableColumn fx:id="unitPriceCol" prefWidth="92.0" text="Unit price" />
+                              <TableColumn fx:id="totalPriceCol" prefWidth="110.0" text="Total price" />
+                           </columns>
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </TableView>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
