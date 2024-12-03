@@ -1,8 +1,6 @@
 package com.javaProject.shopManagement.controllers.history;
-import com.javaProject.shopManagement.dto.ProductDTO;
 import com.javaProject.shopManagement.dto.SalesDTO;
 import com.javaProject.shopManagement.dto.InvoiceDTO;
-import com.javaProject.shopManagement.services.implementation.ProductServiceImpl;
 import com.javaProject.shopManagement.services.implementation.SalesServiceImpl;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -92,6 +90,7 @@ public class InvoiceDetailsCardController {
         invoiceList = FXCollections.observableArrayList();
         List<SalesDTO> list = SalesServiceImpl.getInstance().getSalesDetails(invoiceDTO.getInvoiceId());
         invoiceList.addAll(list);
+
     }
     private void setTableView(){
         productIdCol.setCellValueFactory(salesDTO ->new SimpleStringProperty(String.valueOf (salesDTO.getValue().getProductId())));

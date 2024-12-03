@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXListView?>
+<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <AnchorPane prefHeight="706.0" prefWidth="408.0">
+               <children>
+                  <VBox layoutX="80.0" layoutY="245.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                     <children>
+                        <Label text="Product's statistic" />
+                        <MFXScrollPane prefHeight="321.0" prefWidth="388.0" />
+                        <Label text="Products close to expiry" />
+                        <MFXScrollPane prefHeight="434.0" prefWidth="205.0">
+                           <content>
+                              <VBox prefHeight="436.0" prefWidth="387.0" />
+                           </content>
+                        </MFXScrollPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="786.0" prefWidth="603.0">
+               <children>
+                  <VBox layoutX="13.0" prefHeight="706.0" prefWidth="611.0" spacing="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="20.0">
+                     <children>
+                        <MFXButton ellipsisString="" text=" ">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="FILTER" textAlignment="CENTER" wrappingWidth="9.0" />
+                           </graphic>
+                        </MFXButton>
+                        <AreaChart prefHeight="302.0" prefWidth="611.0">
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" />
+                           </yAxis>
+                        </AreaChart>
+                        <HBox alignment="CENTER" prefHeight="77.0" prefWidth="672.0" spacing="20.0">
+                           <children>
+                              <MFXTextField floatingText="Total amount" maxWidth="150.0" prefHeight="90.0" prefWidth="150.0" HBox.hgrow="ALWAYS" />
+                              <MFXTextField floatingText="Total revenue" prefHeight="90.0" prefWidth="150.0" HBox.hgrow="ALWAYS" />
+                              <MFXTextField floatingText="proportion" prefHeight="90.0" prefWidth="150.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <MFXScrollPane prefHeight="346.0" prefWidth="611.0" VBox.vgrow="ALWAYS">
+                           <content>
+                              <MFXListView prefHeight="333.0" prefWidth="594.0" />
+                           </content>
+                        </MFXScrollPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

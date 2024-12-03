@@ -42,13 +42,23 @@ public class SalesDAOImpl implements SalesDAO {
     @Override
     public List<Sales> getById(int invoice_code) {
         List<Sales> salesList = new ArrayList<>();
-        String query = "SELECT invoice_code, product_id, batch_id, quantity, unit_price, total_amount FROM sales WHERE invoice_code = ?";
+        String query = """
+              SELECT s.invoice_code, 
+                     s.product_id, 
+                     s.batch_id, 
+                     s.quantity, 
+                     s.unit_price, 
+                     s.total_amount, 
+                     p.product_name
+              FROM sales s
+              JOIN product p ON s.product_id = p.product_id AND s.batch_id = p.batch_id
+              WHERE invoice_code = ?""";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, invoice_code);
             try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
+                while (rs.next()) {
                     Sales sales = new Sales();
                     readAllFromResulSet(rs, sales);
                     salesList.add(sales);
@@ -160,6 +170,7 @@ public class SalesDAOImpl implements SalesDAO {
         sales.setProductId(rs.getInt("product_id"));
         sales.setQuantity(rs.getInt("quantity"));
         sales.setPrice(rs.getDouble("unit_price"));
+        sales.setProductName(rs.getString("product_name"));
         sales.setTotalAmount(rs.getDouble("total_amount"));
     }
 }

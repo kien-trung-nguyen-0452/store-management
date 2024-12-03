@@ -20,7 +20,6 @@ public class SalesServiceImpl implements SalesService {
         List<Sales> salesList = SalesDAOImpl.getInstance().getById(invoiceId);
         List<SalesDTO> salesDTOList = new ArrayList<>();
         for (Sales sales : salesList) {
-            sales.setProductName(ProductServiceImpl.getInstance().getProductNameById(sales.getProductId(), sales.getBatchId()));
             SalesDTO salesDTO = SalesMapper.toDTO(sales);
             salesDTOList.add(salesDTO);
         }

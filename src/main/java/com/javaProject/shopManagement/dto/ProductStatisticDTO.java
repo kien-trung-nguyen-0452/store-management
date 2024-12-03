@@ -1,22 +1,23 @@
-package com.javaProject.shopManagement.model;
+package com.javaProject.shopManagement.dto;
 
-import java.sql.Timestamp;
-
-public class ProductStatistic {
+public class ProductStatisticDTO {
     private int productId;
+    private int batchId;
     private String productName;
     private int totalSales;
     private String imageUrl;
 
-    public ProductStatistic() {
+    public ProductStatisticDTO() {
     }
 
-    public ProductStatistic(int productId, String productName, int totalSales, String imageUrl) {
+    public ProductStatisticDTO(int productId, String productName, int totalSales, int batchId, String imageUrl) {
         this.productId = productId;
         this.productName = productName;
         this.totalSales = totalSales;
+        this.batchId = batchId;
         this.imageUrl = imageUrl;
     }
+
 
     public int getProductId() {
         return productId;
@@ -42,11 +43,23 @@ public class ProductStatistic {
         this.totalSales = totalSales;
     }
 
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public int getBatchId() {
+        return batchId;
+    }
+
+    public void setBatchId(int batchId) {
+        this.batchId = batchId;
+    }
+
     public String getImageUrl() {
         return imageUrl;
     }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    @Override
+    public String toString() {
+        return "product id: " + productId + "batch id:" + batchId + ", product name: " + productName + ", total sales: " + totalSales;
     }
 }

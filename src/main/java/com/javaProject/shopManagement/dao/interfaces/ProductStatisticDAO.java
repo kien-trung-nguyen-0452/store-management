@@ -1,12 +1,12 @@
 package com.javaProject.shopManagement.dao.interfaces;
 
-import com.javaProject.shopManagement.model.ProductStatistic;
+import com.javaProject.shopManagement.dto.ProductStatisticDTO;
 
 import java.sql.Timestamp;
 import java.util.List;
 
 public interface ProductStatisticDAO {
 
-    List<ProductStatistic> getStatisticsByRange(Timestamp startDate, Timestamp endDate);
+    List<ProductStatisticDTO> getStatisticsByRange(Timestamp startDate, Timestamp endDate);
 
 }
