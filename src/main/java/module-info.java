@@ -26,5 +26,7 @@ module com.javaProject.shopManagement {
     opens com.javaProject.shopManagement.controllers.dashboard to javafx.fxml;
     exports com.javaProject.shopManagement.controllers.history;
     opens com.javaProject.shopManagement.controllers.history to javafx.fxml;
+    exports com.javaProject.shopManagement.dto.product;
+    opens com.javaProject.shopManagement.dto.product to javafx.fxml;
 
 }

@@ -1,8 +1,11 @@
 package com.javaProject.shopManagement.controllers.dashboard;
 
-import com.javaProject.shopManagement.dto.ProductStatisticDTO;
+import com.javaProject.shopManagement.dto.product.ProductStatisticDTO;
 import com.javaProject.shopManagement.dto.RevenueStatisticDTO;
 import com.javaProject.shopManagement.services.implementation.StatisticServiceImpl;
+import com.javaProject.shopManagement.util.effectHandler.EffectHandler;
+import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -15,8 +18,12 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class DailyStatisticController {
@@ -29,13 +36,21 @@ public class DailyStatisticController {
     @FXML private MFXTextField revenueTextField;
     @FXML private MFXTextField costTextField;
     @FXML private MFXTextField incomeTextField;
+    @FXML private MFXButton openFilterBtn;
 
     //--table views
     @FXML private TableView<ProductStatisticDTO> productTableView;
     @FXML private TableColumn<ProductStatisticDTO, String> idCol;
     @FXML private TableColumn<ProductStatisticDTO, String> ilusCol;
     @FXML private TableColumn<ProductStatisticDTO, String> quantityCol;
+    @FXML private TableColumn<ProductStatisticDTO, String> nameCol;
 
+    //-- Filer Pane
+    @FXML private BorderPane filterPane;
+    @FXML private MFXDatePicker dateDatePicker;
+    @FXML private MFXButton filterBtn;
+    @FXML private MFXButton resetFilterPaneBtn;
+    @FXML private MFXButton closeFilterPaneBtn;
     //--local state
 
     private ObservableList<ProductStatisticDTO> productStatisticDTOObservableList;
@@ -59,6 +74,7 @@ public class DailyStatisticController {
         date = LocalDate.now();
         productStatisticDTOObservableList = FXCollections.observableArrayList();
         setUI();
+        setFilterPane();
     }
 
     private void setUI(){
@@ -85,9 +101,19 @@ public class DailyStatisticController {
         incomeTextField.setText(String.valueOf(revenueStatisticDTO.getIncome()));
     }
     private void setProgressBars(){
-        revenueProgressBar.setProgress(1.0);
-        costProgressBar.setProgress(revenueStatisticDTO.getTotalCost()/revenueStatisticDTO.getTotalRevenue());
-        incomeProgressBar.setProgress(revenueStatisticDTO.getIncome()/revenueStatisticDTO.getTotalCost());
+        double cost = revenueStatisticDTO.getTotalCost();
+        double revenue = revenueStatisticDTO.getTotalRevenue();
+        double income  = revenueStatisticDTO.getIncome();
+        List<Double> list = new ArrayList<>(Arrays.asList(cost, revenue, income));
+        double max = Collections.max(list);
+
+        costProgressBar.setProgress(cost/max);
+        revenueProgressBar.setProgress(revenue/max);
+        if(income>=0){
+        incomeProgressBar.setProgress(income/max);}
+        else {
+            incomeProgressBar.setProgress(0);
+        }
     }
     //--handle table view
     private void setTableView(){
@@ -110,9 +136,39 @@ public class DailyStatisticController {
 
         });
         quantityCol.setCellValueFactory(product -> new SimpleStringProperty(String.valueOf(product.getValue().getTotalSales())));
+        nameCol.setCellValueFactory(product -> new SimpleStringProperty(product.getValue().getProductName()));
         productTableView.setItems(productStatisticDTOObservableList);
 
     }
+
+    //-- handle filter pane
+    //-- filter pane
+    private void setFilterPane(){
+        openFilterBtn.setOnAction(e->openFilterPane());
+        resetFilterPaneBtn.setOnAction(e->resetFilterPane());
+        closeFilterPaneBtn.setOnAction(e->{
+            resetFilterPane();
+            closeFilterPane();});
+        filterBtn.setOnAction(e->{
+            filterDate();
+        });
+
+    }
+    private void openFilterPane(){
+        EffectHandler.setShowUP(filterPane, filterPane.isVisible());
+    }
+    private void closeFilterPane(){
+        filterPane.setVisible(false);
+    }
+    private void resetFilterPane(){
+        dateDatePicker.clear();
+
+    }
+    private void filterDate(){
+        date = dateDatePicker.getValue();
+        setUI();
+    }
+
 
 
 

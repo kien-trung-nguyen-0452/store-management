@@ -2,7 +2,7 @@ package com.javaProject.shopManagement.mapper;
 
 import com.javaProject.shopManagement.dto.BatchDTO;
 import com.javaProject.shopManagement.dto.BatchInfoDTO;
-import com.javaProject.shopManagement.dto.ProductDTO;
+import com.javaProject.shopManagement.dto.product.ProductDTO;
 import com.javaProject.shopManagement.entity.BatchInfo;
 
 public class BatchInfoMapper {

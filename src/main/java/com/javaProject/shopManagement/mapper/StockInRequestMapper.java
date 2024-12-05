@@ -2,10 +2,8 @@ package com.javaProject.shopManagement.mapper;
 
 import com.javaProject.shopManagement.dto.BatchDTO;
 import com.javaProject.shopManagement.dto.BatchInfoDTO;
-import com.javaProject.shopManagement.dto.ProductDTO;
+import com.javaProject.shopManagement.dto.product.ProductDTO;
 import com.javaProject.shopManagement.dto.StockInRequest;
-import com.javaProject.shopManagement.entity.BatchInfo;
-import com.javaProject.shopManagement.entity.Product;
 
 public class StockInRequestMapper {
     public static BatchDTO mapToBatchDTO(StockInRequest stockInRequest, BatchInfoDTO batchInfoDTO) {

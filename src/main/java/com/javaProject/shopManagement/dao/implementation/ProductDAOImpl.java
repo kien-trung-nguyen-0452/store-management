@@ -1,6 +1,9 @@
 package com.javaProject.shopManagement.dao.implementation;
 import com.javaProject.shopManagement.config.DbUtils;
 import com.javaProject.shopManagement.dao.interfaces.ProductDAO;
+import com.javaProject.shopManagement.dto.product.ExpirationStatus;
+import com.javaProject.shopManagement.dto.product.ProductDTO;
+import com.javaProject.shopManagement.dto.product.ProductStatusDTO;
 import com.javaProject.shopManagement.exception.GlobalExceptionHandler;
 import com.javaProject.shopManagement.entity.Product;
 
@@ -17,46 +20,56 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public String getProductNameById(int productId, int batchId) {
-        String query = "SELECT product_name FROM product where product_id = ? AND batch_id = ?";
-        String productName ="";
+        String query = "SELECT product_name FROM product WHERE product_id = ? AND batch_id = ?";
+        String productName = "";
         try (Connection conn = DbUtils.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query);){
+             PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, productId);
             stmt.setInt(2, batchId);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                productName = rs.getString("product_name");
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    productName = rs.getString("product_name");
+                }
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             GlobalExceptionHandler.handleException(e);
         }
         return productName;
     }
 
     @Override
-    public List<Product> getAll() {
+    public List<ProductDTO> getAll() {
         long startTime = System.currentTimeMillis();
-        List<Product> products = new ArrayList<>();
-        String query = "SELECT product_id, batch_id, product_name, selling_price, image_url, quantity, expiration_date FROM product WHERE quantity>0";
+        List<ProductDTO> products = new ArrayList<>();
+        String query = """
+            SELECT p.product_id, p.batch_id, p.product_name, p.selling_price, p.image_url, p.quantity, p.expiration_date, b.purchase_price, p.manufacturer 
+            FROM product p 
+            JOIN batch b ON p.batch_id = b.batch_id AND p.product_id = b.product_id
+            WHERE p.quantity > 0
+        """;
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
-                Product product = new Product();
-                readInformationFromResultSet(rs, product);
+                ProductDTO product = new ProductDTO();
+                product.setProductId(rs.getInt("product_id"));
+                product.setBatchId(rs.getInt("batch_id"));
+                product.setProductName(rs.getString("product_name"));
+                product.setSellingPrice(rs.getDouble("selling_price"));
+                product.setImageUrl(rs.getString("image_url"));
+                product.setQuantity(rs.getInt("quantity"));
+                product.setExpirationDate(rs.getTimestamp("expiration_date"));
+                product.setManufacturer(rs.getString("manufacturer"));
+                product.setPurchasePrice(rs.getDouble("purchase_price"));
                 products.add(product);
             }
-
         } catch (SQLException e) {
             GlobalExceptionHandler.handleException(e);
         }
 
         long endTime = System.currentTimeMillis();
-        long duration = endTime - startTime;
-
-        System.out.printf("Query executed in: %d ms%n", duration);
+        System.out.printf("Query executed in: %d ms%n", (endTime - startTime));
         return products;
     }
 
@@ -64,27 +77,31 @@ public class ProductDAOImpl implements ProductDAO {
     public List<Product> getById(int id) {
         long startTime = System.currentTimeMillis();
         List<Product> products = new ArrayList<>();
-        String query = "SELECT product_id, batch_id, product_name, selling_price, image_url, quantity, expiration_date FROM product WHERE product_id = ? AND quantity >0";
+        String query = "SELECT product_id, batch_id, product_name, selling_price, image_url, quantity, expiration_date, manufacturer FROM product WHERE product_id = ? AND quantity > 0";
 
-        try(Connection conn = DbUtils.getConnection();
-        PreparedStatement stmt = conn.prepareStatement(query)){
+        try (Connection conn = DbUtils.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, id);
-        try( ResultSet rs = stmt.executeQuery()) {
+            try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     Product product = new Product();
-                    readInformationFromResultSet(rs, product);
+                    product.setProductId(rs.getInt("product_id"));
+                    product.setBatchId(rs.getInt("batch_id"));
+                    product.setProductName(rs.getString("product_name"));
+                    product.setSellingPrice(rs.getDouble("selling_price"));
+                    product.setImageUrl(rs.getString("image_url"));
+                    product.setQuantity(rs.getInt("quantity"));
+                    product.setExpirationDate(rs.getTimestamp("expiration_date"));
+                    product.setManufacturer(rs.getString("manufacturer"));
                     products.add(product);
                 }
             }
-
-        }catch (SQLException e){
+        } catch (SQLException e) {
             GlobalExceptionHandler.handleException(e);
         }
+
         long endTime = System.currentTimeMillis();
-
-        long duration = endTime - startTime;
-
-        System.out.println("Query executed in: " + duration + "= ?");
+        System.out.printf("Query executed in: %d ms%n", (endTime - startTime));
         return products;
     }
 
@@ -164,14 +181,8 @@ public class ProductDAOImpl implements ProductDAO {
             stmt.setString(6, entity.getManufacturer());
             stmt.setInt(7, entity.getProductId());
             stmt.setInt(8, entity.getBatchId());
-            int rowsUpdated = stmt.executeUpdate();
-            if (rowsUpdated > 0) {
-                System.out.println("Update successful!");
-            }
-            else {
-                System.out.println("Update failed!");
-            }
-            System.out.println(entity.toString());
+            stmt.executeUpdate();
+
         } catch (SQLException e) {
             GlobalExceptionHandler.handleException(e);
         }
@@ -218,11 +229,70 @@ public class ProductDAOImpl implements ProductDAO {
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, product_id);
             stmt.setInt(2, batch_id);
-            int rowsDeleted = stmt.executeUpdate();
+            stmt.executeUpdate();
 
         } catch (SQLException e) {
             GlobalExceptionHandler.handleException(e);
         }
+    }
+
+    @Override
+    public List<ProductStatusDTO> getExpiringProducts(int dateRange) {
+        List<ProductStatusDTO> list = new ArrayList<>();
+        String query = """
+                SELECT product_id, product_name, batch_id, expiration_date, image_url
+                FROM product
+                WHERE expiration_date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL ? DAY)
+                ORDER BY expiration_date DESC
+                """;
+        try (Connection conn = DbUtils.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, dateRange);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                ProductStatusDTO productStatusDTO = new ProductStatusDTO();
+                productStatusDTO.setExpirationStatus(ExpirationStatus.EXPIRING_SOON);
+                productStatusDTO.setProductName(rs.getString("product_name"));
+                productStatusDTO.setBatchId(rs.getInt("batch_id"));
+                productStatusDTO.setProductId(rs.getInt("product_id"));
+                productStatusDTO.setImageUrl(rs.getString("image_url"));
+                productStatusDTO.setExpirationDate(rs.getTimestamp("expiration_date"));
+                list.add(productStatusDTO);
+            }
+
+        }catch (SQLException e) {
+            GlobalExceptionHandler.handleException(e);
+        }
+        return list;
+    }
+
+    @Override
+    public List<ProductStatusDTO> getExpiredProducts() {
+        String query = """
+                SELECT product_id, product_name, batch_id, expiration_date, image_url
+                FROM product
+                WHERE expiration_date < NOW() AND quantity > 0
+                ORDER BY expiration_date DESC
+                """;
+        List<ProductStatusDTO> list = new ArrayList<>();
+        try (Connection conn = DbUtils.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                ProductStatusDTO productStatusDTO = new ProductStatusDTO();
+                productStatusDTO.setExpirationStatus(ExpirationStatus.EXPIRED);
+                productStatusDTO.setProductName(rs.getString("product_name"));
+                productStatusDTO.setBatchId(rs.getInt("batch_id"));
+                productStatusDTO.setProductId(rs.getInt("product_id"));
+                productStatusDTO.setImageUrl(rs.getString("image_url"));
+                productStatusDTO.setExpirationDate(rs.getTimestamp("expiration_date"));
+                list.add(productStatusDTO);
+            }
+
+        }catch (SQLException e) {
+            GlobalExceptionHandler.handleException(e);
+        }
+        return list;
     }
 
     private void readInformationFromResultSet(ResultSet rs, Product product) throws SQLException {
@@ -238,6 +308,7 @@ public class ProductDAOImpl implements ProductDAO {
     private void readAllFromResultSet (ResultSet rs, Product product) throws SQLException{
         readInformationFromResultSet(rs, product);
         product.setManufacturer(rs.getString("manufacturer"));
+
     }
 
 

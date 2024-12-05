@@ -1,6 +1,6 @@
 package com.javaProject.shopManagement.controllers.payment;
 
-import com.javaProject.shopManagement.dto.ProductDTO;
+import com.javaProject.shopManagement.dto.product.ProductDTO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

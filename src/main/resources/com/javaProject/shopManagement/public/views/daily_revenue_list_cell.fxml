@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="66.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MFXTextField fx:id="dateTextField" allowEdit="false" floatingText="Date" prefHeight="67.0" prefWidth="211.0" promptText="yy-mm-dd" />
+      <MFXTextField fx:id="revenueTextField" allowEdit="false" floatingText="Total revenue" prefHeight="66.0" prefWidth="164.0" promptText="0.0" />
+      <MFXTextField fx:id="incomeTextField" allowEdit="false" floatingText="total income" prefHeight="68.0" prefWidth="205.0" promptText="0.0" />
+      <MFXTextField fx:id="proportionTextField" allowEdit="false" floatingText="income proportion" prefHeight="66.0" prefWidth="244.0" promptText="\%" />
+   </children>
+</HBox>

@@ -1,6 +1,7 @@
 package com.javaProject.shopManagement.services.interfaces;
 
-import com.javaProject.shopManagement.dto.ProductDTO;
+import com.javaProject.shopManagement.dto.product.ProductDTO;
+import com.javaProject.shopManagement.dto.product.ProductStatusDTO;
 
 import java.util.List;
 
@@ -13,5 +14,8 @@ public interface ProductService {
     List<ProductDTO> getAllProducts();
     List<ProductDTO> getProductById(int id);
     ProductDTO getProductByIdAndBatch (int id, int batch);
+
+
+
 }
 

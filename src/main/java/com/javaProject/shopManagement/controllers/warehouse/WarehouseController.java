@@ -1,6 +1,6 @@
 package com.javaProject.shopManagement.controllers.warehouse;
 
-import com.javaProject.shopManagement.dto.ProductDTO;
+import com.javaProject.shopManagement.dto.product.ProductDTO;
 import com.javaProject.shopManagement.services.implementation.ProductServiceImpl;
 import com.javaProject.shopManagement.services.implementation.SearchServiceImpl;
 import com.javaProject.shopManagement.util.effectHandler.EffectHandler;

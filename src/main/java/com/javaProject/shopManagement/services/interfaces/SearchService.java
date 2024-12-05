@@ -2,8 +2,7 @@ package com.javaProject.shopManagement.services.interfaces;
 
 import com.javaProject.shopManagement.dto.BatchInfoDTO;
 import com.javaProject.shopManagement.dto.InvoiceDTO;
-import com.javaProject.shopManagement.dto.ProductDTO;
-import com.javaProject.shopManagement.entity.Product;
+import com.javaProject.shopManagement.dto.product.ProductDTO;
 
 import java.sql.Timestamp;
 import java.util.List;

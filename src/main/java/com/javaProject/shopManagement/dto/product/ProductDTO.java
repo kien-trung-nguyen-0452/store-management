@@ -1,4 +1,4 @@
-package com.javaProject.shopManagement.dto;
+package com.javaProject.shopManagement.dto.product;
 
 import java.sql.Timestamp;
 
@@ -11,12 +11,13 @@ public class ProductDTO {
     private Timestamp expirationDate;
     private String manufacturer;
     private String imageUrl;
+    private double purchasePrice;
 
     public ProductDTO() {
 
     }
 
-    public ProductDTO(int productId, int batchId, String productName, double sellingPrice, int quantity, Timestamp expirationDate, String manufacturer, String imageUrl) {
+    public ProductDTO(int productId, int batchId, String productName, double sellingPrice, int quantity, Timestamp expirationDate, String manufacturer, String imageUrl, double purchasePrice) {
         this.productId = productId;
         this.batchId = batchId;
         this.productName = productName;
@@ -25,6 +26,14 @@ public class ProductDTO {
         this.expirationDate = expirationDate;
         this.manufacturer = manufacturer;
         this.imageUrl = imageUrl;
+    }
+
+    public double getPurchasePrice() {
+        return purchasePrice;
+    }
+
+    public void setPurchasePrice(double purchasePrice) {
+        this.purchasePrice = purchasePrice;
     }
 
     public int getProductId() {

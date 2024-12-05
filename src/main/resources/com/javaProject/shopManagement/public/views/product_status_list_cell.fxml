@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox fx:id="cellRoot" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="106.0" prefWidth="333.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <MFXTextField fx:id="productIdTextField" allowEdit="false" floatingText="product id" prefHeight="0.0" prefWidth="95.0" />
+            <MFXTextField fx:id="batchIdTextField" allowEdit="false" floatingText="batch" prefHeight="51.0" prefWidth="107.0" />
+         </children>
+      </VBox>
+      <VBox>
+         <children>
+            <ImageView fx:id="productStatusImageView" fitHeight="45.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="productImageView" fitHeight="61.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </VBox>
+      <VBox prefHeight="106.0" prefWidth="125.0">
+         <children>
+            <MFXTextField fx:id="productNameTextField" allowEdit="false" floatingText="product name" prefHeight="51.0" prefWidth="127.0" />
+            <MFXTextField fx:id="expirationDateTextField" allowEdit="false" floatingText="expiration" prefHeight="51.0" prefWidth="127.0" />
+         </children>
+      </VBox>
+   </children>
+</HBox>

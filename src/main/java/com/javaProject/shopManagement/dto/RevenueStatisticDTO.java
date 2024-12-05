@@ -1,12 +1,26 @@
 package com.javaProject.shopManagement.dto;
 
+import java.sql.Timestamp;
+
 public class RevenueStatisticDTO {
     double totalRevenue;
     double totalCost;
+    String date;
 
-    public RevenueStatisticDTO(double totalRevenue, double totalCost) {
+
+    public RevenueStatisticDTO(double totalRevenue, double totalCost, String date) {
         this.totalRevenue = totalRevenue;
         this.totalCost = totalCost;
+        this.date = date;
+    }
+
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public double getTotalRevenue() {

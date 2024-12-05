@@ -1,7 +1,7 @@
 package com.javaProject.shopManagement.services.implementation;
 
 import com.javaProject.shopManagement.dto.InvoiceDTO;
-import com.javaProject.shopManagement.dto.ProductDTO;
+import com.javaProject.shopManagement.dto.product.ProductDTO;
 import com.javaProject.shopManagement.dto.SalesDTO;
 import com.javaProject.shopManagement.services.interfaces.PaymentService;
 

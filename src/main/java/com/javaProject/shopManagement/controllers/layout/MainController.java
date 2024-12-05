@@ -1,5 +1,4 @@
 package com.javaProject.shopManagement.controllers.layout;
-import com.javaProject.shopManagement.services.implementation.FileServiceImpl;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -8,7 +7,6 @@ import javafx.scene.Parent;
 import java.io.IOException;
 
 import javafx.fxml.Initializable;
-import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -77,7 +75,7 @@ public class MainController implements Initializable {
 
   }
   public void dashboard(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/dashboad.fxml")));
+        Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/dashboard.fxml")));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
   }

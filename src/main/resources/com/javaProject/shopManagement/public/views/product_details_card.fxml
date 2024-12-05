@@ -112,25 +112,26 @@
                   <MFXTextField fx:id="productQuantityTextField" allowEdit="false" borderGap="0.0" caretVisible="false" floatingText="Remain quantity" prefHeight="51.0" prefWidth="180.0" styleClass="mfx-text-field" />
                   <MFXTextField fx:id="productIdTextField" allowEdit="false" borderGap="0.0" caretVisible="false" floatingText="Product id" prefHeight="51.0" prefWidth="180.0" />
                   <MFXTextField fx:id="batchIdTextField" allowEdit="false" borderGap="0.0" caretVisible="false" editable="false" floatingText="Batch id" prefHeight="51.0" prefWidth="180.0" />
+                  <MFXTextField fx:id="purchasePriceTextField" floatingText="Purchase price" prefHeight="51.0" prefWidth="180.0" />
                   <MFXTextField fx:id="manufacturerTextField" allowEdit="false" borderGap="0.0" caretVisible="false" editable="false" floatingText="Manufacturer" prefHeight="51.0" prefWidth="180.0" />
                   <MFXTextField fx:id="expirationDateTextField" allowEdit="false" borderGap="0.0" caretVisible="false" editable="false" floatingText="Expiration date" prefHeight="51.0" prefWidth="180.0" />
                </children>
             </VBox>
             <HBox prefHeight="27.0" prefWidth="190.0" spacing="20.0">
                <children>
-                  <Button fx:id="deleteProductBtn" layoutX="14.0" layoutY="587.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" styleClass="delete_button" stylesheets="@../stylesheet/warehouse.css" text="Delete">
+                  <MFXButton fx:id="deleteProductBtn" layoutX="14.0" layoutY="587.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" styleClass="delete_button" stylesheets="@../stylesheet/warehouse.css" text="Delete">
                      <graphic>
                         <FontAwesomeIconView fill="WHITE" glyphName="TRASH" size="17" />
                      </graphic>
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="updateButton" layoutX="124.0" layoutY="587.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" styleClass="update_button" stylesheets="@../stylesheet/warehouse.css" text="Update">
+                  </MFXButton>
+                  <MFXButton fx:id="updateButton" layoutX="124.0" layoutY="587.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" styleClass="update_button" stylesheets="@../stylesheet/warehouse.css" text="Update">
                      <graphic>
-                        <FontAwesomeIconView fx:id="updateProductBtn" fill="WHITE" glyphName="REFRESH" size="17" />
+                        <FontAwesomeIconView fill="WHITE" glyphName="REFRESH" size="17" />
                      </graphic>
-                  </Button>
+                  </MFXButton>
                </children>
                <VBox.margin>
                   <Insets top="5.0" />

@@ -3,7 +3,7 @@ package com.javaProject.shopManagement.dao.implementation;
 import com.javaProject.shopManagement.config.DbUtils;
 import com.javaProject.shopManagement.dao.interfaces.ProductStatisticDAO;
 import com.javaProject.shopManagement.exception.GlobalExceptionHandler;
-import com.javaProject.shopManagement.dto.ProductStatisticDTO;
+import com.javaProject.shopManagement.dto.product.ProductStatisticDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class ProductStatisticDAOImpl implements ProductStatisticDAO {
             JOIN 
                 invoice i ON i.invoice_code = s.invoice_code
             JOIN 
-                product p ON s.product_id = p.product_id
+                product p ON s.product_id = p.product_id AND s.batch_id = p.batch_id
             WHERE 
                 i.invoice_date BETWEEN ? AND ?
             GROUP BY 

@@ -1,7 +1,7 @@
 package com.javaProject.shopManagement.controllers.payment;
 
 import com.javaProject.shopManagement.dto.InvoiceDTO;
-import com.javaProject.shopManagement.dto.ProductDTO;
+import com.javaProject.shopManagement.dto.product.ProductDTO;
 import com.javaProject.shopManagement.dto.SalesDTO;
 import com.javaProject.shopManagement.services.implementation.PaymentServiceImpl;
 import com.javaProject.shopManagement.services.implementation.SearchServiceImpl;
@@ -134,6 +134,10 @@ public class PaymentController{
         invoiceDTO.setDate(new Timestamp(System.currentTimeMillis()));
         invoiceDTO.setTotalAmount(totalAmount);
 
+        if(cart.isEmpty()){
+            ErrorLogger.showAlert("No product found", Alert.AlertType.INFORMATION);
+            return;
+        }
         List<SalesDTO> salesDTOList = new ArrayList<>();
         for(BillCardController controller : cart){
             salesDTOList.add(controller.getInvoiceDetails());
@@ -142,6 +146,7 @@ public class PaymentController{
         ErrorLogger.showAlert("Pay success", Alert.AlertType.INFORMATION);
         clear();
     }
+
     private void cancel(){
         if (ErrorLogger.getChoiceBox("Cancel", "Are you sure to cancel payment request?")){
            clear();
@@ -150,9 +155,11 @@ public class PaymentController{
     }
 
     private void clear(){
-        cart.clear();
+
         billList.getChildren().clear();
+        cart.clear();
         searchBar.clear();
+        totalAmountLabel.setText("");
     }
 
 }

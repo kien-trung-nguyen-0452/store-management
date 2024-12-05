@@ -1,4 +1,4 @@
-package com.javaProject.shopManagement.dto;
+package com.javaProject.shopManagement.dto.product;
 
 public class ProductStatisticDTO {
     private int productId;

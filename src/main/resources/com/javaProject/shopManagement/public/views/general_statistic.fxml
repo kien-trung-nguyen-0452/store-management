@@ -1,49 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXListView?>
-<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
-<?import io.github.palexdev.materialfx.controls.MFXTextField?>
-<?import javafx.scene.chart.AreaChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="806.0" prefWidth="1159.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <HBox prefHeight="786.0" prefWidth="1048.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
          <children>
-            <AnchorPane prefHeight="706.0" prefWidth="408.0">
+            <AnchorPane prefHeight="786.0" prefWidth="471.0" HBox.hgrow="ALWAYS">
                <children>
-                  <VBox layoutX="80.0" layoutY="245.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                  <VBox layoutX="1.0" layoutY="68.0" prefHeight="722.0" prefWidth="365.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="68.0">
                      <children>
-                        <Label text="Product's statistic" />
-                        <MFXScrollPane prefHeight="321.0" prefWidth="388.0" />
-                        <Label text="Products close to expiry" />
-                        <MFXScrollPane prefHeight="434.0" prefWidth="205.0">
-                           <content>
-                              <VBox prefHeight="436.0" prefWidth="387.0" />
-                           </content>
-                        </MFXScrollPane>
+                        <Label prefHeight="0.0" prefWidth="157.0" text="Products close to expiry" />
+                        <ListView fx:id="expiringProductListView" prefHeight="308.0" prefWidth="329.0" />
+                        <Label text="Expired products" />
+                        <ListView fx:id="expiredProductListView" prefHeight="360.0" prefWidth="332.0" />
                      </children>
                   </VBox>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="786.0" prefWidth="603.0">
+            <AnchorPane prefHeight="786.0" prefWidth="939.0" HBox.hgrow="ALWAYS">
                <children>
-                  <VBox layoutX="13.0" prefHeight="706.0" prefWidth="611.0" spacing="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="20.0">
+                  <VBox layoutX="13.0" prefHeight="770.0" prefWidth="757.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                      <children>
-                        <MFXButton ellipsisString="" text=" ">
+                        <MFXButton fx:id="openFilterBtn" ellipsisString="" text=" ">
                            <graphic>
                               <FontAwesomeIconView glyphName="FILTER" textAlignment="CENTER" wrappingWidth="9.0" />
                            </graphic>
                         </MFXButton>
-                        <AreaChart prefHeight="302.0" prefWidth="611.0">
+                        <AreaChart fx:id="revenueChart" prefHeight="375.0" prefWidth="783.0" title="Chart" VBox.vgrow="ALWAYS">
                            <xAxis>
                               <CategoryAxis side="BOTTOM" />
                            </xAxis>
@@ -51,20 +40,67 @@
                               <NumberAxis side="LEFT" />
                            </yAxis>
                         </AreaChart>
-                        <HBox alignment="CENTER" prefHeight="77.0" prefWidth="672.0" spacing="20.0">
+                        <HBox alignment="CENTER" prefHeight="77.0" prefWidth="672.0" spacing="20.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <MFXTextField floatingText="Total amount" maxWidth="150.0" prefHeight="90.0" prefWidth="150.0" HBox.hgrow="ALWAYS" />
-                              <MFXTextField floatingText="Total revenue" prefHeight="90.0" prefWidth="150.0" HBox.hgrow="ALWAYS" />
-                              <MFXTextField floatingText="proportion" prefHeight="90.0" prefWidth="150.0" HBox.hgrow="ALWAYS" />
+                              <MFXTextField fx:id="totalRevenueTextField" allowEdit="false" floatingText="Total revenue" prefHeight="90.0" prefWidth="150.0" HBox.hgrow="ALWAYS" />
+                              <MFXTextField fx:id="totalIncomeTextField" allowEdit="false" floatingText="Total amount" maxWidth="150.0" prefHeight="69.0" prefWidth="150.0" HBox.hgrow="ALWAYS" />
+                              <MFXTextField fx:id="proportionTextField" allowEdit="false" floatingText="proportion" prefHeight="90.0" prefWidth="150.0" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
-                        <MFXScrollPane prefHeight="346.0" prefWidth="611.0" VBox.vgrow="ALWAYS">
+                        <MFXScrollPane prefHeight="278.0" prefWidth="757.0" VBox.vgrow="ALWAYS">
                            <content>
-                              <MFXListView prefHeight="333.0" prefWidth="594.0" />
+                              <ListView fx:id="dailyRevenueListView" prefHeight="269.0" prefWidth="868.0" />
                            </content>
                         </MFXScrollPane>
                      </children>
                   </VBox>
+                  <BorderPane fx:id="filterPane" layoutX="-2.0" layoutY="48.0" prefHeight="169.0" prefWidth="513.0" style="-fx-background-color: gray;" styleClass="filter-card" visible="false">
+                     <center>
+                        <AnchorPane prefHeight="172.0" prefWidth="308.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <HBox fx:id="dateRangeOption" alignment="CENTER" layoutY="2.0" prefHeight="125.0" prefWidth="316.0" spacing="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                                 <children>
+                                    <MFXDatePicker fx:id="dateDatePicker" accessibleRole="DATE_PICKER" allowEdit="false" animated="false" borderGap="0.0" caretVisible="false" editable="false" floatMode="ABOVE" floatingText="Date" floatingTextGap="10.0" prefHeight="54.0" prefWidth="229.0" />
+                                    <MFXButton fx:id="filterBtn" buttonType="RAISED" prefHeight="39.0" prefWidth="138.0" styleClass="filter-card-filter-button" text="Filter">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </MFXButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                     <top>
+                        <AnchorPane prefHeight="42.0" prefWidth="357.0" styleClass="filter-card-top" BorderPane.alignment="CENTER">
+                           <children>
+                              <HBox alignment="TOP_RIGHT" layoutX="6.0" layoutY="13.0" prefHeight="29.0" prefWidth="319.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1.0">
+                                 <children>
+                                    <Label prefHeight="29.0" prefWidth="267.0">
+                                       <graphic>
+                                          <Label prefHeight="29.0" prefWidth="284.0" text="Pick start date" textFill="WHITE">
+                                             <font>
+                                                <Font name="Lato Bold" size="23.0" />
+                                             </font>
+                                          </Label>
+                                       </graphic>
+                                    </Label>
+                                    <MFXButton fx:id="resetFilterPaneBtn" prefHeight="26.0" prefWidth="33.0" styleClass="transparent-button" text=" ">
+                                       <graphic>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="REFRESH" />
+                                       </graphic>
+                                    </MFXButton>
+                                    <MFXButton fx:id="closeFilterPaneBtn" prefHeight="26.0" prefWidth="60.0" styleClass="transparent-button" text=" ">
+                                       <graphic>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" />
+                                       </graphic>
+                                    </MFXButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </top>
+                  </BorderPane>
                </children>
             </AnchorPane>
          </children>

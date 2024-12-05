@@ -1,7 +1,8 @@
 package com.javaProject.shopManagement.services.implementation;
 
 import com.javaProject.shopManagement.dao.implementation.ProductDAOImpl;
-import com.javaProject.shopManagement.dto.ProductDTO;
+import com.javaProject.shopManagement.dto.product.ProductDTO;
+import com.javaProject.shopManagement.dto.product.ProductStatusDTO;
 import com.javaProject.shopManagement.mapper.ProductMapper;
 import com.javaProject.shopManagement.entity.Product;
 import com.javaProject.shopManagement.services.interfaces.ProductService;
@@ -50,13 +51,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductDTO> getAllProducts() {
-        List<Product> products = ProductDAOImpl.getInstance().getAll();
-        List<ProductDTO> productDTOS = new ArrayList<>();
-        for (Product product : products) {
-            ProductDTO productDTO = ProductMapper.toDto(product);
-            productDTOS.add(productDTO);
-        }
-        return productDTOS;
+       return ProductDAOImpl.getInstance().getAll();
     }
 
     @Override
@@ -75,5 +70,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = ProductDAOImpl.getInstance().getByIdAndBatchId(productId, batchId);
         return ProductMapper.toDto(product);
     }
+
+
 
 }

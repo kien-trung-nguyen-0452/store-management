@@ -1,6 +1,6 @@
 package com.javaProject.shopManagement.dao.interfaces;
 
-import com.javaProject.shopManagement.dto.ProductStatisticDTO;
+import com.javaProject.shopManagement.dto.product.ProductStatisticDTO;
 
 import java.sql.Timestamp;
 import java.util.List;
