@@ -38,7 +38,7 @@ public class ProductStatusListCellController extends ListCell<ProductStatusDTO> 
             productIdTextField.setText(String.valueOf(productStatusDTO.getProductId()));
             batchIdTextField.setText(String.valueOf(productStatusDTO.getBatchId()));
             productNameTextField.setText(productStatusDTO.getProductName());
-            expirationDateTextField.setText(String.valueOf(productStatusDTO.getExpirationDate()).substring(0,9));
+            expirationDateTextField.setText(String.valueOf(productStatusDTO.getExpirationDate()).substring(0,10));
             productImageView.setImage(new Image("file:" +productStatusDTO.getImageUrl()));
             productStatusImageView.setImage(productStatusDTO.getExpirationStatus().getImage());
             setGraphic(cellRoot);
