@@ -76,7 +76,7 @@ public class SalesDAOImpl implements SalesDAO {
             List<Sales> salesList = new ArrayList<>();
             if (condition == null || condition.isEmpty()) {
                 System.out.println("Condition cannot be null or empty");
-                return null;
+                return new ArrayList<>();
             }
             String query = "SELECT invoice_code, product_id, batch_id, quantity, unit_price, total_amount FROM sales WHERE " + condition;
 
@@ -97,7 +97,7 @@ public class SalesDAOImpl implements SalesDAO {
     }
 
     @Override
-    public void add(Sales entity) {
+    public void add(Sales entity)  {
         String query = "INSERT INTO sales (invoice_code, product_id, batch_id, quantity, unit_price, total_amount) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = DbUtils.getConnection();

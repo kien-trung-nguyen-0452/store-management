@@ -24,6 +24,7 @@ public class DbUtils {
             GlobalExceptionHandler.handleException(e);
             System.out.println("Fail to connecting" + e.getMessage());
         }
+
         return connection;
     }
 }

@@ -11,6 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import com.javaProject.shopManagement.exception.DatabaseConnectionException;
+import com.javaProject.shopManagement.exception.QueryExecutionException;
+import com.javaProject.shopManagement.exception.DataNotFoundException;
 
 public class BatchDAOImpl implements BatchDAO {
 
@@ -22,8 +25,7 @@ public class BatchDAOImpl implements BatchDAO {
     public List<Batch> getAll() {
         long startTime = System.currentTimeMillis();
         List<Batch> batches = new ArrayList<>();
-        String query = "SELECT batch_id, product_id, product_name, arrival_date, quantity, purchase_price, supplier " +
-                "FROM batch  ";
+        String query = "SELECT batch_id, product_id, product_name, arrival_date, quantity, purchase_price, supplier FROM batch";
 
         try (Connection conn = DbUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -33,18 +35,27 @@ public class BatchDAOImpl implements BatchDAO {
                     readAllFromResultSet(rs, batch);
                     batches.add(batch);
                 }
-
             }
-        }catch (SQLException e) {
-            GlobalExceptionHandler.handleException(e);
+        } catch (SQLException e) {
+            throw new DatabaseConnectionException("Failed to connect to the database.", e);
+        } catch (RuntimeException e) {
+            throw new QueryExecutionException("Error executing query: " + query, e);
         }
 
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
 
         System.out.printf("Query executed in: %d ms%n", duration);
+
+        if (batches.isEmpty()) {
+            throw new DataNotFoundException("No batches found.");
+        }
+
         return batches;
     }
+
+
+
 
     @Override
     public List<Batch> getById(int batchId) {
