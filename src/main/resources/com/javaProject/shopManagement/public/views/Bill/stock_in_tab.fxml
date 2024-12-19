@@ -8,6 +8,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -19,22 +20,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="tabPane" minHeight="0.0" minWidth="0.0" prefHeight="762.0" prefWidth="1146.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="tabPane" minHeight="0.0" minWidth="0.0" prefHeight="762.0" prefWidth="1146.0" stylesheets="@../../stylesheet/bill.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox layoutX="20.0" layoutY="74.0" prefHeight="690.0" prefWidth="1086.0" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
+      <HBox layoutX="20.0" layoutY="74.0" prefHeight="690.0" prefWidth="1104.0" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
          <children>
-            <AnchorPane HBox.hgrow="ALWAYS">
+            <AnchorPane prefHeight="606.0" prefWidth="1086.0" HBox.hgrow="ALWAYS">
                <children>
-                  <VBox prefHeight="732.0" prefWidth="1066.0" spacing="10.0" AnchorPane.bottomAnchor="-27.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                  <VBox alignment="CENTER" prefHeight="717.0" prefWidth="1066.0" spacing="10.0" AnchorPane.bottomAnchor="-27.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane prefHeight="42.0" prefWidth="1135.0" VBox.vgrow="ALWAYS">
+                        <AnchorPane prefHeight="42.0" prefWidth="1084.0">
                            <children>
-                              <HBox alignment="CENTER" prefHeight="42.0" prefWidth="366.0" styleClass="search-bar-container">
+                              <HBox alignment="CENTER" layoutX="347.0" layoutY="1.0" prefHeight="42.0" prefWidth="366.0" styleClass="search-bar-container" AnchorPane.leftAnchor="347.0">
                                  <children>
-                                    <TextField fx:id="searchBar" prefHeight="63.0" prefWidth="286.0" promptText="Search invoice by batch code" styleClass="search-bar" />
-                                    <MFXButton fx:id="searchButton" alignment="CENTER" ellipsisString="" layoutX="857.0" layoutY="59.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" styleClass="transparent-button" text=" " HBox.hgrow="ALWAYS">
+                                    <TextField fx:id="searchBar" prefHeight="63.0" prefWidth="310.0" promptText="Search invoice by batch code" styleClass="search-bar" />
+                                    <MFXButton fx:id="searchButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" ellipsisString="" layoutX="857.0" layoutY="59.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="transparent-button" text=" " HBox.hgrow="ALWAYS">
                                        <HBox.margin>
-                                          <Insets right="5.0" />
+                                          <Insets />
                                        </HBox.margin>
                                        <graphic>
                                           <FontAwesomeIconView fill="#c7c4c4" glyphName="SEARCH" size="20" />
@@ -42,26 +43,57 @@
                                     </MFXButton>
                                  </children>
                               </HBox>
-                              <Label layoutX="430.0" prefHeight="42.0" prefWidth="323.0" text="Stock In" />
+                              <HBox alignment="CENTER" spacing="10.0">
+                                 <children>
+                                    <Label text="Project" textFill="#2b49b3">
+                                       <font>
+                                          <Font name="System Bold" size="30.0" />
+                                       </font>
+                                       <graphic>
+                                          <FontAwesomeIconView fill="#2b49b3" glyphName="SHOPPING_BAG" textAlignment="CENTER" />
+                                       </graphic>
+                                    </Label>
+                                    <Separator orientation="VERTICAL" prefHeight="5.0" styleClass="mySeparator" stylesheets="@../../stylesheet/payment.css">
+                                       <padding>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </padding>
+                                    </Separator>
+                                    <Label text="Stockin" textFill="#2b49b3">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
                            </children>
                         </AnchorPane>
-                        <AnchorPane maxWidth="1066.0" prefHeight="665.0" prefWidth="1066.0" VBox.vgrow="ALWAYS">
+                        <AnchorPane maxWidth="1110.0" prefHeight="662.0" prefWidth="1110.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <TableView fx:id="tableView" maxWidth="1073.0" prefHeight="665.0" prefWidth="1056.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+                              <MFXButton fx:id="openFilterBtn" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" ellipsisString="" layoutX="14.0" layoutY="50.0" prefHeight="30.0" prefWidth="30.0" styleClass="filter_button" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="45.0">
+                                 <graphic>
+                                    <FontAwesomeIconView caretBias="false" glyphName="FILTER" selectionEnd="0" selectionFill="#eeebeb" selectionStart="0" size="20" textAlignment="CENTER" wrappingWidth="19.785714149475098" />
+                                 </graphic>
+                              </MFXButton>
+                              <MFXButton fx:id="refreshDataBtn" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" ellipsisString="" layoutX="64.0" layoutY="50.0" prefHeight="30.0" prefWidth="30.0" styleClass="update_button" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="45.0">
+                                 <graphic>
+                                    <FontAwesomeIconView caretBias="false" fill="#38d7389e" glyphName="REFRESH" selectionEnd="0" selectionFill="#eeebeb" selectionStart="0" size="20" textAlignment="CENTER" wrappingWidth="19.785714149475098" />
+                                 </graphic>
+                              </MFXButton>
+                              <TableView fx:id="tableView" layoutY="80.0" maxWidth="1073.0" prefHeight="535.0" prefWidth="1056.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
                                  <columns>
                                     <TableColumn fx:id="batchCodeCol" editable="false" prefWidth="139.0" sortType="DESCENDING" text="Batch code" />
                                     <TableColumn fx:id="batchNameCol" editable="false" prefWidth="149.0" text="Batch name" />
                                     <TableColumn fx:id="batchDateCol" prefWidth="244.0" sortType="DESCENDING" text="Date" />
                                     <TableColumn fx:id="batchTotalAmountCol" prefWidth="173.0" text="Total Amount" />
-                                    <TableColumn fx:id="batchSupplierCol" minWidth="0.0" prefWidth="123.0" text="Supplier" />
-                                    <TableColumn fx:id="batchDescriptionCol" minWidth="179.0" prefWidth="237.0" text="Description" />
+                                    <TableColumn fx:id="batchSupplierCol" minWidth="0.0" prefWidth="150.4000244140625" text="Supplier" />
+                                    <TableColumn fx:id="batchDescriptionCol" minWidth="179.0" prefWidth="245.60001220703134" text="Description" />
                                  </columns>
                                  <effect>
                                     <Blend />
                                  </effect>
                               </TableView>
-                              <MFXPagination fx:id="pagination" layoutX="466.0" layoutY="596.0" prefHeight="32.0" prefWidth="135.0" AnchorPane.bottomAnchor="15.0" />
-                              <BorderPane fx:id="filterPane" layoutX="187.0" prefHeight="328.0" prefWidth="459.0" styleClass="filter-card" visible="false">
+                              <MFXPagination fx:id="pagination" layoutX="466.0" layoutY="596.0" prefHeight="32.0" prefWidth="135.0" AnchorPane.bottomAnchor="-1.0" />
+                              <BorderPane fx:id="filterPane" layoutX="187.0" prefHeight="328.0" prefWidth="459.0" styleClass="filter-card" visible="false" AnchorPane.topAnchor="15.0">
                                  <center>
                                     <AnchorPane prefHeight="289.0" prefWidth="694.0">
                                        <children>
@@ -120,16 +152,6 @@
                                     </AnchorPane>
                                  </top>
                               </BorderPane>
-                              <MFXButton fx:id="openFilterBtn" buttonType="RAISED" ellipsisString="" prefHeight="9.0" prefWidth="42.0" styleClass="transparent-button" AnchorPane.topAnchor="15.0">
-                                 <graphic>
-                                    <FontAwesomeIconView caretBias="false" glyphName="FILTER" selectionEnd="0" selectionFill="#eeebeb" selectionStart="0" size="20" textAlignment="CENTER" wrappingWidth="19.785714149475098" />
-                                 </graphic>
-                              </MFXButton>
-                              <MFXButton fx:id="refreshDataBtn" buttonType="RAISED" ellipsisString="" layoutX="42.0" layoutY="15.0" prefHeight="28.0" prefWidth="42.0" styleClass="transparent-button" AnchorPane.topAnchor="15.0">
-                                 <graphic>
-                                    <FontAwesomeIconView caretBias="false" fill="#38d7389e" glyphName="REFRESH" selectionEnd="0" selectionFill="#eeebeb" selectionStart="0" size="20" textAlignment="CENTER" wrappingWidth="19.785714149475098" />
-                                 </graphic>
-                              </MFXButton>
                            </children>
                         </AnchorPane>
                      </children>

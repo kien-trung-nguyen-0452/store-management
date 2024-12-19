@@ -53,7 +53,7 @@ public class BatchDetailsCardController {
 
         try{
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(BatchDetailsCardController.class.getResource("/com/javaProject/shopManagement/public/views/batch_details.fxml"));
+            fxmlLoader.setLocation(BatchDetailsCardController.class.getResource("/com/javaProject/shopManagement/public/views/Bill/batch_details.fxml"));
             fxmlLoader.setController(this);
             root = fxmlLoader.load();
         }catch (Exception e){

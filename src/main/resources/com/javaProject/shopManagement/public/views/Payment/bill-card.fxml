@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox fx:id="root" fillHeight="false" maxWidth="-Infinity" spacing="20.0" styleClass="bill-card" stylesheets="@../../stylesheet/payment.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="productImage" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS" />
+      <MFXTextField fx:id="productId" animated="false" borderGap="0.0" editable="false" floatingText="Product ID" floatingTextGap="10.0" graphicTextGap="5.0" prefHeight="50.0" prefWidth="80.0" styleClass="mfx-text-field" stylesheets="@../../stylesheet/payment.css" HBox.hgrow="ALWAYS" />
+      <MFXTextField fx:id="productName" animated="false" editable="false" floatingText="Product Name" floatingTextGap="10.0" graphicTextGap="5.0" prefHeight="50.0" prefWidth="188.0" stylesheets="@../../stylesheet/payment.css" HBox.hgrow="ALWAYS" />
+      <MFXButton fx:id="increaseQuantityBtn" buttonType="RAISED" prefHeight="32.0" prefWidth="32.0" styleClass="mfx-button" text=" " HBox.hgrow="ALWAYS">
+         <graphic>
+            <FontAwesomeIconView glyphName="ANGLE_UP" size="20" wrappingWidth="7.0" />
+         </graphic>
+         <HBox.margin>
+            <Insets top="25.0" />
+         </HBox.margin>
+      </MFXButton>
+      <MFXTextField fx:id="productQuantity" alignment="CENTER" animated="false" floatingText="Quantity" floatingTextGap="10.0" graphicTextGap="5.0" prefHeight="50.0" prefWidth="45.0" stylesheets="@../../stylesheet/payment.css" HBox.hgrow="ALWAYS" />
+      <MFXButton fx:id="decreaseQuantityBtn" buttonType="RAISED" prefHeight="32.0" prefWidth="32.0" styleClass="mfx-button" text=" " HBox.hgrow="ALWAYS">
+         <graphic>
+            <FontAwesomeIconView glyphName="ANGLE_DOWN" selectionStart="1" size="20" wrappingWidth="5.857142448425293" />
+         </graphic>
+         <HBox.margin>
+            <Insets top="25.0" />
+         </HBox.margin>
+      </MFXButton>
+      <MFXTextField fx:id="productPrice" animated="false" editable="false" floatingText="Price" floatingTextGap="10.0" graphicTextGap="5.0" prefHeight="50.0" stylesheets="@../../stylesheet/payment.css" HBox.hgrow="ALWAYS" />
+      <MFXTextField fx:id="totalPrice" animated="false" editable="false" floatingText="Total Price" floatingTextGap="10.0" graphicTextGap="5.0" prefHeight="50.0" prefWidth="197.0" stylesheets="@../../stylesheet/payment.css" HBox.hgrow="ALWAYS" />
+      <MFXTextField fx:id="remainQuantity" animated="false" editable="false" floatingText="Quantity" floatingTextGap="10.0" graphicTextGap="5.0" prefHeight="50.0" prefWidth="45.0" stylesheets="@../../stylesheet/payment.css" HBox.hgrow="ALWAYS" />
+      <MFXButton fx:id="deleteCellBtn" alignment="CENTER" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" prefHeight="30.0" prefWidth="30.0" styleClass="mfx-button" stylesheets="@../../stylesheet/payment.css" text=" " textAlignment="CENTER" textFill="RED" HBox.hgrow="ALWAYS">
+         <graphic>
+            <FontAwesomeIconView glyphName="TRASH" size="25" />
+         </graphic>
+         <HBox.margin>
+            <Insets top="15.0" />
+         </HBox.margin>
+      </MFXButton>
+   </children>
+   <padding>
+      <Insets left="25.0" />
+   </padding>
+</HBox>

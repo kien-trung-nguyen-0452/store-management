@@ -1,0 +1,48 @@
+.mfx-scroll-pane {
+    -fx-background-color: #f9f9f9; /* Màu nền ScrollPane */
+    -fx-background-radius: 10px; /* Bo góc */
+    -fx-border-radius: 10px; /* Bo góc viền */
+    -fx-padding: 10px;
+    -fx-border-width: 2px; /* Độ dày viền */
+    -fx-border-color: #eae9e9; /* Màu viền */
+    -fx-border-style: solid;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0.3, 0, 3); /* Hiệu ứng đổ bóng nhẹ */
+}
+
+.mfx-scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent; /* Nền thanh cuộn dọc */
+    -fx-opacity: 0.8; /* Độ trong suốt */
+}
+
+.mfx-scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: transparent; /* Nền thanh cuộn ngang */
+    -fx-opacity: 0.8; /* Độ trong suốt */
+}
+
+.mfx-scroll-pane .scroll-bar:vertical .thumb,
+.mfx-scroll-pane .scroll-bar:horizontal .thumb {
+    -fx-background-color: linear-gradient(to bottom, #b0b3b0, #858383); /* Gradient cho nút cuộn */
+    -fx-background-radius: 10px; /* Bo góc nút cuộn */
+    -fx-pref-width: 8px; /* Chiều rộng thanh cuộn */
+    -fx-pref-height: 8px; /* Chiều cao thanh cuộn */
+}
+
+.mfx-scroll-pane .scroll-bar:vertical .track,
+.mfx-scroll-pane .scroll-bar:horizontal .track {
+    -fx-background-color: transparent; /* Màu nền track */
+    -fx-background-radius: 10px; /* Bo góc track */
+}
+
+.mfx-scroll-pane .scroll-bar:vertical .increment-button,
+.mfx-scroll-pane .scroll-bar:vertical .decrement-button,
+.mfx-scroll-pane .scroll-bar:horizontal .increment-button,
+.mfx-scroll-pane .scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent; /* Ẩn các nút cuộn */
+    -fx-padding: 0;
+    -fx-max-width: 0;
+    -fx-max-height: 0;
+}
+#warehouseScrollpane, #dashboardScrollpane{
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+}

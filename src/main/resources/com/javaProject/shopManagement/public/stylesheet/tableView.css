@@ -1,0 +1,51 @@
+.table-view {
+    -fx-background-radius: 25px;
+    -fx-background-color: white;
+    -fx-padding: 5px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 25px;
+    -fx-border-color: #964EC2;
+    -fx-effect: dropshadow(gaussian, lightblue, 10, 0.5, 0.5, 0.5);
+    -fx-fixed-cell-size: 50px;
+    -fx-font-family: "Lato";
+    -fx-font-size: 16px;
+    -fx-text-fill: #333333;
+}
+.column-header-background {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: #964EC2;
+}
+.table-view .column-header{
+    -fx-background-color: transparent;
+}
+.table-row-cell {
+    -fx-cell-size: 50px;
+    -fx-border-color: transparent transparent #dcdcdc transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-style: solid;
+}
+.table-view .table-row-cell:filled:selected{
+    -fx-background-color: lightblue;
+}
+.table-view .table-row-cell:odd {
+    -fx-background-color: transparent; /* Xóa màu nền hàng lẻ */
+}
+.table-view .table-row-cell:even {
+    -fx-background-color: transparent; /* Xóa màu nền hàng chẵn */
+}
+.table-row-cell:empty {
+    -fx-border-color: transparent; /* Loại bỏ viền cho các hàng trống */
+}
+.table-view .scroll-bar:horizontal {
+    -fx-opacity: 0; /* Ẩn thanh cuộn ngang */
+    -fx-max-height: 0; /* Loại bỏ không gian chiếm chỗ */
+}
+.table-view .table-cell {
+    -fx-alignment: center;
+    -fx-padding: 5px;
+}
+.table-view .column-header {
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+}

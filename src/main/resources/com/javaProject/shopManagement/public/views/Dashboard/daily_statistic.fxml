@@ -15,14 +15,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="740.0" prefWidth="365.0" styleClass="filter-card" stylesheets="@../stylesheet/bill.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" prefHeight="735.0" prefWidth="340.0" styleClass="primary-background" stylesheets="@../../stylesheet/dashboard.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox layoutX="6.0" prefHeight="724.0" prefWidth="341.0" spacing="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <VBox layoutX="6.0" prefHeight="724.0" prefWidth="340.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <MFXButton fx:id="openFilterBtn">
+            <MFXButton fx:id="openFilterBtn" contentDisplay="GRAPHIC_ONLY" prefHeight="31.0" prefWidth="31.0" styleClass="mfx-button" stylesheets="@../../stylesheet/dashboard.css">
                <graphic>
                   <FontAwesomeIconView glyphName="FILTER" />
                </graphic>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </MFXButton>
             <AnchorPane prefHeight="245.0" prefWidth="461.0">
                <children>
@@ -30,39 +33,48 @@
                      <children>
                         <VBox>
                            <children>
-                              <Label text="Total revenue" />
-                              <ProgressBar fx:id="revenueProgressBar" prefHeight="41.0" prefWidth="293.0" progress="1.0" />
+                              <Label text="Total revenue">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
+                              <ProgressBar id="revenueProgressBar" fx:id="revenueProgressBar" prefHeight="41.0" prefWidth="293.0" progress="1.0" stylesheets="@../../stylesheet/dashboard.css" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="Total cost" />
-                              <ProgressBar fx:id="costProgressBar" prefHeight="38.0" prefWidth="293.0" progress="0.7" />
+                              <Label text="Total cost">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
+                              <ProgressBar id="costProgressBar" fx:id="costProgressBar" prefHeight="38.0" prefWidth="293.0" progress="0.7" stylesheets="@../../stylesheet/dashboard.css" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="Total income" />
-                              <ProgressBar fx:id="incomeProgressBar" prefHeight="38.0" prefWidth="293.0" progress="0.72" />
+                              <Label text="Total income">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
+                              <ProgressBar id="incomeProgressBar" fx:id="incomeProgressBar" prefHeight="38.0" prefWidth="293.0" progress="0.72" stylesheets="@../../stylesheet/dashboard.css" />
                            </children>
                         </VBox>
                      </children>
                   </VBox>
                </children>
             </AnchorPane>
-            <HBox prefHeight="69.0" prefWidth="325.0" spacing="5.0">
+            <HBox prefHeight="69.0" prefWidth="325.0" spacing="5.0" stylesheets="@../../stylesheet/dashboard.css">
                <children>
-                  <MFXTextField fx:id="revenueTextField" floatingText="Revenue" prefHeight="100.0" prefWidth="211.0" />
-                  <MFXTextField fx:id="costTextField" floatingText="cost" prefHeight="109.0" prefWidth="90.0" />
-                  <MFXTextField fx:id="incomeTextField" floatingText="income" prefHeight="100.0" prefWidth="210.0" />
+                  <MFXTextField fx:id="revenueTextField" allowEdit="false" floatMode="BORDER" floatingText="Revenue" prefHeight="100.0" prefWidth="211.0" stylesheets="@../../stylesheet/dashboard.css" />
+                  <MFXTextField fx:id="costTextField" allowEdit="false" floatMode="BORDER" floatingText="Cost" prefHeight="109.0" prefWidth="90.0" stylesheets="@../../stylesheet/dashboard.css" />
+                  <MFXTextField fx:id="incomeTextField" allowEdit="false" floatMode="BORDER" floatingText="Income" prefHeight="100.0" prefWidth="210.0" stylesheets="@../../stylesheet/dashboard.css" />
                </children>
             </HBox>
-            <TableView fx:id="productTableView" prefHeight="242.0" prefWidth="325.0">
+            <TableView fx:id="productTableView" prefHeight="242.0" prefWidth="325.0" stylesheets="@../../stylesheet/tableView.css">
                <columns>
                   <TableColumn fx:id="idCol" prefWidth="60.0" text="ID" />
                   <TableColumn fx:id="ilusCol" prefWidth="78.0" text="Illus" />
                   <TableColumn fx:id="quantityCol" prefWidth="72.0" text="Quantity" />
-                  <TableColumn fx:id="nameCol" prefWidth="100.0" text="Name" />
+                  <TableColumn fx:id="nameCol" prefWidth="112.79997253417969" text="Name" />
                </columns>
             </TableView>
          </children>

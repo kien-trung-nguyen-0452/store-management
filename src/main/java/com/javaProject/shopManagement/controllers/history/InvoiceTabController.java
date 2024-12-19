@@ -57,7 +57,7 @@ public class InvoiceTabController {
     public InvoiceTabController(){
         try{
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/invoice_tab.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/Bill/invoice_tab.fxml"));
             fxmlLoader.setController(this);
             tabPane = fxmlLoader.load();
         }catch (Exception e){

@@ -59,6 +59,9 @@ public class PaymentController{
         totalAmount = 0.0;
         cart = new HashSet<>();
 
+        searchResultList.setVisible(false);
+        searchResultList.setManaged(false);
+
         root.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
             if(searchResultList.isHover()){
                 searchResultList.setVisible(false);
@@ -68,6 +71,8 @@ public class PaymentController{
 
         searchButton.setOnAction(actionEvent -> {
             search(searchBar.getText());
+            searchResultList.setVisible(true);
+            searchResultList.setManaged(true);
         });
 
         payBtn.setOnAction(actionEvent -> pay());

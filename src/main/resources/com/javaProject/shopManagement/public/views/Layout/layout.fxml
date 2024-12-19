@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane layoutX="1.0" layoutY="2.0" prefHeight="904.0" prefWidth="1674.0" snapToPixel="false" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.layout.MainController">
+<AnchorPane layoutX="1.0" layoutY="2.0" prefHeight="800.0" prefWidth="1500.0" snapToPixel="false" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.layout.MainController">
    <children>
       <BorderPane fx:id="app" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -17,7 +22,7 @@
                            <children>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../icon/btn-icon/inventory-management.png" />
+                                    <Image url="@../../icon/btn-icon/inventory-management.png" />
                                  </image>
                               </ImageView>
                               <Label styleClass="app-infor" text="Store Management">
@@ -31,7 +36,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="btn-icon">
                                  <image>
-                                    <Image url="@../icon/btn-icon/online-payment.png" />
+                                    <Image url="@../../icon/btn-icon/online-payment.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -43,7 +48,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="btn-icon">
                                  <image>
-                                    <Image url="@../icon/btn-icon/responsive.png" />
+                                    <Image url="@../../icon/btn-icon/responsive.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -55,7 +60,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="btn-icon">
                                  <image>
-                                    <Image url="@../icon/btn-icon/house.png" />
+                                    <Image url="@../../icon/btn-icon/house.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -67,20 +72,20 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="btn-icon">
                                  <image>
-                                    <Image url="@../icon/btn-icon/layout.png" />
+                                    <Image url="@../../icon/btn-icon/layout.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                            <VBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </VBox.margin>
-            
+
                         </Button>
                         <Button alignment="CENTER" layoutX="15.0" layoutY="360.0" mnemonicParsing="false" onAction="#stockIn" prefHeight="50.0" prefWidth="321.0" styleClass="btn" text="Stock in">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="btn-icon">
                                  <image>
-                                    <Image url="@../icon/btn-icon/layout.png" />
+                                    <Image url="@../../icon/btn-icon/layout.png" />
                                  </image>
                               </ImageView>
                            </graphic>

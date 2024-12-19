@@ -37,7 +37,7 @@ public class MainController implements Initializable {
   public void initialize(URL location, ResourceBundle resourceBundle){
 
       try  {
-          Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/payment.fxml")));
+          Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/Payment/payment.fxml")));
           contentArea.getChildren().removeAll();
           contentArea.getChildren().setAll(fxml);
 
@@ -54,7 +54,7 @@ public class MainController implements Initializable {
       if(cache.containsKey(pageKey)){
           fxml = cache.get(pageKey);
       }else {
-         fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/payment.fxml")));
+         fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/Payment/payment.fxml")));
          cache.put(pageKey, fxml);
       }
         contentArea.getChildren().removeAll();
@@ -62,27 +62,27 @@ public class MainController implements Initializable {
   }
 
   public void bill(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/bill.fxml")));
+        Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/Bill/bill.fxml")));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
   }
 
   public void warehouse(javafx.event.ActionEvent actionEvent) throws IOException {
 
-          Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/warehouse.fxml")));
+          Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/Warehouse/warehouse.fxml")));
           contentArea.getChildren().removeAll();
           contentArea.getChildren().setAll(fxml);
 
   }
   public void dashboard(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/dashboard.fxml")));
+        Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/Dashboard/dashboard.fxml")));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
   }
 
   public void stockIn(javafx.event.ActionEvent actionEvent) throws IOException {
 
-        Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/stockIn.fxml")));
+        Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/javaProject/shopManagement/public/views/Stockin/stockIn.fxml")));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
     }

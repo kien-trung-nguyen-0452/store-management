@@ -21,7 +21,7 @@ public class DailyRevenueListCellController extends ListCell<RevenueStatisticDTO
     public DailyRevenueListCellController() {
         try{
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/daily_revenue_list_cell.fxml"));
+            loader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/Dashboard/daily_revenue_list_cell.fxml"));
             loader.setController(this);
             cellRoot = loader.load();
         } catch (Exception e) {

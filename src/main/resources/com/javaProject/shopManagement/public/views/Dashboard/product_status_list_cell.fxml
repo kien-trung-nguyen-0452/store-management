@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox fx:id="cellRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="333.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" prefHeight="106.0" prefWidth="125.0" spacing="5.0">
+         <children>
+            <MFXTextField fx:id="productIdTextField" allowEdit="false" floatMode="BORDER" floatingText="product id" prefHeight="51.0" prefWidth="127.0" stylesheets="@../../stylesheet/dashboard.css" />
+            <MFXTextField fx:id="batchIdTextField" allowEdit="false" floatMode="BORDER" floatingText="batch" prefHeight="51.0" prefWidth="127.0" stylesheets="@../../stylesheet/dashboard.css" />
+         </children>
+      </VBox>
+      <AnchorPane>
+         <children>
+            <ImageView id="productImageView" fx:id="productImageView" fitHeight="106.0" fitWidth="106.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <ImageView id="productStatusImageView" fx:id="productStatusImageView" fitHeight="85.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+         </children>
+      </AnchorPane>
+      <VBox alignment="CENTER" prefHeight="106.0" prefWidth="125.0" spacing="5.0">
+         <children>
+            <MFXTextField fx:id="productNameTextField" allowEdit="false" floatMode="BORDER" floatingText="product name" prefHeight="51.0" prefWidth="127.0" stylesheets="@../../stylesheet/dashboard.css" />
+            <MFXTextField fx:id="expirationDateTextField" allowEdit="false" floatMode="BORDER" floatingText="expiration" prefHeight="51.0" prefWidth="127.0" stylesheets="@../../stylesheet/dashboard.css" />
+         </children>
+      </VBox>
+   </children>
+</HBox>

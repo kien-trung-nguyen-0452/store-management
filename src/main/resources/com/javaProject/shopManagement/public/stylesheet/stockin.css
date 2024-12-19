@@ -67,22 +67,24 @@
     -fx-background-color: #e74c3c;
     -fx-rotate: 5;
 }
-.addImage_button{
-    -fx-border-style: dashed;
+.addRequest_button{
+    -fx-border-style: none;
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 10px;
     -fx-border-radius: 10px;
-    -fx-border-width: 2px;
-    -fx-border-color: #C1C1C1;
     -fx-transition: all 0.3s ease;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.3, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0.3, 0, 5);
     -fx-cursor: hand;
 }
-.addImage_button:hover {
-     -fx-background-color: #FFFFFF;
-     -fx-border-color: #FFFFFF;
-     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0.5, 0, 0);
- }
+.addRequest_button:hover {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0.5, 0, 0);
+}
+.addRequest_button:pressed{
+    -fx-scale-x: 0.9;
+    -fx-scale-y: 0.9;
+}
 .cancel_button{
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
@@ -129,13 +131,11 @@
     -fx-padding: 15 15 15 15;
     -fx-background-color: #FFFF;
     -fx-effect: dropshadow(gaussian, dimgray, 10, 0.2, 0, 0);
-
 }
 .mfx-date-picker .date-picker-popup{
     -fx-pref-width: 300px;
     -fx-pref-height: 300px;
 }
-
 .mfx-date-picker .date-picker-popup .content {
     -fx-background-color: #FAF9F6;
     -fx-opacity: 1;
@@ -144,13 +144,11 @@
     -fx-background-radius: 30px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
 }
-
 .mfx-date-picker .date-picker-popup .mfx-date-cell{
     -fx-pref-width: 30px;
     -fx-pref-height: 30px;
     -fx-border-radius: 3px;
 }
-
 .mfx-date-picker .date-picker-popup .mfx-date-cell:hover {
     -fx-text-fill: #fff;
     -fx-background-color: #ff9999;
@@ -159,19 +157,14 @@
     -fx-border-radius: 5px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
 }
-
-
 .mfx-date-picker .date-picker-popup .mfx-date-cell:selected {
     -fx-background-color: #ff6666;
     -fx-text-fill: #fff;
 }
-
 .mfx-text-field {
     -fx-border-color: #ABABAB;
     -fx-border-width: 0 0 2px 0;
-
 }
-
 .mfx-text-field .text-field{
     -fx-border-width: 0px;
 }
@@ -179,29 +172,21 @@
 .mfx-text-field .floating-text {
     -fx-text-fill: #ABABAB;
 }
-
 .invalid-input{
     -fx-border-color: red;
     -fx-text-fill: red;
     -fx-border-width: 0 0 2px 0;
-
 }
-
-
-
 .valid-input{
     -fx-border-color: green;
     -fx-border-width: 0 0 2px 0;
-
 }
-
 .error-label{
     -fx-text-fill: red;
     -fx-font-size: 10;
     -fx-wrap-text: true;
     -fx-max-width: 200px;
 }
-
 .error {
     -fx-border-color: red;
     -fx-text-fill: red;

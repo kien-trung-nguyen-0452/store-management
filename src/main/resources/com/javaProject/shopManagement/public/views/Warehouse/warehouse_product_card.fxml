@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="278.0" prefWidth="251.0" xmlns="http://javafx.com/javafx/22" stylesheets="@/com/javaProject/shopManagement/public/stylesheet/warehouse.css" xmlns:fx="http://javafx.com/fxml/1"
-styleClass="product-item, shadow">
+<AnchorPane prefHeight="278.0" prefWidth="251.0" styleClass="product-item" stylesheets="@../../stylesheet/warehouse.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="productImage" fitHeight="175.0" fitWidth="175.0" layoutX="42.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="14.0" />
       <Label fx:id="productSellingPrice" layoutX="43.0" layoutY="195.0" text="0.0$" AnchorPane.leftAnchor="10.0">
@@ -20,7 +19,10 @@ styleClass="product-item, shadow">
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="183.0" layoutY="200.0" text="Remain:" />
+      <Label layoutX="183.0" layoutY="200.0" text="Remain:">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
       <Label fx:id="productQuantity" layoutX="183.0" layoutY="227.0" text="quantity" />
    </children>
 </AnchorPane>

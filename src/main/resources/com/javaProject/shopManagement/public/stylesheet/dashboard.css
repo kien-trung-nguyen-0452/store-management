@@ -1,65 +1,127 @@
-.dashboard_background{
-    -fx-border-radius: 10px;
+.primary-background{
+    -fx-background-color: #FFF;
+    -fx-background-radius: 25px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.2, 0, 2);
+}
+.mfx-button {
+    -fx-background-color: #FFFFFF;
     -fx-background-radius: 10px;
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #FFFFFF;
-}
-.vbox_hbox{
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #FFFFFF;
-    -fx-border-radius: 100px;
-}
-.date_picker{
-    -fx-background-color: rgba(0,0,0,0);;
+    -fx-border-radius: 10px;
     -fx-border-color: transparent;
-    -fx-border-width: 0 0px 0 0px;
-}
-.date-picker .arrow-button {
-    -fx-background-color: #FFFFFF; /* Màu nền của nút calendar */
-    -fx-border-color: #C1C1C1;      /* Màu viền của nút */
-    -fx-border-width: 0 0px 0 0px;
-}
-/* Thay đổi màu của biểu tượng calendar */
-.date-picker .arrow-button .arrow {
-    -fx-background-color: gray;
-}
-.time_border{
-    -fx-border-radius: 20;
-    -fx-border-color: #C1C1C1;
-}
-.search_button{
-    -fx-background-color: transparent;
-    -fx-background-radius: 100px;
-    -fx-transition: transform 0.3s ease;
+    -fx-border-width: 2px;
+    -fx-transition: all 0.3s ease;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.3, 0, 0);
     -fx-cursor: hand;
 }
-.search_button:hover{
+.mfx-button:hover {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0.5, 0, 0);
+}
+.mfx-button:pressed {
+    -fx-background-color: #e74c3c;
+    -fx-rotate: 5;
+}
+.mfx-text-field .floating-text {
+    -fx-background-color: #fff;
+    -fx-font-size: 12px;
+    -fx-font-family: "Lato";
+}
+.mfx-text-field {
+    -fx-border-color: #964EC2;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-font-family: "Lato";
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+.mfx-text-field .text-field{
     -fx-background-color: transparent;
-    -fx-background-radius: 100px;
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
 }
-.transparent{
-    -fx-background-color: rgba(0,0,0,0);
-}
-.totalRevenue_analysis{
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: transparent;
-    -fx-background-radius: 10px;
+.list-view {
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 2px;
     -fx-border-radius: 10px;
-    -fx-effect: dropshadow(gaussian, #2a73ff, 20, 0.3, 0, 5);
-}
-.order_analysis{
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: transparent;
     -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
-    -fx-effect: dropshadow(gaussian, #26bfbc, 20, 0.3, 0, 5);
 }
-.average_analysis{
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: transparent;
+.list-cell {
+    -fx-background-color: #ffffff;
+    -fx-padding: 10px;
+    -fx-border-radius: 10px;
     -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
-    -fx-effect: dropshadow(gaussian, #fa5f7e, 20, 0.3, 0, 5);
+    -fx-background-insets: 0 5 7 5;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.2, 0, 2);
+    -fx-pref-height: 100px;
+    -fx-alignment: center;
 }
+.list-cell:hover {
+    -fx-background-color: #f3f3f3;
+}
+.list-view:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+#dailyRevenueListView{
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: transparent;
+    -fx-border-width: 0px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-opacity: 0.8;
+}
+.scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-opacity: 0.8;
+}
+.scroll-bar:vertical .thumb,
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: linear-gradient(to bottom, #b0b3b0, #858383);
+    -fx-background-radius: 10px;
+    -fx-pref-width: 8px;
+    -fx-pref-height: 8px;
+}
+.scroll-bar:vertical .track,
+.scroll-bar:horizontal .track {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+}
+.scroll-bar:vertical .increment-button,
+.scroll-bar:vertical .decrement-button,
+.scroll-bar:horizontal .increment-button,
+.scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-max-width: 0;
+    -fx-max-height: 0;
+}
+.progress-bar {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-pref-height: 30px;
+}
+.progress-bar .bar {
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.2, 1, 1);
+}
+.progress-bar:indeterminate .bar {
+    -fx-background-color: linear-gradient(to right, #81c784 0%, #4caf50 50%, #81c784 100%);
+    -fx-background-radius: 10px;
+}
+#revenueProgressBar.progress-bar .bar{
+    -fx-background-color: linear-gradient(to right, #c3c7f4, #c8a8e9);
+}
+#costProgressBar.progress-bar .bar{
+    -fx-background-color: linear-gradient(to right, #f4e7f8, #f2dddc);
+}
+#incomeProgressBar.progress-bar .bar{
+    -fx-background-color: linear-gradient(to right, #f6bcba, #e3aadd);
+}
+

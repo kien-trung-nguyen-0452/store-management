@@ -29,15 +29,15 @@ public class ProductDetailsCardController {
     @FXML private MFXButton changeImgBtn;
     @FXML private MFXButton changePriceBtn;
     @FXML private MFXButton changeProductNameBtn;
-    @FXML private MFXButton updateButton;
 
+    @FXML private Button updateButton;
     @FXML private Button deleteProductBtn;
     @FXML private ImageView productImg;
     @FXML private MFXTextField productNameTextField;
     @FXML private MFXTextField productPriceTextField;
     @FXML private MFXTextField productQuantityTextField;
     @FXML private MFXTextField productIdTextField;
-    @FXML private MFXTextField  batchIdTextField;
+    @FXML private MFXTextField batchIdTextField;
     @FXML private MFXTextField purchasePriceTextField;
     @FXML private MFXTextField manufacturerTextField;
     @FXML private MFXTextField expirationDateTextField;
@@ -52,7 +52,7 @@ public class ProductDetailsCardController {
         this.parent = parent;
         this.productDTO = productDTO;
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/javaProject/shopManagement/public/views/product_details_card.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/javaProject/shopManagement/public/views/Warehouse/product_details_card.fxml"));
         loader.setController(this);
         try {
             cardRoot = loader.load();

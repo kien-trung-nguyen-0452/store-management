@@ -49,7 +49,7 @@ public class InvoiceDetailsCardController {
 
         try{
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(InvoiceDetailsCardController.class.getResource("/com/javaProject/shopManagement/public/views/invoice_details.fxml"));
+            fxmlLoader.setLocation(InvoiceDetailsCardController.class.getResource("/com/javaProject/shopManagement/public/views/Bill/invoice_details.fxml"));
             fxmlLoader.setController(this);
             root = fxmlLoader.load();
         }catch (Exception e){

@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import io.github.palexdev.materialfx.controls.MFXProgressSpinner?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="826.0" prefWidth="1334.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="com.javaProject.shopManagement.controllers.dashboard.DashboardController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.dashboard.DashboardController">
    <children>
-      <HBox layoutX="14.0" layoutY="85.0" prefHeight="786.0" prefWidth="1320.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="30.0">
+      <HBox layoutX="14.0" layoutY="85.0" prefHeight="786.0" prefWidth="1320.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane fx:id="generalStatisticPane" prefHeight="460.0" prefWidth="1000.0" HBox.hgrow="ALWAYS">
+            <AnchorPane fx:id="generalStatisticPane" prefHeight="735.0" prefWidth="762.0">
                <children>
-                  <AnchorPane fx:id="generalLoadingPane" layoutX="107.0" layoutY="12.0" prefHeight="98.0" prefWidth="832.0">
+                  <AnchorPane fx:id="generalLoadingPane" layoutX="107.0" layoutY="12.0" prefHeight="98.0" prefWidth="566.0">
                      <children>
                         <Label layoutX="132.0" layoutY="60.0" prefHeight="19.0" prefWidth="178.0" text="Analyzing...">
                            <font>
@@ -23,7 +24,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="dailyStatisticPane" prefHeight="786.0" prefWidth="335.0">
+            <AnchorPane fx:id="dailyStatisticPane" prefHeight="735.0" prefWidth="340.0">
                <children>
                   <AnchorPane layoutX="95.0" layoutY="51.0">
                      <children>

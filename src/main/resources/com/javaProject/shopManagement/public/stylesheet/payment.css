@@ -3,6 +3,11 @@
     -fx-background-radius: 20px;
     -fx-border-radius: 20px;
 }
+.vbox-scrollPane{
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
 .transparent{
     -fx-background-color: rgba(0,0,0,0);
 }
@@ -12,29 +17,10 @@
     -fx-border-color: black;
     -fx-border-width: 1px;
 }
-.search_bar{
-    -fx-background-radius: 20px;
-    -fx-background-color: transparent;
-    -fx-border-radius: 20px;
-    -fx-border-color: #C1C1C1;
-    -fx-cursor: text;
-}
-.search_button{
-    -fx-background-color: transparent;
-    -fx-background-radius: 100px;
-    -fx-transition: transform 0.3s ease;
-    -fx-cursor: hand;
-}
-.search_button:hover{
-    -fx-background-color: transparent;
-    -fx-background-radius: 100px;
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
-}
 .cancel_button{
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
-    -fx-background-color: rgba(255, 255, 255, 0.68);
+    -fx-background-color: #fff;
     -fx-border-color: #0063EC;
     -fx-text-fill: #0063EC;
     -fx-transition: all 0.3s ease;
@@ -49,7 +35,7 @@
 .pay_button{
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
-    -fx-background-color: rgba(255, 255, 255, 0.68);
+    -fx-background-color: #fff;
     -fx-border-color: #04bd1b;
     -fx-text-fill: #04bd1b;
     -fx-transition: all 0.3s ease;
@@ -62,49 +48,124 @@
     -fx-scale-y: 1.1;
 }
 .total_amount{
-    -fx-background-color: #FFFFFF;
+    -fx-background-color: #242E49;
     -fx-border-color: transparent;
-    -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0.3, 0, 5);
-}
-
-.bill-card{
-    -fx-background-radius: 20px;
-    -fx-background-color: #FFF;
-    -fx-border-width: 2px;
-
-}
-
-.mfx-text-field {
-    -fx-border-color: #ABABAB;
-    -fx-border-width: 0 0 2px 0;
-
-}
-
-.mfx-text-field .text-field{
-    -fx-border-width: 0px;
-}
-
-.mfx-scroll-pane {
     -fx-background-radius: 0 0 25px 25px;
     -fx-border-radius:0 0 25px 25px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0.3, 0, 5);
+}
+.lower-pane{
+    -fx-background-radius: 10px 10px 25px 25px;
+    -fx-border-radius:10px 10px 25px 25px;
     -fx-padding: 10px;
-    -fx-border-width: 0 1px 1px 1px;
-    -fx-border-color: black;
-    -fx-effect: dropshadow(gaussian, white,10, 0.3, 0, 5);
-
+    -fx-border-width: 1px;
+    -fx-border-color: #4fe4d7;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0.3, 0, 5);
 }
-
-.mfx-scroll-pane .scroll-bar:vertical{
+.search_bar{
+    -fx-background-radius: 20px;
     -fx-background-color: transparent;
-    -fx-opacity: 0.5;
+    -fx-border-radius: 20px;
+    -fx-border-color: #4fe4d7;
+    -fx-cursor: text;
 }
-.mfx-scroll-pane .scroll-bar:horizontal{
-    -fx-opacity: 0;
-    -fx-max-height: 0;
+#searchButton.mfx-button{
+    -fx-background-color: transparent;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-border-color: transparent;
+    -fx-transition: transform 0.3s ease;
+    -fx-effect: none;
+    -fx-cursor: hand;
+}
+#searchButton.mfx-button:hover{
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: none;
+}
+#searchButton.mfx-button .mfx-ripple-generator{
+    -mfx-ripple-color: transparent;
+    -mfx-ripple-radius: 10px;
+    -mfx-background-opacity: 0.5;
+    -mfx-auto-clip: false;
+}
+/* search_result_cell.css */
+.search-result-cell{
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-background-color: #FFF;
+    -fx-border-width: 1px 0px 1px 0px;
+    -fx-border-color: #d5d4d4;
+    -fx-border-style: solid;
+    -fx-cursor: hand;
+}
+.search-result-cell:hover{
+    -fx-background-color: #f3f3f3;
+}
+/*bill-card*/
+.bill-card{
+    -fx-background-radius: 20px;
+    -fx-padding: 15 15 15 15;
+    -fx-background-color: #FFFF;
+    -fx-effect: dropshadow(gaussian, dimgray, 10, 0.2, 0, 0);
+}
+.bill-card:hover{
+    -fx-background-color: #f3f3f3;
+}
+.mfx-text-field {
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 2px 0;
+    -fx-background-color: transparent;
+    -fx-padding: 5px 0;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+    -fx-prompt-text-fill: #aaaaaa;
+    -fx-focus-color: transparent;
+}
+.mfx-text-field:focused {
+    -fx-border-color: #4CAF50;
+    -fx-border-width: 0 0 2px 0;
+}
+.mfx-text-field .text-field {
+    -fx-border-width: 0px;
     -fx-background-color: transparent;
 }
-.mfx-scroll-pane .scroll-bar:vertical .track{
-    -fx-max-height: 30px
+.mfx-text-field .floating-text {
+    -fx-text-fill: black;
+    -fx-font-size: 12px;
+    -fx-translate-y: -5px;
+}
+
+.mfx-text-field:focused .floating-text {
+    -fx-text-fill: #4CAF50;
+    -fx-font-size: 11px;
+    -fx-translate-y: -10px;
+}
+.mfx-text-field:hover {
+    -fx-border-color: #888888;
+}
+.mfx-text-field .floating-text {
+    -fx-transition: all 0.2s ease-in-out;
+}
+.mfx-text-field:focused .floating-text {
+    -fx-transition: all 0.2s ease-in-out;
+}
+.mfx-button {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: transparent;
+    -fx-border-width: 2px;
+    -fx-transition: all 0.3s ease;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.3, 0, 0);
+    -fx-cursor: hand;
+}
+.mfx-button:hover {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0.5, 0, 0);
+}
+.mfx-button:pressed {
+    -fx-background-color: #e74c3c;
+    -fx-rotate: 5;
 }

@@ -69,7 +69,7 @@ public class GeneralStatisticController {
     public GeneralStatisticController() {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(GeneralStatisticController.class.getResource("/com/javaProject/shopManagement/public/views/general_statistic.fxml"));
+            fxmlLoader.setLocation(GeneralStatisticController.class.getResource("/com/javaProject/shopManagement/public/views/Dashboard/general_statistic.fxml"));
             fxmlLoader.setController(this);
             root = fxmlLoader.load();
 

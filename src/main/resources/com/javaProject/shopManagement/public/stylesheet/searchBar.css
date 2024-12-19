@@ -1,0 +1,27 @@
+.search_bar{
+    -fx-background-radius: 20px;
+    -fx-background-color: transparent;
+    -fx-border-radius: 20px;
+    -fx-border-color: #C1C1C1;
+    -fx-cursor: text;
+}
+.mfx-button{
+    -fx-background-color: transparent;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-transition: transform 0.3s ease;
+    -fx-cursor: hand;
+}
+.mfx-button:hover{
+    -fx-background-color: transparent;
+    -fx-background-radius: 100px;
+    -fx-border-radius: 100px;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+.mfx-button .mfx-ripple-generator{
+    -mfx-ripple-color: red;
+    -mfx-ripple-radius: 10px;
+    -mfx-background-opacity: 0.5;
+    -mfx-auto-clip: false;
+}

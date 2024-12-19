@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="cardRoot" prefHeight="900.0" prefWidth="250.0" styleClass="right-bar" stylesheets="@../../stylesheet/warehouse.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="14.4" layoutY="28.0" prefHeight="750.0" prefWidth="250.0" spacing="5.0" stylesheets="@../../stylesheet/warehouse.css" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="-10.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-10.0">
+         <children>
+            <AnchorPane prefHeight="189.0" prefWidth="234.0" styleClass="upper-right-bar" stylesheets="@../../stylesheet/warehouse.css">
+               <children>
+                  <MFXButton fx:id="closeBtn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="33.0" prefWidth="11.0" styleClass="mfx-button" stylesheets="@../../stylesheet/warehouse.css" text=" " textAlignment="CENTER" AnchorPane.rightAnchor="0.0">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="CLOSE" size="20" />
+                     </graphic>
+                  </MFXButton>
+                  <ImageView fx:id="productImg" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="rounded-image" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0" />
+                  <MFXButton fx:id="changeImgBtn" buttonType="RAISED" ellipsisString="" layoutX="199.0" layoutY="175.0" prefHeight="29.0" prefWidth="29.0" rippleAnimateBackground="false" rippleBackgroundOpacity="0.5" rippleRadiusMultiplier="3.0" styleClass="custom-button" stylesheets="@../../stylesheet/warehouse.css" textAlignment="RIGHT" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+                     <rippleColor>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.8552631735801697" green="0.1623416244983673" blue="0.1623416244983673" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.9078947305679321" green="0.008406432345509529" blue="0.008406432345509529" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </rippleColor>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="EDIT" wrappingWidth="7.0" />
+                     </graphic>
+                  </MFXButton>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane prefHeight="72.0" prefWidth="234.0">
+               <children>
+                  <MFXTextField id="productPriceTextField" fx:id="productPriceTextField" alignment="TOP_LEFT" borderGap="0.0" caretVisible="false" disable="true" floatMode="BORDER" floatingText="Price" prefHeight="51.0" prefWidth="224.0" promptText="\$00.00" styleClass="mfx-text-field" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </MFXTextField>
+                  <Label fx:id="productPriceInputMessage" layoutY="50.0" prefHeight="27.0" prefWidth="163.0" text="Label" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+                  <MFXButton fx:id="changePriceBtn" buttonType="RAISED" ellipsisString="" layoutX="199.0" layoutY="21.0" prefHeight="29.0" prefWidth="29.0" rippleAnimateBackground="false" rippleBackgroundOpacity="0.5" styleClass="addImage_button" stylesheets="@../../stylesheet/warehouse.css" text="Button" textAlignment="RIGHT" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="5.0">
+                     <rippleColor>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.8552631735801697" green="0.1623416244983673" blue="0.1623416244983673" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </rippleColor>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="EDIT" wrappingWidth="7.0" />
+                     </graphic>
+                  </MFXButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="72.0" prefWidth="234.0">
+               <children>
+                  <MFXTextField fx:id="productNameTextField" alignment="TOP_LEFT" borderGap="0.0" caretVisible="false" disable="true" floatMode="DISABLED" floatingText="Product name" layoutX="5.0" layoutY="7.0" prefHeight="51.0" prefWidth="224.0" promptText="Product name" styleClass="mfx-text-field" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </MFXTextField>
+                  <MFXButton fx:id="changeProductNameBtn" buttonType="RAISED" ellipsisString="" layoutX="205.0" layoutY="21.0" prefHeight="29.0" prefWidth="29.0" rippleAnimateBackground="false" rippleBackgroundOpacity="0.5" styleClass="addImage_button" stylesheets="@../../stylesheet/warehouse.css" textAlignment="RIGHT" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="5.0">
+                     <rippleColor>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.8552631735801697" green="0.1623416244983673" blue="0.1623416244983673" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </rippleColor>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="EDIT" wrappingWidth="7.0" />
+                     </graphic>
+                  </MFXButton>
+                  <Label fx:id="productNameInputMessage" layoutY="49.0" prefHeight="27.0" prefWidth="153.0" text="Label" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <VBox alignment="CENTER" prefHeight="385.0" prefWidth="249.0" spacing="5.0">
+               <children>
+                  <MFXTextField fx:id="productQuantityTextField" allowEdit="false" borderGap="0.0" caretVisible="false" floatMode="BORDER" floatingText="Remain quantity" prefHeight="50.0" prefWidth="220.0" styleClass="mfx-text-field" />
+                  <MFXTextField fx:id="productIdTextField" allowEdit="false" borderGap="0.0" caretVisible="false" floatMode="BORDER" floatingText="Product ID" prefHeight="50.0" prefWidth="220.0" styleClass="mfx-text-field" />
+                  <MFXTextField fx:id="batchIdTextField" allowEdit="false" borderGap="0.0" caretVisible="false" editable="false" floatMode="BORDER" floatingText="Batch ID" prefHeight="50.0" prefWidth="220.0" styleClass="mfx-text-field" />
+                  <MFXTextField fx:id="purchasePriceTextField" allowEdit="false" borderGap="0.0" caretVisible="false" editable="false" floatMode="BORDER" floatingText="Purchase price" prefHeight="50.0" prefWidth="220.0" styleClass="mfx-text-field" />
+                  <MFXTextField fx:id="manufacturerTextField" allowEdit="false" borderGap="0.0" caretVisible="false" editable="false" floatMode="BORDER" floatingText="Manufacturer" prefHeight="50.0" prefWidth="220.0" promptText="None" styleClass="mfx-text-field" />
+                  <MFXTextField fx:id="expirationDateTextField" allowEdit="false" borderGap="0.0" caretVisible="false" editable="false" floatMode="BORDER" floatingText="Expiration date" prefHeight="50.0" prefWidth="220.0" styleClass="mfx-text-field" stylesheets="@../../stylesheet/warehouse.css" />
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="35.0" prefWidth="249.0" spacing="20.0">
+               <children>
+                  <Button fx:id="deleteProductBtn" layoutX="14.0" layoutY="587.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" styleClass="delete_button" stylesheets="@../../stylesheet/warehouse.css" text="Delete">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="TRASH" size="17" />
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="updateButton" layoutX="124.0" layoutY="587.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" styleClass="update_button" stylesheets="@../../stylesheet/warehouse.css" text="Update">
+                     <graphic>
+                        <FontAwesomeIconView fx:id="updateProductBtn" fill="WHITE" glyphName="REFRESH" size="17" />
+                     </graphic>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</AnchorPane>

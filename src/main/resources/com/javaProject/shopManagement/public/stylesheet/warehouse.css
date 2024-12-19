@@ -1,58 +1,16 @@
 .product-info{
     -fx-spacing: 20px;
 }
-
 .product-info-field{
     -fx-pref-width: 130;
 }
 .transparent{
     -fx-background-color: rgba(0,0,0,0);
 }
-.addImage_button{
+.warehouse_background{
     -fx-background-color: #FFFFFF;
-    -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
-    -fx-border-width: 1px;
-    -fx-border-color: transparent;
-    -fx-transition: all 0.3s ease;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.3, 0, 0);
-    -fx-cursor: hand;
-}
-.search_button{
-    -fx-background-color: transparent;
-    -fx-background-radius: 100px;
-    -fx-transition: transform 0.3s ease;
-    -fx-cursor: hand;
-}
-.search_button:hover{
-    -fx-background-color: transparent;
-    -fx-background-radius: 100px;
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
-}
-.addImage_button:hover {
-    -fx-background-color: #FFFFFF;
-    -fx-border-color: #FFFFFF;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0.5, 0, 0);
-}
-.search_bar{
     -fx-background-radius: 20px;
-    -fx-background-color: transparent;
-    -fx-border-radius: 20px;
-    -fx-border-color: #C1C1C1;
-    -fx-cursor: text;
-}
-.search_button{
-    -fx-background-color: transparent;
-    -fx-background-radius: 100px;
-    -fx-transition: transform 0.3s ease;
-    -fx-cursor: hand;
-}
-.search_button:hover{
-    -fx-background-color: transparent;
-    -fx-background-radius: 100px;
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
 }
 .delete_button {
     -fx-border-radius: 5px;
@@ -96,69 +54,140 @@
 .update_button:hover FontAwesomeIconView {
     -fx-fill: #04bd1b;
 }
-
-
-.search-box{
-    -fx-background-color:#FFFFFF;
-    -fx-background-radius: 100;
-}
-
 .transparent{
     -fx-background-color: rgba(0,0,0,0);
 }
-
-.search-button{
-    -fx-background-color: #828282;
-    -fx-background-radius: 30;
-}
-
 .right-bar{
-    -fx-background-color: #D3D3D3;
+    -fx-background-color: #fff;
+    -fx-background-radius: 15px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, black, 5 ,0.5,0.5,0.5);
+    -fx-padding: 20 20 0 20;
 }
-
-.shadow{
-    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
-}
-
 .chosen-fruit-card{
     -fx-background-color: #F16C31;
     -fx-background-radius: 30;
 }
-
 .comboBox{
     -fx-background-color: rgba(255,255,255,0.3);
     -fx-background-radius: 30;
 }
-
 .add-btn{
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 100;
 }
-
 .free-delivery-card{
     -fx-background-color: #D3D3D3;
     -fx-background-radius: 30;
 }
-
 .shopping-online-card{
     -fx-background-color: #BAEAC3;
     -fx-background-radius: 30;
 }
-
 .product-item{
     -fx-background-color: #FFFFFF;
-    -fx-background-radius: 30;
+    -fx-background-radius: 20px;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
+    -fx-transition: all 0.3s ease;
+    -fx-cursor: hand;
 }
-
+.product-item:hover{
+    -fx-border-color: #ff7900;
+    -fx-translate-y: -5px;
+    -fx-border-radius: 20px;
+}
 .mfx-text-field {
-
-
-
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
 }
-
 .mfx-text-field .text-field{
     -fx-background-color: transparent;
     -fx-border-width: 0;
     -fx-padding: 0;
-
+}
+.upper-right-bar{
+    -fx-border-radius: 15px 15px 0px 0px;
+    -fx-background-radius: 15px 15px 0px 0px;
+    -fx-border-color: transparent;
+    -fx-background-color: #181a2f;
+}
+.label-infor{
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(50, 50, 50, 0.2), 15, 0.1, 2, 2);
+}
+.rounded-image {
+    -fx-background-radius: 50%;
+    -fx-background-color: transparent;
+    -fx-padding: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.8), 15, 0, 0, 0);
+    -fx-border-radius: 50%;
+    -fx-border-color: white;
+    -fx-border-width: 5px;
+}
+.mfx-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white; /* Màu chữ */
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 2);
+    -fx-transition: all 0.2s ease-in-out; /* Hiệu ứng chuyển đổi */
+}
+.mfx-button:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 15, 0, 0, 3);
+}
+.mfx-button:pressed {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 20, 0, 0, 4);
+    -fx-scale-x: 1.0;
+    -fx-scale-y: 1.0;
+}
+#closeBtn.mfx-button{
+    -fx-background-color: transparent;
+    -fx-text-fill: white; /* Màu chữ */
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 2);
+    -fx-transition: all 0.2s ease-in-out; /* Hiệu ứng chuyển đổi */
+}
+#closeBtn.mfx-button FontAwesomeIconView {
+    -fx-fill: white;
+}
+#closeBtn.mfx-button:pressed {
+    -fx-scale-x: 1.0;
+    -fx-scale-y: 1.0;
+}
+.mfx-text-field .floating-text {
+    -fx-background-color: #fff;
+    -fx-font-size: 17;
+    -fx-font-family: "Lato";
+    -fx-font-weight: bold;
+}
+.mfx-text-field {
+    -fx-border-color: #e3e3e3;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 5px;
+    -fx-font-family: "Lato";
+    -fx-text-fill: black;
+    -fx-font-size: 14;
+}
+.mfx-text-field .text-field{
+    -fx-background-color: transparent;
+}
+#productPriceTextField, #productNameTextField{
+    -fx-background-color: #fff;
+    -fx-font-family: "Lato";
+    -fx-font-weight: bold;
+}
+#productPriceTextField{
+    -fx-font-size: 35;
+}
+#productNameTextField{
+    -fx-font-size: 25;
 }

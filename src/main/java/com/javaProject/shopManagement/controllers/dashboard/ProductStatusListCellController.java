@@ -21,7 +21,7 @@ public class ProductStatusListCellController extends ListCell<ProductStatusDTO> 
     public ProductStatusListCellController() {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/product_status_list_cell.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/Dashboard/product_status_list_cell.fxml"));
             fxmlLoader.setController(this);
             cellRoot = fxmlLoader.load();
         } catch (Exception e) {

@@ -61,7 +61,7 @@ public class DailyStatisticController {
     public DailyStatisticController() {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/daily_statistic.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/Dashboard/daily_statistic.fxml"));
             fxmlLoader.setController(this);
             root = fxmlLoader.load();
         }catch(Exception e){

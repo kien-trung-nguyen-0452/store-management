@@ -42,7 +42,7 @@ public class StockInController {
     @FXML
     private VBox productList;
     @FXML
-    private AnchorPane lowerPane, upperPane;
+    private AnchorPane lowerPane, addBatchInfo, totalPriceInfo;
     @FXML
     private Button addNewRequest, addRow, clearAll, getTotalPriceBtn, cancelBtn, importBtn;
 
@@ -61,7 +61,9 @@ public class StockInController {
     @FXML
     private void initialize() {
         lowerPane.setDisable(true);
-        upperPane.setDisable(true);
+        addBatchInfo.setDisable(true);
+        totalPriceLabel.setDisable(true);
+        getTotalPriceBtn.setDisable(true);
         cells = FXCollections.observableArrayList();
         stockInRequestList = new HashSet<>();
 
@@ -91,7 +93,9 @@ public class StockInController {
     // --- UI ---
     private void enableStockInUI() {
         lowerPane.setDisable(false);
-        upperPane.setDisable(false);
+        addBatchInfo.setDisable(false);
+        totalPriceInfo.setDisable(false);
+        getTotalPriceBtn.setDisable(false);
         addNewRequest.setDisable(true);
     }
 
@@ -126,7 +130,9 @@ public class StockInController {
         batchNameTextField.clear();
         descriptionTextArea.clear();
         batchCreateDate.clear();
-        upperPane.setDisable(true);
+        addBatchInfo.setDisable(true);
+        totalPriceLabel.setDisable(true);
+        getTotalPriceBtn.setDisable(true);
         lowerPane.setDisable(true);
         addNewRequest.setDisable(false);
         clearAll();

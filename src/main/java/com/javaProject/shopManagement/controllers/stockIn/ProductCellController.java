@@ -72,7 +72,7 @@ public class ProductCellController implements Initializable {
 
     public ProductCellController() {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/productCell.fxml"));
+        loader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/Stockin/productCell.fxml"));
         loader.setController(this);
         try {
             cellRoot = loader.load();

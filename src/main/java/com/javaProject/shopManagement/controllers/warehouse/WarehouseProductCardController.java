@@ -28,7 +28,7 @@ public class WarehouseProductCardController {
     public WarehouseProductCardController(ProductDTO productDTO){
         this.productDTO = productDTO;
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/warehouse_product_card.fxml"));
+        loader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/Warehouse/warehouse_product_card.fxml"));
         loader.setController(this);
         try {
             cardRoot = loader.load();

@@ -1,13 +1,46 @@
+#myTabPane {
+    -fx-background-color: #f0f0f0;
+}
+/* Tùy chỉnh nền của thanh tab */
+.tab-pane .tab-header-area {
+    -fx-background-color: #fff !important;
+}
+/* Tùy chỉnh màu sắc của các tab */
+.tab {
+    -fx-background-color: #ffffff;
+    -fx-border-color: transparent transparent #aaaaaa transparent;
+}
+.tab-pane .tab:pressed {
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+.tab:selected {
+    -fx-background-color: #ffffff;
+    -fx-border-color: transparent transparent #C957BC transparent;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.3, 0, 0);
+}
+/* Tùy chỉnh font chữ trong tab */
+.tab .tab-label {
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+/* Tùy chỉnh thanh tab */
+.tab-pane {
+    -fx-tab-min-width: 100px; /* Độ rộng tối thiểu của tab */
+    -fx-tab-max-width: 200px; /* Độ rộng tối đa của tab */
+    -fx-tab-min-height: 20px; /* Chiều cao tối thiểu của tab */
+    -fx-open-tab-animation: none; /* Tắt animation khi mở tab */
+    -fx-close-tab-animation: none; /* Tắt animation khi đóng tab */
+}
 .filter-card{
     -fx-background-color: #FFF;
     -fx-background-radius: 25px;
     -fx-effect: dropshadow(gaussian, gray, 10, 0.5, 0.5, 0.5);
 }
-
 .transparent-button {
     -fx-background-color: transparent;
 }
-
 .filter-card-top{
     -fx-background-color: #001C44;
 }
@@ -16,12 +49,10 @@
     -fx-background-radius: 20;
     -fx-text-fill: white;
 }
-
 .mfx-date-picker .date-picker-popup{
     -fx-pref-width: 300px;
     -fx-pref-height: 300px;
 }
-
 .mfx-date-picker .date-picker-popup .content {
     -fx-background-color: #FAF9F6;
     -fx-opacity: 1;
@@ -30,13 +61,11 @@
     -fx-background-radius: 30px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
 }
-
 .mfx-date-picker .date-picker-popup .mfx-date-cell{
     -fx-pref-width: 30px;
     -fx-pref-height: 30px;
     -fx-border-radius: 3px;
 }
-
 .mfx-date-picker .date-picker-popup .mfx-date-cell:hover {
     -fx-text-fill: #fff;
     -fx-background-color: #ff9999;
@@ -45,28 +74,21 @@
     -fx-border-radius: 5px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
 }
-
-
 .mfx-date-picker .date-picker-popup .mfx-date-cell:selected {
     -fx-background-color: #ff6666;
     -fx-text-fill: #fff;
 }
-
 .mfx-text-field {
     -fx-border-color: black;
     -fx-border-width: 1px;
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
     -fx-padding: 5px;
-
 }
-
 .mfx-text-field .text-field{
-   -fx-background-color: transparent;
+    -fx-background-color: transparent;
 }
-
 /*table views css */
-
 .table-view {
     -fx-background-radius: 25px;
     -fx-background-color: white;
@@ -79,7 +101,6 @@
     -fx-font-family: "Lato";
     -fx-font-size: 16px;
     -fx-text-fill: #333333;
-
 }
 .column-header-background {
     -fx-background-color: transparent;
@@ -89,31 +110,24 @@
 .table-view .column-header{
     -fx-background-color: transparent;
 }
-
 .table-row-cell {
     -fx-cell-size: 50px;
     -fx-border-color: transparent transparent #dcdcdc transparent;
     -fx-border-width: 0 0 1px 0;
     -fx-border-style: solid;
 }
-
-
 .table-view .table-row-cell:filled:selected{
     -fx-background-color: lightblue;
 }
-
 .table-view .table-row-cell:odd {
     -fx-background-color: transparent; /* Xóa màu nền hàng lẻ */
 }
-
 .table-view .table-row-cell:even {
     -fx-background-color: transparent; /* Xóa màu nền hàng chẵn */
 }
-
 .table-row-cell:empty {
     -fx-border-color: transparent; /* Loại bỏ viền cho các hàng trống */
 }
-
 .table-view .scroll-bar:horizontal {
     -fx-opacity: 0; /* Ẩn thanh cuộn ngang */
     -fx-max-height: 0; /* Loại bỏ không gian chiếm chỗ */
@@ -122,12 +136,10 @@
     -fx-alignment: center;
     -fx-padding: 5px;
 }
-
 .table-view .column-header {
     -fx-alignment: center;
     -fx-font-weight: bold;
 }
-
 .root {
     -fx-background-color: #fff;
     -fx-background-radius: 0 0 25 25;
@@ -139,7 +151,6 @@
     -fx-background-color: transparent;
 
 }
-
 .search-bar-container {
     -fx-border-width: 1px;
     -fx-border-radius: 25px;
@@ -148,4 +159,44 @@
 .mfx-combo-box {
     -fx-border-width: 0 0 1px 0;
     -fx-border-radius: 0;
+}
+.update_button{
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-color: #fff;
+    -fx-text-fill: #FFFFFF;
+    -fx-transition: all 0.3s ease;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.3, 0, 0);
+    -fx-cursor: hand;
+}
+.update_button FontAwesomeIconView {
+    -fx-fill: #04bd1b;
+}
+.update_button:hover{
+    -fx-text-fill: #fff;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+.update_button:hover FontAwesomeIconView {
+    -fx-fill: #04bd1b;
+}
+.filter_button{
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-color: #fff;
+    -fx-text-fill: #FFFFFF;
+    -fx-transition: all 0.3s ease;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.3, 0, 0);
+    -fx-cursor: hand;
+}
+.filter_button FontAwesomeIconView {
+    -fx-fill: #000000;
+}
+.filter_button:hover{
+    -fx-text-fill: #fff;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+.filter_button:hover FontAwesomeIconView {
+    -fx-fill: #000000;
 }

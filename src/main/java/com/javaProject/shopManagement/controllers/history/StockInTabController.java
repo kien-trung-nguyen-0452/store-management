@@ -74,7 +74,7 @@ public class StockInTabController {
         public StockInTabController(){
             try{
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/stock_in_tab.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/Bill/stock_in_tab.fxml"));
                 fxmlLoader.setController(this);
                 tabPane = fxmlLoader.load();
             }catch (Exception e){

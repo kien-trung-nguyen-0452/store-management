@@ -17,7 +17,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("public/views/layout.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("public/views/Layout/layout.fxml"));
         Parent root = fxmlLoader.load();
         primaryStage.initStyle(StageStyle.DECORATED); // Remove window decoration
         primaryStage.setTitle("Shop Management");

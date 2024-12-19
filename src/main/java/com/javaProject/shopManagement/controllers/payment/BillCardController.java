@@ -40,7 +40,7 @@ public class BillCardController {
         this.maxQuantity = productDTO.getQuantity();
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/bill-card.fxml"));
+        loader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/Payment/bill-card.fxml"));
         loader.setController(this);
         try {
             root = loader.load();

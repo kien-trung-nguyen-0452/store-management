@@ -33,7 +33,7 @@ public class SearchResultCellController {
         this.productDTO = productDTO;
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/search_result_cell.fxml"));
+            loader.setLocation(getClass().getResource("/com/javaProject/shopManagement/public/views/Payment/search_result_cell.fxml"));
            loader.setController(this);
            root = loader.load();
 
