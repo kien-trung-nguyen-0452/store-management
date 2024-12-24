@@ -3,14 +3,14 @@ package com.javaProject.shopManagement.dto.product;
 import java.sql.Timestamp;
 
 public class ProductDTO {
-    private int productId;
-    private int batchId;
-    private String productName;
-    private double sellingPrice;
-    private int quantity;
-    private Timestamp expirationDate;
-    private String manufacturer;
-    private String imageUrl;
+    protected int productId;
+    protected int batchId;
+    protected String productName;
+    protected double sellingPrice;
+    protected int quantity;
+    protected Timestamp expirationDate;
+    protected String manufacturer;
+    protected String imageUrl;
     private double purchasePrice;
 
     public ProductDTO() {

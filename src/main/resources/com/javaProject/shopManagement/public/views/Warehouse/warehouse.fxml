@@ -4,6 +4,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXProgressSpinner?>
 <?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -59,7 +60,7 @@
                   </AnchorPane>
                   <AnchorPane fx:id="parentAnchorPane" prefHeight="550.0" prefWidth="820.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
                      <children>
-                        <MFXScrollPane id="warehouseScrollpane" fx:id="scrollPane" layoutX="8.0" prefHeight="590.0" styleClass="mfx-scroll-pane" stylesheets="@../../stylesheet/scrollPane.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                        <MFXScrollPane id="warehouseScrollpane" fx:id="scrollPane" layoutX="8.0" prefHeight="590.0" stylesheets="@../../stylesheet/scrollPane.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
                            </padding>
@@ -76,6 +77,11 @@
                                  </rowConstraints>
                               </GridPane>
                            </content>
+                           <styleClass>
+                              <String fx:value="mfx-scroll-pane" />
+                              <String fx:value="drop-shadow" />
+                              <String fx:value="transparent" />
+                           </styleClass>
                         </MFXScrollPane>
                         <MFXProgressSpinner fx:id="loadingProgressSpinner" layoutX="471.0" layoutY="26.0" prefHeight="34.0" prefWidth="92.0" />
                         <Label fx:id="productNotFoundLabel" alignment="CENTER" layoutX="383.0" layoutY="22.0" prefHeight="54.0" prefWidth="314.0" text="Can not find products" textAlignment="CENTER" visible="false">

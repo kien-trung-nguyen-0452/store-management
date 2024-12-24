@@ -3,108 +3,102 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
-<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="714.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="714.0" prefWidth="1024.0" stylesheets="@../../stylesheet/dashboard.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="714.0" prefWidth="850.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane prefHeight="714.0" prefWidth="248.0" styleClass="primary-background" stylesheets="@../../stylesheet/dashboard.css" HBox.hgrow="ALWAYS">
+            <AnchorPane prefHeight="714.0" prefWidth="404.0" scaleX="0.9">
                <children>
-                  <HBox alignment="CENTER" spacing="10.0" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="7.0">
+                  <VBox layoutX="1.0" layoutY="7.0" prefHeight="697.0" prefWidth="382.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                      <children>
-                        <Label text="Project" textFill="#2b49b3">
-                           <font>
-                              <Font name="System Bold" size="30.0" />
-                           </font>
-                           <graphic>
-                              <FontAwesomeIconView fill="#2b49b3" glyphName="SHOPPING_BAG" textAlignment="CENTER" />
-                           </graphic>
-                        </Label>
-                        <Separator orientation="VERTICAL" prefHeight="5.0" styleClass="mySeparator" stylesheets="@../../stylesheet/payment.css">
-                           <padding>
-                              <Insets bottom="5.0" top="5.0" />
-                           </padding>
-                        </Separator>
-                        <Label text="Dashboard" textFill="#2b49b3">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="7.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <VBox alignment="CENTER" layoutX="1.0" layoutY="68.0" prefHeight="722.0" prefWidth="365.0" spacing="10.0" stylesheets="@../../stylesheet/dashboard.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="60.0">
-                     <children>
-                        <Label prefHeight="22.0" prefWidth="174.0" text="Products close to expiry">
+                        <Label prefHeight="43.0" prefWidth="253.0" text="Products close to expiry">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font></Label>
-                        <ListView fx:id="expiringProductListView" prefHeight="308.0" prefWidth="329.0" stylesheets="@../../stylesheet/dashboard.css" />
+                        <ListView fx:id="expiringProductListView" prefHeight="308.0" prefWidth="329.0">
+                           </ListView>
                         <Label text="Expired products">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font></Label>
-                        <ListView fx:id="expiredProductListView" prefHeight="360.0" prefWidth="332.0" stylesheets="@../../stylesheet/dashboard.css" />
+                        <ListView fx:id="expiredProductListView" prefHeight="318.0" prefWidth="276.0" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           </ListView>
                      </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
                   </VBox>
                </children>
+               <styleClass>
+                  <String fx:value="primary-background" />
+                  <String fx:value="parent-drop-shadow" />
+               </styleClass>
             </AnchorPane>
             <AnchorPane prefHeight="714.0" prefWidth="594.0" HBox.hgrow="ALWAYS">
                <children>
-                  <VBox layoutX="13.0" prefHeight="770.0" prefWidth="757.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox layoutX="-13.0" prefHeight="714.0" prefWidth="655.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane styleClass="primary-background" stylesheets="@../../stylesheet/dashboard.css">
+                        <AnchorPane>
                            <children>
                               <MFXButton fx:id="openFilterBtn" contentDisplay="GRAPHIC_ONLY" ellipsisString="" prefHeight="31.0" prefWidth="31.0" text=" " AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="FILTER" textAlignment="CENTER" wrappingWidth="9.0" />
                                  </graphic>
                               </MFXButton>
-                              <AreaChart fx:id="revenueChart" prefHeight="375.0" prefWidth="650.0" title="Chart" AnchorPane.topAnchor="45.0">
-                                 <xAxis>
-                                    <CategoryAxis side="BOTTOM" />
-                                 </xAxis>
-                                 <yAxis>
-                                    <NumberAxis side="LEFT" />
-                                 </yAxis>
-                              </AreaChart>
+                              <HBox layoutY="45.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0">
+                                 <children>
+                                    <AreaChart fx:id="revenueChart" prefHeight="305.0" prefWidth="615.0" title="Chart" HBox.hgrow="ALWAYS">
+                                       <xAxis>
+                                          <CategoryAxis side="BOTTOM" />
+                                       </xAxis>
+                                       <yAxis>
+                                          <NumberAxis side="LEFT" />
+                                       </yAxis>
+                                    </AreaChart>
+                                 </children>
+                              </HBox>
                            </children>
+                           <styleClass>
+                              <String fx:value="primary-background" />
+                              <String fx:value="parent-drop-shadow" />
+                           </styleClass>
                         </AnchorPane>
-                        <AnchorPane styleClass="primary-background" stylesheets="@../../stylesheet/dashboard.css" VBox.vgrow="ALWAYS">
+                        <AnchorPane VBox.vgrow="ALWAYS">
                            <children>
                               <HBox alignment="BOTTOM_CENTER" prefHeight="77.0" prefWidth="672.0" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
-                                    <MFXTextField fx:id="totalRevenueTextField" allowEdit="false" floatMode="ABOVE" floatingText="Total revenue" prefHeight="20.0" prefWidth="150.0" HBox.hgrow="ALWAYS" />
-                                    <MFXTextField fx:id="totalIncomeTextField" allowEdit="false" floatMode="ABOVE" floatingText="Total amount" prefHeight="20.0" prefWidth="150.0" HBox.hgrow="ALWAYS" />
-                                    <MFXTextField fx:id="proportionTextField" allowEdit="false" floatMode="ABOVE" floatingText="Proportion" prefHeight="20.0" prefWidth="150.0" HBox.hgrow="ALWAYS" />
+                                    <MFXTextField fx:id="totalRevenueTextField" allowEdit="false" floatMode="BORDER" floatingText="Total revenue" prefHeight="20.0" prefWidth="150.0" styleClass="statistic-text-field" HBox.hgrow="ALWAYS" />
+                                    <MFXTextField fx:id="totalIncomeTextField" allowEdit="false" floatMode="BORDER" floatingText="Total amount" prefHeight="20.0" prefWidth="150.0" styleClass="statistic-text-field" HBox.hgrow="ALWAYS" />
+                                    <MFXTextField fx:id="proportionTextField" allowEdit="false" floatMode="BORDER" floatingText="Proportion" prefHeight="20.0" prefWidth="150.0" styleClass="statistic-text-field" HBox.hgrow="ALWAYS" />
                                  </children>
                               </HBox>
-                              <MFXScrollPane id="dashboardScrollpane" prefHeight="278.0" prefWidth="757.0" stylesheets="@../../stylesheet/scrollPane.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="85.0">
-                                 <content>
-                                    <ListView id="dailyRevenueListView" fx:id="dailyRevenueListView" prefHeight="269.0" prefWidth="868.0" stylesheets="@../../stylesheet/dashboard.css" />
-                                 </content>
-                              </MFXScrollPane>
+                              <ListView id="dailyRevenueListView" fx:id="dailyRevenueListView" layoutX="10.0" layoutY="85.0" prefHeight="188.0" prefWidth="630.0" stylesheets="@../../stylesheet/dashboard.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="90.0" />
                            </children>
+                           <styleClass>
+                              <String fx:value="primary-background" />
+                              <String fx:value="parent-drop-shadow" />
+                           </styleClass>
                         </AnchorPane>
                      </children>
                   </VBox>
-                  <BorderPane fx:id="filterPane" layoutX="-2.0" layoutY="48.0" prefHeight="169.0" prefWidth="513.0" style="-fx-background-color: gray;" styleClass="filter-card" visible="false">
+                  <BorderPane fx:id="filterPane" layoutX="-2.0" layoutY="48.0" prefHeight="169.0" prefWidth="513.0" styleClass="filter-card" stylesheets="@../../stylesheet/filter-pane.css" visible="false">
                      <center>
                         <AnchorPane prefHeight="172.0" prefWidth="308.0" BorderPane.alignment="CENTER">
                            <children>

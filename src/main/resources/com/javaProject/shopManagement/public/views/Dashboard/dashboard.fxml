@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import io.github.palexdev.materialfx.controls.MFXProgressSpinner?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.dashboard.DashboardController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="778.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaProject.shopManagement.controllers.dashboard.DashboardController">
    <children>
-      <HBox layoutX="14.0" layoutY="85.0" prefHeight="786.0" prefWidth="1320.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox layoutX="14.0" layoutY="98.0" prefHeight="680.0" prefWidth="1102.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="98.0">
          <children>
-            <AnchorPane fx:id="generalStatisticPane" prefHeight="735.0" prefWidth="762.0">
+            <AnchorPane fx:id="generalStatisticPane" prefHeight="735.0" prefWidth="919.0" HBox.hgrow="ALWAYS">
                <children>
-                  <AnchorPane fx:id="generalLoadingPane" layoutX="107.0" layoutY="12.0" prefHeight="98.0" prefWidth="566.0">
+                  <AnchorPane fx:id="generalLoadingPane" layoutX="115.0" layoutY="31.0" prefHeight="98.0" prefWidth="566.0">
                      <children>
                         <Label layoutX="132.0" layoutY="60.0" prefHeight="19.0" prefWidth="178.0" text="Analyzing...">
                            <font>
@@ -24,23 +27,42 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="dailyStatisticPane" prefHeight="735.0" prefWidth="340.0">
+            <AnchorPane fx:id="dailyStatisticPane" maxWidth="350.0" prefHeight="680.0" prefWidth="232.0" HBox.hgrow="ALWAYS">
                <children>
-                  <AnchorPane layoutX="95.0" layoutY="51.0">
+                  <AnchorPane layoutX="95.0" layoutY="51.0" />
+                  <AnchorPane fx:id="dailyLoadingPane" layoutX="34.0" layoutY="51.0" prefHeight="65.0" prefWidth="189.0">
                      <children>
-                        <AnchorPane fx:id="dailyLoadingPane" layoutY="-25.0" prefHeight="65.0" prefWidth="189.0">
-                           <children>
-                              <Label layoutX="11.0" layoutY="42.0" prefHeight="19.0" prefWidth="178.0" text="Analyzing...">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <MFXProgressSpinner layoutX="50.0" layoutY="-19.0" />
-                           </children>
-                        </AnchorPane>
+                        <Label layoutX="11.0" layoutY="42.0" prefHeight="19.0" prefWidth="178.0" text="Analyzing...">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <MFXProgressSpinner layoutX="50.0" layoutY="-19.0" />
                      </children>
                   </AnchorPane>
                </children></AnchorPane>
+         </children>
+      </HBox>
+      <HBox layoutX="33.0" layoutY="10.0" prefHeight="41.0" prefWidth="348.0">
+         <children>
+            <Label text="Project" textFill="#2b49b3">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="#2b49b3" glyphName="SHOPPING_BAG" textAlignment="CENTER" />
+               </graphic>
+            </Label>
+            <Separator orientation="VERTICAL" prefHeight="5.0" styleClass="mySeparator" stylesheets="@../../stylesheet/payment.css">
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </Separator>
+            <Label prefHeight="41.0" prefWidth="181.0" text="Dashboard" textFill="#2b49b3">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
          </children>
       </HBox>
    </children>

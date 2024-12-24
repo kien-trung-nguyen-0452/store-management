@@ -56,7 +56,7 @@
                <children>
                   <MFXScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="0.7999992370605469" layoutY="0.8000030517578125" prefHeight="517.0" prefWidth="1069.0" stylesheets="@../../stylesheet/scrollPane.css" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="-10.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-10.0">
                      <content>
-                        <VBox fx:id="billList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="522.0" prefWidth="974.0" spacing="10.0" styleClass="vbox-scrollPane" stylesheets="@../../stylesheet/payment.css">
+                        <VBox fx:id="billList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="474.0" prefWidth="1010.0" spacing="10.0" styleClass="vbox-scrollPane" stylesheets="@../../stylesheet/payment.css">
                            <padding>
                               <Insets left="10.0" right="10.0" top="10.0" />
                            </padding></VBox>

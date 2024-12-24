@@ -1,5 +1,5 @@
 .mfx-scroll-pane {
-    -fx-background-color: #f9f9f9; /* Màu nền ScrollPane */
+    -fx-background-color: white; /* Màu nền ScrollPane */
     -fx-background-radius: 10px; /* Bo góc */
     -fx-border-radius: 10px; /* Bo góc viền */
     -fx-padding: 10px;

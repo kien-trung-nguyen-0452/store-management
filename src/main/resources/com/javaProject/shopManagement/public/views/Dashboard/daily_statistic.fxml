@@ -4,6 +4,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
@@ -15,11 +16,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="735.0" prefWidth="340.0" styleClass="primary-background" stylesheets="@../../stylesheet/dashboard.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" maxWidth="264.0" prefHeight="735.0" prefWidth="340.0" stylesheets="@../../stylesheet/dashboard.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox layoutX="6.0" prefHeight="724.0" prefWidth="340.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <MFXButton fx:id="openFilterBtn" contentDisplay="GRAPHIC_ONLY" prefHeight="31.0" prefWidth="31.0" styleClass="mfx-button" stylesheets="@../../stylesheet/dashboard.css">
+            <MFXButton fx:id="openFilterBtn" contentDisplay="GRAPHIC_ONLY" prefHeight="30.0" prefWidth="9.0" styleClass="mfx-button">
                <graphic>
                   <FontAwesomeIconView glyphName="FILTER" />
                </graphic>
@@ -27,49 +28,54 @@
                   <Insets />
                </VBox.margin>
             </MFXButton>
-            <AnchorPane prefHeight="245.0" prefWidth="461.0">
+            <Label fx:id="dateLabel" alignment="CENTER" prefHeight="21.0" prefWidth="346.0" text="Text" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <AnchorPane prefHeight="211.0" prefWidth="331.0" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox layoutX="14.0" layoutY="20.0" spacing="10.0">
+                  <VBox layoutX="14.0" layoutY="20.0" prefHeight="171.0" prefWidth="311.0" spacing="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                      <children>
                         <VBox>
                            <children>
-                              <Label text="Total revenue">
+                              <Label text="Total revenue" VBox.vgrow="ALWAYS">
                                  <font>
-                                    <Font name="System Bold" size="12.0" />
+                                    <Font name="System Bold" size="18.0" />
                                  </font></Label>
-                              <ProgressBar id="revenueProgressBar" fx:id="revenueProgressBar" prefHeight="41.0" prefWidth="293.0" progress="1.0" stylesheets="@../../stylesheet/dashboard.css" />
+                              <ProgressBar id="revenueProgressBar" fx:id="revenueProgressBar" prefHeight="41.0" prefWidth="293.0" progress="1.0" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
                               <Label text="Total cost">
                                  <font>
-                                    <Font name="System Bold" size="12.0" />
+                                    <Font name="System Bold" size="18.0" />
                                  </font></Label>
-                              <ProgressBar id="costProgressBar" fx:id="costProgressBar" prefHeight="38.0" prefWidth="293.0" progress="0.7" stylesheets="@../../stylesheet/dashboard.css" />
+                              <ProgressBar id="costProgressBar" fx:id="costProgressBar" prefHeight="38.0" prefWidth="293.0" progress="0.7" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
                               <Label text="Total income">
                                  <font>
-                                    <Font name="System Bold" size="12.0" />
+                                    <Font name="System Bold" size="18.0" />
                                  </font></Label>
-                              <ProgressBar id="incomeProgressBar" fx:id="incomeProgressBar" prefHeight="38.0" prefWidth="293.0" progress="0.72" stylesheets="@../../stylesheet/dashboard.css" />
+                              <ProgressBar id="incomeProgressBar" fx:id="incomeProgressBar" prefHeight="38.0" prefWidth="293.0" progress="0.72" />
                            </children>
                         </VBox>
                      </children>
                   </VBox>
                </children>
             </AnchorPane>
-            <HBox prefHeight="69.0" prefWidth="325.0" spacing="5.0" stylesheets="@../../stylesheet/dashboard.css">
+            <HBox prefHeight="228.0" prefWidth="331.0" spacing="5.0">
                <children>
-                  <MFXTextField fx:id="revenueTextField" allowEdit="false" floatMode="BORDER" floatingText="Revenue" prefHeight="100.0" prefWidth="211.0" stylesheets="@../../stylesheet/dashboard.css" />
-                  <MFXTextField fx:id="costTextField" allowEdit="false" floatMode="BORDER" floatingText="Cost" prefHeight="109.0" prefWidth="90.0" stylesheets="@../../stylesheet/dashboard.css" />
-                  <MFXTextField fx:id="incomeTextField" allowEdit="false" floatMode="BORDER" floatingText="Income" prefHeight="100.0" prefWidth="210.0" stylesheets="@../../stylesheet/dashboard.css" />
+                  <MFXTextField fx:id="revenueTextField" allowEdit="false" floatMode="BORDER" floatingText="Revenue" prefHeight="100.0" prefWidth="211.0" styleClass="statistic-text-field" />
+                  <MFXTextField fx:id="costTextField" allowEdit="false" floatMode="BORDER" floatingText="Cost" prefHeight="99.0" prefWidth="104.0" styleClass="statistic-text-field" />
+                  <MFXTextField fx:id="incomeTextField" allowEdit="false" floatMode="BORDER" floatingText="Income" prefHeight="100.0" prefWidth="210.0" styleClass="statistic-text-field" />
                </children>
             </HBox>
-            <TableView fx:id="productTableView" prefHeight="242.0" prefWidth="325.0" stylesheets="@../../stylesheet/tableView.css">
+            <TableView fx:id="productTableView" prefHeight="471.0" prefWidth="331.0" stylesheets="@../../stylesheet/tableView.css">
                <columns>
                   <TableColumn fx:id="idCol" prefWidth="60.0" text="ID" />
                   <TableColumn fx:id="ilusCol" prefWidth="78.0" text="Illus" />
@@ -82,7 +88,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </VBox>
-      <BorderPane fx:id="filterPane" layoutX="14.0" layoutY="52.0" prefHeight="171.0" prefWidth="337.0" styleClass="filter-card" visible="false">
+      <BorderPane fx:id="filterPane" layoutX="14.0" layoutY="52.0" prefHeight="171.0" prefWidth="337.0" styleClass="filter-card" stylesheets="@../../stylesheet/filter-pane.css" visible="false">
          <center>
             <AnchorPane prefHeight="172.0" prefWidth="308.0" BorderPane.alignment="CENTER">
                <children>
@@ -130,4 +136,8 @@
          </top>
       </BorderPane>
    </children>
+   <styleClass>
+      <String fx:value="primary-background" />
+      <String fx:value="parent-drop-shadow" />
+   </styleClass>
 </AnchorPane>

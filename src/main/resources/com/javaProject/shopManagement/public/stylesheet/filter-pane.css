@@ -1,0 +1,70 @@
+.filter-card{
+    -fx-background-color: #FFF;
+    -fx-background-radius: 25px;
+    -fx-effect: dropshadow(gaussian, gray, 10, 0.5, 0.5, 0.5);
+}
+.transparent-button {
+    -fx-background-color: transparent;
+}
+.filter-card-top{
+    -fx-background-color: #001C44;
+}
+.filter-card-filter-button{
+    -fx-background-color: #C957BC;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+}
+.mfx-date-picker .date-picker-popup{
+    -fx-pref-width: 300px;
+    -fx-pref-height: 300px;
+}
+.mfx-date-picker .date-picker-popup .content {
+    -fx-background-color: #FAF9F6;
+    -fx-opacity: 1;
+    -fx-pref-width: 300px;
+    -fx-pref-height: 300px;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
+}
+.mfx-date-picker .date-picker-popup .mfx-date-cell{
+    -fx-pref-width: 30px;
+    -fx-pref-height: 30px;
+    -fx-border-radius: 3px;
+}
+.mfx-date-picker .date-picker-popup .mfx-date-cell:hover {
+    -fx-text-fill: #fff;
+    -fx-background-color: #ff9999;
+    -fx-border-color: white;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
+}
+.mfx-date-picker .date-picker-popup .mfx-date-cell:selected {
+    -fx-background-color: #ff6666;
+    -fx-text-fill: #fff;
+}
+.mfx-text-field {
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-padding: 5px;
+}
+.mfx-text-field .text-field{
+    -fx-background-color: transparent;
+}
+.filter_button{
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-color: #fff;
+    -fx-text-fill: #FFFFFF;
+    -fx-transition: all 0.3s ease;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.3, 0, 0);
+    -fx-cursor: hand;
+}
+.filter_button FontAwesomeIconView {
+    -fx-fill: #000000;
+}
+.parent-drop-shadow{
+    -fx-effect: dropshadow(gaussian, gray, 10, 0.5, 0.5, 0.5);
+}

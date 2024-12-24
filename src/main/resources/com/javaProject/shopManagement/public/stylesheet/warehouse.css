@@ -4,9 +4,6 @@
 .product-info-field{
     -fx-pref-width: 130;
 }
-.transparent{
-    -fx-background-color: rgba(0,0,0,0);
-}
 .warehouse_background{
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 20px;
@@ -56,6 +53,9 @@
 }
 .transparent{
     -fx-background-color: rgba(0,0,0,0);
+}
+.drop-shadow{
+    -fx-effect: dropshadow(gaussian, black, 5 ,0.5,0.5,0.5);
 }
 .right-bar{
     -fx-background-color: #fff;
@@ -190,4 +190,7 @@
 }
 #productNameTextField{
     -fx-font-size: 25;
+}
+.parent-drop-shadow{
+    -fx-effect: dropshadow(gaussian, gray, 10, 0.5, 0.5, 0.5);
 }

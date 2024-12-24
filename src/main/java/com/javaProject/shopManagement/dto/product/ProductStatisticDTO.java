@@ -1,6 +1,6 @@
 package com.javaProject.shopManagement.dto.product;
 
-public class ProductStatisticDTO {
+public class ProductStatisticDTO extends ProductDTO {
     private int productId;
     private int batchId;
     private String productName;

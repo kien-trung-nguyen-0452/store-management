@@ -37,6 +37,7 @@ public class DailyStatisticController {
     @FXML private MFXTextField costTextField;
     @FXML private MFXTextField incomeTextField;
     @FXML private MFXButton openFilterBtn;
+    @FXML private Label dateLabel;
 
     //--table views
     @FXML private TableView<ProductStatisticDTO> productTableView;
@@ -78,6 +79,7 @@ public class DailyStatisticController {
     }
 
     private void setUI(){
+        dateLabel.setText(date.toString().substring(0,10));
         getProductStatistic();
         getRevenueStatistic();
         setTextFields();
@@ -166,7 +168,10 @@ public class DailyStatisticController {
     }
     private void filterDate(){
         date = dateDatePicker.getValue();
-        setUI();
+        if(date != null){
+            setUI();
+        }
+
     }
 
 

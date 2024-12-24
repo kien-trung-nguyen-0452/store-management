@@ -24,28 +24,30 @@
 }
 .mfx-text-field .floating-text {
     -fx-background-color: #fff;
-    -fx-font-size: 12px;
+    -fx-font-size: 18px;
     -fx-font-family: "Lato";
 }
 .mfx-text-field {
     -fx-border-color: #964EC2;
     -fx-border-width: 1px;
-    -fx-border-radius: 5px;
+    -fx-border-radius: 15px;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
     -fx-font-family: "Lato";
     -fx-font-weight: bold;
     -fx-text-fill: black;
+    -fx-font-size: 12;
 }
 .mfx-text-field .text-field{
     -fx-background-color: transparent;
 }
 .list-view {
-    -fx-background-color: #f9f9f9;
-    -fx-border-color: #d0d0d0;
+    -fx-background-color: white;
+    -fx-border-color: transparent;
     -fx-border-width: 2px;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.2, 0, 2);
 }
 .list-cell {
     -fx-background-color: #ffffff;
@@ -53,7 +55,6 @@
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
     -fx-background-insets: 0 5 7 5;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.2, 0, 2);
     -fx-pref-height: 100px;
     -fx-alignment: center;
 }
@@ -100,12 +101,13 @@
     -fx-max-width: 0;
     -fx-max-height: 0;
 }
-.progress-bar {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
+.progress-bar{
+
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
     -fx-pref-height: 30px;
+    -fx-border-width: 3px;
+    -fx-border-color: transparent;
 }
 .progress-bar .bar {
     -fx-background-radius: 10px;
@@ -123,5 +125,39 @@
 }
 #incomeProgressBar.progress-bar .bar{
     -fx-background-color: linear-gradient(to right, #f6bcba, #e3aadd);
+}
+
+.statistic-text-field.mfx-text-field .floating-text{
+    -fx-background-color: white;
+    -fx-font-size: 20px;
+    -fx-font-family: "Lato";
+    -fx-text-alignment: center;
+
+}
+.statistic-text-field.mfx-text-field .text-field{
+    -fx-background-color: white;
+    -fx-font-size: 20px;
+    -fx-font-family: "Lato";
+    -fx-text-alignment: center;
+
+}
+.parent-drop-shadow{
+    -fx-effect: dropshadow(gaussian, gray, 10, 0.5, 0.5, 0.5);
+}
+.no-border-text-field.mfx-text-field{
+    -fx-border-color: transparent;
+    -fx-border-width: 0px;
+}
+/*.no-border-text-field.mfx-text-field .floating-text{
+    -fx-font-size: 15;
+}*/
+.chart-title{
+    -fx-font-weight: bold;
+}
+.chart-plot-background{
+    -fx-background-color: transparent;
+}
+.chart-legend{
+    -fx-background-color: transparent;
 }
 

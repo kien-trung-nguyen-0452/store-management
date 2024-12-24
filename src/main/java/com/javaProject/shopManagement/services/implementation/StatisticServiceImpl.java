@@ -20,9 +20,11 @@ public class StatisticServiceImpl implements StatisticService {
 
     @Override
     public List<RevenueStatisticDTO> getRevenueStatisticByDateRange(LocalDate dateFrom, LocalDate dateTo) {
+        if(dateFrom!=null && dateTo!=null){
        Timestamp start = Timestamp.valueOf(dateFrom.atStartOfDay());
        Timestamp end = Timestamp.valueOf(dateTo.atTime(23, 59, 59));
-       return RevenueStatisticDAOImpl.getInstance().getRevenueStatisticsByDateRange(start, end);
+       return RevenueStatisticDAOImpl.getInstance().getRevenueStatisticsByDateRange(start, end);}
+        else return null;
     }
 
     @Override
@@ -40,9 +42,12 @@ public class StatisticServiceImpl implements StatisticService {
 
     @Override
     public List<ProductStatisticDTO> getProductSalesOfDay(LocalDate date) {
-        Timestamp start = Timestamp.valueOf(date.atStartOfDay());
-        Timestamp end   = Timestamp.valueOf(date.atTime(23, 59, 59));
-        return ProductStatisticDAOImpl.getInstance().getStatisticsByRange(start, end);
+        if(date!=null) {
+            Timestamp start = Timestamp.valueOf(date.atStartOfDay());
+            Timestamp end = Timestamp.valueOf(date.atTime(23, 59, 59));
+            return ProductStatisticDAOImpl.getInstance().getStatisticsByRange(start, end);
+        }
+        return null;
     }
 
     @Override

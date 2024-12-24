@@ -109,6 +109,7 @@ public class GeneralStatisticController {
         for (RevenueStatisticDTO revenueStatistic : revenueStatistics) {
             series.getData().add(new XYChart.Data<>(revenueStatistic.getDate(), revenueStatistic.getTotalRevenue()));
         }
+        revenueChart.setTitle("From: " + (startDate.toString()).substring(0,10) + " to " + (endDate.toString()).substring(0,10));
         revenueChart.getData().add(series);
     }
 
@@ -182,7 +183,9 @@ public class GeneralStatisticController {
     }
     private void filterDate(){
        startDate = dateDatePicker.getValue();
-       setUI();
+        if(startDate != null){
+            setUI();
+        }
 
     }
 
