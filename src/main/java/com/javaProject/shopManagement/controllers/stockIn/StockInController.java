@@ -15,7 +15,6 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -24,13 +23,12 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 
 
 public class StockInController {
-
+    private final String defaultImg = "image/product_default_1.png";
     @FXML
     private MFXTextField batchCodeTextField, supplierTextField, batchNameTextField;
     @FXML
@@ -171,8 +169,10 @@ public class StockInController {
             batchInfoDTO.setTotalPrice(totalPrice);
             BatchInfoServiceImpl.getInstance().add(batchInfoDTO);
             for(StockInRequest stockInRequest : stockInRequestList) {
-                String officialImgUrl = FileServiceImpl.getInstance().uploadImage(stockInRequest.getImageUrl());
-                stockInRequest.setImageUrl(officialImgUrl);
+                if(stockInRequest.getImageUrl()!=null && !stockInRequest.getImageUrl().equals(defaultImg)) {
+                    String officialImgUrl = FileServiceImpl.getInstance().uploadImage(stockInRequest.getImageUrl());
+                    stockInRequest.setImageUrl(officialImgUrl);
+                }
             }
             StockInServiceImpl.getInstance().stockIn(batchInfoDTO, stockInRequestList);
             cancel();
@@ -256,32 +256,4 @@ public class StockInController {
         cell.getNode().getStyleClass().remove("warning");
     }
 
-   /* //--cache--
-    private void saveState() {
-        CacheManager.getInstance().put("batchCode", batchCodeTextField.getText());
-        CacheManager.getInstance().put("supplier", supplierTextField.getText());
-        CacheManager.getInstance().put("batchName", batchNameTextField.getText());
-        CacheManager.getInstance().put("description", descriptionTextArea.getText());
-        CacheManager.getInstance().put("batchDate", batchCreateDate.getValue());
-        CacheManager.getInstance().put("productList", FXCollections.observableArrayList(cells));
-    }
-
-    private void restoreState() {
-        batchCodeTextField.setText((String) CacheManager.getInstance().get("batchCode"));
-        supplierTextField.setText((String) CacheManager.getInstance().get("supplier"));
-        batchNameTextField.setText((String) CacheManager.getInstance().get("batchName"));
-        descriptionTextArea.setText((String) CacheManager.getInstance().get("description"));
-        batchCreateDate.setValue((LocalDate) CacheManager.getInstance().get("batchDate"));
-       List<ProductCellController> cachedCells =
-                (List<ProductCellController>) CacheManager.getInstance().get("productList");
-
-        if (cachedCells != null) {
-            productList.getChildren().clear();
-            cells.clear();
-            for (ProductCellController cell : cachedCells) {
-                productList.getChildren().add(cell.getNode());
-                cells.add(cell);
-            }
-        }
-    }*/
 }

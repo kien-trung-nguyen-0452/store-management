@@ -10,14 +10,14 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class App extends Application {
     double x, y, offsetX, offsetY;
     double initialWidth, initialHeight;
     double initialX, initialY;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("public/views/Layout/layout.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("public/views/Layout/layout.fxml"));
         Parent root = fxmlLoader.load();
         primaryStage.initStyle(StageStyle.DECORATED); // Remove window decoration
         primaryStage.setTitle("Shop Management");

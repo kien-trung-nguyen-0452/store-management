@@ -24,7 +24,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ProductCellController implements Initializable {
-    private final String defaultImg = "image/product_default.png";
+    private final String defaultImg = "image/product_default_1.png";
 
     @FXML
     private Label productIdInputMessage;

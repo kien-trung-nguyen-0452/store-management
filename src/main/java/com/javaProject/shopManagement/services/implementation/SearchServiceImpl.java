@@ -20,7 +20,6 @@ public class SearchServiceImpl implements SearchService {
         try {
             int productId = Integer.parseInt(keyword);
             searchResult = ProductServiceImpl.getInstance().getProductById(productId);
-            System.out.println("id oke");
         }catch (NumberFormatException _){
             searchResult = ProductServiceImpl.getInstance().searchProduct(keyword);
         }

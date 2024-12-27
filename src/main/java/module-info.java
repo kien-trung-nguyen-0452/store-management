@@ -12,10 +12,13 @@ module com.javaProject.shopManagement {
     requires com.google.protobuf;
 
     opens com.javaProject.shopManagement.controllers.layout to javafx.fxml;
-    exports com.javaProject.shopManagement.controllers.layout;
     exports com.javaProject.shopManagement;
+    exports com.javaProject.shopManagement.controllers.layout;
+
     exports com.javaProject.shopManagement.entity;
     exports com.javaProject.shopManagement.dto;
+    exports com.javaProject.shopManagement.services.implementation;
+    exports com.javaProject.shopManagement.services.interfaces;
     exports com.javaProject.shopManagement.controllers.stockIn;
     opens com.javaProject.shopManagement.controllers.stockIn to javafx.fxml;
     exports com.javaProject.shopManagement.controllers.warehouse;
